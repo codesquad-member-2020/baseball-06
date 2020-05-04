@@ -13,7 +13,7 @@ public class PlayerService {
   private static final Logger log = LoggerFactory.getLogger(PlayerService.class);
 
   public PitchingResult batting(Inning inning, Player pitcher, Player batter) {
-    PitchingResult pitchingResult = PitchingResult.pitching(inning, pitcher, batter);
+    PitchingResult pitchingResult = PitchingResult.doPitching(inning, pitcher, batter);
 
     // pitchingResult 에 따라 후속 로직 추가
 

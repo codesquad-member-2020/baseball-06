@@ -22,7 +22,7 @@ public enum PitchingResult {
     this.type = type;
   }
 
-  public static PitchingResult pitching(Inning inning, Player pitcher, Player batter) {
+  public static PitchingResult doPitching(Inning inning, Player pitcher, Player batter) {
     delimiter = new Random().nextDouble();
 
     if (isHit(batter)) {
