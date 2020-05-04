@@ -53,11 +53,22 @@ public class Inning {
   }
 
   public boolean isHit() {
-    return ballCount.equals(4);
+    if (ballCount.equals(4)) {
+      setNewPlateAppearance();
+      return true;
+    }
+
+    return false;
   }
 
   public boolean isOut() {
-    return strikeCount.equals(3);
+    if (strikeCount.equals(3)) {
+      outCount++;
+      setNewPlateAppearance();
+      return true;
+    }
+
+    return false;
   }
 
   public boolean isFinished() {
@@ -66,19 +77,10 @@ public class Inning {
 
   public void addStrike() {
     strikeCount++;
-
-    if (isOut()) {
-      outCount++;
-      setNewPlateAppearance();
-    }
   }
 
   public void addBall() {
     ballCount++;
-
-    if (isHit()) {
-      setNewPlateAppearance();
-    }
   }
 
   public void setNewPlateAppearance() {

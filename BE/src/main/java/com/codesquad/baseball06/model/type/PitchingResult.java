@@ -73,11 +73,11 @@ public enum PitchingResult {
   }
 
   private static boolean isBall(Player batter) {
-    return delimiter - batter.getBattingAverage() > 0.3;
+    return delimiter - batter.getBattingAverage() > 0.4;
   }
 
   private static boolean isStrike(Player batter) {
-    return batter.getBattingAverage() > delimiter;
+    return delimiter - batter.getBattingAverage() > 0.4;
   }
 
   private static void testLogging(Inning inning, PitchingResult pitchingResult,
