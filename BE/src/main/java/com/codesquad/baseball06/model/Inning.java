@@ -5,6 +5,7 @@ import com.codesquad.baseball06.model.type.InningType;
 public class Inning {
 
   private Long id;
+  private Integer score;
   private Integer inningNum;
   private InningType inningType;
   private Integer strikeCount;
