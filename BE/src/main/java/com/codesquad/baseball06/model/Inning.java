@@ -75,5 +75,6 @@ public class Inning {
 
   public void addBall() {
     ballCount++;
+    ballCount = (isHit()) ? 0 : ballCount;
   }
 }
