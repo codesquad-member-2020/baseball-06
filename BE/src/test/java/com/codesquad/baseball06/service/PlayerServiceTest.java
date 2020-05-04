@@ -2,7 +2,9 @@ package com.codesquad.baseball06.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.codesquad.baseball06.model.Inning;
 import com.codesquad.baseball06.model.Player;
+import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.PitchingResult;
 import com.codesquad.baseball06.model.type.PlayerType;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ class PlayerServiceTest {
   private static final Logger log = LoggerFactory.getLogger(PlayerServiceTest.class);
   private PlayerService playerService;
   private List<Player> samplePlayer;
+  private Inning sampleInning;
 
   @BeforeEach
   void setUp() {
@@ -26,11 +29,12 @@ class PlayerServiceTest {
     this.samplePlayer = new ArrayList<>();
     this.samplePlayer.add(Player.create("김투수", PlayerType.PITCHER, 0.200));
     this.samplePlayer.add(Player.create("홍타자", PlayerType.BATTER, 0.200));
+    this.sampleInning = Inning.create(3, 1, InningType.EARLY, 0, 1, 1);
   }
 
   @Test
   void betting() {
-    assertThat(playerService.betting(samplePlayer.get(0), samplePlayer.get(1)))
+    assertThat(playerService.betting(sampleInning, samplePlayer.get(0), samplePlayer.get(1)))
         .isInstanceOf(PitchingResult.class);
   }
 }
