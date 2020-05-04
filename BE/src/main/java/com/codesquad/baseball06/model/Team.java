@@ -3,6 +3,7 @@ package com.codesquad.baseball06.model;
 import java.util.List;
 
 public class Team {
+
   private Long id;
   private String name;
   private List<Player> players;
