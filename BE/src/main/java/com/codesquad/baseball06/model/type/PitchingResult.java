@@ -20,37 +20,35 @@ public enum PitchingResult {
     this.type = type;
   }
 
-  public static PitchingResult pitching(Inning inning, Player pitcher, Player better) {
+  public static PitchingResult pitching(Inning inning, Player pitcher, Player batter) {
     double delimiter = new Random().nextDouble();
     PitchingResult pitchingResult;
 
-    if (better.getBattingAverage() > delimiter) {
-      log.debug("### HIT, better.getBattingAverage() : {}", better.getBattingAverage());
-      log.debug("### delimiter : {}", delimiter);
+    if (batter.getBattingAverage() > delimiter) {
       pitchingResult = PitchingResult.HIT;
-    } else if (delimiter - better.getBattingAverage() > 0.3) {
-      log.debug("### STRIKE, better.getBattingAverage() : {}", better.getBattingAverage());
-      log.debug("### delimiter : {}", delimiter);
-
+    } else if (delimiter - batter.getBattingAverage() > 0.3) {
       pitchingResult = PitchingResult.STRIKE;
 
       if (inning.getStrikeCount().equals(2)) {
         pitchingResult = PitchingResult.OUT;
       }
     } else {
-      log.debug("### BALL, better.getBattingAverage() : {}", better.getBattingAverage());
-      log.debug("### delimiter : {}", delimiter);
-
       pitchingResult = PitchingResult.BALL;
 
       if (inning.getBallCount().equals(3)) {
-        pitchingResult = PitchingResult.OUT;
+        pitchingResult = PitchingResult.HIT;
       }
     }
 
-    if (pitchingResult.equals(PitchingResult.OUT) || inning.getOutCount().equals(2)) {
+    if (pitchingResult.equals(PitchingResult.OUT) && inning.getOutCount().equals(2)) {
       pitchingResult = PitchingResult.END;
     }
+
+    log.debug("### {}", pitchingResult);
+    log.debug("### Inning S B O : {}, {}, {}"
+        , inning.getStrikeCount(), inning.getBallCount(), inning.getOutCount());
+    log.debug("### batter.getBattingAverage() : {}", batter.getBattingAverage());
+    log.debug("### delimiter : {}", delimiter);
 
     return pitchingResult;
   }

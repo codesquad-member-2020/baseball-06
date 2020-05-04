@@ -12,8 +12,8 @@ public class PlayerService {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerService.class);
 
-  public PitchingResult betting(Inning inning, Player pitcher, Player better) {
-    PitchingResult pitchingResult = PitchingResult.pitching(inning, pitcher, better);
+  public PitchingResult batting(Inning inning, Player pitcher, Player batter) {
+    PitchingResult pitchingResult = PitchingResult.pitching(inning, pitcher, batter);
 
     // pitchingResult 에 따라 후속 로직 추가
 

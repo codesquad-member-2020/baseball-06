@@ -7,8 +7,6 @@ import com.codesquad.baseball06.model.Player;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.PitchingResult;
 import com.codesquad.baseball06.model.type.PlayerType;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -20,21 +18,46 @@ class PlayerServiceTest {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerServiceTest.class);
   private PlayerService playerService;
-  private List<Player> samplePlayer;
+  private Player pitcher;
+  private Player batter;
   private Inning sampleInning;
 
   @BeforeEach
   void setUp() {
     this.playerService = new PlayerService();
-    this.samplePlayer = new ArrayList<>();
-    this.samplePlayer.add(Player.create("김투수", PlayerType.PITCHER, 0.200));
-    this.samplePlayer.add(Player.create("홍타자", PlayerType.BATTER, 0.200));
-    this.sampleInning = Inning.create(3, 1, InningType.EARLY, 0, 1, 1);
+    pitcher = Player.create("김투수", PlayerType.PITCHER, 0.200);
+    batter = Player.create("홍타자", PlayerType.BATTER, 0.200);
   }
 
   @Test
-  void betting() {
-    assertThat(playerService.betting(sampleInning, samplePlayer.get(0), samplePlayer.get(1)))
+  void batting() {
+    sampleInning = Inning.create(3, 1, InningType.EARLY, 0, 1, 1);
+
+    assertThat(playerService.batting(sampleInning, pitcher, batter))
+        .isInstanceOf(PitchingResult.class);
+  }
+
+  @Test
+  void batting_3B() {
+    sampleInning = Inning.create(3, 1, InningType.EARLY, 0, 3, 1);
+
+    assertThat(playerService.batting(sampleInning, pitcher, batter))
+        .isInstanceOf(PitchingResult.class);
+  }
+
+  @Test
+  void batting_2S_1O() {
+    sampleInning = Inning.create(3, 1, InningType.EARLY, 2, 1, 1);
+
+    assertThat(playerService.batting(sampleInning, pitcher, batter))
+        .isInstanceOf(PitchingResult.class);
+  }
+
+  @Test
+  void batting_2S_2O() {
+    sampleInning = Inning.create(3, 1, InningType.EARLY, 2, 1, 2);
+
+    assertThat(playerService.batting(sampleInning, pitcher, batter))
         .isInstanceOf(PitchingResult.class);
   }
 }
