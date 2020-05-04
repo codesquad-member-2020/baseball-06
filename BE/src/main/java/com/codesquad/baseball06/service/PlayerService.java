@@ -16,7 +16,6 @@ public class PlayerService {
     PitchingResult pitchingResult = PitchingResult.doPitching(inning, pitcher, batter);
 
     // pitchingResult 에 따라 후속 로직 추가
-
-    return pitchingResult;
+    return PitchingResult.postPitching(inning, pitchingResult);
   }
 }
