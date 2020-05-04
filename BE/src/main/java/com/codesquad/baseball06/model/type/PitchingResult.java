@@ -14,6 +14,8 @@ public enum PitchingResult {
   END("아웃, 공수 전환");
 
   private static final Logger log = LoggerFactory.getLogger(PitchingResult.class);
+  private static double delimiter;
+
   private final String type;
 
   PitchingResult(String type) {
@@ -21,36 +23,56 @@ public enum PitchingResult {
   }
 
   public static PitchingResult pitching(Inning inning, Player pitcher, Player batter) {
-    double delimiter = new Random().nextDouble();
-    PitchingResult pitchingResult;
+    delimiter = new Random().nextDouble();
 
-    if (batter.getBattingAverage() > delimiter) {
-      pitchingResult = PitchingResult.HIT;
-    } else if (delimiter - batter.getBattingAverage() > 0.3) {
-      pitchingResult = PitchingResult.STRIKE;
+    if (isHit(batter)) {
+      testLogging(PitchingResult.HIT, inning, pitcher, batter);
+      return PitchingResult.HIT;
+    }
 
+    if (isStrike(batter)) {
       if (inning.getStrikeCount().equals(2)) {
-        pitchingResult = PitchingResult.OUT;
+        if (inning.getOutCount().equals(2)) {
+          testLogging(PitchingResult.END, inning, pitcher, batter);
+          return PitchingResult.END;
+        }
+
+        testLogging(PitchingResult.OUT, inning, pitcher, batter);
+        return PitchingResult.OUT;
+      } else {
+        testLogging(PitchingResult.STRIKE, inning, pitcher, batter);
+        return PitchingResult.STRIKE;
       }
+    }
+
+    if (isBall(batter)) {
+      testLogging(PitchingResult.HIT, inning, pitcher, batter);
+      return PitchingResult.HIT;
     } else {
-      pitchingResult = PitchingResult.BALL;
-
-      if (inning.getBallCount().equals(3)) {
-        pitchingResult = PitchingResult.HIT;
-      }
+      testLogging(PitchingResult.BALL, inning, pitcher, batter);
+      return PitchingResult.BALL;
     }
+  }
 
-    if (pitchingResult.equals(PitchingResult.OUT) && inning.getOutCount().equals(2)) {
-      pitchingResult = PitchingResult.END;
-    }
+  private static boolean isHit(Player batter) {
+    return batter.getBattingAverage() > delimiter;
+  }
 
+  private static boolean isBall(Player batter) {
+    return delimiter - batter.getBattingAverage() > 0.3;
+  }
+
+  private static boolean isStrike(Player batter) {
+    return batter.getBattingAverage() > delimiter;
+  }
+
+  private static void testLogging(PitchingResult pitchingResult, Inning inning, Player pitcher,
+      Player batter) {
     log.debug("### {}", pitchingResult);
     log.debug("### Inning S B O : {}, {}, {}"
         , inning.getStrikeCount(), inning.getBallCount(), inning.getOutCount());
     log.debug("### batter.getBattingAverage() : {}", batter.getBattingAverage());
     log.debug("### delimiter : {}", delimiter);
-
-    return pitchingResult;
   }
 
   public String getType() {
