@@ -38,7 +38,7 @@ class PlayerServiceTest {
   }
 
   @Test
-  void batting_3B() {
+  void batting_0S_3B_1O() {
     sampleInning = Inning.create(3, 1, InningType.EARLY, 0, 3, 1);
 
     assertThat(playerService.batting(sampleInning, pitcher, batter))
@@ -46,7 +46,7 @@ class PlayerServiceTest {
   }
 
   @Test
-  void batting_2S_1O() {
+  void batting_2S_1B_1O() {
     sampleInning = Inning.create(3, 1, InningType.EARLY, 2, 1, 1);
 
     assertThat(playerService.batting(sampleInning, pitcher, batter))
@@ -54,7 +54,7 @@ class PlayerServiceTest {
   }
 
   @Test
-  void batting_2S_2O() {
+  void batting_2S_1B_2O() {
     sampleInning = Inning.create(3, 1, InningType.EARLY, 2, 1, 2);
 
     assertThat(playerService.batting(sampleInning, pitcher, batter))

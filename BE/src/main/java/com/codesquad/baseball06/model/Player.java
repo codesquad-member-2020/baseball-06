@@ -3,6 +3,7 @@ package com.codesquad.baseball06.model;
 import com.codesquad.baseball06.model.type.PlayerType;
 
 public class Player {
+
   private Long id;
   private String name;
   private PlayerType type;
@@ -21,6 +22,14 @@ public class Player {
     this.battingAverage = battingAverage;
   }
 
+  public static Player create(Long id, String name, PlayerType type, Double battingAverage) {
+    return new Player(id, name, type, battingAverage);
+  }
+
+  public static Player create(String name, PlayerType type, Double battingAverage) {
+    return new Player(name, type, battingAverage);
+  }
+
   public Long getId() {
     return id;
   }
@@ -36,16 +45,4 @@ public class Player {
   public Double getBattingAverage() {
     return battingAverage;
   }
-
-  public static Player create(Long id, String name, PlayerType type, Double battingAverage) {
-    return new Player(id, name, type, battingAverage);
-  }
-
-  public static Player create(String name, PlayerType type, Double battingAverage) {
-    return new Player(name, type, battingAverage);
-  }
-
-
-
-
 }
