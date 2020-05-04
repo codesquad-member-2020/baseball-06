@@ -69,12 +69,20 @@ public class Inning {
 
     if (isOut()) {
       outCount++;
-      strikeCount = 0;
+      setNewPlateAppearance();
     }
   }
 
   public void addBall() {
     ballCount++;
-    ballCount = (isHit()) ? 0 : ballCount;
+
+    if (isHit()) {
+      setNewPlateAppearance();
+    }
+  }
+
+  public void setNewPlateAppearance() {
+    ballCount = 0;
+    strikeCount = 0;
   }
 }
