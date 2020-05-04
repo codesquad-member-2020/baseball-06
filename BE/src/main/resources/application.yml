@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: dev
+# logging 설정
+logging:
+  level:
+    root: debug
+    sql: trace
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} [%thread] %-5level %logger{36}.%M - %msg%n"
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+  file:
+    name: logs/dev_log.log
+---
+spring:
+  profiles: dev
+#  datasource:
+#    driverClassName: org.h2.Driver
+#    url: jdbc:h2:mem://localhost/sidedish_db;
+#    username: sa
+#    password:
+#  h2:
+#    console:
+#      enabled: true
+#auth:
+#  client-id: 31ae5169a7dc37e19605
+#  client-secret: 43debfbf5b584d5a0c7b58d215c5462a29ecd5e1
+#jwt:
+#  salt: sidedish08SecreatKey
+#---
+#spring:
+#  profiles: prod
+#  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/sidedish_db?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+#    username: sidedish08
+#    password: sidedish08
+#    schema: classpath:schema.sql
+#    data: classpath:data.sql
+#    initialization-mode: always
+#    hikari:
+#      maximum-pool-size: 10
+#auth:
+#  client-id: 2807fe374c60994c1363
+#  client-secret: 62a3b5b1616f5982f56c3a0eb4f7f9bac54081f3
+#jwt:
+#  salt: sidedish08SecreatKey
