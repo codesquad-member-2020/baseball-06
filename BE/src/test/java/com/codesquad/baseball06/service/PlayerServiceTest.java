@@ -30,7 +30,6 @@ class PlayerServiceTest {
 
   @Test
   void betting() {
-    log.debug("### {}, {} : ", samplePlayer.get(0), samplePlayer.get(1));
     assertThat(playerService.betting(samplePlayer.get(0), samplePlayer.get(1)))
         .isInstanceOf(PitchingResult.class);
   }
