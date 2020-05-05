@@ -53,14 +53,16 @@
                                 <constraints>
                                     <constraint firstItem="GN2-gP-02o" firstAttribute="centerY" secondItem="WH1-6G-gOI" secondAttribute="centerY" id="DBy-gt-7tu"/>
                                     <constraint firstItem="GN2-gP-02o" firstAttribute="leading" secondItem="i9o-Zt-sEK" secondAttribute="trailing" constant="10" id="I40-Dv-bBQ"/>
-                                    <constraint firstItem="YaY-wk-vPs" firstAttribute="leading" secondItem="0HK-G3-8GE" secondAttribute="trailing" constant="20" id="IFz-TP-2HE"/>
+                                    <constraint firstItem="YaY-wk-vPs" firstAttribute="leading" secondItem="0HK-G3-8GE" secondAttribute="trailing" priority="750" constant="20" id="IFz-TP-2HE"/>
                                     <constraint firstItem="SFV-xb-RtC" firstAttribute="centerY" secondItem="WH1-6G-gOI" secondAttribute="centerY" id="IrF-r5-POF"/>
                                     <constraint firstItem="i9o-Zt-sEK" firstAttribute="centerY" secondItem="WH1-6G-gOI" secondAttribute="centerY" id="KGA-mP-mne"/>
                                     <constraint firstItem="0HK-G3-8GE" firstAttribute="centerX" secondItem="WH1-6G-gOI" secondAttribute="centerX" id="RwG-8W-jxu"/>
                                     <constraint firstAttribute="height" constant="60" id="YrQ-h9-adE"/>
-                                    <constraint firstItem="0HK-G3-8GE" firstAttribute="leading" secondItem="GN2-gP-02o" secondAttribute="trailing" constant="20" id="bVG-KH-Me9"/>
+                                    <constraint firstItem="0HK-G3-8GE" firstAttribute="leading" secondItem="GN2-gP-02o" secondAttribute="trailing" priority="750" constant="20" id="bVG-KH-Me9"/>
                                     <constraint firstItem="0HK-G3-8GE" firstAttribute="centerY" secondItem="WH1-6G-gOI" secondAttribute="centerY" id="bzy-Lr-O7H"/>
+                                    <constraint firstItem="i9o-Zt-sEK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WH1-6G-gOI" secondAttribute="leading" id="hee-V9-aFk"/>
                                     <constraint firstItem="YaY-wk-vPs" firstAttribute="centerY" secondItem="WH1-6G-gOI" secondAttribute="centerY" id="nWC-jM-Mie"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SFV-xb-RtC" secondAttribute="trailing" id="tRB-wh-xtF"/>
                                     <constraint firstItem="SFV-xb-RtC" firstAttribute="leading" secondItem="YaY-wk-vPs" secondAttribute="trailing" constant="10" id="tlY-fa-Pr8"/>
                                 </constraints>
                             </view>
