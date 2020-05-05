@@ -66,9 +66,86 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHd-HV-l3S" customClass="GameProgressView" customModule="BaseBall" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104" width="414" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5I9-Rl-sc0" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
+                                        <rect key="frame" x="102" y="45" width="210" height="210"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-gP-SHo" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                <rect key="frame" x="85" y="-20" width="40" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="dUz-Fe-IiK"/>
+                                                    <constraint firstAttribute="height" constant="40" id="fmo-XY-nt3"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46J-M2-unI" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                <rect key="frame" x="-20" y="85" width="40" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="0qq-sA-Ykx"/>
+                                                    <constraint firstAttribute="width" constant="40" id="kSm-xC-YAP"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP7-jD-ZgZ" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                <rect key="frame" x="190" y="85" width="40" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="d1R-wG-gvl"/>
+                                                    <constraint firstAttribute="height" constant="40" id="vHE-8R-jnJ"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="FP7-jD-ZgZ" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="trailing" id="5GE-CW-5hc"/>
+                                            <constraint firstItem="FP7-jD-ZgZ" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="centerY" id="9c2-mT-sG7"/>
+                                            <constraint firstAttribute="width" secondItem="5I9-Rl-sc0" secondAttribute="height" multiplier="1:1" id="DpS-1s-Ukc"/>
+                                            <constraint firstItem="zZe-gP-SHo" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="top" id="GUw-mY-OX0"/>
+                                            <constraint firstItem="46J-M2-unI" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="leading" id="JMP-DR-Esx"/>
+                                            <constraint firstItem="zZe-gP-SHo" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="bvZ-Uo-kmz"/>
+                                            <constraint firstItem="46J-M2-unI" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="centerY" id="vTy-43-3gB"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1I-5e-zku" customClass="PentagonShapeView" customModule="BaseBall" customModuleProvider="target">
+                                        <rect key="frame" x="192" y="235" width="30" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gId-RW-qWU"/>
+                                            <constraint firstAttribute="width" constant="30" id="hkj-jW-aW8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="5I9-Rl-sc0" firstAttribute="height" secondItem="lHd-HV-l3S" secondAttribute="height" multiplier="0.7" id="B68-KP-iFj"/>
+                                    <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerX" secondItem="lHd-HV-l3S" secondAttribute="centerX" id="TsF-VW-BZo"/>
+                                    <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerY" secondItem="lHd-HV-l3S" secondAttribute="centerY" id="XMw-cy-QLT"/>
+                                    <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="cgc-9S-EZH"/>
                                     <constraint firstAttribute="height" constant="300" id="iP1-li-V4d"/>
+                                    <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="vuT-Hm-t5v"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -87,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">

@@ -20,6 +20,8 @@
 		4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C4246173EA005049F9 /* GameStackView.swift */; };
 		4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */; };
 		4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CA24619520005049F9 /* GameProgressView.swift */; };
+		4491C8CD246195F2005049F9 /* DiamondShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CC246195F2005049F9 /* DiamondShapeView.swift */; };
+		4491C8CF2461976F005049F9 /* PentagonShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CE2461976F005049F9 /* PentagonShapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		4491C8C4246173EA005049F9 /* GameStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStackView.swift; sourceTree = "<group>"; };
 		4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListBackgroundVIew.swift; sourceTree = "<group>"; };
 		4491C8CA24619520005049F9 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
+		4491C8CC246195F2005049F9 /* DiamondShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondShapeView.swift; sourceTree = "<group>"; };
+		4491C8CE2461976F005049F9 /* PentagonShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonShapeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				4491C8CA24619520005049F9 /* GameProgressView.swift */,
+				4491C8CC246195F2005049F9 /* DiamondShapeView.swift */,
+				4491C8CE2461976F005049F9 /* PentagonShapeView.swift */,
 			);
 			path = GamePlay;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,
+				4491C8CD246195F2005049F9 /* DiamondShapeView.swift in Sources */,
 				4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */,
+				4491C8CF2461976F005049F9 /* PentagonShapeView.swift in Sources */,
 				4491C8C124614C84005049F9 /* GameTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
