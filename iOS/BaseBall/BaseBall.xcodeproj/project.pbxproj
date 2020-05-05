@@ -71,6 +71,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		445F93AA2461DB9F00D39168 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */,
+				4491C8C4246173EA005049F9 /* GameStackView.swift */,
+				4491C8C024614C84005049F9 /* GameTitleView.swift */,
+				4491C8C224614C94005049F9 /* GameTitleView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		445F93AD2461DBF900D39168 /* GameProgress */ = {
+			isa = PBXGroup;
+			children = (
+				4491C8CA24619520005049F9 /* GameProgressView.swift */,
+				4491C8CC246195F2005049F9 /* DiamondShapeView.swift */,
+				4491C8CE2461976F005049F9 /* PentagonShapeView.swift */,
+				4457B1C82461B3A800A46673 /* CircleShapeView.swift */,
+				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
+			);
+			path = GameProgress;
+			sourceTree = "<group>";
+		};
+		445F93AF2461DC5000D39168 /* PlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */,
+				4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */,
+				4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */,
+			);
+			path = PlayerInfo;
+			sourceTree = "<group>";
+		};
+		445F93B02461DC6000D39168 /* PitchingResult */ = {
+			isa = PBXGroup;
+			children = (
+				445F93A82461D26D00D39168 /* PitchingResultDataSource.swift */,
+				445F93A42461CE7B00D39168 /* PitchingResultCell.swift */,
+				445F93A62461CFB300D39168 /* CircleNumberLabel.swift */,
+			);
+			path = PitchingResult;
+			sourceTree = "<group>";
+		};
 		4491C898246035B3005049F9 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +137,8 @@
 				4491C8A6246035B3005049F9 /* SceneDelegate.swift */,
 				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
-				4491C8C9246194A6005049F9 /* GamePlay */,
 				4491C8C824617FCC005049F9 /* GameList */,
+				4491C8C9246194A6005049F9 /* GamePlay */,
 				4491C8AF246035B3005049F9 /* Assets.xcassets */,
 				4491C8B1246035B3005049F9 /* LaunchScreen.storyboard */,
 				4491C8B4246035B3005049F9 /* Info.plist */,
@@ -107,10 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				4491C8BA24614863005049F9 /* GameListViewController.swift */,
-				4491C8C024614C84005049F9 /* GameTitleView.swift */,
-				4491C8C224614C94005049F9 /* GameTitleView.xib */,
-				4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */,
-				4491C8C4246173EA005049F9 /* GameStackView.swift */,
+				445F93AA2461DB9F00D39168 /* View */,
 			);
 			path = GameList;
 			sourceTree = "<group>";
@@ -119,17 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				4491C8A8246035B3005049F9 /* PlayViewController.swift */,
-				445F93A82461D26D00D39168 /* PitchingResultDataSource.swift */,
-				4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */,
-				4491C8CA24619520005049F9 /* GameProgressView.swift */,
-				4491C8CC246195F2005049F9 /* DiamondShapeView.swift */,
-				4491C8CE2461976F005049F9 /* PentagonShapeView.swift */,
-				4457B1C82461B3A800A46673 /* CircleShapeView.swift */,
-				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
-				4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */,
-				445F93A42461CE7B00D39168 /* PitchingResultCell.swift */,
-				445F93A62461CFB300D39168 /* CircleNumberLabel.swift */,
-				4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */,
+				445F93AD2461DBF900D39168 /* GameProgress */,
+				445F93AF2461DC5000D39168 /* PlayerInfo */,
+				445F93B02461DC6000D39168 /* PitchingResult */,
 			);
 			path = GamePlay;
 			sourceTree = "<group>";

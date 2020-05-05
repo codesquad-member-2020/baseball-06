@@ -18,13 +18,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH1-6G-gOI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9o-Zt-sEK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9o-Zt-sEK">
                                         <rect key="frame" x="53.5" y="12" width="89.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-gP-02o">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-gP-02o">
                                         <rect key="frame" x="153" y="12" width="20.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
@@ -36,13 +36,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaY-wk-vPs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaY-wk-vPs">
                                         <rect key="frame" x="240.5" y="12" width="20.5" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFV-xb-RtC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFV-xb-RtC">
                                         <rect key="frame" x="271" y="12" width="94" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
@@ -67,13 +67,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHd-HV-l3S" customClass="GameProgressView" customModule="BaseBall" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="358.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5I9-Rl-sc0" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="102" y="45" width="210" height="210"/>
+                                        <rect key="frame" x="81.5" y="54" width="251" height="250.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-gP-SHo" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="-20" width="40" height="40"/>
+                                                <rect key="frame" x="105.5" y="-20" width="40" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="dUz-Fe-IiK"/>
@@ -86,7 +86,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46J-M2-unI" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
-                                                <rect key="frame" x="-20" y="85" width="40" height="40"/>
+                                                <rect key="frame" x="-20" y="105" width="40" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0qq-sA-Ykx"/>
@@ -99,7 +99,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP7-jD-ZgZ" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
-                                                <rect key="frame" x="190" y="85" width="40" height="40"/>
+                                                <rect key="frame" x="231" y="105" width="40" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="d1R-wG-gvl"/>
@@ -132,7 +132,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1I-5e-zku" customClass="PentagonShapeView" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="192" y="235" width="30" height="40"/>
+                                        <rect key="frame" x="192" y="284.5" width="30" height="40"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gId-RW-qWU"/>
@@ -240,7 +240,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y04-xA-ilF" customClass="PitchButton" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="154.5" y="132" width="105" height="36"/>
+                                        <rect key="frame" x="144.5" y="161" width="125" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="PITCH">
@@ -261,13 +261,12 @@
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerY" secondItem="lHd-HV-l3S" secondAttribute="centerY" id="XMw-cy-QLT"/>
                                     <constraint firstItem="Tmp-3O-MXq" firstAttribute="top" secondItem="lHd-HV-l3S" secondAttribute="top" constant="15" id="ZI8-bO-vym"/>
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="cgc-9S-EZH"/>
-                                    <constraint firstAttribute="height" constant="300" id="iP1-li-V4d"/>
                                     <constraint firstItem="Y04-xA-ilF" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="mR6-13-G1R"/>
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="vuT-Hm-t5v"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4n-xA-5hw" customClass="PlayerInfoTableView" customModule="BaseBall" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="404" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="462.5" width="414" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="07e-xl-2yM"/>
@@ -300,6 +299,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gEh-Ol-ccM" secondAttribute="trailing" priority="250" id="1FM-cH-Rrz"/>
+                                                <constraint firstItem="gEh-Ol-ccM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tMA-aE-k8y" secondAttribute="trailing" priority="250" id="8PH-Wh-2tN"/>
                                                 <constraint firstItem="h8O-tt-k9O" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="8gy-jK-V0n"/>
                                                 <constraint firstItem="tMA-aE-k8y" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="Abi-u6-Iep"/>
                                                 <constraint firstItem="h8O-tt-k9O" firstAttribute="leading" secondItem="frf-l2-RLh" secondAttribute="leadingMargin" id="Nna-SB-s7C"/>
@@ -312,7 +313,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t2X-d6-uFt">
-                                <rect key="frame" x="0.0" y="524" width="414" height="289"/>
+                                <rect key="frame" x="0.0" y="582.5" width="414" height="230.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pitchingResult" id="EYS-d4-lbD" customClass="PitchingResultCell" customModule="BaseBall" customModuleProvider="target">
@@ -350,6 +351,7 @@
                                                 <constraint firstItem="tcc-kf-g7w" firstAttribute="centerY" secondItem="L5N-Qs-75F" secondAttribute="centerY" id="SY6-YT-vPc"/>
                                                 <constraint firstItem="RXI-mN-hkj" firstAttribute="centerY" secondItem="L5N-Qs-75F" secondAttribute="centerY" id="Uhn-Gg-aOm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="tcc-kf-g7w" secondAttribute="trailing" id="YKP-ek-2sE"/>
+                                                <constraint firstItem="tcc-kf-g7w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b8g-7X-iST" secondAttribute="trailing" priority="250" id="fDt-dp-Oa3"/>
                                                 <constraint firstItem="RXI-mN-hkj" firstAttribute="leading" secondItem="L5N-Qs-75F" secondAttribute="leadingMargin" id="mVj-j5-TYu"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -365,6 +367,7 @@
                             <constraint firstItem="lHd-HV-l3S" firstAttribute="top" secondItem="WH1-6G-gOI" secondAttribute="bottom" id="F5H-Iu-sld"/>
                             <constraint firstItem="WH1-6G-gOI" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="N3Q-dr-3Ih"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="t2X-d6-uFt" secondAttribute="bottom" id="PZ0-Bq-VcL"/>
+                            <constraint firstItem="lHd-HV-l3S" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.4" id="T1T-m1-vui"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="WH1-6G-gOI" secondAttribute="trailing" id="X7A-wS-ctW"/>
                             <constraint firstItem="t2X-d6-uFt" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="aZe-zb-Ozp"/>
                             <constraint firstItem="lHd-HV-l3S" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="abD-8z-Ywl"/>
