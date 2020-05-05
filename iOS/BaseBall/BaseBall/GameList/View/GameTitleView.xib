@@ -38,6 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="dMQ-Q6-JXq" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="M7l-Oq-Vig"/>
                 <constraint firstItem="kHk-ti-vue" firstAttribute="centerY" secondItem="lMk-wz-Rfq" secondAttribute="centerY" id="Qf1-yv-8PQ"/>
@@ -57,5 +58,6 @@
             </connections>
             <point key="canvasLocation" x="98.550724637681171" y="-115.51339285714285"/>
         </view>
+        <tapGestureRecognizer id="cng-im-lCm"/>
     </objects>
 </document>
