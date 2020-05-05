@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GameTitleView" customModule="BaseBall" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMQ-Q6-JXq">
+                    <rect key="frame" x="156.5" y="10" width="47.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <color key="textColor" red="0.67392486330000001" green="0.18242716789999999" blue="0.194962889" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHk-ti-vue">
+                    <rect key="frame" x="223.5" y="44.5" width="94" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWr-qB-Eqa">
+                    <rect key="frame" x="166.5" y="50.5" width="27" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMk-wz-Rfq">
+                    <rect key="frame" x="46.5" y="44.5" width="90" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="dMQ-Q6-JXq" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="M7l-Oq-Vig"/>
+                <constraint firstItem="kHk-ti-vue" firstAttribute="centerY" secondItem="lMk-wz-Rfq" secondAttribute="centerY" id="Qf1-yv-8PQ"/>
+                <constraint firstItem="kHk-ti-vue" firstAttribute="leading" secondItem="iWr-qB-Eqa" secondAttribute="trailing" constant="30" id="RKU-dB-Yaz"/>
+                <constraint firstItem="dMQ-Q6-JXq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dlD-pm-mIh"/>
+                <constraint firstItem="iWr-qB-Eqa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="fSe-Nk-QGg"/>
+                <constraint firstItem="iWr-qB-Eqa" firstAttribute="leading" secondItem="lMk-wz-Rfq" secondAttribute="trailing" constant="30" id="jrF-eB-cgd"/>
+                <constraint firstItem="lMk-wz-Rfq" firstAttribute="top" secondItem="dMQ-Q6-JXq" secondAttribute="bottom" constant="20" id="tR2-KE-3AF"/>
+                <constraint firstItem="iWr-qB-Eqa" firstAttribute="centerY" secondItem="lMk-wz-Rfq" secondAttribute="centerY" id="xhJ-Lm-GaG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="awayTeamLabel" destination="lMk-wz-Rfq" id="HRo-TP-S2K"/>
+                <outlet property="gameNumberLabel" destination="dMQ-Q6-JXq" id="WCr-1g-390"/>
+                <outlet property="homeTeamLabel" destination="kHk-ti-vue" id="U4e-n7-Yf0"/>
+            </connections>
+            <point key="canvasLocation" x="98.550724637681171" y="-115.51339285714285"/>
+        </view>
+    </objects>
+</document>
