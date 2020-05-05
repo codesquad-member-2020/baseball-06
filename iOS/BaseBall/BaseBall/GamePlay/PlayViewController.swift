@@ -9,6 +9,8 @@
 import UIKit
 
 class PlayViewController: UIViewController {
+    static let identifier = "play"
+    
     @IBOutlet weak var playerInfoTableView: PlayerInfoTableView!
     @IBOutlet weak var pitchingResultTableView: UITableView!
     

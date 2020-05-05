@@ -23,10 +23,11 @@ class GameStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func addGame() {
+    func addGame(gesture: UITapGestureRecognizer) {
         let name = String(describing: GameTitleView.self)
         guard let loadedNib = Bundle.main.loadNibNamed(name, owner: self, options: nil),
             let gameTitleView = loadedNib.first as? GameTitleView else { return }
+        gameTitleView.addGestureRecognizer(gesture)
         addArrangedSubview(gameTitleView)
         gameTitleView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
