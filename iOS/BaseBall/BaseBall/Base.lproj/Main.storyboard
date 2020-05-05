@@ -64,12 +64,22 @@
                                     <constraint firstItem="SFV-xb-RtC" firstAttribute="leading" secondItem="YaY-wk-vPs" secondAttribute="trailing" constant="10" id="tlY-fa-Pr8"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHd-HV-l3S" customClass="GameProgressView" customModule="BaseBall" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="104" width="414" height="300"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="iP1-li-V4d"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WH1-6G-gOI" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="CLj-gN-9qc"/>
+                            <constraint firstItem="lHd-HV-l3S" firstAttribute="top" secondItem="WH1-6G-gOI" secondAttribute="bottom" id="F5H-Iu-sld"/>
                             <constraint firstItem="WH1-6G-gOI" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="N3Q-dr-3Ih"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="WH1-6G-gOI" secondAttribute="trailing" id="X7A-wS-ctW"/>
+                            <constraint firstItem="lHd-HV-l3S" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="abD-8z-Ywl"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="lHd-HV-l3S" secondAttribute="trailing" id="jvc-v4-RFO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>

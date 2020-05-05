@@ -19,6 +19,7 @@
 		4491C8C324614C94005049F9 /* GameTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8C224614C94005049F9 /* GameTitleView.xib */; };
 		4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C4246173EA005049F9 /* GameStackView.swift */; };
 		4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */; };
+		4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CA24619520005049F9 /* GameProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4491C8C224614C94005049F9 /* GameTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameTitleView.xib; sourceTree = "<group>"; };
 		4491C8C4246173EA005049F9 /* GameStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStackView.swift; sourceTree = "<group>"; };
 		4491C8C624617F7F005049F9 /* GameListBackgroundVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListBackgroundVIew.swift; sourceTree = "<group>"; };
+		4491C8CA24619520005049F9 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				4491C8A8246035B3005049F9 /* FirstViewController.swift */,
 				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
+				4491C8C9246194A6005049F9 /* GamePlay */,
 				4491C8C824617FCC005049F9 /* GameList */,
 				4491C8AF246035B3005049F9 /* Assets.xcassets */,
 				4491C8B1246035B3005049F9 /* LaunchScreen.storyboard */,
@@ -91,6 +94,14 @@
 				4491C8C4246173EA005049F9 /* GameStackView.swift */,
 			);
 			path = GameList;
+			sourceTree = "<group>";
+		};
+		4491C8C9246194A6005049F9 /* GamePlay */ = {
+			isa = PBXGroup;
+			children = (
+				4491C8CA24619520005049F9 /* GameProgressView.swift */,
+			);
+			path = GamePlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
 				4491C8A9246035B3005049F9 /* FirstViewController.swift in Sources */,
+				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,
 				4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */,
