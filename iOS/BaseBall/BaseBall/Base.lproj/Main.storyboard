@@ -84,7 +84,19 @@
                     <view key="view" contentMode="scaleToFill" id="FZP-2P-Rv6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게임 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlz-sy-avq">
+                                <rect key="frame" x="151.5" y="74" width="111" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wlz-sy-avq" firstAttribute="top" secondItem="Oo1-ao-PN1" secondAttribute="top" constant="30" id="Rm8-St-FSc"/>
+                            <constraint firstItem="wlz-sy-avq" firstAttribute="centerX" secondItem="Oo1-ao-PN1" secondAttribute="centerX" id="cIO-9T-CjR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Oo1-ao-PN1"/>
                     </view>
                 </viewController>
