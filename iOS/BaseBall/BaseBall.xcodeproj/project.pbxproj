@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457B1C82461B3A800A46673 /* CircleShapeView.swift */; };
 		4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C53D2461BA2900DC52D5 /* PitchButton.swift */; };
+		4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */; };
+		4461C5422461C92F00DC52D5 /* PlayerInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */; };
+		4461C5442461C9EF00DC52D5 /* PlayerInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */; };
 		4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A4246035B3005049F9 /* AppDelegate.swift */; };
 		4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A6246035B3005049F9 /* SceneDelegate.swift */; };
-		4491C8A9246035B3005049F9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A8246035B3005049F9 /* FirstViewController.swift */; };
+		4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A8246035B3005049F9 /* PlayViewController.swift */; };
 		4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8AA246035B3005049F9 /* SecondViewController.swift */; };
 		4491C8AE246035B3005049F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8AC246035B3005049F9 /* Main.storyboard */; };
 		4491C8B0246035B3005049F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8AF246035B3005049F9 /* Assets.xcassets */; };
@@ -29,10 +32,13 @@
 /* Begin PBXFileReference section */
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		4461C53D2461BA2900DC52D5 /* PitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchButton.swift; sourceTree = "<group>"; };
+		4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
+		4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoTableView.swift; sourceTree = "<group>"; };
+		4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoDataSource.swift; sourceTree = "<group>"; };
 		4491C8A1246035B3005049F9 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4491C8A4246035B3005049F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4491C8A6246035B3005049F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4491C8A8246035B3005049F9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		4491C8A8246035B3005049F9 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		4491C8AA246035B3005049F9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4491C8AD246035B3005049F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4491C8AF246035B3005049F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,7 +86,6 @@
 			children = (
 				4491C8A4246035B3005049F9 /* AppDelegate.swift */,
 				4491C8A6246035B3005049F9 /* SceneDelegate.swift */,
-				4491C8A8246035B3005049F9 /* FirstViewController.swift */,
 				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
 				4491C8C9246194A6005049F9 /* GamePlay */,
@@ -107,11 +112,15 @@
 		4491C8C9246194A6005049F9 /* GamePlay */ = {
 			isa = PBXGroup;
 			children = (
+				4491C8A8246035B3005049F9 /* PlayViewController.swift */,
+				4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */,
 				4491C8CA24619520005049F9 /* GameProgressView.swift */,
 				4491C8CC246195F2005049F9 /* DiamondShapeView.swift */,
 				4491C8CE2461976F005049F9 /* PentagonShapeView.swift */,
 				4457B1C82461B3A800A46673 /* CircleShapeView.swift */,
 				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
+				4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */,
+				4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */,
 			);
 			path = GamePlay;
 			sourceTree = "<group>";
@@ -191,12 +200,15 @@
 				4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */,
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
-				4491C8A9246035B3005049F9 /* FirstViewController.swift in Sources */,
+				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
+				4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */,
+				4461C5442461C9EF00DC52D5 /* PlayerInfoDataSource.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,
+				4461C5422461C92F00DC52D5 /* PlayerInfoTableView.swift in Sources */,
 				4491C8CD246195F2005049F9 /* DiamondShapeView.swift in Sources */,
 				4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */,
 				4491C8CF2461976F005049F9 /* PentagonShapeView.swift in Sources */,

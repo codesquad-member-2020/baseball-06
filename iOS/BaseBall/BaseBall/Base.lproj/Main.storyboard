@@ -10,7 +10,7 @@
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="BaseBall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="PlayViewController" customModule="BaseBall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,19 +266,70 @@
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="vuT-Hm-t5v"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4n-xA-5hw" customClass="PlayerInfoTableView" customModule="BaseBall" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="404" width="414" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="07e-xl-2yM"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="playerInfo" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerInfo" id="x3Z-47-Zja" customClass="PlayerInfoCell" customModule="BaseBall" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x3Z-47-Zja" id="frf-l2-RLh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="역할" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8O-tt-k9O">
+                                                    <rect key="frame" x="20" y="18" width="35" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMA-aE-k8y">
+                                                    <rect key="frame" x="85" y="18" width="35" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEh-Ol-ccM">
+                                                    <rect key="frame" x="227" y="18" width="35" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="h8O-tt-k9O" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="8gy-jK-V0n"/>
+                                                <constraint firstItem="tMA-aE-k8y" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="Abi-u6-Iep"/>
+                                                <constraint firstItem="h8O-tt-k9O" firstAttribute="leading" secondItem="frf-l2-RLh" secondAttribute="leadingMargin" id="Nna-SB-s7C"/>
+                                                <constraint firstItem="tMA-aE-k8y" firstAttribute="leading" secondItem="h8O-tt-k9O" secondAttribute="trailing" constant="30" id="gh2-9p-pzI"/>
+                                                <constraint firstItem="gEh-Ol-ccM" firstAttribute="leading" secondItem="frf-l2-RLh" secondAttribute="centerX" constant="20" id="iBk-Rl-5BD"/>
+                                                <constraint firstItem="gEh-Ol-ccM" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="xce-Lj-RJJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="T4n-xA-5hw" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="5oz-ql-mrP"/>
                             <constraint firstItem="WH1-6G-gOI" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="CLj-gN-9qc"/>
                             <constraint firstItem="lHd-HV-l3S" firstAttribute="top" secondItem="WH1-6G-gOI" secondAttribute="bottom" id="F5H-Iu-sld"/>
                             <constraint firstItem="WH1-6G-gOI" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="N3Q-dr-3Ih"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="WH1-6G-gOI" secondAttribute="trailing" id="X7A-wS-ctW"/>
                             <constraint firstItem="lHd-HV-l3S" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="abD-8z-Ywl"/>
+                            <constraint firstItem="T4n-xA-5hw" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="gzr-qB-aGm"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="lHd-HV-l3S" secondAttribute="trailing" id="jvc-v4-RFO"/>
+                            <constraint firstItem="T4n-xA-5hw" firstAttribute="top" secondItem="lHd-HV-l3S" secondAttribute="bottom" id="xIS-8h-ggz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="playerInfoTableView" destination="T4n-xA-5hw" id="HxP-RQ-S9V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
