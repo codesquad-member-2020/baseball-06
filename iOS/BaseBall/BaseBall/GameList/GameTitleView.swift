@@ -25,5 +25,6 @@ class GameTitleView: UIView {
     
     private func setProperties() {
         layer.cornerRadius = frame.size.height / 5
+        backgroundColor = UIColor.white.withAlphaComponent(0.6)
     }
 }

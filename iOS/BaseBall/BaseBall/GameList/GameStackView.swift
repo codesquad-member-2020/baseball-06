@@ -27,11 +27,8 @@ class GameStackView: UIStackView {
         let name = String(describing: GameTitleView.self)
         guard let loadedNib = Bundle.main.loadNibNamed(name, owner: self, options: nil),
             let gameTitleView = loadedNib.first as? GameTitleView else { return }
-        gameTitleView.translatesAutoresizingMaskIntoConstraints = false
         addArrangedSubview(gameTitleView)
         gameTitleView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        gameTitleView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        gameTitleView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 }
 

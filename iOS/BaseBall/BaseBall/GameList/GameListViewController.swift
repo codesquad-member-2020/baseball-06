@@ -10,11 +10,19 @@ import UIKit
 
 class GameListViewController: UIViewController {
     @IBOutlet weak var gameStack: GameStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackgroundImage()
         gameStack.addGame()
         gameStack.addGame()
         gameStack.addGame()
         gameStack.addGame()
     }
+    
+    private func setBackgroundImage() {
+        let backgroundImage = GameListBackgroundView(frame: self.view.bounds)
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
 }
+
