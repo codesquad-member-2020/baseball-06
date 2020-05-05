@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457B1C82461B3A800A46673 /* CircleShapeView.swift */; };
+		445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A42461CE7B00D39168 /* PitchingResultCell.swift */; };
+		445F93A72461CFB300D39168 /* CircleNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A62461CFB300D39168 /* CircleNumberLabel.swift */; };
+		445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A82461D26D00D39168 /* PitchingResultDataSource.swift */; };
 		4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C53D2461BA2900DC52D5 /* PitchButton.swift */; };
 		4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */; };
 		4461C5422461C92F00DC52D5 /* PlayerInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */; };
@@ -31,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
+		445F93A42461CE7B00D39168 /* PitchingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultCell.swift; sourceTree = "<group>"; };
+		445F93A62461CFB300D39168 /* CircleNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleNumberLabel.swift; sourceTree = "<group>"; };
+		445F93A82461D26D00D39168 /* PitchingResultDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultDataSource.swift; sourceTree = "<group>"; };
 		4461C53D2461BA2900DC52D5 /* PitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchButton.swift; sourceTree = "<group>"; };
 		4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
 		4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoTableView.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4491C8A8246035B3005049F9 /* PlayViewController.swift */,
+				445F93A82461D26D00D39168 /* PitchingResultDataSource.swift */,
 				4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */,
 				4491C8CA24619520005049F9 /* GameProgressView.swift */,
 				4491C8CC246195F2005049F9 /* DiamondShapeView.swift */,
@@ -120,6 +127,8 @@
 				4457B1C82461B3A800A46673 /* CircleShapeView.swift */,
 				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
 				4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */,
+				445F93A42461CE7B00D39168 /* PitchingResultCell.swift */,
+				445F93A62461CFB300D39168 /* CircleNumberLabel.swift */,
 				4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */,
 			);
 			path = GamePlay;
@@ -198,8 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */,
+				445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */,
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
+				445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */,
 				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
@@ -213,6 +224,7 @@
 				4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */,
 				4491C8CF2461976F005049F9 /* PentagonShapeView.swift in Sources */,
 				4491C8C124614C84005049F9 /* GameTitleView.swift in Sources */,
+				445F93A72461CFB300D39168 /* CircleNumberLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
