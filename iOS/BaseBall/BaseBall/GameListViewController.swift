@@ -9,7 +9,12 @@
 import UIKit
 
 class GameListViewController: UIViewController {
+    @IBOutlet weak var gameStack: GameStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameStack.addGame()
+        gameStack.addGame()
+        gameStack.addGame()
+        gameStack.addGame()
     }
 }

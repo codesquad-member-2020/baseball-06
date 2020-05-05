@@ -17,6 +17,7 @@
 		4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8BA24614863005049F9 /* GameListViewController.swift */; };
 		4491C8C124614C84005049F9 /* GameTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C024614C84005049F9 /* GameTitleView.swift */; };
 		4491C8C324614C94005049F9 /* GameTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8C224614C94005049F9 /* GameTitleView.xib */; };
+		4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8C4246173EA005049F9 /* GameStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4491C8BA24614863005049F9 /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		4491C8C024614C84005049F9 /* GameTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTitleView.swift; sourceTree = "<group>"; };
 		4491C8C224614C94005049F9 /* GameTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameTitleView.xib; sourceTree = "<group>"; };
+		4491C8C4246173EA005049F9 /* GameStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				4491C8C024614C84005049F9 /* GameTitleView.swift */,
 				4491C8C224614C94005049F9 /* GameTitleView.xib */,
 				4491C8BA24614863005049F9 /* GameListViewController.swift */,
+				4491C8C4246173EA005049F9 /* GameStackView.swift */,
 				4491C8AF246035B3005049F9 /* Assets.xcassets */,
 				4491C8B1246035B3005049F9 /* LaunchScreen.storyboard */,
 				4491C8B4246035B3005049F9 /* Info.plist */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
+				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
 				4491C8A9246035B3005049F9 /* FirstViewController.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,

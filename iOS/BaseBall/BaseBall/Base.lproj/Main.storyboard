@@ -91,18 +91,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UrG-Q2-FDi" customClass="GameStackView" customModule="BaseBall" customModuleProvider="target">
+                                <rect key="frame" x="10" y="140" width="394" height="712"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Oo1-ao-PN1" firstAttribute="bottom" secondItem="UrG-Q2-FDi" secondAttribute="bottom" priority="250" constant="10" id="Ci3-dQ-vOH"/>
+                            <constraint firstItem="Oo1-ao-PN1" firstAttribute="trailing" secondItem="UrG-Q2-FDi" secondAttribute="trailing" constant="10" id="Orm-xX-FUj"/>
                             <constraint firstItem="wlz-sy-avq" firstAttribute="top" secondItem="Oo1-ao-PN1" secondAttribute="top" constant="30" id="Rm8-St-FSc"/>
+                            <constraint firstItem="UrG-Q2-FDi" firstAttribute="leading" secondItem="Oo1-ao-PN1" secondAttribute="leading" constant="10" id="WWj-Ra-rrS"/>
+                            <constraint firstItem="UrG-Q2-FDi" firstAttribute="top" secondItem="wlz-sy-avq" secondAttribute="bottom" constant="30" id="a9H-ya-gtM"/>
                             <constraint firstItem="wlz-sy-avq" firstAttribute="centerX" secondItem="Oo1-ao-PN1" secondAttribute="centerX" id="cIO-9T-CjR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oo1-ao-PN1"/>
                     </view>
+                    <connections>
+                        <outlet property="gameStack" destination="UrG-Q2-FDi" id="9Gb-vA-6av"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0b3-pn-Utq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1032" y="0.0"/>
+            <point key="canvasLocation" x="-1033.3333333333335" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
