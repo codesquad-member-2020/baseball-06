@@ -139,10 +139,19 @@
                                             <constraint firstAttribute="width" constant="30" id="hkj-jW-aW8"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2회초 공격" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xy-qR-vvq">
+                                        <rect key="frame" x="351.5" y="15" width="47.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8xy-qR-vvq" secondAttribute="trailing" constant="15" id="0Pw-yg-FAB"/>
+                                    <constraint firstItem="8xy-qR-vvq" firstAttribute="top" secondItem="lHd-HV-l3S" secondAttribute="top" constant="15" id="8fm-we-p3k"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="height" secondItem="lHd-HV-l3S" secondAttribute="height" multiplier="0.7" id="B68-KP-iFj"/>
+                                    <constraint firstItem="8xy-qR-vvq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5I9-Rl-sc0" secondAttribute="trailing" priority="250" id="HDB-fX-PkI"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerX" secondItem="lHd-HV-l3S" secondAttribute="centerX" id="TsF-VW-BZo"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerY" secondItem="lHd-HV-l3S" secondAttribute="centerY" id="XMw-cy-QLT"/>
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="cgc-9S-EZH"/>
