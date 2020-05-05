@@ -145,6 +145,100 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Tmp-3O-MXq">
+                                        <rect key="frame" x="15" y="15" width="86" height="64"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GjZ-Vg-fsb">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twJ-eK-mLW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-PD-2ZJ" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="22" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="1iC-If-d29"/>
+                                                            <constraint firstAttribute="width" constant="20" id="qIC-ZW-Nuf"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-TV-Swb" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="7kO-Kl-gkP"/>
+                                                            <constraint firstAttribute="width" constant="20" id="Qa9-Pk-578"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pBT-eP-Hm9">
+                                                <rect key="frame" x="0.0" y="22" width="86" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msi-qG-h5k">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-Nd-LxC" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="22" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="EGh-cz-oAf"/>
+                                                            <constraint firstAttribute="width" constant="20" id="bM6-Re-cdw"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJV-6s-Bx7" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="20q-Zd-ddL"/>
+                                                            <constraint firstAttribute="width" constant="20" id="gcI-iX-owB"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQT-li-iIQ" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="66" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="2Cm-yh-FnL"/>
+                                                            <constraint firstAttribute="height" constant="20" id="e2i-aQ-eKa"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="e4j-QD-N6e">
+                                                <rect key="frame" x="0.0" y="44" width="64" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOk-9Q-QXa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twf-ZY-L38" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="22" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="cu5-zv-TWX"/>
+                                                            <constraint firstAttribute="height" constant="20" id="qun-77-yRa"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZeO-aP-ozE" customClass="CircleShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                        <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="Kac-15-fs7"/>
+                                                            <constraint firstAttribute="height" constant="20" id="PlK-ak-WHC"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -153,7 +247,9 @@
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="height" secondItem="lHd-HV-l3S" secondAttribute="height" multiplier="0.7" id="B68-KP-iFj"/>
                                     <constraint firstItem="8xy-qR-vvq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5I9-Rl-sc0" secondAttribute="trailing" priority="250" id="HDB-fX-PkI"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerX" secondItem="lHd-HV-l3S" secondAttribute="centerX" id="TsF-VW-BZo"/>
+                                    <constraint firstItem="Tmp-3O-MXq" firstAttribute="leading" secondItem="lHd-HV-l3S" secondAttribute="leading" constant="15" id="U63-Ej-Ayr"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerY" secondItem="lHd-HV-l3S" secondAttribute="centerY" id="XMw-cy-QLT"/>
+                                    <constraint firstItem="Tmp-3O-MXq" firstAttribute="top" secondItem="lHd-HV-l3S" secondAttribute="top" constant="15" id="ZI8-bO-vym"/>
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="cgc-9S-EZH"/>
                                     <constraint firstAttribute="height" constant="300" id="iP1-li-V4d"/>
                                     <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="vuT-Hm-t5v"/>
