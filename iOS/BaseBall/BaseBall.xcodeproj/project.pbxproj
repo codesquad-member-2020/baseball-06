@@ -14,6 +14,7 @@
 		4491C8AE246035B3005049F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8AC246035B3005049F9 /* Main.storyboard */; };
 		4491C8B0246035B3005049F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8AF246035B3005049F9 /* Assets.xcassets */; };
 		4491C8B3246035B3005049F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4491C8B1246035B3005049F9 /* LaunchScreen.storyboard */; };
+		4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8BA24614863005049F9 /* GameListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4491C8AF246035B3005049F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4491C8B2246035B3005049F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4491C8B4246035B3005049F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4491C8BA24614863005049F9 /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4491C8A8246035B3005049F9 /* FirstViewController.swift */,
 				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
+				4491C8BA24614863005049F9 /* GameListViewController.swift */,
 				4491C8AF246035B3005049F9 /* Assets.xcassets */,
 				4491C8B1246035B3005049F9 /* LaunchScreen.storyboard */,
 				4491C8B4246035B3005049F9 /* Info.plist */,
@@ -143,6 +146,7 @@
 			files = (
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
 				4491C8A9246035B3005049F9 /* FirstViewController.swift in Sources */,
+				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,
 				4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */,
 			);
