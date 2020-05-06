@@ -1,5 +1,7 @@
 package com.codesquad.baseball06.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class Pitcher extends Player {
 
   private Pitcher(Long id, String name) {
@@ -11,6 +13,7 @@ public class Pitcher extends Player {
   }
 
   @Override
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   public Double getBattingAverage() {
     return null;
   }
