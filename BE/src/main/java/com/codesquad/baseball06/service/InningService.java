@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class InningService {
 
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
+
   private final PlateAppearanceService plateAppearanceService;
 
   public InningService(PlateAppearanceService plateAppearanceService) {
@@ -20,19 +21,12 @@ public class InningService {
   }
 
   public BattingResult doWork(Inning inning, Pitcher pitcher, Batter batter) {
-    log.debug("### pitcher : {}", pitcher.getName());
-    log.debug("### batter : {}", batter.getName());
     BattingResult plateAppearanceResult = plateAppearanceService.batting(inning, pitcher, batter);
 
-    if (isInningChange(inning)) {
-      log.debug("### change!!!!!!!!!!!!");
+    if (inning.isFinished()) {
       return BattingResult.END;
     }
 
     return plateAppearanceResult;
-  }
-
-  private boolean isInningChange(Inning inning) {
-    return inning.getOut().equals(3);
   }
 }
