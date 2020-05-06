@@ -19,7 +19,7 @@ public class PlateAppearanceService {
       BattingResult plateAppearanceResult) {
     log.debug("### {}", battingResult);
     log.debug("### Inning S B O : {}, {}, {}"
-        , inning.getStrikeCount(), inning.getBallCount(), inning.getOutCount());
+        , inning.getStrike(), inning.getBall(), inning.getOut());
     log.debug("### {}", plateAppearanceResult);
   }
 

@@ -6,54 +6,54 @@ public class Inning {
 
   private Long id;
   private Integer score;
-  private Integer inningNum;
-  private InningType inningType;
-  private Integer strikeCount;
-  private Integer ballCount;
-  private Integer outCount;
+  private Integer index;
+  private InningType type;
+  private Integer strike;
+  private Integer ball;
+  private Integer out;
 
-  private Inning(Integer score, Integer inningNum,
-      InningType inningType, Integer strikeCount, Integer ballCount, Integer outCount) {
+  private Inning(Integer score, Integer index,
+      InningType type, Integer strike, Integer ball, Integer out) {
     this.score = score;
-    this.inningNum = inningNum;
-    this.inningType = inningType;
-    this.strikeCount = strikeCount;
-    this.ballCount = ballCount;
-    this.outCount = outCount;
+    this.index = index;
+    this.type = type;
+    this.strike = strike;
+    this.ball = ball;
+    this.out = out;
   }
 
-  public static Inning create(Integer score, Integer inningNum,
-      InningType inningType, Integer strikeCount, Integer ballCount, Integer outCount) {
-    return new Inning(score, inningNum,
-        inningType, strikeCount, ballCount, outCount);
+  public static Inning create(Integer score, Integer index, InningType type, Integer strike,
+      Integer ball, Integer out) {
+    return new Inning(score, index,
+        type, strike, ball, out);
   }
 
   public Long getId() {
     return id;
   }
 
-  public Integer getInningNum() {
-    return inningNum;
+  public Integer getIndex() {
+    return index;
   }
 
-  public InningType getInningType() {
-    return inningType;
+  public InningType getType() {
+    return type;
   }
 
-  public Integer getStrikeCount() {
-    return strikeCount;
+  public Integer getStrike() {
+    return strike;
   }
 
-  public Integer getBallCount() {
-    return ballCount;
+  public Integer getBall() {
+    return ball;
   }
 
-  public Integer getOutCount() {
-    return outCount;
+  public Integer getOut() {
+    return out;
   }
 
   public boolean isHit() {
-    if (ballCount.equals(4)) {
+    if (ball.equals(4)) {
       setNewPlateAppearance();
       return true;
     }
@@ -62,8 +62,8 @@ public class Inning {
   }
 
   public boolean isOut() {
-    if (strikeCount.equals(3)) {
-      outCount++;
+    if (strike.equals(3)) {
+      out++;
       setNewPlateAppearance();
       return true;
     }
@@ -72,19 +72,19 @@ public class Inning {
   }
 
   public boolean isFinished() {
-    return outCount.equals(3);
+    return out.equals(3);
   }
 
   public void addStrike() {
-    strikeCount++;
+    strike++;
   }
 
   public void addBall() {
-    ballCount++;
+    ball++;
   }
 
   public void setNewPlateAppearance() {
-    ballCount = 0;
-    strikeCount = 0;
+    ball = 0;
+    strike = 0;
   }
 }
