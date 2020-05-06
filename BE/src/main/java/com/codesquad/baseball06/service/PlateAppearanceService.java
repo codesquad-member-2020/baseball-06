@@ -46,11 +46,11 @@ public class PlateAppearanceService {
   }
 
   private boolean isBall(Batter batter) {
-    return delimiter - batter.getBattingAverage() > 0.4;
+    return delimiter - batter.getBattingAverage() > 0.25;
   }
 
   private boolean isStrike(Batter batter) {
-    return delimiter - batter.getBattingAverage() > 0.4;
+    return delimiter - batter.getBattingAverage() > 0.25;
   }
 
   public BattingResult batting(Inning inning, Pitcher pitcher, Batter batter) {

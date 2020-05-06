@@ -68,7 +68,7 @@ public class Inning {
 
   private BattingResult addOut() {
     out++;
-    setNewPlateAppearance();
+    newPlateAppearance();
     return BattingResult.OUT;
   }
 
@@ -76,7 +76,7 @@ public class Inning {
     ball++;
 
     if (ball.equals(4)) {
-      setNewPlateAppearance();
+      newPlateAppearance();
       return BattingResult.HIT;
       // 선수의 hit 수는 기록할 예정
       // 하지만 inning 의 hit 개수가 필요하냐? No
@@ -84,7 +84,7 @@ public class Inning {
     return BattingResult.BALL;
   }
 
-  public void setNewPlateAppearance() {
+  public void newPlateAppearance() {
     ball = 0;
     strike = 0;
   }
