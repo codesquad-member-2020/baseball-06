@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
+import Title from "./title";
 import { GlobalStyle, Layout } from "../styles/global";
 import { gameSelectionMock } from "../gameSelectionMock";
 
 function GameSelection() {
   const [message, setMessage] = useState("참가할 게임을 선택하세요!");
   const [teams, setTeams] = useState("");
-  const title = "BASEBALL GAME ONLINE";
 
   {
   }
@@ -15,7 +15,7 @@ function GameSelection() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Title>{title}</Title>
+        <Title />
         <Container>
           <MessageArea>{message}</MessageArea>
           <GameSelectionContainer>
@@ -38,15 +38,10 @@ function GameSelection() {
   );
 }
 
-const Title = styled.h1`
-  padding: 30px;
-  font-weight: bold;
-  font-size: 40px;
-`;
-
 const Container = styled.main`
   ${Layout};
   flex-direction: column;
+
   /* width: 100vw; */
   /* height: 100vh; */
 `;
@@ -97,7 +92,7 @@ const GameSelectionArea = styled.div`
   width: 500px;
   height: 100px;
   margin: 20px 0;
-  background-color: #b7b7b3;
+  background-color: #b4b4b4;
   border-radius: 15px;
   opacity: 0.8;
 `;

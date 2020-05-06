@@ -4,9 +4,9 @@ export const GlobalStyle = createGlobalStyle`
     body{
   margin: 0 auto;
   width: 960px;
-        background-color: #060405;
+        background-color: #1B0C0A;
         text-align: center;
-        opacity: 0.9;
+        /* opacity:0.8; */
     }
     h1{
         color:#fff;
