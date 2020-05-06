@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.model;
 
+import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 
 public class Inning {
@@ -53,21 +54,6 @@ public class Inning {
   }
 
   public boolean isHit() {
-    if (ball.equals(4)) {
-      setNewPlateAppearance();
-      return true;
-    }
-
-    return false;
-  }
-
-  public boolean isOut() {
-    if (strike.equals(3)) {
-      out++;
-      setNewPlateAppearance();
-      return true;
-    }
-
     return false;
   }
 
@@ -75,12 +61,27 @@ public class Inning {
     return out.equals(3);
   }
 
-  public void addStrike() {
+  public BattingResult addStrike() {
     strike++;
+    return (strike.equals(3)) ? addOut() : BattingResult.STRIKE;
   }
 
-  public void addBall() {
+  private BattingResult addOut() {
+    out++;
+    setNewPlateAppearance();
+    return BattingResult.OUT;
+  }
+
+  public BattingResult addBall() {
     ball++;
+
+    if (ball.equals(4)) {
+      setNewPlateAppearance();
+      return BattingResult.HIT;
+      // 선수의 hit 수는 기록할 예정
+      // 하지만 inning 의 hit 개수가 필요하냐? No
+    }
+    return BattingResult.BALL;
   }
 
   public void setNewPlateAppearance() {

@@ -20,6 +20,13 @@ public class InningService {
   }
 
   public BattingResult doWork(Inning inning, Pitcher pitcher, Batter batter) {
-    return plateAppearanceService.batting(inning, pitcher, batter);
+    BattingResult plateAppearanceResult = plateAppearanceService.batting(inning, pitcher, batter);
+
+    return (isInningChange(plateAppearanceResult, inning))
+        ? BattingResult.END : plateAppearanceResult;
+  }
+
+  private boolean isInningChange(BattingResult plateAppearanceResult, Inning inning) {
+    return inning.getOut().equals(3);
   }
 }

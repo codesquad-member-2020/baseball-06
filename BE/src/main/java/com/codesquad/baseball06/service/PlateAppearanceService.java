@@ -15,14 +15,6 @@ public class PlateAppearanceService {
   private static final Logger log = LoggerFactory.getLogger(PlateAppearanceService.class);
   private double delimiter;
 
-  private static void testLogging(Inning inning, BattingResult battingResult,
-      BattingResult plateAppearanceResult) {
-    log.debug("### {}", battingResult);
-    log.debug("### Inning S B O : {}, {}, {}"
-        , inning.getStrike(), inning.getBall(), inning.getOut());
-    log.debug("### {}", plateAppearanceResult);
-  }
-
   public BattingResult doPitching(Pitcher pitcher, Batter batter) {
     delimiter = new Random().nextDouble();
 
@@ -39,33 +31,13 @@ public class PlateAppearanceService {
 
   public BattingResult postPitching(Inning inning, BattingResult battingResult) {
     if (battingResult.equals(BattingResult.STRIKE)) {
-      inning.addStrike();
-
-      if (inning.isOut()) {
-        if (inning.isFinished()) {
-          testLogging(inning, battingResult, BattingResult.END);
-          return BattingResult.END;
-        }
-
-        testLogging(inning, battingResult, BattingResult.OUT);
-        return BattingResult.OUT;
-      }
-
-      testLogging(inning, battingResult, BattingResult.STRIKE);
-      return BattingResult.STRIKE;
-    } else if (battingResult.equals(BattingResult.BALL)) {
-      inning.addBall();
-
-      if (inning.isHit()) {
-        testLogging(inning, battingResult, BattingResult.HIT);
-        return BattingResult.HIT;
-      }
-
-      testLogging(inning, battingResult, BattingResult.BALL);
-      return BattingResult.BALL;
+      return inning.addStrike();
     }
 
-    testLogging(inning, battingResult, BattingResult.HIT);
+    if (battingResult.equals(BattingResult.BALL)) {
+      return inning.addBall();
+    }
+
     return BattingResult.HIT;
   }
 
