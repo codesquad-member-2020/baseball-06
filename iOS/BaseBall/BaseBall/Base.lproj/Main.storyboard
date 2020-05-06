@@ -396,24 +396,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="106" y="426.5" width="202" height="43"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-ng-V0H">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKC-bq-JzU">
+                                        <rect key="frame" x="53.5" y="12" width="89.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqJ-Z3-hiG">
+                                        <rect key="frame" x="153" y="12" width="20.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCr-Cy-7BB">
+                                        <rect key="frame" x="193.5" y="18" width="27" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HD5-kn-4qI">
+                                        <rect key="frame" x="240.5" y="12" width="20.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG1-LW-YsD">
+                                        <rect key="frame" x="271" y="12" width="94" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="HD5-kn-4qI" firstAttribute="leading" secondItem="XCr-Cy-7BB" secondAttribute="trailing" priority="750" constant="20" id="3nJ-p4-mPg"/>
+                                    <constraint firstItem="tG1-LW-YsD" firstAttribute="centerY" secondItem="TaX-ng-V0H" secondAttribute="centerY" id="JqU-8d-Efu"/>
+                                    <constraint firstItem="XCr-Cy-7BB" firstAttribute="centerX" secondItem="TaX-ng-V0H" secondAttribute="centerX" id="QmS-Ui-wk6"/>
+                                    <constraint firstItem="lqJ-Z3-hiG" firstAttribute="leading" secondItem="AKC-bq-JzU" secondAttribute="trailing" constant="10" id="Ukb-ac-swE"/>
+                                    <constraint firstItem="XCr-Cy-7BB" firstAttribute="leading" secondItem="lqJ-Z3-hiG" secondAttribute="trailing" priority="750" constant="20" id="ZLk-rC-bP1"/>
+                                    <constraint firstItem="tG1-LW-YsD" firstAttribute="leading" secondItem="HD5-kn-4qI" secondAttribute="trailing" constant="10" id="c41-da-XuQ"/>
+                                    <constraint firstItem="HD5-kn-4qI" firstAttribute="centerY" secondItem="TaX-ng-V0H" secondAttribute="centerY" id="fUd-3S-lMN"/>
+                                    <constraint firstItem="AKC-bq-JzU" firstAttribute="centerY" secondItem="TaX-ng-V0H" secondAttribute="centerY" id="g5h-4g-tUE"/>
+                                    <constraint firstItem="AKC-bq-JzU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TaX-ng-V0H" secondAttribute="leading" id="mxR-uQ-Wzp"/>
+                                    <constraint firstItem="lqJ-Z3-hiG" firstAttribute="centerY" secondItem="TaX-ng-V0H" secondAttribute="centerY" id="std-Rm-G7J"/>
+                                    <constraint firstAttribute="height" constant="60" id="uc9-3e-mNI"/>
+                                    <constraint firstItem="XCr-Cy-7BB" firstAttribute="centerY" secondItem="TaX-ng-V0H" secondAttribute="centerY" id="vN7-bQ-aPf"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tG1-LW-YsD" secondAttribute="trailing" id="wYT-Td-c6F"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="TaX-ng-V0H" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="3m5-9A-5Jj"/>
+                            <constraint firstItem="TaX-ng-V0H" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="v80-Je-QWA"/>
+                            <constraint firstItem="TaX-ng-V0H" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="z7d-QC-L67"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
