@@ -18,18 +18,20 @@ function GameSelection() {
         <Title>{title}</Title>
         <Container>
           <MessageArea>{message}</MessageArea>
-          {gameSelectionMock.map((temas) => {
-            return (
-              <GameSelectionArea>
-                <GameNumber>GAME {temas.id}</GameNumber>
-                <Teams>
-                  <Team>{temas.player1}</Team>
-                  <Vs>vs</Vs>
-                  <Team>{temas.player2}</Team>
-                </Teams>
-              </GameSelectionArea>
-            );
-          })}
+          <GameSelectionContainer>
+            {gameSelectionMock.map((temas) => {
+              return (
+                <GameSelectionArea>
+                  <GameNumber>GAME {temas.id}</GameNumber>
+                  <Teams>
+                    <Team>{temas.player1}</Team>
+                    <Vs>vs</Vs>
+                    <Team>{temas.player2}</Team>
+                  </Teams>
+                </GameSelectionArea>
+              );
+            })}
+          </GameSelectionContainer>
         </Container>
       </ThemeProvider>
     </>
@@ -53,6 +55,42 @@ const MessageArea = styled.div`
   margin: 30px;
   color: ${(props) => props.theme.mainFontColor};
   font-size: 20px;
+`;
+
+const GameSelectionContainer = styled.div`
+  width: 548px;
+  height: 400px;
+  overflow: hidden;
+  &:hover {
+    overflow: scroll;
+    overflow-x: hidden;
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+
+      background-color: #cccccc;
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      border-radius: 10px;
+      background-color: #f5f5f5;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+
+      background-image: -webkit-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 25%,
+        transparent 100%,
+        rgba(0, 0, 0, 1) 75%,
+        transparent
+      );
+
+      background-color: #555;
+    }
+  }
 `;
 
 const GameSelectionArea = styled.div`
