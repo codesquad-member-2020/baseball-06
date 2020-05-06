@@ -71,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4406F963246285E5000352FB /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 		445F93AA2461DB9F00D39168 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +143,8 @@
 			children = (
 				4491C8A4246035B3005049F9 /* AppDelegate.swift */,
 				4491C8A6246035B3005049F9 /* SceneDelegate.swift */,
-				4491C8AA246035B3005049F9 /* SecondViewController.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
+				4406F963246285E5000352FB /* Score */,
 				4491C8C824617FCC005049F9 /* GameList */,
 				4491C8C9246194A6005049F9 /* GamePlay */,
 				4491C8AF246035B3005049F9 /* Assets.xcassets */,
