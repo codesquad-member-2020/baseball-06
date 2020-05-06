@@ -5,16 +5,17 @@ import com.codesquad.baseball06.model.type.InningType;
 
 public class Inning {
 
-  private Long id;
+  private final Long id;
+  private final Integer index;
+  private final InningType type;
   private Integer score;
-  private Integer index;
-  private InningType type;
   private Integer strike;
   private Integer ball;
   private Integer out;
 
-  private Inning(Integer score, Integer index,
+  private Inning(Long id, Integer score, Integer index,
       InningType type, Integer strike, Integer ball, Integer out) {
+    this.id = id;
     this.score = score;
     this.index = index;
     this.type = type;
@@ -23,10 +24,9 @@ public class Inning {
     this.out = out;
   }
 
-  public static Inning create(Integer score, Integer index, InningType type, Integer strike,
-      Integer ball, Integer out) {
-    return new Inning(score, index,
-        type, strike, ball, out);
+  public static Inning create(Long id, Integer score, Integer index, InningType type,
+      Integer strike, Integer ball, Integer out) {
+    return new Inning(id, score, index, type, strike, ball, out);
   }
 
   public Long getId() {
@@ -35,6 +35,10 @@ public class Inning {
 
   public Integer getIndex() {
     return index;
+  }
+
+  public Integer getScore() {
+    return score;
   }
 
   public InningType getType() {
@@ -61,9 +65,19 @@ public class Inning {
     return out.equals(3);
   }
 
+  public int addScore() {
+    score++;
+    return score;
+  }
+
   public BattingResult addStrike() {
     strike++;
-    return (strike.equals(3)) ? addOut() : BattingResult.STRIKE;
+
+    if (strike.equals(3)) {
+      return addOut();
+    }
+
+    return BattingResult.STRIKE;
   }
 
   private BattingResult addOut() {
@@ -78,8 +92,6 @@ public class Inning {
     if (ball.equals(4)) {
       newPlateAppearance();
       return BattingResult.HIT;
-      // 선수의 hit 수는 기록할 예정
-      // 하지만 inning 의 hit 개수가 필요하냐? No
     }
     return BattingResult.BALL;
   }
@@ -89,11 +101,16 @@ public class Inning {
     strike = 0;
   }
 
+  public void newInning() {
+    newPlateAppearance();
+    out = 0;
+  }
+
   public String getStatus() {
     StringBuilder sb = new StringBuilder();
-    sb.append(getStrike() + "S ");
-    sb.append(getBall() + "B ");
-    sb.append(getOut() + "O");
-    return sb.toString();
+    return sb.append(getStrike()).append("S ")
+        .append(getBall()).append("B ")
+        .append(getOut()).append("O")
+        .toString();
   }
 }
