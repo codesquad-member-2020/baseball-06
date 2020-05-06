@@ -20,13 +20,19 @@ public class InningService {
   }
 
   public BattingResult doWork(Inning inning, Pitcher pitcher, Batter batter) {
+    log.debug("### pitcher : {}", pitcher.getName());
+    log.debug("### batter : {}", batter.getName());
     BattingResult plateAppearanceResult = plateAppearanceService.batting(inning, pitcher, batter);
 
-    return (isInningChange(plateAppearanceResult, inning))
-        ? BattingResult.END : plateAppearanceResult;
+    if (isInningChange(inning)) {
+      log.debug("### change!!!!!!!!!!!!");
+      return BattingResult.END;
+    }
+
+    return plateAppearanceResult;
   }
 
-  private boolean isInningChange(BattingResult plateAppearanceResult, Inning inning) {
+  private boolean isInningChange(Inning inning) {
     return inning.getOut().equals(3);
   }
 }

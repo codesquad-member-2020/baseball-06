@@ -88,4 +88,12 @@ public class Inning {
     ball = 0;
     strike = 0;
   }
+
+  public String getStatus() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(getStrike() + "S ");
+    sb.append(getBall() + "B ");
+    sb.append(getOut() + "O");
+    return sb.toString();
+  }
 }

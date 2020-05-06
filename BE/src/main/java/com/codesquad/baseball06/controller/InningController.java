@@ -23,7 +23,7 @@ public class InningController {
     this.inningService = inningService;
   }
 
-  @GetMapping("/dowork1")
+  @GetMapping("/dowork")
   public ApiResponse doWork() {
     Inning inning = Inning.create(5, 1, InningType.EARLY, 2, 1, 2);
     Pitcher pitcher = Pitcher.create("김투수");
