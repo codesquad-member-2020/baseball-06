@@ -1,9 +1,9 @@
 package com.codesquad.baseball06.controller;
 
+import com.codesquad.baseball06.model.ApiResponse;
 import com.codesquad.baseball06.model.Batter;
 import com.codesquad.baseball06.model.Inning;
 import com.codesquad.baseball06.model.Pitcher;
-import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.service.InningService;
 import org.slf4j.Logger;
@@ -23,12 +23,12 @@ public class InningController {
     this.inningService = inningService;
   }
 
-  @GetMapping("/dowork")
-  public BattingResult doWork() {
-    Inning inning = Inning.create(5, 1, InningType.EARLY, 2, 1, 1);
+  @GetMapping("/dowork1")
+  public ApiResponse doWork() {
+    Inning inning = Inning.create(5, 1, InningType.EARLY, 2, 1, 2);
     Pitcher pitcher = Pitcher.create("김투수");
     Batter batter = Batter.create("홍타자", 0.222);
 
-    return inningService.doWork(inning, pitcher, batter);
+    return ApiResponse.ok(inningService.doWork(inning, pitcher, batter));
   }
 }
