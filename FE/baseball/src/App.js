@@ -1,8 +1,8 @@
 import React from "react";
-import GameSelection from "./components/gameSelection";
+import GameSelectionPage from "./components/gameSelection/gameSelectionPage.jsx";
 
 function App() {
-  return <GameSelection></GameSelection>;
+  return <GameSelectionPage></GameSelectionPage>;
 }
 
 export default App;

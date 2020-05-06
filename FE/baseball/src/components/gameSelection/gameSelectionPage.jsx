@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
-import Title from "./title";
-import { GlobalStyle, Layout } from "../styles/global";
-import { gameSelectionMock } from "../gameSelectionMock";
+import theme from "../../styles/theme";
+import Title from "../title";
+import GameSelection from "./GameSelection";
+import { GlobalStyle, Layout } from "../../styles/global";
+import { gameSelectionMock } from "../../gameSelectionMock";
 
-function GameSelection() {
+function GameSelectionPage() {
   const [message, setMessage] = useState("참가할 게임을 선택하세요!");
   const [teams, setTeams] = useState("");
 
@@ -19,18 +20,9 @@ function GameSelection() {
         <Container>
           <MessageArea>{message}</MessageArea>
           <GameSelectionContainer>
-            {gameSelectionMock.map((temas) => {
-              return (
-                <GameSelectionArea>
-                  <GameNumber>GAME {temas.id}</GameNumber>
-                  <Teams>
-                    <Team>{temas.player1}</Team>
-                    <Vs>vs</Vs>
-                    <Team>{temas.player2}</Team>
-                  </Teams>
-                </GameSelectionArea>
-              );
-            })}
+            {gameSelectionMock.map((teams) => (
+              <GameSelection teams={teams} />
+            ))}
           </GameSelectionContainer>
         </Container>
       </ThemeProvider>
@@ -53,6 +45,7 @@ const MessageArea = styled.div`
 `;
 
 const GameSelectionContainer = styled.div`
+  margin-left: 27px;
   width: 548px;
   height: 400px;
   overflow: hidden;
@@ -88,32 +81,4 @@ const GameSelectionContainer = styled.div`
   }
 `;
 
-const GameSelectionArea = styled.div`
-  width: 500px;
-  height: 100px;
-  margin: 20px 0;
-  background-color: #b4b4b4;
-  border-radius: 15px;
-  opacity: 0.8;
-`;
-
-const GameNumber = styled.div`
-  color: red;
-  text-align: center;
-`;
-
-const Teams = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const Team = styled.span`
-  font-weight: bold;
-  font-size: 20px;
-`;
-
-const Vs = styled.span`
-  font-size: 15px;
-`;
-
-export default GameSelection;
+export default GameSelectionPage;
