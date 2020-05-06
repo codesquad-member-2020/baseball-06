@@ -19,7 +19,7 @@ public class Pitcher extends Player {
   }
 
   @Override
-  public Double getBattingAverage() throws Exception {
-    throw new Exception();
+  public Double getBattingAverage() {
+    return null;
   }
 }
