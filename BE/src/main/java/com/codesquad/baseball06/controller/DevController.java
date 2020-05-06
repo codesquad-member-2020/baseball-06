@@ -8,15 +8,12 @@ import com.codesquad.baseball06.model.Pitcher;
 import com.codesquad.baseball06.model.Team;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
+import com.codesquad.baseball06.service.DevService;
 import com.codesquad.baseball06.service.InningService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,29 +28,17 @@ public class DevController {
   private static final Logger log = LoggerFactory.getLogger(DevController.class);
 
   private final InningService inningService;
+  private final DevService devService;
   private final Inning inning;
   private final Team home;
   private final Team away;
 
-  public DevController(InningService inningService) {
+  public DevController(InningService inningService, DevService devService) {
     this.inningService = inningService;
+    this.devService = devService;
     inning = Inning.create(1L, 0, 1, InningType.EARLY, 0, 0, 0);
-    home = teamInitHelper("home");
-    away = teamInitHelper("away");
-  }
-
-  private Team teamInitHelper(String teamName) {
-    return Team.create(1L, teamName, createPitchers(teamName), createBatters(teamName));
-  }
-
-  private List<Pitcher> createPitchers(String teamName) {
-    return Arrays.asList(Pitcher.create(1L, teamName + "투수 "));
-  }
-
-  private List<Batter> createBatters(String teamName) {
-    return LongStream.range(2, 5)
-        .mapToObj(l -> Batter.create(l, teamName + "타자" + l, 0.122))
-        .collect(Collectors.toList());
+    home = devService.teamInitHelper("home");
+    away = devService.teamInitHelper("away");
   }
 
   @ApiOperation(value = "", notes = DevMessage.INIT)
