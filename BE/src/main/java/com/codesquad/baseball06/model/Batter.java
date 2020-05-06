@@ -22,14 +22,7 @@ public class Batter extends Player {
     return new Batter(name, battingAverage);
   }
 
-  public Long getId() {
-    return super.getId();
-  }
-
-  public String getName() {
-    return super.getName();
-  }
-
+  @Override
   public Double getBattingAverage() {
     return battingAverage;
   }

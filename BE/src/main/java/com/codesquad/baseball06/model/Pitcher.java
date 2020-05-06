@@ -18,11 +18,8 @@ public class Pitcher extends Player {
     return new Pitcher(name);
   }
 
-  public Long getId() {
-    return super.getId();
-  }
-
-  public String getName() {
-    return super.getName();
+  @Override
+  public Double getBattingAverage() throws Exception {
+    throw new Exception();
   }
 }

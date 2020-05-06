@@ -1,6 +1,6 @@
 package com.codesquad.baseball06.model;
 
-public class Player {
+public abstract class Player {
 
   private Long id;
   private String name;
@@ -21,4 +21,6 @@ public class Player {
   public String getName() {
     return name;
   }
+
+  public abstract Double getBattingAverage() throws Exception;
 }
