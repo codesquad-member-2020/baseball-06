@@ -24,8 +24,9 @@ const GameSelectionArea = styled.div`
 `;
 
 const GameNumber = styled.div`
-  color: red;
-  text-align: center;
+  padding: 10px 0;
+  color: #f70404;
+  font-size: 18px;
 `;
 
 const Teams = styled.div`
@@ -35,11 +36,17 @@ const Teams = styled.div`
 
 const Team = styled.span`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  &:hover {
+    color: #f70404;
+  }
 `;
 
 const Vs = styled.span`
-  font-size: 15px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #555;
 `;
 
 export default GameSelection;
