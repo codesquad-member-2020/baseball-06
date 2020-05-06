@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 import Title from "../title";
 import GameSelection from "./GameSelection";
-import { GlobalStyle, Layout } from "../../styles/global";
+import { GlobalStyle, Layout, Background } from "../../styles/global";
 import { gameSelectionMock } from "../../gameSelectionMock";
 
 function GameSelectionPage() {
@@ -16,15 +16,17 @@ function GameSelectionPage() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Title />
-        <Container>
-          <MessageArea>{message}</MessageArea>
-          <GameSelectionContainer>
-            {gameSelectionMock.map((teams) => (
-              <GameSelection teams={teams} />
-            ))}
-          </GameSelectionContainer>
-        </Container>
+        <Background>
+          <Title />
+          <Container>
+            <MessageArea>{message}</MessageArea>
+            <GameSelectionContainer>
+              {gameSelectionMock.map((teams) => (
+                <GameSelection teams={teams} />
+              ))}
+            </GameSelectionContainer>
+          </Container>
+        </Background>
       </ThemeProvider>
     </>
   );
@@ -33,19 +35,16 @@ function GameSelectionPage() {
 const Container = styled.main`
   ${Layout};
   flex-direction: column;
-
-  /* width: 100vw; */
-  /* height: 100vh; */
 `;
 
 const MessageArea = styled.div`
   margin: 30px;
   color: ${(props) => props.theme.mainFontColor};
-  font-size: 20px;
+  font-size: 25px;
 `;
 
 const GameSelectionContainer = styled.div`
-  margin-left: 27px;
+  margin-left: 35px;
   width: 548px;
   height: 400px;
   overflow: hidden;

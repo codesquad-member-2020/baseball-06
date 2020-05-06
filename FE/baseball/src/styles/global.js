@@ -1,16 +1,30 @@
 import styled, { createGlobalStyle, css } from "styled-components";
+import img from "../styles/images/baseball.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     body{
   margin: 0 auto;
-  width: 960px;
-        background-color: #1B0C0A;
+  /* width: 960px; */
+  background-image: url(${img});
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+        /* background-color: #1B0C0A; */
         text-align: center;
-        /* opacity:0.8; */
+        font-weight:bold;
+        /* opacity:0.7; */
     }
     h1{
         color:#fff;
     }
+`;
+
+export const Background = styled.div`
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
 `;
 
 export const Layout = css`

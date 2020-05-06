@@ -19,8 +19,8 @@ const GameSelectionArea = styled.div`
   height: 100px;
   margin: 20px 0;
   background-color: #b4b4b4;
-  border-radius: 15px;
   opacity: 0.8;
+  border-radius: 15px;
 `;
 
 const GameNumber = styled.div`
@@ -35,7 +35,6 @@ const Teams = styled.div`
 `;
 
 const Team = styled.span`
-  font-weight: bold;
   font-size: 30px;
   cursor: pointer;
   &:hover {
@@ -44,7 +43,6 @@ const Team = styled.span`
 `;
 
 const Vs = styled.span`
-  font-weight: bold;
   font-size: 30px;
   color: #555;
 `;
