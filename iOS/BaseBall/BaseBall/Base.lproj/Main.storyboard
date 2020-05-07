@@ -698,9 +698,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CU9-oh-4kk" firstAttribute="centerX" secondItem="r2p-3G-pBS" secondAttribute="centerX" id="3NP-x6-44M"/>
+                                    <constraint firstAttribute="trailing" secondItem="eYm-bB-q0x" secondAttribute="trailing" id="D7k-XF-gNy"/>
+                                    <constraint firstItem="eYm-bB-q0x" firstAttribute="leading" secondItem="ZHi-Mg-18t" secondAttribute="leading" id="QOF-2c-tDK"/>
                                     <constraint firstItem="8S5-Qe-Wfd" firstAttribute="leading" secondItem="ZHi-Mg-18t" secondAttribute="leading" constant="10" id="Rtq-vW-ORV"/>
                                     <constraint firstItem="CU9-oh-4kk" firstAttribute="centerX" secondItem="yFu-5F-RZf" secondAttribute="centerX" id="aPS-FT-ks9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tr3-ps-6Ry" secondAttribute="trailing" id="da2-LH-gol"/>
                                     <constraint firstAttribute="trailing" secondItem="8S5-Qe-Wfd" secondAttribute="trailing" constant="10" id="eib-tF-2EZ"/>
+                                    <constraint firstItem="Tr3-ps-6Ry" firstAttribute="leading" secondItem="ZHi-Mg-18t" secondAttribute="leading" id="fhU-5u-Hpr"/>
                                     <constraint firstItem="uQY-eN-A1d" firstAttribute="centerX" secondItem="6OS-cM-G4A" secondAttribute="centerX" id="lHK-xz-PDa"/>
                                     <constraint firstItem="uQY-eN-A1d" firstAttribute="centerX" secondItem="xxD-Ii-l0Y" secondAttribute="centerX" id="q3U-sO-4Bi"/>
                                 </constraints>
