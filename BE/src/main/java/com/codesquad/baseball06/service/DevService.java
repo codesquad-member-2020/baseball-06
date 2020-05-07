@@ -17,12 +17,12 @@ public class DevService {
   }
 
   public List<Pitcher> createPitchers(String teamName) {
-    return Arrays.asList(Pitcher.create(1L, teamName + "투수 "));
+    return Arrays.asList(Pitcher.create(1L, 2L, teamName + "투수 "));
   }
 
   public List<Batter> createBatters(String teamName) {
     return LongStream.range(2, 5)
-        .mapToObj(l -> Batter.create(l, teamName + "타자" + l, 0.122))
+        .mapToObj(l -> Batter.create(l, 1L, teamName + "타자" + l, 0.122))
         .collect(Collectors.toList());
   }
 }
