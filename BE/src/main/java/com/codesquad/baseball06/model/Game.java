@@ -9,11 +9,11 @@ public class Game {
 
   private final Long id;
   private final List<Integer> teams;
-  private final List<String> users;
+  private final List<User> users;
   private final Boolean end;
   private final LocalDateTime createdAt;
 
-  public Game(Long id, List<Integer> teams, List<String> users, Boolean end,
+  public Game(Long id, List<Integer> teams, List<User> users, Boolean end,
       LocalDateTime createdAt) {
     this.id = id;
     this.teams = teams;
@@ -26,18 +26,7 @@ public class Game {
       Boolean end, Timestamp createdAt) {
     return new Game(id
         , Arrays.asList(away, home)
-        , Arrays.asList(awayUser, homeUser)
+        , Arrays.asList(User.create(awayUser), User.create(homeUser))
         , end, createdAt.toLocalDateTime());
-  }
-
-  @Override
-  public String toString() {
-    return "Game{" +
-        "id=" + id +
-        ", teams=" + teams +
-        ", users=" + users +
-        ", end=" + end +
-        ", createdAt=" + createdAt +
-        '}';
   }
 }
