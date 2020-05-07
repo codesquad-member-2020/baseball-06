@@ -22,14 +22,12 @@ import { gameSelectionMock } from "../../gameSelectionMock";
 //   }
 // };
 
-function GameSelectionPage() {
+function GameSelectionPage({ history }) {
   // const [state, dispatch] = useReducer(reducer, initialState);
 
   const [message, setMessage] = useState("참가할 게임을 선택하세요!");
   const [teams, setTeams] = useState("");
 
-  {
-  }
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -39,7 +37,7 @@ function GameSelectionPage() {
           <MessageArea>{message}</MessageArea>
           <GameSelectionContainer>
             {gameSelectionMock.map((teams) => (
-              <GameSelection key={teams.id} teams={teams} />
+              <GameSelection key={teams.id} teams={teams} history={history} />
             ))}
           </GameSelectionContainer>
         </Container>

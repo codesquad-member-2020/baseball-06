@@ -2,7 +2,7 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 
-function GameSelection({ teams }) {
+function GameSelection({ teams, history }) {
   // const onClcikTema = (play) => {
   //   console.log(play);
   //   let message = null;
@@ -13,14 +13,20 @@ function GameSelection({ teams }) {
   //   }
   //   dispatch({ tyep: "gameSelection", message: message });
   // };
+
+  const onClickTeam = () => {
+    history.push("/Defense");
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GameSelectionArea>
         <GameNumber>GAME {teams.id}</GameNumber>
         <Teams>
-          <Team>{teams.team1.name}</Team>
+          <Team onClick={onClickTeam}>{teams.team1.name}</Team>
+
           <Vs>vs</Vs>
-          <Team>{teams.team2.name}</Team>
+          <Team onClick={onClickTeam}>{teams.team2.name}</Team>
         </Teams>
       </GameSelectionArea>
     </ThemeProvider>
