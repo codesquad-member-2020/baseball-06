@@ -3,17 +3,13 @@ import img from "../styles/images/baseball.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     body{
-  margin: 0 auto;
-  /* width: 960px; */
-  background-image: url(${img});
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-
-        /* background-color: #1B0C0A; */
+         margin: 0 auto;
+        background-image: url(${img});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         text-align: center;
         font-weight:bold;
-        /* opacity:0.7; */
     }
     h1{
         color:#fff;
@@ -31,6 +27,4 @@ export const Layout = css`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* margin: 0 auto; */
 `;

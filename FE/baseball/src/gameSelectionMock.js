@@ -1,22 +1,46 @@
 export const gameSelectionMock = [
   {
     id: 1,
-    player1: "Captin",
-    player2: "Marvel",
+    team1: {
+      name: "Captin",
+      plau: true,
+    },
+    team2: {
+      name: "Marvel",
+      play: true,
+    },
   },
   {
     id: 2,
-    player1: "Twins",
-    player2: "Tigers",
+    team1: {
+      name: "Twins",
+      play: true,
+    },
+    team2: {
+      name: "Tigers",
+      play: false,
+    },
   },
   {
     id: 3,
-    player1: "Rockets",
-    player2: "Dodgers",
+    team1: {
+      name: "Captin",
+      plau: true,
+    },
+    team2: {
+      name: "Marvel",
+      play: true,
+    },
   },
   {
     id: 4,
-    player1: "Captin",
-    player2: "Marvel",
+    team1: {
+      name: "Twins",
+      play: true,
+    },
+    team2: {
+      name: "Tigers",
+      play: false,
+    },
   },
 ];

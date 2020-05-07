@@ -1,16 +1,29 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "../../styles/theme";
 
 function GameSelection({ teams }) {
+  // const onClcikTema = (play) => {
+  //   console.log(play);
+  //   let message = null;
+  //   if (play) {
+  //     message = "이미 선택된 팀입니다. 다른 팀을 선택해주세요!";
+  //   } else {
+  //     message = "fetch";
+  //   }
+  //   dispatch({ tyep: "gameSelection", message: message });
+  // };
   return (
-    <GameSelectionArea>
-      <GameNumber>GAME {teams.id}</GameNumber>
-      <Teams>
-        <Team>{teams.player1}</Team>
-        <Vs>vs</Vs>
-        <Team>{teams.player2}</Team>
-      </Teams>
-    </GameSelectionArea>
+    <ThemeProvider theme={theme}>
+      <GameSelectionArea>
+        <GameNumber>GAME {teams.id}</GameNumber>
+        <Teams>
+          <Team>{teams.team1.name}</Team>
+          <Vs>vs</Vs>
+          <Team>{teams.team2.name}</Team>
+        </Teams>
+      </GameSelectionArea>
+    </ThemeProvider>
   );
 }
 
@@ -25,7 +38,7 @@ const GameSelectionArea = styled.div`
 
 const GameNumber = styled.div`
   padding: 10px 0;
-  color: #f70404;
+  color: ${(props) => props.theme.highlightColor};
   font-size: 18px;
 `;
 
@@ -38,7 +51,7 @@ const Team = styled.span`
   font-size: 30px;
   cursor: pointer;
   &:hover {
-    color: #f70404;
+    color: ${(props) => props.theme.highlightColor};
   }
 `;
 
