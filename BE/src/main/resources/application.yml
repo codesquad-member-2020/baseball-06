@@ -34,7 +34,7 @@ spring:
   profiles: prod
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sidedish_db?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/sidedish_db
     username: sidedish08
     password: sidedish08
     schema: classpath:schema.sql
