@@ -20,8 +20,8 @@ class SecondViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScoreCell.identifier) as? ScoreCell else { return nil }
-        cell.backgroundColor = .opaqueSeparator
-        return cell
+        guard let header = tableView.dequeueReusableCell(withIdentifier: ScoreCell.identifier)?.contentView else { return nil }
+        header.backgroundColor = .opaqueSeparator
+        return header
     }
 }
