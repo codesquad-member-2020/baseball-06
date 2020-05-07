@@ -34,7 +34,7 @@ function GameSelectionPage() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Background>
-        <Title />
+        <Title type={"main"} />
         <Container>
           <MessageArea>{message}</MessageArea>
           <GameSelectionContainer>
@@ -97,6 +97,3 @@ const GameSelectionContainer = styled.div`
 `;
 
 export default GameSelectionPage;
-
-//변경이 일어나면 사이즈가 커지니까 메서드 하나만 바껴도 영향이 많아짐수정해야 하는 범위가 늘어난다
-//

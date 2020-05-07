@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function Title() {
+function Title({ type }) {
   const title = "BASEBALL GAME ONLINE";
 
   return (
     <>
-      <TitleArea>{title}</TitleArea>
+      <TitleArea type={type}>{title}</TitleArea>
     </>
   );
 }
@@ -14,7 +14,7 @@ function Title() {
 const TitleArea = styled.h1`
   padding: 30px;
   font-weight: bold;
-  font-size: 40px;
+  font-size: ${(props) => (props.type === "sub" ? "30px" : "40px")};
 `;
 
 export default Title;
