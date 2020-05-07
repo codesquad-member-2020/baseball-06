@@ -10,12 +10,12 @@ DROP TABLE IF EXISTS inning_status;
 CREATE TABLE game
 (
     id         INT         NOT NULL AUTO_INCREMENT,
-    home       INT         NOT NULL,
     away       INT         NOT NULL,
+    home       INT         NOT NULL,
     home_user  VARCHAR(45) NULL,
     away_user  VARCHAR(45) NULL,
     end        TINYINT     NOT NULL,
-    created_at DATETIME    NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY (id)
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE half_inning
     type         TINYINT  NOT NULL,
     score        INT      NOT NULL,
     end          TINYINT  NOT NULL,
-    created_at   DATETIME NOT NULL,
+    created_at   TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY (id)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE plate_appearance
     batter       INT      NOT NULL,
     batter_index INT      NOT NULL,
     result       INT      NULL,
-    created_at   DATETIME NOT NULL,
+    created_at   TIMESTAMP DEFAULT NOW(),
     end          TINYINT  NOT NULL,
     PRIMARY KEY (id)
 );
@@ -48,7 +48,7 @@ CREATE TABLE detail_plate_appearance
 (
     id                  INT      NOT NULL AUTO_INCREMENT,
     result              INT      NOT NULL,
-    created_at          DATETIME NOT NULL,
+    created_at          TIMESTAMP DEFAULT NOW(),
     plate_appearance_id INT      NOT NULL,
     PRIMARY KEY (id)
 );
