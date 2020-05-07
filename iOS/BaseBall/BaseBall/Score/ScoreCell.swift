@@ -31,9 +31,14 @@ class ScoreCell: UITableViewCell {
     
     func setValues(name: String, bat: String, hit: String, out: String, average: String) {
         playerNameLabel.text = name
+        playerNameLabel.normal()
         batLabel.text = bat
+        batLabel.normal()
         hitLabel.text = hit
+        hitLabel.normal()
         outLabel.text = out
+        outLabel.normal()
         averageLabel.text = average
+        averageLabel.isHidden = false
     }
 }
