@@ -6,10 +6,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Route path="/" exact component={GameSelectionPage} />
-        <Route path="/Defense" exact component={Defense} />
-      </div>
+      <Route path="/" exact component={GameSelectionPage} />
+      <Route path="/Defense" exact component={Defense} />
     </BrowserRouter>
   );
 }

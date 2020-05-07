@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         background-size: cover;
         text-align: center;
         font-weight:bold;
+        color:#fff;
     }
     h1{
         color:#fff;
