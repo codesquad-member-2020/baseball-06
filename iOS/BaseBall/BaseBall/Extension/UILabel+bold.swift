@@ -12,4 +12,8 @@ extension UILabel {
     func bold() {
         self.font = .boldSystemFont(ofSize: self.font.pointSize)
     }
+    
+    func normal() {
+        self.font = .systemFont(ofSize: self.font.pointSize)
+    }
 }
