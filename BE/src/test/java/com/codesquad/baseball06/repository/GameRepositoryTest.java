@@ -3,6 +3,7 @@ package com.codesquad.baseball06.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.codesquad.baseball06.model.Game;
+import com.codesquad.baseball06.model.Team;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -24,8 +25,14 @@ class GameRepositoryTest {
 
   @Test
   void findGameById() {
-    assertThat(gameRepository.findGameById(1L).getClass())
+    Game game = gameRepository.findGameById(1L);
+
+    assertThat(game.getClass())
         .isNotNull()
         .isEqualTo(Game.class);
+
+    assertThat(game.getTeams().get(0).getClass())
+        .isNotNull()
+        .isEqualTo(Team.class);
   }
 }
