@@ -2,6 +2,7 @@ package com.codesquad.baseball06.repository;
 
 import com.codesquad.baseball06.model.Team;
 import com.codesquad.baseball06.service.DevService;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,6 +32,7 @@ public class TeamRepository {
         .append("SELECT t.id, t.name ")
         .append("FROM team t ")
         .append("WHERE t.id = ?").toString();
-    return jdbcTemplate.query(query, new Object[]{id}, teamMapper).get(0);
+    return Optional.of(jdbcTemplate.query(query, new Object[]{id}, teamMapper).get(0))
+        .orElseThrow(NullPointerException::new);
   }
 }
