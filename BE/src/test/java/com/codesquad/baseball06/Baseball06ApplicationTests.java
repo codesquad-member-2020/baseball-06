@@ -9,5 +9,4 @@ class Baseball06ApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
