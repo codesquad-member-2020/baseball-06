@@ -24,8 +24,10 @@ public class Game {
 
   public static Game create(Long id, Integer away, Integer home, String awayUser, String homeUser,
       Boolean end, Timestamp createdAt) {
-    return new Game(id, Arrays.asList(away, home), Arrays.asList(awayUser, homeUser), end,
-        new Timestamp(System.currentTimeMillis()).toLocalDateTime());
+    return new Game(id
+        , Arrays.asList(away, home)
+        , Arrays.asList(awayUser, homeUser)
+        , end, createdAt.toLocalDateTime());
   }
 
   @Override

@@ -1,8 +1,8 @@
 package com.codesquad.baseball06.model.type;
 
 public enum InningType {
-  EARLY(1, "초"),
-  LATE(2, "말");
+  EARLY(0, "초"),
+  LATE(1, "말");
 
   private final int code;
   private final String type;
