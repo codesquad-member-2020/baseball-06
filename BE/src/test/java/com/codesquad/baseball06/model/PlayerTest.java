@@ -10,13 +10,13 @@ class PlayerTest {
 
   @Test
   void pitcher_create() {
-    Player player = Pitcher.create(1L, "Dan");
+    Player player = Pitcher.create(1L, 2L, "Dan");
     assertThat(player.getId()).isEqualTo(1L);
   }
 
   @Test
   void batter_create() {
-    Player player = Batter.create(1L, "Sigrid", 0.333);
+    Player player = Batter.create(1L, 1L, "Sigrid", 0.333);
     assertThat(player.getId()).isEqualTo(1L);
   }
 }
