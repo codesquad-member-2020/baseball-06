@@ -1,7 +1,7 @@
 package com.codesquad.baseball06.service;
 
-import com.codesquad.baseball06.model.Inning;
-import com.codesquad.baseball06.model.Team;
+import com.codesquad.baseball06.model.entity.HalfInning;
+import com.codesquad.baseball06.model.entity.Team;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InningServiceTest {
+class HalfInningServiceTest {
 
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
 
@@ -24,13 +24,13 @@ class InningServiceTest {
 
   private Team home;
   private Team away;
-  private Inning inning;
+  private HalfInning halfInning;
 
   @BeforeEach
   void setUp() {
     this.inningService = new InningService(new PlateAppearanceService());
 
-    inning = Inning.create(1L, 1, 1, InningType.EARLY, 2, 0, 2);
+    halfInning = HalfInning.create(1L, 1, 1, InningType.EARLY, 2, 0, 2);
     home = devService.teamInitHelper("home");
     away = devService.teamInitHelper("away");
   }
@@ -39,9 +39,9 @@ class InningServiceTest {
   void doWork() {
     for (int i = 0; i < 9; i++) {
       BattingResult battingResult = inningService
-          .doWork(inning, home.getPitcherList().get(0), away.getBatterList().get(0));
+          .doWork(halfInning, home.getPitcherList().get(0), away.getBatterList().get(0));
       log.debug("### dowork : {}", battingResult);
-      log.debug("### inning : {}", inning.getStatus());
+      log.debug("### inning : {}", halfInning.getStatus());
     }
   }
 }

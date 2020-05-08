@@ -2,6 +2,9 @@ package com.codesquad.baseball06.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
