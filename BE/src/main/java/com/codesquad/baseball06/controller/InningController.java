@@ -1,9 +1,9 @@
 package com.codesquad.baseball06.controller;
 
-import com.codesquad.baseball06.model.ApiResponse;
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Inning;
-import com.codesquad.baseball06.model.Pitcher;
+import com.codesquad.baseball06.dto.ApiResponse;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.HalfInning;
+import com.codesquad.baseball06.model.entity.Pitcher;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.service.InningService;
 import io.swagger.annotations.Api;
@@ -27,10 +27,10 @@ public class InningController {
 
   @GetMapping("/dowork")
   public ApiResponse doWork() {
-    Inning inning = Inning.create(5L, 1, 1, InningType.EARLY, 2, 1, 2);
+    HalfInning halfInning = HalfInning.create(5L, 1, 1, InningType.EARLY, 2, 1, 2);
     Pitcher pitcher = Pitcher.create(1L, "김투수");
     Batter batter = Batter.create(2L, "홍타자", 0.222);
 
-    return ApiResponse.ok(inningService.doWork(inning, pitcher, batter));
+    return ApiResponse.ok(inningService.doWork(halfInning, pitcher, batter));
   }
 }
