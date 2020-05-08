@@ -11,9 +11,9 @@ function Score({ score }) {
           <Team>ddxx</Team>
           <Player visibility={"hidden"}>Player</Player>
         </TeamNameArea>
-        <Team>{score.Away}</Team>
+        <Team score>{score.Away}</Team>
         <Vs>VS</Vs>
-        <Team>{score.Home}</Team>
+        <Team score>{score.Home}</Team>
         <TeamNameArea>
           <Team>ddddd</Team>
           <Player>Player</Player>
@@ -32,12 +32,13 @@ const TeamNameArea = styled.div`
 const Team = styled.span`
   margin: 0 20px 10px;
   font-size: 40px;
-  color: ${(props) => props.theme.mainFontColor};
+  color: ${(props) =>
+    props.score ? props.theme.highlightColor : props.theme.mainFontColor};
 `;
 
 const Vs = styled.span`
   margin: 0 20px;
-  color: #888;
+  color: #aaa;
   font-size: 30px;
 `;
 
