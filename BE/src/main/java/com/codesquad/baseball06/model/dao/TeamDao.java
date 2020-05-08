@@ -1,9 +1,9 @@
-package com.codesquad.baseball06.dao;
+package com.codesquad.baseball06.model.dao;
 
 import com.codesquad.baseball06.dto.TeamReturnDto;
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Pitcher;
-import com.codesquad.baseball06.model.Team;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Team;
 import java.util.List;
 import java.util.Optional;
 import javax.sql.DataSource;

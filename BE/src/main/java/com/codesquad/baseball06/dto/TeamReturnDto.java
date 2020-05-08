@@ -1,8 +1,7 @@
 package com.codesquad.baseball06.dto;
 
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Pitcher;
-import com.codesquad.baseball06.model.Team;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.Pitcher;
 import java.util.List;
 
 public class TeamReturnDto {

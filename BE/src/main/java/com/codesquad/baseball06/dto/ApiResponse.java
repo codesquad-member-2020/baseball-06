@@ -1,4 +1,4 @@
-package com.codesquad.baseball06.model;
+package com.codesquad.baseball06.dto;
 
 public class ApiResponse<T> {
 
