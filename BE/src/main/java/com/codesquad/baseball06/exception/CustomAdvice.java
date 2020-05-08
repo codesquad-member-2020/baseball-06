@@ -2,6 +2,7 @@ package com.codesquad.baseball06.exception;
 
 import com.codesquad.baseball06.dto.ApiResponse;
 import java.sql.SQLException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,6 +20,12 @@ public class CustomAdvice {
   @ExceptionHandler(SQLException.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ApiResponse handleSQLException(SQLException e) {
+    return ApiResponse.error(e.getMessage());
+  }
+
+  @ExceptionHandler(EmptyResultDataAccessException.class)
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public ApiResponse handleSQLException(EmptyResultDataAccessException e) {
     return ApiResponse.error(e.getMessage());
   }
 }
