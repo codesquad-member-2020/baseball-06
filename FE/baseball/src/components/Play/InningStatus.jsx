@@ -6,47 +6,45 @@ function InningStatus({ inningStatus }) {
   const { strike, ball, out, inningNum, inningType } = inningStatus;
   return (
     <ThemeProvider theme={theme}>
-      <InningStatusWrap>
-        <Gameprogress>
-          <ResultArea>
-            <ResultTitle>S</ResultTitle>
-            <ResultBall>
-              {Array(strike)
-                .fill()
-                .map((_) => (
-                  <Ball result={"strike"} />
-                ))}
-            </ResultBall>
-          </ResultArea>
-          <ResultArea>
-            <ResultTitle>B</ResultTitle>
-            <ResultBall>
-              {Array(ball)
-                .fill()
-                .map((_) => (
-                  <Ball result={"ball"} />
-                ))}
-            </ResultBall>
-          </ResultArea>
-          <ResultArea>
-            <ResultTitle>O</ResultTitle>
-            <ResultBall>
-              {Array(out)
-                .fill()
-                .map((_) => (
-                  <Ball result={"out"} />
-                ))}
-            </ResultBall>
-          </ResultArea>
-        </Gameprogress>
+      <Gameprogress>
+        <ResultArea>
+          <ResultTitle>S</ResultTitle>
+          <ResultBall>
+            {Array(strike)
+              .fill()
+              .map((_, i) => (
+                <Ball key={"strike" + i} result={"strike"} />
+              ))}
+          </ResultBall>
+        </ResultArea>
+        <ResultArea>
+          <ResultTitle>B</ResultTitle>
+          <ResultBall>
+            {Array(ball)
+              .fill()
+              .map((_, i) => (
+                <Ball key={"ball" + i} result={"ball"} />
+              ))}
+          </ResultBall>
+        </ResultArea>
+        <ResultArea>
+          <ResultTitle>O</ResultTitle>
+          <ResultBall>
+            {Array(out)
+              .fill()
+              .map((_, i) => (
+                <Ball key={"out" + i} result={"out"} />
+              ))}
+          </ResultBall>
+        </ResultArea>
+      </Gameprogress>
 
-        <Turn>
-          <TurnSpan>{inningNum}</TurnSpan>
-          <TurnSpan>회</TurnSpan>
-          <TurnSpan>{inningType}</TurnSpan>
-          <TurnSpan> 수비</TurnSpan>
-        </Turn>
-      </InningStatusWrap>
+      <Turn>
+        <TurnSpan>{inningNum}</TurnSpan>
+        <TurnSpan>회</TurnSpan>
+        <TurnSpan>{inningType}</TurnSpan>
+        <TurnSpan> 수비</TurnSpan>
+      </Turn>
     </ThemeProvider>
   );
 }
@@ -87,11 +85,6 @@ const Ball = styled.span`
   height: 15px;
   background-color: ${(props) => ballColor[props.result]};
   border-radius: 50%;
-`;
-
-const InningStatusWrap = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
 `;
 
 const Turn = styled.div`
