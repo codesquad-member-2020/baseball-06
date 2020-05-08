@@ -63,7 +63,7 @@ const PlayerInfoArea = styled.div`
 
 const Player = styled.span`
   margin: 0 5px;
-  color: #fccf03;
+  color: #9cdafa;
 `;
 
 export default PlayerInfo;
