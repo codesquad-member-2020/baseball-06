@@ -43,7 +43,7 @@ class PlayerDaoTest {
 
   @Test
   void findPitchers() {
-    assertThat(playerDao.findPitchers())
+    assertThat(playerDao.findPitcherAndTeamId(3L))
         .isNotNull()
         .isInstanceOf(ArrayList.class)
         .hasSizeGreaterThan(1);
@@ -51,7 +51,7 @@ class PlayerDaoTest {
 
   @Test
   void findBatters() {
-    assertThat(playerDao.findBatters())
+    assertThat(playerDao.findBatterByTeamId(3L))
         .isNotNull()
         .isInstanceOf(ArrayList.class)
         .hasSizeGreaterThan(1);

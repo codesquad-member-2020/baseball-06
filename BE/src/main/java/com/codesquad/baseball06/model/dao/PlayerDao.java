@@ -1,7 +1,7 @@
 package com.codesquad.baseball06.model.dao;
 
 import static com.codesquad.baseball06.model.query.Player.FIND_BY_ID_AND_TYPE;
-import static com.codesquad.baseball06.model.query.Player.FIND_BY_TYPE;
+import static com.codesquad.baseball06.model.query.Player.FIND_BY_TYPE_AND_TEAM_ID;
 
 import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
 import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
@@ -39,11 +39,12 @@ public class PlayerDao {
     return jdbcTemplate.queryForObject(FIND_BY_ID_AND_TYPE, namedParameters, pitcherMapper).get(0);
   }
 
-  public List<Pitcher> findPitchers() {
+  public List<Pitcher> findPitcherAndTeamId(Long teamId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("type", PlayerType.PITCHER.getCode());
+        .addValue("type", PlayerType.PITCHER.getCode())
+        .addValue("team_id", teamId);
 
-    return jdbcTemplate.queryForObject(FIND_BY_TYPE, namedParameters, pitcherMapper);
+    return jdbcTemplate.queryForObject(FIND_BY_TYPE_AND_TEAM_ID, namedParameters, pitcherMapper);
   }
 
   public Batter findBatterById(Long id) {
@@ -54,10 +55,11 @@ public class PlayerDao {
     return jdbcTemplate.queryForObject(FIND_BY_ID_AND_TYPE, namedParameters, batterMapper).get(0);
   }
 
-  public List<Batter> findBatters() {
+  public List<Batter> findBatterByTeamId(Long teamId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("type", PlayerType.BATTER.getCode());
+        .addValue("type", PlayerType.BATTER.getCode())
+        .addValue("team_id", teamId);
 
-    return jdbcTemplate.queryForObject(FIND_BY_TYPE, namedParameters, batterMapper);
+    return jdbcTemplate.queryForObject(FIND_BY_TYPE_AND_TEAM_ID, namedParameters, batterMapper);
   }
 }
