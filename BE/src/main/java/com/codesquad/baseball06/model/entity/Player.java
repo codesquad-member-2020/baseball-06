@@ -6,13 +6,13 @@ public abstract class Player {
   private final Long teamId;
   private final String name;
 
-  public Player(Long id, Long teamId, String name) {
+  protected Player(Long id, Long teamId, String name) {
     this.id = id;
     this.teamId = teamId;
     this.name = name;
   }
 
-  public Player(Long teamId, String name) {
+  protected Player(Long teamId, String name) {
     this.id = null;
     this.teamId = teamId;
     this.name = name;
