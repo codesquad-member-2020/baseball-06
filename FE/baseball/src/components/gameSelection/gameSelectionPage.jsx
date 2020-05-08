@@ -32,7 +32,7 @@ function GameSelectionPage({ history }) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Background>
-        <Title type={"main"} />
+        <Title />
         <Container>
           <MessageArea>{message}</MessageArea>
           <GameSelectionContainer>
@@ -52,13 +52,13 @@ const Container = styled.main`
 `;
 
 const MessageArea = styled.div`
-  margin: 30px;
+  margin: 15px;
   color: ${(props) => props.theme.mainFontColor};
   font-size: 25px;
 `;
 
 const GameSelectionContainer = styled.div`
-  margin-left: 35px;
+  margin: 30px 0 0 35px;
   width: 548px;
   height: 400px;
   overflow: hidden;

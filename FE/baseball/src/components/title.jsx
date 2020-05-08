@@ -12,7 +12,7 @@ function Title({ type }) {
 }
 
 const TitleArea = styled.h1`
-  padding: 30px;
+  padding: 30px 0 10px;
   font-weight: bold;
   font-size: ${(props) => (props.type === "sub" ? "30px" : "40px")};
 `;
