@@ -25,19 +25,21 @@ export const mock = {
       Away: 2, //awayTeam은 인덱스가 1
     },
     updatedPlayer: [
+      //객체로 줄수 있을까?
       {
         id: 0,
         name: "Dan",
         type: "Pitcher",
         teamType: "Home",
-        name: "SK Wyverns",
+        pitches: 39,
       },
       {
         id: 2,
         name: "Sigrid",
         type: "Batter",
+        bat: 1,
+        hit: 0,
         teamType: "Away",
-        name: "Doosan Bears",
       },
     ],
   },

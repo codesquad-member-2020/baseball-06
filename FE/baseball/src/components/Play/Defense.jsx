@@ -14,8 +14,7 @@ function Defense() {
   const score = mock.updatedBaseman.updatedScore;
   const playingStatus = mock.playingStatus;
   const inningStatus = mock.inningStatus;
-  const updatedPlayer = mock.updatedPlayer;
-
+  const updatedPlayer = mock.updatedBaseman.updatedPlayer;
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
