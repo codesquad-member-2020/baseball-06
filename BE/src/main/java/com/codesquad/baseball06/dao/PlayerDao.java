@@ -19,9 +19,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PlayerDao {
 
-  private final NamedParameterJdbcTemplate jdbcTemplate;
+  private NamedParameterJdbcTemplate jdbcTemplate;
   private final PitcherReturnDtoMapper pitcherReturnDtoMapper = new PitcherReturnDtoMapper();
   private final BatterReturnDtoMapper batterReturnDtoMapper = new BatterReturnDtoMapper();
+
+  public PlayerDao() {}
 
   public PlayerDao(DataSource dataSource) {
     this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
@@ -29,7 +31,8 @@ public class PlayerDao {
 
   public PitcherReturnDto findPitcherById(Long id) {
 
-    String sql = "SELECT * FROM player p WHERE p.id = :id";
+//    String sql = "SELECT p.id, p.team_id, p.type, p.name, p.batting_average FROM player p WHERE p.id = 1";
+    String sql = "SELECT * FROM player";
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("id", id);
     return jdbcTemplate.queryForObject(sql, namedParameters, pitcherReturnDtoMapper);
@@ -37,13 +40,13 @@ public class PlayerDao {
 
   public BatterReturnDto findBatterById(Long id) {
 
-    String sql = "SELECT * FROM player p WHERE p.id = :id";
+    String sql = "SELECT p.id, p.team_id, p.type, p.name, p.batting_average FROM player p WHERE p.id=:id";
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("id", id);
     return jdbcTemplate.queryForObject(sql, namedParameters, batterReturnDtoMapper);
   }
 
-  public void insertPlayer(int team_id, int type, String name, double batting_average) {
+  public void insertBatter(int team_id, int type, String name, double batting_average) {
 
     //TODO: int type일 때 tinyint로 제한하는 방법?
     String sql = "INSERT INTO player (team_id, type, name, batting_average)"
@@ -53,6 +56,18 @@ public class PlayerDao {
         .addValue("type", type)
         .addValue("name", name)
         .addValue("batting_average", batting_average);
+    jdbcTemplate.update(sql, namedParameters);
+  }
+
+  public void insertPitcher(int team_id, int type, String name) {
+
+    //TODO: int type일 때 tinyint로 제한하는 방법?
+    String sql = "INSERT INTO player (team_id, type, name)"
+        + " VALUES (:team_id, :type, :name)";
+    SqlParameterSource namedParameters = new MapSqlParameterSource()
+        .addValue("team_id", team_id)
+        .addValue("type", type)
+        .addValue("name", name);
     jdbcTemplate.update(sql, namedParameters);
   }
 }

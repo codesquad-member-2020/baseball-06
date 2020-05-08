@@ -35,16 +35,20 @@ public class TeamAndPlayerDaoTest {
     Team team = Team.create("Backend", pitcherList, batterList);
     teamDao.insertTeam(team);
     team.getPitcherList().forEach(pitcher ->
-        playerDao.insertPlayer(0, 0, pitcher.getName(), pitcher.getBattingAverage()));
+        playerDao.insertPitcher(0, 0, pitcher.getName()));
     team.getBatterList().forEach(batter ->
-        playerDao.insertPlayer(0, 1, batter.getName(), batter.getBattingAverage()));
+        playerDao.insertBatter(0, 1, batter.getName(), batter.getBattingAverage()));
   }
 
   @Test
   void validateDaoMethods() {
-    assertThat(playerDao.findPitcherById(1L)).isNotNull();
-    assertThat(playerDao.findBatterById(2L)).isNotNull();
-    assertThat(playerDao.findBatterById(3L)).isNotNull();
-    assertThat(teamDao.findTeamById(1L)).isNotNull();
+    assertThat(playerDao.findPitcherById(1L))
+        .isNotNull();
+    assertThat(playerDao.findBatterById(2L))
+        .isNotNull();
+    assertThat(playerDao.findBatterById(3L))
+        .isNotNull();
+    assertThat(teamDao.findTeamById(1L))
+        .isNotNull();
   }
 }
