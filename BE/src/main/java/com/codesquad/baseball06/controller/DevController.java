@@ -1,11 +1,11 @@
 package com.codesquad.baseball06.controller;
 
 import com.codesquad.baseball06.message.DevMessage;
-import com.codesquad.baseball06.model.ApiResponse;
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Inning;
-import com.codesquad.baseball06.model.Pitcher;
-import com.codesquad.baseball06.model.Team;
+import com.codesquad.baseball06.dto.ApiResponse;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.HalfInning;
+import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Team;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.service.DevService;
@@ -29,14 +29,14 @@ public class DevController {
 
   private final InningService inningService;
   private final DevService devService;
-  private final Inning inning;
+  private final HalfInning halfInning;
   private final Team home;
   private final Team away;
 
   public DevController(InningService inningService, DevService devService) {
     this.inningService = inningService;
     this.devService = devService;
-    inning = Inning.create(1L, 0, 1, InningType.EARLY, 0, 0, 0);
+    halfInning = HalfInning.create(1L, 0, 1, InningType.EARLY, 0, 0, 0);
     home = devService.teamInitHelper("home");
     away = devService.teamInitHelper("away");
   }
@@ -44,8 +44,8 @@ public class DevController {
   @ApiOperation(value = "", notes = DevMessage.INIT)
   @GetMapping("/init")
   public ApiResponse init() {
-    inning.newInning();
-    return ApiResponse.ok(inning.getStatus());
+    halfInning.newInning();
+    return ApiResponse.ok(halfInning.getStatus());
   }
 
   @ApiOperation(value = "", notes = DevMessage.PITCHING)
@@ -53,19 +53,19 @@ public class DevController {
   public ApiResponse pitching() {
     Pitcher pitcher = home.getPitcherList().get(0);
     Batter batter = away.getBatterList().get(0);
-    BattingResult battingResult = inningService.doWork(inning, pitcher, batter);
+    BattingResult battingResult = inningService.doWork(halfInning, pitcher, batter);
 
     if (battingResult.equals(BattingResult.HIT)) {
-      inning.newPlateAppearance();
+      halfInning.newPlateAppearance();
     }
 
     Map<String, Object> resultMap = new HashMap<>();
     resultMap.put("battingResult", battingResult);
-    resultMap.put("inningStatus", inning.getStatus());
+    resultMap.put("inningStatus", halfInning.getStatus());
 
     ApiResponse apiResponse = ApiResponse.ok(resultMap);
 
-    if (inning.getOut().equals(3)) {
+    if (halfInning.getOut().equals(3)) {
       init();
     }
 

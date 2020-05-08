@@ -1,8 +1,8 @@
 package com.codesquad.baseball06.service;
 
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Pitcher;
-import com.codesquad.baseball06.model.Team;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Team;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,8 +1,8 @@
 package com.codesquad.baseball06.service;
 
-import com.codesquad.baseball06.model.Batter;
-import com.codesquad.baseball06.model.Inning;
-import com.codesquad.baseball06.model.Pitcher;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.HalfInning;
+import com.codesquad.baseball06.model.entity.Pitcher;
 import com.codesquad.baseball06.model.type.BattingResult;
 import java.util.Random;
 import org.slf4j.Logger;
@@ -29,13 +29,13 @@ public class PlateAppearanceService {
     return BattingResult.BALL;
   }
 
-  public BattingResult postPitching(Inning inning, BattingResult battingResult) {
+  public BattingResult postPitching(HalfInning halfInning, BattingResult battingResult) {
     if (battingResult.equals(BattingResult.STRIKE)) {
-      return inning.addStrike();
+      return halfInning.addStrike();
     }
 
     if (battingResult.equals(BattingResult.BALL)) {
-      return inning.addBall();
+      return halfInning.addBall();
     }
 
     return BattingResult.HIT;
@@ -53,11 +53,11 @@ public class PlateAppearanceService {
     return delimiter - batter.getBattingAverage() > 0.25;
   }
 
-  public BattingResult batting(Inning inning, Pitcher pitcher, Batter batter) {
+  public BattingResult batting(HalfInning halfInning, Pitcher pitcher, Batter batter) {
     BattingResult battingResult = doPitching(pitcher, batter);
 
     // pitchingResult 에 따라 후속 로직 추가
-    BattingResult postBattingResult = postPitching(inning, battingResult);
+    BattingResult postBattingResult = postPitching(halfInning, battingResult);
 
     return postBattingResult;
   }
