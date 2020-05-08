@@ -203,6 +203,7 @@
 			children = (
 				44D22FC72465252200AC08CC /* NetworkManager.swift */,
 				44D22FC9246533CE00AC08CC /* PitchResponse.swift */,
+				44D22FCF2465341500AC08CC /* PitchUseCase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +291,7 @@
 				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
+				44D22FD02465341500AC08CC /* PitchUseCase.swift in Sources */,
 				4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */,
