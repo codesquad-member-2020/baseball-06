@@ -3,8 +3,6 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 
 function PlayerInfo({ updatedPlayer }) {
-  console.log(updatedPlayer);
-
   const templatePitcher = ({ pitches }) => {
     return <Player>#{pitches}</Player>;
   };
@@ -22,7 +20,7 @@ function PlayerInfo({ updatedPlayer }) {
     <PlayerInfoWrap>
       {updatedPlayer.map((player) => {
         return (
-          <>
+          <div>
             <div>
               <PlayerType>
                 {player.type === "Pitcher" ? "투수" : "타자"}
@@ -34,7 +32,7 @@ function PlayerInfo({ updatedPlayer }) {
                 ? templatePitcher(player)
                 : templateBatter(player)}
             </PlayerInfoArea>
-          </>
+          </div>
         );
       })}
     </PlayerInfoWrap>
@@ -42,23 +40,19 @@ function PlayerInfo({ updatedPlayer }) {
 }
 
 const PlayerInfoWrap = styled.div`
-position:absolute;
-top:20px;
-right:80px;
-  font-size: 30px;
-  /* color: ${(props) => props.theme.mainFontColor}; */
+  display: inline-block;
+  font-size: 25px;
 `;
 
 const PlayerType = styled.span`
   display: inline-block;
-  margin-bottom: 10px;
-  font-size: 28px;
+  margin-bottom: 8px;
   color: ${(props) => props.theme.mainFontColor};
 `;
 
 const PlayerInfoArea = styled.div`
+  margin-bottom: 8px;
   font-size: 24px;
-  margin-bottom: 15px;
 `;
 
 const Player = styled.span`

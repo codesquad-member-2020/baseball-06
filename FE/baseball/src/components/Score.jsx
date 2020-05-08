@@ -43,13 +43,10 @@ const Vs = styled.span`
 `;
 
 const ScoreArea = styled.div`
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 0 20px;
-  border-bottom: 2px solid #777;
 `;
 
 const Player = styled.span`

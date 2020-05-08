@@ -24,7 +24,6 @@ export const Background = styled.div`
   width: 100vw;
 `;
 export const BackgroundImg = styled.div`
-  /* background-color: #000; */
   background-color: rgba(0, 0, 0, 0.6);
 
   height: 100%;
