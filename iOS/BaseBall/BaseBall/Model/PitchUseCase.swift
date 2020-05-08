@@ -9,7 +9,7 @@
 import Foundation
 
 struct PitchUseCase {
-    static func pitch(with manager: NetworkManager, completion: @escaping (Result<PitchResult, NetworkError>) -> ()) {
+    static func pitch(with manager: NetworkManageable, completion: @escaping (Result<PitchResult, NetworkError>) -> ()) {
         manager.getResource(from: NetworkManager.EndPoints.Pitch, handler: { result in
             switch result {
             case .success(let data):

@@ -8,13 +8,17 @@
 
 import Foundation
 
+protocol NetworkManageable {
+    func getResource(from: String, handler: @escaping ((Result<Data, NetworkError>) -> Void))
+}
+
 enum NetworkError: Error {
     case URLError
     case DataNotFound
     case DecodingError
 }
 
-struct NetworkManager {
+struct NetworkManager: NetworkManageable {
     enum EndPoints {
         static let Pitch = "http://15.164.101.161:8080/dev/dotest"
     }
@@ -31,5 +35,17 @@ struct NetworkManager {
             }
             handler(.success(data))
         }.resume()
+    }
+}
+
+struct MockNetworkFailureStub: NetworkManageable {
+    func getResource(from: String, handler: @escaping ((Result<Data, NetworkError>) -> Void)) {
+        handler(.failure(.DataNotFound))
+    }
+}
+
+struct MockNetworkInvalidURLStub: NetworkManageable {
+    func getResource(from: String, handler: @escaping ((Result<Data, NetworkError>) -> Void)) {
+        handler(.failure(.URLError))
     }
 }
