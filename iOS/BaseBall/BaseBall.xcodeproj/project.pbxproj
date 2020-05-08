@@ -33,6 +33,7 @@
 		44D22FC02462A8B400AC08CC /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FBF2462A8B400AC08CC /* ScoreCell.swift */; };
 		44D22FC22462A8DE00AC08CC /* ScoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC12462A8DE00AC08CC /* ScoreDataSource.swift */; };
 		44D22FC52462ADF600AC08CC /* UILabel+bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC42462ADF600AC08CC /* UILabel+bold.swift */; };
+		44D22FCA246533CE00AC08CC /* PitchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC9246533CE00AC08CC /* PitchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		44D22FBF2462A8B400AC08CC /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		44D22FC12462A8DE00AC08CC /* ScoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDataSource.swift; sourceTree = "<group>"; };
 		44D22FC42462ADF600AC08CC /* UILabel+bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+bold.swift"; sourceTree = "<group>"; };
+		44D22FC9246533CE00AC08CC /* PitchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				4491C8A4246035B3005049F9 /* AppDelegate.swift */,
 				4491C8A6246035B3005049F9 /* SceneDelegate.swift */,
 				4491C8AC246035B3005049F9 /* Main.storyboard */,
+				44D22FC62465250D00AC08CC /* Model */,
 				44D22FC32462ADE400AC08CC /* Extension */,
 				4406F963246285E5000352FB /* Score */,
 				4491C8C824617FCC005049F9 /* GameList */,
@@ -189,6 +192,14 @@
 				44D22FC42462ADF600AC08CC /* UILabel+bold.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		44D22FC62465250D00AC08CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44D22FC9246533CE00AC08CC /* PitchResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 				445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */,
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
 				44D22FC22462A8DE00AC08CC /* ScoreDataSource.swift in Sources */,
+				44D22FCA246533CE00AC08CC /* PitchResponse.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
 				445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */,
 				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
