@@ -2,11 +2,15 @@ package com.codesquad.baseball06.model;
 
 public abstract class Player {
 
-  private final Long id;
+  private Long id;
   private final String name;
 
   public Player(Long id, String name) {
     this.id = id;
+    this.name = name;
+  }
+
+  public Player(String name) {
     this.name = name;
   }
 
