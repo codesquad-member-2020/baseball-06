@@ -7,17 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 
-public class MultipleBatterMapper implements RowMapper<List<Batter>> {
+public class BatterMapper implements RowMapper<List<Batter>> {
 
   @Override
   public List<Batter> mapRow(ResultSet rs, int rowNum) throws SQLException {
     List<Batter> batterList = new ArrayList<>();
 
-    batterList.add(Batter.create(rs.getLong(1), rs.getLong(2), rs.getString(4), rs.getDouble(5)));
-
-    while (rs.next()) {
+    do {
       batterList.add(Batter.create(rs.getLong(1), rs.getLong(2), rs.getString(4), rs.getDouble(5)));
-    }
+    } while (rs.next());
 
     return batterList;
   }
