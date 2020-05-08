@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Background = styled.div`
+  min-width: 1536px;
+  min-height: 550px;
   background-image: url(${img});
   background-position: center;
   background-repeat: no-repeat;
