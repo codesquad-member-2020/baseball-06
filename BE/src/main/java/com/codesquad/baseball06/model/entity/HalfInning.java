@@ -1,9 +1,9 @@
-package com.codesquad.baseball06.model;
+package com.codesquad.baseball06.model.entity;
 
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 
-public class Inning {
+public class HalfInning {
 
   private final Long id;
   private final Integer index;
@@ -13,7 +13,7 @@ public class Inning {
   private Integer ball;
   private Integer out;
 
-  private Inning(Long id, Integer score, Integer index,
+  private HalfInning(Long id, Integer score, Integer index,
       InningType type, Integer strike, Integer ball, Integer out) {
     this.id = id;
     this.score = score;
@@ -24,9 +24,9 @@ public class Inning {
     this.out = out;
   }
 
-  public static Inning create(Long id, Integer score, Integer index, InningType type,
+  public static HalfInning create(Long id, Integer score, Integer index, InningType type,
       Integer strike, Integer ball, Integer out) {
-    return new Inning(id, score, index, type, strike, ball, out);
+    return new HalfInning(id, score, index, type, strike, ball, out);
   }
 
   public Long getId() {

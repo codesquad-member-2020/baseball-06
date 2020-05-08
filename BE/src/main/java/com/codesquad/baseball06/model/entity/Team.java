@@ -1,4 +1,4 @@
-package com.codesquad.baseball06.model;
+package com.codesquad.baseball06.model.entity;
 
 import java.util.List;
 

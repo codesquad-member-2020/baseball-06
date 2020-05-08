@@ -1,14 +1,20 @@
 package com.codesquad.baseball06.model.type;
 
 public enum InningType {
-  EARLY("초"),
-  LATE("말");
+  EARLY(0, "초"),
+  LATE(1, "말");
 
-  InningType(String type) {
+  private final int code;
+  private final String type;
+
+  InningType(int code, String type) {
+    this.code = code;
     this.type = type;
   }
 
-  private final String type;
+  public int getCode() {
+    return code;
+  }
 
   public String getType() {
     return type;
