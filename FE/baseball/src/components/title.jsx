@@ -12,9 +12,12 @@ function Title({ type }) {
 }
 
 const TitleArea = styled.h1`
-  padding: 30px 0 10px;
+  padding: 25px 0 10px;
   font-weight: bold;
   font-size: ${(props) => (props.type === "sub" ? "30px" : "40px")};
+  background-color: ${(props) => {
+    if (props.type === "sub") return "rgba(0, 0, 0, 0.8)";
+  }};
 `;
 
 export default Title;

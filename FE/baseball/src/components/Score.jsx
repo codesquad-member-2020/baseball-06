@@ -31,17 +31,19 @@ const TeamNameArea = styled.div`
 
 const Team = styled.span`
   margin: 0 20px 10px;
-  font-size: 50px;
+  font-size: 40px;
   color: ${(props) => props.theme.mainFontColor};
 `;
 
 const Vs = styled.span`
   margin: 0 20px;
-  color: #777;
+  color: #888;
   font-size: 30px;
 `;
 
 const ScoreArea = styled.div`
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;

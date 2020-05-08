@@ -3,7 +3,12 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 import Title from "../title";
 import GameSelection from "./GameSelection";
-import { GlobalStyle, Layout, Background } from "../../styles/global";
+import {
+  GlobalStyle,
+  Layout,
+  Background,
+  BackgroundImg,
+} from "../../styles/global";
 import { gameSelectionMock } from "../../gameSelectionMock";
 
 // const initialState = {
@@ -32,15 +37,17 @@ function GameSelectionPage({ history }) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Background>
-        <Title />
-        <Container>
-          <MessageArea>{message}</MessageArea>
-          <GameSelectionContainer>
-            {gameSelectionMock.map((teams) => (
-              <GameSelection key={teams.id} teams={teams} history={history} />
-            ))}
-          </GameSelectionContainer>
-        </Container>
+        <BackgroundImg>
+          <Title />
+          <Container>
+            <MessageArea>{message}</MessageArea>
+            <GameSelectionContainer>
+              {gameSelectionMock.map((teams) => (
+                <GameSelection key={teams.id} teams={teams} history={history} />
+              ))}
+            </GameSelectionContainer>
+          </Container>
+        </BackgroundImg>
       </Background>
     </ThemeProvider>
   );

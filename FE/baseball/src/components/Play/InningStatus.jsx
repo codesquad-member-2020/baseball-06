@@ -57,7 +57,11 @@ const ballColor = {
   out: "#ff0505",
 };
 
-const Gameprogress = styled.div``;
+const Gameprogress = styled.div`
+  position: absolute;
+  top: 50px;
+  left: 10px;
+`;
 
 const ResultArea = styled.div`
   display: flex;
@@ -86,11 +90,14 @@ const Ball = styled.span`
 `;
 
 const InningStatusWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
 `;
 
 const Turn = styled.div`
+  /* position: relative;
+  top: -120px;
+  right: -300px; */
   font-size: 30px;
   margin: 15px;
 `;
