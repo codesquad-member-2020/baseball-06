@@ -27,6 +27,10 @@ public class InningService {
       return BattingResult.END;
     }
 
+    if (plateAppearanceResult.equals(BattingResult.HIT)) {
+      halfInning.newPlateAppearance();
+    }
+
     return plateAppearanceResult;
   }
 }

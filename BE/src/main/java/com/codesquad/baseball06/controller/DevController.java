@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.controller;
 
+import com.codesquad.baseball06.dto.BattingResultDto;
 import com.codesquad.baseball06.message.DevMessage;
 import com.codesquad.baseball06.dto.ApiResponse;
 import com.codesquad.baseball06.model.entity.Batter;
@@ -55,17 +56,11 @@ public class DevController {
     Batter batter = away.getBatterList().get(0);
     BattingResult battingResult = inningService.doWork(halfInning, pitcher, batter);
 
-    if (battingResult.equals(BattingResult.HIT)) {
-      halfInning.newPlateAppearance();
-    }
-
-    Map<String, Object> resultMap = new HashMap<>();
-    resultMap.put("battingResult", battingResult);
-    resultMap.put("inningStatus", halfInning.getStatus());
-
-    ApiResponse apiResponse = ApiResponse.ok(resultMap);
+    BattingResultDto battingResultDto = BattingResultDto.create(battingResult);
+    ApiResponse apiResponse = ApiResponse.ok(battingResultDto);
 
     if (halfInning.getOut().equals(3)) {
+      //TODO GameService로 해당 로직을 이동한다.
       init();
     }
 
