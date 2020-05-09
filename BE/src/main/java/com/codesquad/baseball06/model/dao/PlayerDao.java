@@ -1,10 +1,14 @@
 package com.codesquad.baseball06.model.dao;
 
-import com.codesquad.baseball06.dto.BatterReturnDto;
-import com.codesquad.baseball06.dto.PitcherReturnDto;
-import com.codesquad.baseball06.model.dao.mapper.BatterReturnDtoMapper;
-import com.codesquad.baseball06.model.dao.mapper.PitcherReturnDtoMapper;
-import javax.sql.DataSource;
+import static com.codesquad.baseball06.model.query.Player.FIND_BY_ID_AND_TYPE;
+import static com.codesquad.baseball06.model.query.Player.FIND_BY_TYPE_AND_TEAM_ID;
+
+import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
+import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
+import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.type.PlayerType;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -16,60 +20,46 @@ import org.springframework.stereotype.Repository;
 public class PlayerDao {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerDao.class);
+  private final NamedParameterJdbcTemplate jdbcTemplate;
+  private final PitcherMapper pitcherMapper;
+  private final BatterMapper batterMapper;
 
-  private final PitcherReturnDtoMapper pitcherReturnDtoMapper = new PitcherReturnDtoMapper();
-  private final BatterReturnDtoMapper batterReturnDtoMapper = new BatterReturnDtoMapper();
-  private NamedParameterJdbcTemplate jdbcTemplate;
-
-  public PlayerDao(DataSource dataSource) {
-    this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+  public PlayerDao(NamedParameterJdbcTemplate jdbcTemplate, PitcherMapper pitcherMapper,
+      BatterMapper batterMapper) {
+    this.jdbcTemplate = jdbcTemplate;
+    this.pitcherMapper = pitcherMapper;
+    this.batterMapper = batterMapper;
   }
 
-  public PitcherReturnDto findPitcherById(Long id) {
-
-    String sql = "SELECT p.id, p.team_id, p.type, p.name, p.batting_average FROM player p WHERE p.id = 1";
-//    String sql = "SELECT * FROM player";
+  public Pitcher findPitcherById(Long id) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("id", id);
+        .addValue("id", id)
+        .addValue("type", PlayerType.PITCHER.getCode());
 
-    PitcherReturnDto pitcherReturnDto = jdbcTemplate
-        .queryForObject(sql, namedParameters, pitcherReturnDtoMapper);
-
-    return pitcherReturnDto;
+    return jdbcTemplate.queryForObject(FIND_BY_ID_AND_TYPE, namedParameters, pitcherMapper).get(0);
   }
 
-  public BatterReturnDto findBatterById(Long id) {
-
-    String sql = "SELECT p.id, p.team_id, p.type, p.name, p.batting_average FROM player p WHERE p.id=:id";
+  public List<Pitcher> findPitcherAndTeamId(Long teamId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("id", id);
-    return jdbcTemplate.queryForObject(sql, namedParameters, batterReturnDtoMapper);
+        .addValue("type", PlayerType.PITCHER.getCode())
+        .addValue("team_id", teamId);
+
+    return jdbcTemplate.queryForObject(FIND_BY_TYPE_AND_TEAM_ID, namedParameters, pitcherMapper);
   }
 
-  public void insertBatter(int team_id, int type, String name, double batting_average) {
-
-    //TODO: int type일 때 tinyint로 제한하는 방법?
-    String sql = "INSERT INTO player (team_id, type, name, batting_average)"
-        + " VALUES (:team_id, :type, :name, :batting_average)";
+  public Batter findBatterById(Long id) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("team_id", team_id)
-        .addValue("type", type)
-        .addValue("name", name)
-        .addValue("batting_average", batting_average);
+        .addValue("id", id)
+        .addValue("type", PlayerType.BATTER.getCode());
 
-    jdbcTemplate.update(sql, namedParameters);
+    return jdbcTemplate.queryForObject(FIND_BY_ID_AND_TYPE, namedParameters, batterMapper).get(0);
   }
 
-  public void insertPitcher(int team_id, int type, String name) {
-
-    //TODO: int type일 때 tinyint로 제한하는 방법?
-    String sql = "INSERT INTO player (team_id, type, name)"
-        + " VALUES (:team_id, :type, :name)";
+  public List<Batter> findBatterByTeamId(Long teamId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
-        .addValue("team_id", team_id)
-        .addValue("type", type)
-        .addValue("name", name);
+        .addValue("type", PlayerType.BATTER.getCode())
+        .addValue("team_id", teamId);
 
-    jdbcTemplate.update(sql, namedParameters);
+    return jdbcTemplate.queryForObject(FIND_BY_TYPE_AND_TEAM_ID, namedParameters, batterMapper);
   }
 }
