@@ -20,7 +20,7 @@ public class UpdatedBasemanDto {
     return new UpdatedBasemanDto(firstBase, secondBase, thirdBase);
   }
 
-  static class SpecificBasemanDto {
+  public static class SpecificBasemanDto {
 
     private String name;
     private Long id;
