@@ -76,7 +76,7 @@ CREATE TABLE base_status
     first_base  INT NULL,
     second_base INT NULL,
     third_base  INT NULL,
-    inning_id   INT NOT NULL,
+    half_inning_id   INT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -86,6 +86,6 @@ CREATE TABLE inning_status
     strike_count INT NOT NULL,
     ball_count   INT NOT NULL,
     out_count    INT NOT NULL,
-    inning_id    INT NOT NULL,
+    half_inning_id    INT NOT NULL,
     PRIMARY KEY (id)
 );
