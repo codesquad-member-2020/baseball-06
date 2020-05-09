@@ -10,17 +10,16 @@ public class InningStatus {
   private Integer ball;
   private Integer out;
 
-  public InningStatus(Long id, Integer strike, Integer ball, Integer out, Long inningId) {
+  public InningStatus(Long id,  Long inningId, Integer strike, Integer ball, Integer out) {
     this.id = id;
+    this.inningId = inningId;
     this.strike = strike;
     this.ball = ball;
     this.out = out;
-    this.inningId = inningId;
   }
 
-  public static InningStatus create(Long id, Integer strike, Integer ball, Integer out,
-      Long inningId) {
-    return new InningStatus(id, strike, ball, out, inningId);
+  public static InningStatus create(Long id, Long inningId, Integer strike, Integer ball, Integer out) {
+    return new InningStatus(id, inningId, strike, ball, out);
   }
 
   public Long getId() {
