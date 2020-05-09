@@ -12,8 +12,8 @@ CREATE TABLE game
     id         INT         NOT NULL AUTO_INCREMENT,
     away_id    INT         NOT NULL,
     home_id    INT         NOT NULL,
-    home_user  VARCHAR(45) NULL     DEFAULT NULL,
     away_user  VARCHAR(45) NULL     DEFAULT NULL,
+    home_user  VARCHAR(45) NULL     DEFAULT NULL,
     end        TINYINT     NOT NULL DEFAULT 0,
     created_at TIMESTAMP            DEFAULT NOW(),
     PRIMARY KEY (id)
