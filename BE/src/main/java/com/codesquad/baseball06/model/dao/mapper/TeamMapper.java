@@ -23,9 +23,9 @@ public class TeamMapper implements RowMapper<List<Team>> {
     List<Team> teamList = new ArrayList<>();
 
     do {
-      Long teamId = rs.getLong(1);
-      teamList.add(Team.create(teamId, rs.getString(2)
-          , playerDao.findPitcherAndTeamId(teamId), playerDao.findBatterByTeamId(teamId)));
+      Long teamId = rs.getLong("id");
+      teamList.add(Team.create(teamId, rs.getString("name"), playerDao.findPitcherAndTeamId(teamId),
+          playerDao.findBatterByTeamId(teamId)));
     } while (rs.next());
 
     return teamList;
