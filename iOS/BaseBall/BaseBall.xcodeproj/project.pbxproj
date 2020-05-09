@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4412A28E246541F10054DE04 /* OverallScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412A28D246541F10054DE04 /* OverallScoreView.swift */; };
 		4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457B1C82461B3A800A46673 /* CircleShapeView.swift */; };
 		445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A42461CE7B00D39168 /* PitchingResultCell.swift */; };
 		445F93A72461CFB300D39168 /* CircleNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A62461CFB300D39168 /* CircleNumberLabel.swift */; };
@@ -30,6 +31,7 @@
 		4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CA24619520005049F9 /* GameProgressView.swift */; };
 		4491C8CD246195F2005049F9 /* DiamondShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CC246195F2005049F9 /* DiamondShapeView.swift */; };
 		4491C8CF2461976F005049F9 /* PentagonShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8CE2461976F005049F9 /* PentagonShapeView.swift */; };
+		44A86EAC2466EEBA00A57CBC /* ScoreStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A86EAB2466EEBA00A57CBC /* ScoreStackView.swift */; };
 		44D22FC02462A8B400AC08CC /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FBF2462A8B400AC08CC /* ScoreCell.swift */; };
 		44D22FC22462A8DE00AC08CC /* ScoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC12462A8DE00AC08CC /* ScoreDataSource.swift */; };
 		44D22FC52462ADF600AC08CC /* UILabel+bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC42462ADF600AC08CC /* UILabel+bold.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4412A28D246541F10054DE04 /* OverallScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallScoreView.swift; sourceTree = "<group>"; };
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		445F93A42461CE7B00D39168 /* PitchingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultCell.swift; sourceTree = "<group>"; };
 		445F93A62461CFB300D39168 /* CircleNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleNumberLabel.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		4491C8CA24619520005049F9 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 		4491C8CC246195F2005049F9 /* DiamondShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondShapeView.swift; sourceTree = "<group>"; };
 		4491C8CE2461976F005049F9 /* PentagonShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonShapeView.swift; sourceTree = "<group>"; };
+		44A86EAB2466EEBA00A57CBC /* ScoreStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStackView.swift; sourceTree = "<group>"; };
 		44D22FBF2462A8B400AC08CC /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		44D22FC12462A8DE00AC08CC /* ScoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDataSource.swift; sourceTree = "<group>"; };
 		44D22FC42462ADF600AC08CC /* UILabel+bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+bold.swift"; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				4491C8CE2461976F005049F9 /* PentagonShapeView.swift */,
 				4457B1C82461B3A800A46673 /* CircleShapeView.swift */,
 				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
+				4412A28D246541F10054DE04 /* OverallScoreView.swift */,
+				44A86EAB2466EEBA00A57CBC /* ScoreStackView.swift */,
 			);
 			path = GameProgress;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4412A28E246541F10054DE04 /* OverallScoreView.swift in Sources */,
 				44D22FC82465252200AC08CC /* NetworkManager.swift in Sources */,
 				4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */,
 				445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */,
@@ -290,6 +297,7 @@
 				445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */,
 				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
+				44A86EAC2466EEBA00A57CBC /* ScoreStackView.swift in Sources */,
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
 				44D22FD02465341500AC08CC /* PitchUseCase.swift in Sources */,
 				4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */,
