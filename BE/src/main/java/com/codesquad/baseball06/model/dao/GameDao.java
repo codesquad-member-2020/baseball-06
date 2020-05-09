@@ -1,11 +1,15 @@
 package com.codesquad.baseball06.model.dao;
 
 import static com.codesquad.baseball06.model.query.Game.INSERT;
+import static com.codesquad.baseball06.model.query.Game.UPDATE_AWAY_USER;
+import static com.codesquad.baseball06.model.query.Game.UPDATE_HOME_USER;
 import static com.codesquad.baseball06.model.query.Team.FIND_BY_ID;
 
 import com.codesquad.baseball06.model.dao.mapper.GameMapper;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.Team;
+import com.codesquad.baseball06.model.entity.User;
+import com.codesquad.baseball06.model.type.TeamType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -31,11 +35,22 @@ public class GameDao {
     return jdbcTemplate.queryForObject(FIND_BY_ID, namedParameters, gameMapper).get(0);
   }
 
-  public int createGame(Team away, Team home) {
+  public int create(Team away, Team home) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("away_id", away.getId())
         .addValue("home_id", home.getId());
 
     return jdbcTemplate.update(INSERT, namedParameters);
+  }
+
+  public int join(long id, User user, TeamType teamType) {
+    SqlParameterSource namedParameters = new MapSqlParameterSource()
+        .addValue("id", id)
+        .addValue(teamType.name(), user.getEmail());
+
+    if (teamType.equals(TeamType.AWAY)) {
+      return jdbcTemplate.update(UPDATE_AWAY_USER, namedParameters);
+    }
+    return jdbcTemplate.update(UPDATE_HOME_USER, namedParameters);
   }
 }
