@@ -31,7 +31,7 @@ public class GameDao {
     return jdbcTemplate.queryForObject(FIND_BY_ID, namedParameters, gameMapper).get(0);
   }
 
-  public int insertGame(Team away, Team home) {
+  public int createGame(Team away, Team home) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("away_id", away.getId())
         .addValue("home_id", home.getId());

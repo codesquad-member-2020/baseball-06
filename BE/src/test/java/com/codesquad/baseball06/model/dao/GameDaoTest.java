@@ -16,11 +16,11 @@ class GameDaoTest {
   private GameDao gameDao;
 
   @Test
-  void insertGame() {
+  void createGame() {
     Team away = teamDao.findTeamById(4L);
     Team home = teamDao.findTeamById(2L);
 
-    Assertions.assertThat(gameDao.insertGame(away, home))
+    Assertions.assertThat(gameDao.createGame(away, home))
         .isOne();
   }
 }
