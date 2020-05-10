@@ -38,7 +38,7 @@ CREATE TABLE plate_appearance
     pitcher      INT     NOT NULL,
     batter       INT     NOT NULL,
     batter_index INT     NOT NULL,
-    result       INT     NULL DEFAULT NULL,
+    result       INT     NULL     DEFAULT NULL,
     created_at   TIMESTAMP        DEFAULT NOW(),
     end          TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
@@ -83,9 +83,9 @@ CREATE TABLE base_status
 CREATE TABLE inning_status
 (
     id           INT NOT NULL AUTO_INCREMENT,
-    strike_count INT NOT NULL,
-    ball_count   INT NOT NULL,
-    out_count    INT NOT NULL,
-    inning_id    INT NOT NULL,
+    half_inning_id    INT NOT NULL,
+    strike_count INT NOT NULL DEFAULT 0,
+    ball_count   INT NOT NULL DEFAULT 0,
+    out_count    INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
