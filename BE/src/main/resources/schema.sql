@@ -25,7 +25,7 @@ CREATE TABLE half_inning
     game_id      INT     NOT NULL,
     inning_index INT     NOT NULL,
     type         TINYINT NOT NULL,
-    score        INT     NOT NULL,
+    score        INT     NOT NULL DEFAULT 0,
     end          TINYINT NOT NULL DEFAULT 0,
     created_at   TIMESTAMP        DEFAULT NOW(),
     PRIMARY KEY (id)
@@ -38,7 +38,7 @@ CREATE TABLE plate_appearance
     pitcher      INT     NOT NULL,
     batter       INT     NOT NULL,
     batter_index INT     NOT NULL,
-    result       INT     NULL,
+    result       INT     NULL DEFAULT NULL,
     created_at   TIMESTAMP        DEFAULT NOW(),
     end          TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
