@@ -12,9 +12,18 @@ const img = "http://ih2.redbubble.net/image.12303484.4729/sticker,375x360.png";
 function PlayGround() {
   const initialBallTopCoord = 45;
   const initialBallLeftCoord = 55;
+  const batterEndCoord = 385;
+  const waitMessage = "기다려😛";
+  const scoreMessage = "1득점🥰";
+  const resultKey = {
+    strike: "STRIKE",
+    ball: "BALL",
+    fourballs: "END",
+    hit: "HIT",
+    out: "OUT",
+  };
 
-  const [batterCoord, setBatterCoord] = useState(385);
-
+  const [batterCoord, setBatterCoord] = useState(batterEndCoord);
   const [ballTopCoord, setBallTopCoord] = useState(initialBallTopCoord);
   const [ballLeftCoord, setBallLeftCoord] = useState(initialBallLeftCoord);
   const [batterDisplay, setBatterDisplay] = useState(true);
@@ -24,9 +33,10 @@ function PlayGround() {
   const [result, setResult] = useState("");
   const batterCoordCount = useRef(0);
   const ballCoord = useRef(0);
-  const count = useRef(3);
+  const count = useRef(0);
   const batter = useRef();
   const scoredBatter = useRef();
+
   const onPitch = useCallback(() => {
     pitchAnimation();
   });
@@ -34,12 +44,14 @@ function PlayGround() {
   const pitchAnimation = () => {
     let ballRaf = null;
     const initBallCoord = 120;
+    const hitBallCoord = 100;
+
     showResult();
 
-    const hitBallCoord = 100;
     if (ballCoord.current > hitBallCoord) {
       hitBall();
     }
+
     if (ballCoord.current > initBallCoord) {
       return initBall(ballRaf);
     }
@@ -74,41 +86,53 @@ function PlayGround() {
     fetch(GAME_RESULT_URL)
       .then((res) => res.json())
       .then((data) => {
-        const result = data.body.battingResult;
+        const resultData = data.body.battingResult;
+        let result = resultData;
+        if (result === resultKey.fourballs) result = "4 BALL";
         setResult(result + "!!");
+        judgeResult(resultData);
         showPitchBtn();
-        if (result === "HIT" || result === "END") {
-          count.current++;
-          replaceBatter();
-          moveBatter();
-        } else if (result === "OUT") {
-          replaceBatter();
-        }
       });
+  };
+
+  const judgeResult = (result) => {
+    const { hit, fourballs, out } = resultKey;
+    if (result === hit || result === fourballs) {
+      count.current++;
+      replaceBatter();
+      moveBatter();
+    } else if (result === out) {
+      replaceBatter();
+    }
   };
 
   useEffect(() => {
     let timeout = null;
-    if (count.current >= 4) {
-      scoredBatter.current.style.display = "block";
-      timeout = setTimeout(() => {
-        scoredBatter.current.style.display = "none";
-      }, 1000);
+    const thirdBase = 4;
 
-      setResult((prevState) => `${prevState} 1득점🥰`);
-      debugger;
-      setResultScale(true);
-      setTimeout(() => setResultScale(false), 1500);
+    if (count.current >= thirdBase) {
+      setSore("block", true);
+      setResult((prevResult) => prevResult + " " + scoreMessage);
+
+      timeout = setTimeout(() => {
+        setSore("none", false);
+      }, 1000);
     }
+
     return () => {
       clearTimeout(timeout);
     };
   }, [count.current]);
 
+  const setSore = (batterDisplay, isScale) => {
+    scoredBatter.current.style.display = batterDisplay;
+    setResultScale(isScale);
+  };
+
   const showResult = () => {
     setPitchBtnDisplay("none");
     setResultDisplay("block");
-    setResult("기다려😛");
+    setResult(waitMessage);
   };
 
   const showPitchBtn = () => {
@@ -125,10 +149,9 @@ function PlayGround() {
 
   const moveBatter = () => {
     const movingSpeed = 13;
-    const endCoord = 385;
     let batterRaf = null;
 
-    if (batterCoordCount.current > endCoord) {
+    if (batterCoordCount.current > batterEndCoord) {
       batterCoordCount.current = 0;
       return cancelAnimationFrame(batterRaf);
     }
@@ -180,18 +203,6 @@ function PlayGround() {
     </ThemeProvider>
   );
 }
-
-// const batterHit = keyframes`
-//   0% {
-//     transform: rotateY(0deg);
-//   }
-//   50% {
-//     transform: rotateY(180deg);
-//   }
-//   100% {
-//     transform: rotateY(0deg);
-//   }
-//   `;
 
 const box = css`
   margin-top: 20px;
@@ -270,11 +281,9 @@ const Batter1 = styled.div`
 `;
 
 const Batter2 = styled.div`
-  display: ${(props) => {
-    return props.count.current >= props.displayCount ? "block" : "none";
-  }};
+  display: ${(props) =>
+    props.count.current >= props.displayCount ? "block" : "none"};
  ${Batter}
-
   transform: ${(props) => `translate(${props.coord}px)`};
 `;
 
