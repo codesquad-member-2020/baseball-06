@@ -3,15 +3,15 @@ package com.codesquad.baseball06.model.entity;
 public class BaseStatus {
 
   private final Long id;
-  private final Long inningId;
+  private final Long halfInningId;
   private Player firstBase;
   private Player secondBase;
   private Player thirdBase;
 
-  public BaseStatus(Long id, Long inningId, Player firstBase, Player secondBase,
+  public BaseStatus(Long id, Long halfInningId, Player firstBase, Player secondBase,
       Player thirdBase) {
     this.id = id;
-    this.inningId = inningId;
+    this.halfInningId = halfInningId;
     this.firstBase = firstBase;
     this.secondBase = secondBase;
     this.thirdBase = thirdBase;
@@ -26,8 +26,8 @@ public class BaseStatus {
     return id;
   }
 
-  public Long getInningId() {
-    return inningId;
+  public Long getHalfInningId() {
+    return halfInningId;
   }
 
   public Player getFirstBase() {

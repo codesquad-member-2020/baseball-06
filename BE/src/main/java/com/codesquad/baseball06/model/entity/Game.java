@@ -65,6 +65,14 @@ public class Game {
     return createdAt;
   }
 
+  public List<HalfInning> getEarlyInningList() {
+    return earlyInningList;
+  }
+
+  public List<HalfInning> getLateInningList() {
+    return lateInningList;
+  }
+
   private boolean isUserJoined(TeamType teamType) {
     return Objects.nonNull(users.get(teamType.getCode()).getEmail());
   }
