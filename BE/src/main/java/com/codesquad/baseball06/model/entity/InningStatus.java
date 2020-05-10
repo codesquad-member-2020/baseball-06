@@ -5,42 +5,26 @@ import com.codesquad.baseball06.model.type.BattingResult;
 public class InningStatus {
 
   private final Long id;
-  private final Long inningId;
+  private final Long halfInningId;
   private Integer strike;
   private Integer ball;
   private Integer out;
 
-  public InningStatus(Long id, Integer strike, Integer ball, Integer out, Long inningId) {
+  public InningStatus(Long id, Long halfInningId, Integer strike, Integer ball, Integer out) {
     this.id = id;
+    this.halfInningId = halfInningId;
     this.strike = strike;
     this.ball = ball;
     this.out = out;
-    this.inningId = inningId;
   }
 
-  public static InningStatus create(Long id, Integer strike, Integer ball, Integer out,
-      Long inningId) {
-    return new InningStatus(id, strike, ball, out, inningId);
+  public static InningStatus create(Long id, Long halfInningId, Integer strike, Integer ball,
+      Integer out) {
+    return new InningStatus(id, halfInningId, strike, ball, out);
   }
 
-  public Long getId() {
-    return id;
-  }
-
-  public Integer getStrike() {
-    return strike;
-  }
-
-  public Integer getBall() {
-    return ball;
-  }
-
-  public Integer getOut() {
-    return out;
-  }
-
-  public Long getInningId() {
-    return inningId;
+  public static InningStatus create(Long halfInningId) {
+    return new InningStatus(null, halfInningId, null, null, null);
   }
 
   public boolean isHit() {
@@ -93,5 +77,25 @@ public class InningStatus {
         .append(getBall()).append("B ")
         .append(getOut()).append("O")
         .toString();
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public Long getHalfInningId() {
+    return halfInningId;
+  }
+
+  public Integer getStrike() {
+    return strike;
+  }
+
+  public Integer getBall() {
+    return ball;
+  }
+
+  public Integer getOut() {
+    return out;
   }
 }
