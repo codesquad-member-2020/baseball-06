@@ -20,6 +20,7 @@ function PlayGround() {
   const [batterDisplay, setBatterDisplay] = useState(true);
   const [resultDisplay, setResultDisplay] = useState(true);
   const [pitchBtnDisplay, setPitchBtnDisplay] = useState("block");
+  const [resultScale, setResultScale] = useState(false);
   const [result, setResult] = useState("");
   const batterCoordCount = useRef(0);
   const ballCoord = useRef(0);
@@ -32,7 +33,7 @@ function PlayGround() {
 
   const pitchAnimation = () => {
     let ballRaf = null;
-    const initBallCoord = 150;
+    const initBallCoord = 120;
     showResult();
 
     const hitBallCoord = 100;
@@ -74,7 +75,7 @@ function PlayGround() {
       .then((res) => res.json())
       .then((data) => {
         const result = data.body.battingResult;
-        setResult(result);
+        setResult(result + "!!");
         showPitchBtn();
         if (result === "HIT" || result === "END") {
           count.current++;
@@ -90,10 +91,14 @@ function PlayGround() {
     let timeout = null;
     if (count.current >= 4) {
       scoredBatter.current.style.display = "block";
-      timeout = setTimeout(
-        () => (scoredBatter.current.style.display = "none"),
-        1000
-      );
+      timeout = setTimeout(() => {
+        scoredBatter.current.style.display = "none";
+      }, 1000);
+
+      setResult((prevState) => `${prevState} 1득점🥰`);
+      debugger;
+      setResultScale(true);
+      setTimeout(() => setResultScale(false), 1500);
     }
     return () => {
       clearTimeout(timeout);
@@ -103,7 +108,7 @@ function PlayGround() {
   const showResult = () => {
     setPitchBtnDisplay("none");
     setResultDisplay("block");
-    setResult("기다려");
+    setResult("기다려😛");
   };
 
   const showPitchBtn = () => {
@@ -136,7 +141,9 @@ function PlayGround() {
   return (
     <ThemeProvider theme={theme}>
       <GroundArea>
-        <ResultBox display={resultDisplay}>{result}!!</ResultBox>
+        <ResultBox display={resultDisplay} resultScale={resultScale}>
+          {result}
+        </ResultBox>
         <PitcherArea>
           <Pitcher></Pitcher>
           <Ball ballTopCoord={ballTopCoord} ballLeftCoord={ballLeftCoord} />
@@ -189,7 +196,7 @@ function PlayGround() {
 const box = css`
   margin-top: 20px;
   padding: 10px 0;
-  width: 263px;
+  min-width: 263px;
   height: 70px;
   display: ${(props) => (props.display === "block" ? "block" : "none")};
   text-align: center;
@@ -200,6 +207,9 @@ const box = css`
 const ResultBox = styled.div`
   ${box};
   background-color: ${(props) => props.theme.backgroundColor};
+  transition: all 0.4s ease-in-out;
+  transform: ${(props) => props.resultScale && "scale(1.8)"};
+  z-index: ${(props) => props.resultScale && "1"};
   border: ${(props) => "3px dashed" + props.theme.highlightColor};
 `;
 
