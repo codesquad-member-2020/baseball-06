@@ -27,10 +27,6 @@ public class InningController {
 
   @GetMapping("/dowork")
   public ApiResponse doWork() {
-    HalfInning halfInning = HalfInning.create(5L, 1, 1, InningType.EARLY, 2, 1, 2);
-    Pitcher pitcher = Pitcher.create(1L, "김투수");
-    Batter batter = Batter.create(2L, "홍타자", 0.222);
-
-    return ApiResponse.ok(inningService.doWork(halfInning, pitcher, batter));
+    return ApiResponse.ok(null);
   }
 }
