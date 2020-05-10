@@ -7,12 +7,21 @@ import static com.codesquad.baseball06.model.query.Test.GAME_SQL_TEST;
 import static com.codesquad.baseball06.model.query.Test.INNINGSTATUS_SQL_TEST;
 import static com.codesquad.baseball06.model.query.Test.SCORE_SQL_TEST;
 
+import com.codesquad.baseball06.dto.ScoreDto;
 import com.codesquad.baseball06.dto.UpdatedBasemanDto;
 import com.codesquad.baseball06.model.dao.mapper.BasemanStatusMapper;
 import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
+import com.codesquad.baseball06.model.dao.mapper.InningIndexTypeMapper;
 import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningStatusMapper;
+import com.codesquad.baseball06.model.dao.mapper.ScoreMapper;
 import com.codesquad.baseball06.model.entity.InningStatus;
+import com.codesquad.baseball06.model.query.Inning;
+import com.codesquad.baseball06.model.type.InningType;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -29,16 +38,22 @@ public class StatusDao {
   private final BatterMapper batterMapper;
   private final InningStatusMapper inningStatusMapper;
   private final BasemanStatusMapper basemanStatusMapper;
+  private final ScoreMapper scoreMapper;
+  private final InningIndexTypeMapper inningIndexTypeMapper;
 
   public StatusDao(NamedParameterJdbcTemplate jdbcTemplate, PitcherMapper pitcherMapper,
       BatterMapper batterMapper,
       InningStatusMapper inningStatusMapper,
-      BasemanStatusMapper basemanStatusMapper) {
+      BasemanStatusMapper basemanStatusMapper,
+      ScoreMapper scoreMapper,
+      InningIndexTypeMapper inningIndexTypeMapper) {
     this.jdbcTemplate = jdbcTemplate;
     this.pitcherMapper = pitcherMapper;
     this.batterMapper = batterMapper;
     this.inningStatusMapper = inningStatusMapper;
     this.basemanStatusMapper = basemanStatusMapper;
+    this.scoreMapper = scoreMapper;
+    this.inningIndexTypeMapper = inningIndexTypeMapper;
   }
 
   public void InitForTest() {
@@ -102,12 +117,24 @@ public class StatusDao {
     return jdbcTemplate.query(BASEMAN_SQL, basemanStatusMapper).get(0);
   }
 
-//  public boolean getHomeScore() {
-//  }
-//
-//  public boolean getAwayScore() {
-//  }
-//
+  public ScoreDto getScores(Long game_id) throws Exception {
+
+    SqlParameterSource gameParameters = new MapSqlParameterSource()
+        .addValue("game_id", game_id);
+
+    Map<String, Integer> scoreMap = jdbcTemplate
+        .queryForObject(Inning.GET_TEAM_SCORES, gameParameters, scoreMapper);
+    Map<String, Integer> statusList = jdbcTemplate
+        .queryForObject(Inning.GET_INNING_INDEX_AND_TYPE, gameParameters, inningIndexTypeMapper);
+
+    return ScoreDto.create(
+        Objects.requireNonNull(scoreMap).get("home"),
+        scoreMap.get("away"),
+        Objects.requireNonNull(statusList).get("inning_index"),
+        InningType.findType(statusList.get("type"))
+    );
+  }
+
 //  public boolean getUpdatedPitcher() {
 //  }
 //
