@@ -24,20 +24,12 @@ function PlayGround() {
   const [resultDisplay, setResultDisplay] = useState(true);
   const [pitchBtnDisplay, setPitchBtnDisplay] = useState("block");
   const [result, setResult] = useState("");
-  const [hitCoord, setHitCoord] = useState(0);
   const batterCoordCount = useRef(0);
   const ballCoord = useRef(0);
-  const hitCoordCount = useRef(0);
   const count = useRef(0);
   const batter = useRef();
-  const hitIncreaseRaf = useRef();
-  const hitDecreaseRaf = useRef();
-  // const ballRaf = useRef(0);
   const onPitch = () => {
-    // animation();
     pitchAnimation();
-
-    //fetch 해온뒤 결과가 스트라이크면 count를 올리지 않는다
   };
 
   const pitchAnimation = () => {
@@ -103,28 +95,26 @@ function PlayGround() {
           <Pitcher></Pitcher>
           <Ball ballTopCoord={ballTopCoord} ballLeftCoord={ballLeftCoord} />
         </PitcherArea>
-        <Ground top={top} left={left} deg={deg}>
-          <Player
+        <Ground top={65} left={43} deg={-28}>
+          <Player1
             ref={batter}
-            hitCoord={hitCoord}
-            rotation={rotation}
             coord={batterCoord}
             count={count}
             hitterDisplay={hitterDisplay}
           />
         </Ground>
-        <Ground1 top={top} left={left} deg={deg}>
-          <Player1 rotation={rotation} coord={batterCoord} count={count} />
-        </Ground1>
-        <Ground2>
-          <Player2 rotation={rotation} coord={batterCoord} count={count} />
-        </Ground2>
-        <Ground3>
-          <Player3 rotation={rotation} coord={batterCoord} count={count} />
-        </Ground3>
-        <Ground4>
-          <Player4 rotation={rotation} coord={batterCoord} count={count} />
-        </Ground4>
+        <Ground top={65} left={43} deg={-28}>
+          <Player2 coord={batterCoord} count={count} displayCount={1} />
+        </Ground>
+        <Ground top={31} left={50} deg={-162}>
+          <Player3 coord={batterCoord} count={count} displayCount={2} />
+        </Ground>
+        <Ground top={29} left={28} deg={-201}>
+          <Player3 coord={batterCoord} count={count} displayCount={3} />
+        </Ground>
+        <Ground top={60} left={27} deg={30}>
+          <Player2 coord={batterCoord} count={count} displayCount={4} />
+        </Ground>
         <PitchBtnBox display={pitchBtnDisplay} onClick={onPitch}>
           Pitch
         </PitchBtnBox>
@@ -133,17 +123,17 @@ function PlayGround() {
   );
 }
 
-const batterHit = keyframes`
-  0% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
-  `;
+// const batterHit = keyframes`
+//   0% {
+//     transform: rotateY(0deg);
+//   }
+//   50% {
+//     transform: rotateY(180deg);
+//   }
+//   100% {
+//     transform: rotateY(0deg);
+//   }
+//   `;
 
 const box = css`
   margin-top: 20px;
@@ -182,52 +172,10 @@ const Ball = styled.div`
 
 const Ground = styled.div`
   position: absolute;
-
-  /* border: 1px solid red; */
-
   width: 397px;
-
   top: ${(props) => props.top + "%"};
   left: ${(props) => props.left + "%"};
   transform: ${(props) => `rotate(${props.deg}deg)`};
-`;
-const Ground1 = styled.div`
-  position: absolute;
-
-  /* border: 1px solid red; */
-
-  width: 397px;
-
-  top: ${(props) => props.top + "%"};
-  left: ${(props) => props.left + "%"};
-  transform: ${(props) => `rotate(${props.deg}deg)`};
-`;
-const Ground2 = styled.div`
-  position: absolute;
-
-  width: 397px;
-
-  top: 31%;
-  left: 50%;
-  transform: rotate(-162deg);
-`;
-const Ground3 = styled.div`
-  position: absolute;
-
-  width: 397px;
-
-  top: 29%;
-  left: 28%;
-  transform: rotate(-201deg);
-`;
-const Ground4 = styled.div`
-  position: absolute;
-
-  width: 397px;
-
-  top: 60%;
-  left: 27%;
-  transform: rotate(30deg);
 `;
 
 const PitcherArea = styled.div`
@@ -241,78 +189,37 @@ const PitcherArea = styled.div`
 
 const Pitcher = styled.div`
   width: 100%;
-
   height: 100%;
   background: no-repeat url(${pticherImg});
   background-position: center;
   background-size: cover;
 `;
 
-const Player = styled.div`
-
-display: ${(props) => {
-  console.log(props.hitterDisplay);
-  return props.hitterDisplay ? "block" : "none";
-}};
-
+const Player = css`
   width: 80px;
   height: 100px;
-
-  transform: ${(props) => `rotateY(${props.hitCoord}deg)`};
- 
-
   background: no-repeat url(${img});
   background-position: center;
   background-size: cover;
-  /* transform: ${(props) => `translate(${props.coord}px)`}; */
 `;
+
 const Player1 = styled.div`
-  display: ${(props) => {
-    return props.count.current >= 1 ? "block" : "none";
-  }};
-
-  width: 80px;
-  height: 100px;
-
-  background: no-repeat url(${img});
-  background-position: center;
-  background-size: cover;
-  transform: ${(props) => `translate(${props.coord}px)`};
+  display: ${(props) => (props.hitterDisplay ? "block" : "none")};
+  ${Player}
 `;
+
 const Player2 = styled.div`
-  display: ${(props) => (props.count.current >= 2 ? "block" : "none")};
-
-  width: 80px;
-  height: 100px;
-  background: no-repeat url(${img});
-  background-position: center;
-  background-size: cover;
-
-  transform: ${(props) => `rotateX(188deg) translate(${props.coord}px)`};
-`;
-const Player3 = styled.div`
-  display: ${(props) => (props.count.current >= 3 ? "block" : "none")};
-
-  width: 80px;
-  height: 100px;
-  background: no-repeat url(${img});
-  background-position: center;
-  background-size: cover;
-
-  transform: ${(props) => `rotateX(188deg) translate(${props.coord}px)`};
-`;
-const Player4 = styled.div`
-  display: ${(props) => {
-    return props.count.current === 4 ? "block" : "none";
-  }};
-
-  width: 80px;
-  height: 100px;
-
-  background: no-repeat url(${img});
-  background-position: center;
-  background-size: cover;
+  display: ${(props) =>
+    props.count.current >= props.displayCount ? "block" : "none"};
+ ${Player}
   transform: ${(props) => `translate(${props.coord}px)`};
+`;
+
+const Player3 = styled.div`
+  display: ${(props) =>
+    props.count.current >= props.displayCount ? "block" : "none"};
+${Player}
+  transform: ${(props) => `rotateX(188deg) translate(${props.coord}px)`};
 `;
 
 const PitchBtnBox = styled.button`
