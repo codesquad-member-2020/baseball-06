@@ -1,75 +1,121 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import styled, { ThemeProvider, css, keyframes } from "styled-components";
+import styled, { ThemeProvider, css } from "styled-components";
 import theme from "../../styles/theme";
-import ground from "../../styles/images/ground.jpg";
+import { GAME_RESULT_URL } from "../../constants/url";
 
 const pticherImg =
   "https://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png";
 const ballImg =
   "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 const img = "http://ih2.redbubble.net/image.12303484.4729/sticker,375x360.png";
-// const img =
-// "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bff79450-9f9c-4baf-af12-b6289ab026d8/d5xpfor-f6658e45-58a4-44e4-b204-431b39285355.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYmZmNzk0NTAtOWY5Yy00YmFmLWFmMTItYjYyODlhYjAyNmQ4XC9kNXhwZm9yLWY2NjU4ZTQ1LTU4YTQtNDRlNC1iMjA0LTQzMWIzOTI4NTM1NS5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.U3JxM9boQ07PxcmUJEqYcM8zqJ_u1TmDaZ_yC8Nku-0";
 
 function PlayGround() {
-  const [batterCoord, setBatterCoord] = useState(0);
-  const [rotation, setRotation] = useState(187);
-  const [top, setTop] = useState(65);
-  const [left, setLeft] = useState(43);
-  const [deg, setDeg] = useState(-28);
+  const initialBallTopCoord = 45;
+  const initialBallLeftCoord = 55;
 
-  const [ballTopCoord, setBallTopCoord] = useState(45);
-  const [ballLeftCoord, setBallLeftCoord] = useState(55);
-  const [hitterDisplay, setHitterDisplay] = useState(true);
+  const [batterCoord, setBatterCoord] = useState(385);
+
+  const [ballTopCoord, setBallTopCoord] = useState(initialBallTopCoord);
+  const [ballLeftCoord, setBallLeftCoord] = useState(initialBallLeftCoord);
+  const [batterDisplay, setBatterDisplay] = useState(true);
   const [resultDisplay, setResultDisplay] = useState(true);
   const [pitchBtnDisplay, setPitchBtnDisplay] = useState("block");
   const [result, setResult] = useState("");
   const batterCoordCount = useRef(0);
   const ballCoord = useRef(0);
-  const count = useRef(0);
+  const count = useRef(3);
   const batter = useRef();
-  const onPitch = () => {
+  const scoredBatter = useRef();
+  const onPitch = useCallback(() => {
     pitchAnimation();
-  };
+  });
 
   const pitchAnimation = () => {
     let ballRaf = null;
-    const ballEndCoord = 150;
+    const initBallCoord = 150;
+    showResult();
+
+    const hitBallCoord = 100;
+    if (ballCoord.current > hitBallCoord) {
+      hitBall();
+    }
+    if (ballCoord.current > initBallCoord) {
+      return initBall(ballRaf);
+    }
+
+    moveBall();
+    ballRaf = requestAnimationFrame(pitchAnimation);
+  };
+
+  const moveBall = () => {
+    const ballSpeed = 5;
+    const ballLeftSpped = 2.5;
+
+    ballCoord.current += ballSpeed;
+    setBallTopCoord((prevState) => prevState + ballSpeed);
+    setBallLeftCoord((prevState) => prevState - ballLeftSpped);
+  };
+
+  const hitBall = () => {
+    batter.current.style.transform = "rotateY(140deg)";
+    setTimeout(() => (batter.current.style.transform = "rotateY(0deg)"), 100);
+  };
+
+  const initBall = (ballRaf) => {
+    ballCoord.current = 0;
+    setBallTopCoord(initialBallTopCoord);
+    setBallLeftCoord(initialBallLeftCoord);
+    cancelAnimationFrame(ballRaf);
+    return fetchResult();
+  };
+
+  const fetchResult = () => {
+    fetch(GAME_RESULT_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        const result = data.body.battingResult;
+        setResult(result);
+        showPitchBtn();
+        if (result === "HIT" || result === "END") {
+          count.current++;
+          replaceBatter();
+          moveBatter();
+        } else if (result === "OUT") {
+          replaceBatter();
+        }
+      });
+  };
+
+  useEffect(() => {
+    let timeout = null;
+    if (count.current >= 4) {
+      scoredBatter.current.style.display = "block";
+      timeout = setTimeout(
+        () => (scoredBatter.current.style.display = "none"),
+        1000
+      );
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [count.current]);
+
+  const showResult = () => {
     setPitchBtnDisplay("none");
     setResultDisplay("block");
     setResult("기다려");
+  };
 
-    if (ballCoord.current > 100) {
-      batter.current.style.transform = "rotateY(140deg)";
-      setTimeout(() => (batter.current.style.transform = "rotateY(0deg)"), 100);
-    }
-    if (ballCoord.current > ballEndCoord) {
-      ballCoord.current = 0;
-      setBallTopCoord(45);
-      setBallLeftCoord(55);
-      cancelAnimationFrame(ballRaf);
-      fetch("http://15.164.101.161:8080/dev/dotest")
-        .then((res) => res.json())
-        .then((data) => {
-          setResult(data.body.battingResult);
-          setTimeout(() => {
-            setPitchBtnDisplay("block");
-            setResultDisplay("none");
-          }, 1000);
-          if (data.body.battingResult === "HIT") {
-            count.current++;
-            setHitterDisplay(false);
-            setTimeout(() => setHitterDisplay(true), 1000);
-            moveBatter();
-          }
-        });
+  const showPitchBtn = () => {
+    setTimeout(() => {
+      setPitchBtnDisplay("block");
+      setResultDisplay("none");
+    }, 1000);
+  };
 
-      return;
-    }
-    ballCoord.current += 5;
-    setBallTopCoord((prevState) => prevState + 5);
-    setBallLeftCoord((prevState) => prevState - 2.5);
-    ballRaf = requestAnimationFrame(pitchAnimation);
+  const replaceBatter = () => {
+    setBatterDisplay(false);
+    setTimeout(() => setBatterDisplay(true), 1000);
   };
 
   const moveBatter = () => {
@@ -96,24 +142,29 @@ function PlayGround() {
           <Ball ballTopCoord={ballTopCoord} ballLeftCoord={ballLeftCoord} />
         </PitcherArea>
         <Ground top={65} left={43} deg={-28}>
-          <Player1
+          <Batter1
             ref={batter}
             coord={batterCoord}
             count={count}
-            hitterDisplay={hitterDisplay}
+            batterDisplay={batterDisplay}
           />
         </Ground>
         <Ground top={65} left={43} deg={-28}>
-          <Player2 coord={batterCoord} count={count} displayCount={1} />
+          <Batter2 coord={batterCoord} count={count} displayCount={1} />
         </Ground>
         <Ground top={31} left={50} deg={-162}>
-          <Player3 coord={batterCoord} count={count} displayCount={2} />
+          <Batter3 coord={batterCoord} count={count} displayCount={2} />
         </Ground>
         <Ground top={29} left={28} deg={-201}>
-          <Player3 coord={batterCoord} count={count} displayCount={3} />
+          <Batter3 coord={batterCoord} count={count} displayCount={3} />
         </Ground>
         <Ground top={60} left={27} deg={30}>
-          <Player2 coord={batterCoord} count={count} displayCount={4} />
+          <Batter2
+            coord={batterCoord}
+            count={count}
+            displayCount={4}
+            ref={scoredBatter}
+          />
         </Ground>
         <PitchBtnBox display={pitchBtnDisplay} onClick={onPitch}>
           Pitch
@@ -195,7 +246,7 @@ const Pitcher = styled.div`
   background-size: cover;
 `;
 
-const Player = css`
+const Batter = css`
   width: 80px;
   height: 100px;
   background: no-repeat url(${img});
@@ -203,22 +254,24 @@ const Player = css`
   background-size: cover;
 `;
 
-const Player1 = styled.div`
-  display: ${(props) => (props.hitterDisplay ? "block" : "none")};
-  ${Player}
+const Batter1 = styled.div`
+  display: ${(props) => (props.batterDisplay ? "block" : "none")};
+  ${Batter}
 `;
 
-const Player2 = styled.div`
-  display: ${(props) =>
-    props.count.current >= props.displayCount ? "block" : "none"};
- ${Player}
+const Batter2 = styled.div`
+  display: ${(props) => {
+    return props.count.current >= props.displayCount ? "block" : "none";
+  }};
+ ${Batter}
+
   transform: ${(props) => `translate(${props.coord}px)`};
 `;
 
-const Player3 = styled.div`
+const Batter3 = styled.div`
   display: ${(props) =>
     props.count.current >= props.displayCount ? "block" : "none"};
-${Player}
+${Batter}
   transform: ${(props) => `rotateX(188deg) translate(${props.coord}px)`};
 `;
 
