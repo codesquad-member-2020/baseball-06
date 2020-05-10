@@ -27,6 +27,12 @@ class GameDaoTest {
   }
 
   @Test
+  void findById() {
+    Assertions.assertThat(gameDao.findGameById(1L))
+        .isNotNull();
+  }
+
+  @Test
   void join_away() {
     User awayUser = User.create("away email11");
 
