@@ -26,15 +26,14 @@ public class HalfInning {
     this.createdAt = createdAt;
   }
 
-  private HalfInning(Long gameId, Integer index,
-      InningType type, Integer score, Boolean end, LocalDateTime createdAt) {
+  private HalfInning(Long gameId, Integer index, InningType type) {
     this.id = null;
     this.gameId = gameId;
     this.index = index;
     this.type = type;
-    this.score = score;
-    this.end = end;
-    this.createdAt = createdAt;
+    this.score = 0;
+    this.end = false;
+    this.createdAt = null;
   }
 
   public static HalfInning create(Long id, Long gameId, Integer index,
@@ -42,9 +41,8 @@ public class HalfInning {
     return new HalfInning(id, gameId, index, type, score, end, createdAt);
   }
 
-  public static HalfInning create(Long gameId, Integer index,
-      InningType type, Integer score, Boolean end, LocalDateTime createdAt) {
-    return new HalfInning(gameId, index, type, score, end, createdAt);
+  public static HalfInning create(Long gameId, Integer index, InningType type) {
+    return new HalfInning(gameId, index, type);
   }
 
   public Long getId() {
@@ -102,15 +100,15 @@ public class HalfInning {
 //    return BattingResult.BALL;
 //  }
 //
-//  public void newPlateAppearance() {
-//    ball = 0;
-//    strike = 0;
-//  }
+//public void newPlateAppearance() {
+//  ball = 0;
+//  strike = 0;
+//}
 //
 //  public void newInning() {
-//    newPlateAppearance();
-//    out = 0;
-//  }
+//  newPlateAppearance();
+//  out = 0;
+//}
 //
 //  public String getStatus() {
 //    StringBuilder sb = new StringBuilder();
