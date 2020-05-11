@@ -1,10 +1,8 @@
 package com.codesquad.baseball06.service;
 
 
-import com.codesquad.baseball06.model.entity.Batter;
+import com.codesquad.baseball06.model.dao.HalfInningDao;
 import com.codesquad.baseball06.model.entity.HalfInning;
-import com.codesquad.baseball06.model.entity.Pitcher;
-import com.codesquad.baseball06.model.type.BattingResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,20 +11,18 @@ import org.springframework.stereotype.Service;
 public class InningService {
 
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
+  private final HalfInningDao halfInningDao;
 
-  private final PlateAppearanceService plateAppearanceService;
-
-  public InningService(PlateAppearanceService plateAppearanceService) {
-    this.plateAppearanceService = plateAppearanceService;
+  public InningService(HalfInningDao halfInningDao) {
+    this.halfInningDao = halfInningDao;
   }
 
-  public BattingResult doWork(HalfInning halfInning, Pitcher pitcher, Batter batter) {
-    BattingResult plateAppearanceResult = plateAppearanceService.batting(halfInning, pitcher, batter);
+  public int addHalfInning(HalfInning addedHalfInning) {
+    return halfInningDao.create(
+        addedHalfInning.getGameId(), addedHalfInning.getIndex(), addedHalfInning.getType());
+  }
 
-    if (halfInning.isFinished()) {
-      return BattingResult.END;
-    }
-
-    return plateAppearanceResult;
+  public HalfInning getHalfInnning(Long gameId) {
+    return halfInningDao.findHalfInningByGameIdAndLast(gameId);
   }
 }
