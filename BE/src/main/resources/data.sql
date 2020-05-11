@@ -48,3 +48,6 @@ VALUES (4, 1, '타자3SAMSUNG', 0.333);
 INSERT INTO game (away_id, home_id, away_user, home_user)
 VALUES (1, 2, 'dan@gmail.com', 'sigrid@naver.com');
 
+INSERT INTO game (away_id, home_id)
+VALUES (2, 3);
+
