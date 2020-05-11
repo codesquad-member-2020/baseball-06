@@ -65,7 +65,27 @@ public class HalfInning {
     return false;
   }
 
-//  public boolean isFinished() {
+  public Long getGameId() {
+    return gameId;
+  }
+
+  public Boolean getEnd() {
+    return end;
+  }
+
+  public InningStatus getInningStatus() {
+    return inningStatus;
+  }
+
+  public BaseStatus getBaseStatus() {
+    return baseStatus;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  //  public boolean isFinished() {
 //    return out.equals(3);
 //  }
 
