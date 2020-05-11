@@ -34,35 +34,35 @@ class PlateAppearanceServiceTest {
     batter = devService.createBatters("AWAY").get(0);
   }
 
-  @Test
-  void batting() {
-    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 0, 1, 1);
-
-    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
-        .isInstanceOf(BattingResult.class);
-  }
-
-  @Test
-  void batting_0S_3B_1O() {
-    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 0, 3, 1);
-
-    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
-        .isInstanceOf(BattingResult.class);
-  }
-
-  @Test
-  void batting_2S_1B_1O() {
-    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 2, 1, 1);
-
-    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
-        .isInstanceOf(BattingResult.class);
-  }
-
-  @Test
-  void batting_2S_1B_2O() {
-    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 2, 1, 2);
-
-    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
-        .isInstanceOf(BattingResult.class);
-  }
+//  @Test
+//  void batting() {
+//    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 0, 1, 1);
+//
+//    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
+//        .isInstanceOf(BattingResult.class);
+//  }
+//
+//  @Test
+//  void batting_0S_3B_1O() {
+//    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 0, 3, 1);
+//
+//    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
+//        .isInstanceOf(BattingResult.class);
+//  }
+//
+//  @Test
+//  void batting_2S_1B_1O() {
+//    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 2, 1, 1);
+//
+//    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
+//        .isInstanceOf(BattingResult.class);
+//  }
+//
+//  @Test
+//  void batting_2S_1B_2O() {
+//    sampleHalfInning = HalfInning.create(3L, 1, 1, InningType.EARLY, 2, 1, 2);
+//
+//    assertThat(plateAppearanceService.batting(sampleHalfInning, pitcher, batter))
+//        .isInstanceOf(BattingResult.class);
+//  }
 }
