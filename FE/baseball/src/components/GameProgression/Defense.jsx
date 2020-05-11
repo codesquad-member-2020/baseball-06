@@ -8,6 +8,7 @@ import PlayGround from "./PlayGround";
 // import PlayerInfo from "./PlayerInfo";
 import Header from "../Header/Header";
 import { mock } from "../../mock";
+import GameLog from "./GameLog";
 
 import { GlobalStyle, Background } from "../../styles/global";
 
@@ -69,7 +70,7 @@ function Defense() {
         <GlobalStyle />
         <Background>
           <Header />
-          <PlayGround />
+          <PlayGround></PlayGround>
         </Background>
       </ThemeProvider>
     </BaseBallContext.Provider>

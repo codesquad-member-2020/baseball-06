@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import img from "../styles/images/ground.jpg";
-// import img from "../styles/images/baseball.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     body{
@@ -29,7 +28,6 @@ export const Background = styled.div`
 `;
 export const BackgroundImg = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
-
   height: 100%;
   width: 100%;
 `;

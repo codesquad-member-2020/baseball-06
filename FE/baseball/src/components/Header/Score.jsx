@@ -37,7 +37,7 @@ const Team = styled.span`
 
 const Vs = styled.span`
   margin: 0 20px;
-  color: #aaa;
+  color: ${(props) => props.theme.gray};
   font-size: 30px;
 `;
 
