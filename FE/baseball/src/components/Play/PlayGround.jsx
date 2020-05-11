@@ -1,7 +1,14 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+} from "react";
 import styled, { ThemeProvider, css } from "styled-components";
 import theme from "../../styles/theme";
 import { GAME_RESULT_URL } from "../../constants/url";
+import { PlayContext, FETCH_RESULT_INFO } from "./Defense";
 
 const pticherImg =
   "https://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png";
@@ -15,13 +22,15 @@ function PlayGround() {
   const batterEndCoord = 385;
   const waitMessage = "기다려😛";
   const scoreMessage = "1득점🥰";
-  const resultKey = {
+  const resultValue = {
     strike: "STRIKE",
     ball: "BALL",
     fourballs: "END",
     hit: "HIT",
     out: "OUT",
   };
+
+  const { dispatch } = useContext(PlayContext);
 
   const [batterCoord, setBatterCoord] = useState(batterEndCoord);
   const [ballTopCoord, setBallTopCoord] = useState(initialBallTopCoord);
@@ -88,15 +97,16 @@ function PlayGround() {
       .then((data) => {
         const resultData = data.body.battingResult;
         let result = resultData;
-        if (result === resultKey.fourballs) result = "4 BALL";
+        if (result === resultValue.fourballs) result = "4 BALL";
         setResult(result + "!!");
+        dispatch({ type: FETCH_RESULT_INFO });
         judgeResult(resultData);
         showPitchBtn();
       });
   };
 
   const judgeResult = (result) => {
-    const { hit, fourballs, out } = resultKey;
+    const { hit, fourballs, out } = resultValue;
     if (result === hit || result === fourballs) {
       count.current++;
       replaceBatter();

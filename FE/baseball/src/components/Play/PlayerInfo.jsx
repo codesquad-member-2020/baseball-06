@@ -18,9 +18,9 @@ function PlayerInfo({ updatedPlayer }) {
 
   return (
     <PlayerInfoWrap>
-      {updatedPlayer.map((player) => {
+      {updatedPlayer.map((player, i) => {
         return (
-          <div>
+          <div key={i + player}>
             <div>
               <PlayerType>
                 {player.type === "Pitcher" ? "투수" : "타자"}
