@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4412A28E246541F10054DE04 /* OverallScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412A28D246541F10054DE04 /* OverallScoreView.swift */; };
 		444BC3AF2469540300B31C37 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444BC3AE2469540300B31C37 /* ViewModelBinding.swift */; };
+		444BC3B12469542700B31C37 /* InningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444BC3B02469542700B31C37 /* InningViewModel.swift */; };
+		444BC3B32469544500B31C37 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444BC3B22469544500B31C37 /* ScoreViewModel.swift */; };
 		4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457B1C82461B3A800A46673 /* CircleShapeView.swift */; };
 		445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A42461CE7B00D39168 /* PitchingResultCell.swift */; };
 		445F93A72461CFB300D39168 /* CircleNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A62461CFB300D39168 /* CircleNumberLabel.swift */; };
@@ -44,6 +46,7 @@
 /* Begin PBXFileReference section */
 		4412A28D246541F10054DE04 /* OverallScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallScoreView.swift; sourceTree = "<group>"; };
 		444BC3AE2469540300B31C37 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
+		444BC3B22469544500B31C37 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		445F93A42461CE7B00D39168 /* PitchingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultCell.swift; sourceTree = "<group>"; };
 		445F93A62461CFB300D39168 /* CircleNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleNumberLabel.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				444BC3AE2469540300B31C37 /* ViewModelBinding.swift */,
+				444BC3B22469544500B31C37 /* ScoreViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -317,6 +321,7 @@
 				4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */,
 				4461C5442461C9EF00DC52D5 /* PlayerInfoDataSource.swift in Sources */,
 				4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */,
+				444BC3B32469544500B31C37 /* ScoreViewModel.swift in Sources */,
 				4461C5422461C92F00DC52D5 /* PlayerInfoTableView.swift in Sources */,
 				44D22FC52462ADF600AC08CC /* UILabel+bold.swift in Sources */,
 				4491C8CD246195F2005049F9 /* DiamondShapeView.swift in Sources */,

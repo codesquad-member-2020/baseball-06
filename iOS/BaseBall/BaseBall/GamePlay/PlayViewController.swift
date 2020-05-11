@@ -17,25 +17,31 @@ class PlayViewController: UIViewController {
     
     private let playerInfoDataSource = PlayerInfoDataSource()
     private let pitchingResultDataSource = PitchingResultDataSource()
+    private var scoreViewModel: ScoreViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playerInfoTableView.dataSource = playerInfoDataSource
         pitchingResultTableView.dataSource = pitchingResultDataSource
+        configureViewModels()
     }
     
     @IBAction func pitchButtonTapped(_ sender: Any) {
-        PitchUseCase.pitch(with: NetworkManager()) { result in
+        PitchUseCase.pitch(with: MockNetworkSuccessStub()) { result in
             switch result {
             case .success(let pitchResult):
-                let result = pitchResult.inningStatus.components(separatedBy: " ").map { Int(String($0.first!))! }
-                DispatchQueue.main.async {
-                    self.scoreStackView.updateScore(strike: result[0], ball: result[1], out: result[2])
-                }
+                self.scoreViewModel.updateKey(pitchResult.inningStatus)
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    private func configureViewModels() {
+        scoreViewModel = ScoreViewModel.init(changed: { data in
+            DispatchQueue.main.async {
+                self.scoreStackView.updateScore(strike: data.strike, ball: data.ball, out: data.out)
+            }
+        })
     }
 }
 
