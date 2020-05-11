@@ -2,6 +2,7 @@ package com.codesquad.baseball06.model.entity;
 
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.TeamType;
+import com.google.common.collect.Iterables;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -48,6 +49,10 @@ public class Game {
         , new ArrayList<>());
   }
 
+  private boolean isUserJoined(TeamType teamType) {
+    return Objects.nonNull(users.get(teamType).getEmail());
+  }
+
   public boolean isStartPossible() {
     return isUserJoined(TeamType.AWAY) && isUserJoined(TeamType.HOME);
   }
@@ -85,22 +90,39 @@ public class Game {
     return users.get(teamType);
   }
 
-  private boolean isUserJoined(TeamType teamType) {
-    return Objects.nonNull(users.get(teamType.getCode()).getEmail());
+  public boolean isNewGame() {
+    if (earlyInningList.size() == 0 && lateInningList.size() == 0) {
+      return true;
+    }
+    return false;
   }
 
-  public int addHalfInning() {
+  public HalfInning getRunningHalfInning() {
+    HalfInning earlyInningLast = Iterables.getLast(earlyInningList);
+    HalfInning lateInningLast = Iterables.getLast(lateInningList);
+
+    if (earlyInningLast.getEnd() && lateInningLast.getEnd()) {
+      return addHalfInning();
+    } else {
+      if (earlyInningLast.getEnd()) {
+        return Iterables.getLast(lateInningList);
+      }
+      return Iterables.getLast(earlyInningList);
+    }
+  }
+
+  public HalfInning addHalfInning() {
     if (earlyInningList.size() == lateInningList.size()) {
       earlyInningList.add(
           HalfInning.create(id, earlyInningList.size() + 1, InningType.EARLY));
 
-      return earlyInningList.size();
+      return earlyInningList.get(earlyInningList.size() - 1);
     }
 
     lateInningList.add(
         HalfInning.create(id, lateInningList.size() + 1, InningType.LATE));
 
-    return lateInningList.size();
+    return lateInningList.get(lateInningList.size() - 1);
   }
 
   @Override

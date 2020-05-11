@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.controller;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +25,16 @@ class GameControllerTest {
 
   @Test
   void startGame() {
+
+  }
+
+  @Test
+  @DisplayName("Joing AWAY user 'dan@gmail.com'")
+  void joinUser() {
     HttpHeaders headers = new HttpHeaders();
 
     String baseUrl = "http://localhost:" + port + "/api/";
+
     UriComponents builder = UriComponentsBuilder
         .fromHttpUrl(baseUrl)
         .path("/game/join")
@@ -38,10 +46,41 @@ class GameControllerTest {
     ResponseEntity<String> response = new TestRestTemplate().exchange(
         builder.toUri(), HttpMethod.GET, new HttpEntity<String>(headers), String.class);
 
-    log.debug("### getBody : {} ", response.getBody());
-  }
+    log.debug("### getBody1 : {} ", response.getBody());
 
-  @Test
-  void joinUser() {
+    builder = UriComponentsBuilder
+        .fromHttpUrl(baseUrl)
+        .path("/game/start")
+        .path("/2")
+        .build(false);
+
+    response = new TestRestTemplate().exchange(
+        builder.toUri(), HttpMethod.GET, new HttpEntity<String>(headers), String.class);
+
+    log.debug("### getBody expect err : {} ", response.getBody());
+
+    builder = UriComponentsBuilder
+        .fromHttpUrl(baseUrl)
+        .path("/game/join")
+        .path("/2")
+        .queryParam("teamType", "HOME")
+        .queryParam("userEmail", "sigrid@gmail.com")
+        .build(false);
+
+    response = new TestRestTemplate().exchange(
+        builder.toUri(), HttpMethod.GET, new HttpEntity<String>(headers), String.class);
+
+    log.debug("### getBody2 : {} ", response.getBody());
+
+    builder = UriComponentsBuilder
+        .fromHttpUrl(baseUrl)
+        .path("/game/start")
+        .path("/2")
+        .build(false);
+
+    response = new TestRestTemplate().exchange(
+        builder.toUri(), HttpMethod.GET, new HttpEntity<String>(headers), String.class);
+
+    log.debug("### getBody3 : {} ", response.getBody());
   }
 }
