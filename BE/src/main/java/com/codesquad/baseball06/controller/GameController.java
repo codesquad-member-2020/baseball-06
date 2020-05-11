@@ -37,10 +37,7 @@ public class GameController {
       @RequestParam String userEmail) {
     Game game = gameService.getGame(gameId);
 
-    gameService.joinUser(game, TeamType.valueOf(teamType), User.create(userEmail));
-
-    log.debug("### game : {}", game.toString());
-
-    return ApiResponse.ok(gameService.start(game));
+    return ApiResponse
+        .ok(gameService.joinUser(game, TeamType.valueOf(teamType), User.create(userEmail)));
   }
 }
