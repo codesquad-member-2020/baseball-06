@@ -33,14 +33,14 @@ CREATE TABLE half_inning
 
 CREATE TABLE plate_appearance
 (
-    id           INT     NOT NULL AUTO_INCREMENT,
-    inning_id    INT     NOT NULL,
-    pitcher      INT     NOT NULL,
-    batter       INT     NOT NULL,
-    batter_index INT     NOT NULL,
-    result       INT     NULL     DEFAULT NULL,
-    created_at   TIMESTAMP        DEFAULT NOW(),
-    end          TINYINT NOT NULL DEFAULT 0,
+    id             INT     NOT NULL AUTO_INCREMENT,
+    half_inning_id INT     NOT NULL,
+    pitcher        INT     NOT NULL,
+    batter         INT     NOT NULL,
+    batter_index   INT     NOT NULL,
+    result         INT     NULL     DEFAULT NULL,
+    created_at     TIMESTAMP        DEFAULT NOW(),
+    end            TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
 
@@ -72,11 +72,11 @@ CREATE TABLE player
 
 CREATE TABLE base_status
 (
-    id          INT NOT NULL AUTO_INCREMENT,
-    first_base  INT NULL,
-    second_base INT NULL,
-    third_base  INT NULL,
-    inning_id   INT NOT NULL,
+    id             INT NOT NULL AUTO_INCREMENT,
+    first_base     INT NULL,
+    second_base    INT NULL,
+    third_base     INT NULL,
+    half_inning_id INT NOT NULL,
     PRIMARY KEY (id)
 );
 
