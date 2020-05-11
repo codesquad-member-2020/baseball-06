@@ -6,20 +6,23 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Game {
 
   private final Long id;
   private final List<Team> teams;
-  private final List<User> users;
+  private final Map<TeamType, User> users;
   private final LocalDateTime createdAt;
   private Boolean end;
   private List<HalfInning> earlyInningList;
   private List<HalfInning> lateInningList;
 
-  public Game(Long id, List<Team> teams, List<User> users, Boolean end, LocalDateTime createdAt,
+  public Game(Long id, List<Team> teams, Map<TeamType, User> users, Boolean end,
+      LocalDateTime createdAt,
       List<HalfInning> earlyInningList, List<HalfInning> lateInningList) {
     this.id = id;
     this.teams = teams;
@@ -32,9 +35,13 @@ public class Game {
 
   public static Game create(Long id, Team away, Team home, String awayUser, String homeUser,
       Boolean end, Timestamp createdAt) {
+    Map<TeamType, User> users = new HashMap<>();
+    users.put(TeamType.AWAY, User.create(awayUser));
+    users.put(TeamType.HOME, User.create(homeUser));
+
     return new Game(id
         , Arrays.asList(away, home)
-        , Arrays.asList(User.create(awayUser), User.create(homeUser))
+        , users
         , end, createdAt.toLocalDateTime()
         // 이후 HalfInningDao.findHalfInningByGameId() 를 이용해 가져옵니다
         , new ArrayList<>()
@@ -53,7 +60,7 @@ public class Game {
     return teams;
   }
 
-  public List<User> getUsers() {
+  public Map<TeamType, User> getUsers() {
     return users;
   }
 
@@ -73,6 +80,11 @@ public class Game {
     return lateInningList;
   }
 
+  public User updateUser(TeamType teamType, User user) {
+    users.put(teamType, user);
+    return users.get(teamType);
+  }
+
   private boolean isUserJoined(TeamType teamType) {
     return Objects.nonNull(users.get(teamType.getCode()).getEmail());
   }
@@ -89,5 +101,18 @@ public class Game {
         HalfInning.create(id, lateInningList.size() + 1, InningType.LATE));
 
     return lateInningList.size();
+  }
+
+  @Override
+  public String toString() {
+    return "Game{" +
+        "id=" + id +
+        ", teams=" + teams +
+        ", users=" + users +
+        ", createdAt=" + createdAt +
+        ", end=" + end +
+        ", earlyInningList=" + earlyInningList +
+        ", lateInningList=" + lateInningList +
+        '}';
   }
 }
