@@ -16,7 +16,12 @@ public class BatterMapper implements RowMapper<List<Batter>> {
     List<Batter> batterList = new ArrayList<>();
 
     do {
-      batterList.add(Batter.create(rs.getLong(1), rs.getLong(2), rs.getString(4), rs.getDouble(5)));
+      batterList.add(Batter.create(
+          rs.getLong("id"),
+          rs.getLong("team_id"),
+          rs.getString("name"),
+          rs.getDouble("batting_average"))
+      );
     } while (rs.next());
 
     return batterList;
