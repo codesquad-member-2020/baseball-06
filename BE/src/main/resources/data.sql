@@ -25,6 +25,10 @@ INSERT INTO player (team_id, type, name, batting_average)
 VALUES (2, 1, '타자2DOOSAN', 0.333);
 INSERT INTO player (team_id, type, name, batting_average)
 VALUES (2, 1, '타자3DOOSAN', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (2, 1, '타자4DOOSAN', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (2, 1, '타자5DOOSAN', 0.333);
 
 INSERT INTO player (team_id, type, name)
 VALUES (3, 0, '투수NC');
