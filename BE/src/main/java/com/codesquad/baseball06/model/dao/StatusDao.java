@@ -5,20 +5,27 @@ import static com.codesquad.baseball06.model.query.InningStatus.INNING_STATUS;
 import static com.codesquad.baseball06.model.query.Test.BASEMAN_SQL_TEST;
 import static com.codesquad.baseball06.model.query.Test.GAME_SQL_TEST;
 import static com.codesquad.baseball06.model.query.Test.INNINGSTATUS_SQL_TEST;
+import static com.codesquad.baseball06.model.query.Test.PLATE_SQL_TEST;
 import static com.codesquad.baseball06.model.query.Test.SCORE_SQL_TEST;
 
 import com.codesquad.baseball06.dto.ScoreDto;
 import com.codesquad.baseball06.dto.UpdatedBasemanDto;
+import com.codesquad.baseball06.dto.UpdatedPlayerDto;
 import com.codesquad.baseball06.model.dao.mapper.BasemanStatusMapper;
 import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningIndexTypeMapper;
-import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningStatusMapper;
+import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
 import com.codesquad.baseball06.model.dao.mapper.ScoreMapper;
+import com.codesquad.baseball06.model.dao.mapper.UpdatedBatterMapper;
+import com.codesquad.baseball06.model.dao.mapper.UpdatedPitcherMapper;
+import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.InningStatus;
+import com.codesquad.baseball06.model.entity.Pitcher;
 import com.codesquad.baseball06.model.query.Inning;
+import com.codesquad.baseball06.model.query.Player;
 import com.codesquad.baseball06.model.type.InningType;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,13 +47,17 @@ public class StatusDao {
   private final BasemanStatusMapper basemanStatusMapper;
   private final ScoreMapper scoreMapper;
   private final InningIndexTypeMapper inningIndexTypeMapper;
+  private final UpdatedBatterMapper updatedBatterMapper;
+  private final UpdatedPitcherMapper updatedPitcherMapper;
 
   public StatusDao(NamedParameterJdbcTemplate jdbcTemplate, PitcherMapper pitcherMapper,
       BatterMapper batterMapper,
       InningStatusMapper inningStatusMapper,
       BasemanStatusMapper basemanStatusMapper,
       ScoreMapper scoreMapper,
-      InningIndexTypeMapper inningIndexTypeMapper) {
+      InningIndexTypeMapper inningIndexTypeMapper,
+      UpdatedBatterMapper updatedBatterMapper,
+      UpdatedPitcherMapper updatedPitcherMapper) {
     this.jdbcTemplate = jdbcTemplate;
     this.pitcherMapper = pitcherMapper;
     this.batterMapper = batterMapper;
@@ -54,6 +65,8 @@ public class StatusDao {
     this.basemanStatusMapper = basemanStatusMapper;
     this.scoreMapper = scoreMapper;
     this.inningIndexTypeMapper = inningIndexTypeMapper;
+    this.updatedBatterMapper = updatedBatterMapper;
+    this.updatedPitcherMapper = updatedPitcherMapper;
   }
 
   public void InitForTest() {
@@ -95,10 +108,18 @@ public class StatusDao {
 
     jdbcTemplate.update(SCORE_SQL_TEST, homeParameters);
 
-    //update Game
-    String gameSql = "INSERT INTO game (home, away, home_user, away_user, end)" +
-        "VALUES (:home, :away, :home_user, :away_user, :end)";
+    //updated PlateAppearance
+    SqlParameterSource plateParameters = new MapSqlParameterSource()
+        .addValue("inning_id", 1)
+        .addValue("pitcher", 1)
+        .addValue("batter", 3)
+        .addValue("batter_index", 1)
+        .addValue("result", 0)
+        .addValue("end", 0);
 
+    jdbcTemplate.update(PLATE_SQL_TEST, plateParameters);
+
+    //update Game
     SqlParameterSource gameParameters = new MapSqlParameterSource()
         .addValue("home", 3)
         .addValue("away", 2)
@@ -135,9 +156,20 @@ public class StatusDao {
     );
   }
 
-//  public boolean getUpdatedPitcher() {
-//  }
-//
-//  public boolean getUpdatedBatter() {
-//  }
+  public List<UpdatedPlayerDto> getUpdatedPlayers(Long game_id) {
+
+    SqlParameterSource gameParameters = new MapSqlParameterSource()
+        .addValue("game_id", game_id);
+
+    Batter updatedBatter = jdbcTemplate
+        .queryForObject(Player.FIND_CURRENT_BATTER, gameParameters, updatedBatterMapper);
+    Pitcher updatedPitcher = jdbcTemplate
+        .queryForObject(Player.FIND_CURRENT_PITCHER, gameParameters, updatedPitcherMapper);
+
+    List<UpdatedPlayerDto> playerDtoList = new ArrayList<>();
+    playerDtoList.add(UpdatedPlayerDto.createUpdatedBatterDto(updatedBatter));
+    playerDtoList.add(UpdatedPlayerDto.createUpdatedPitcherDto(updatedPitcher));
+
+    return playerDtoList;
+  }
 }
