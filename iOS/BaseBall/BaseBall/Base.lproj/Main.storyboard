@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9o-Zt-sEK">
-                                        <rect key="frame" x="34" y="12" width="89.666666666666686" height="36"/>
+                                        <rect key="frame" x="34.000000000000007" y="12" width="89.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                 <rect key="frame" x="0.0" y="104.00000000000003" width="375" height="324.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5I9-Rl-sc0" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="73.666666666666686" y="48.666666666666643" width="227.66666666666663" height="227.33333333333337"/>
+                                        <rect key="frame" x="73.666666666666671" y="48.666666666666643" width="227.66666666666663" height="227.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-gP-SHo" customClass="DiamondShapeView" customModule="BaseBall" customModuleProvider="target">
                                                 <rect key="frame" x="93.999999999999986" y="-20" width="40.000000000000014" height="40"/>
@@ -111,15 +111,25 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1I-5e-zku" customClass="PentagonShapeView" customModule="BaseBall" customModuleProvider="target">
+                                                <rect key="frame" x="98.999999999999986" y="207.33333333333334" width="30.000000000000014" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="gId-RW-qWU"/>
+                                                    <constraint firstAttribute="width" constant="30" id="hkj-jW-aW8"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="FP7-jD-ZgZ" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="trailing" id="5GE-CW-5hc"/>
                                             <constraint firstItem="FP7-jD-ZgZ" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="centerY" id="9c2-mT-sG7"/>
+                                            <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="AmX-Ox-yvH"/>
                                             <constraint firstAttribute="width" secondItem="5I9-Rl-sc0" secondAttribute="height" multiplier="1:1" id="DpS-1s-Ukc"/>
                                             <constraint firstItem="zZe-gP-SHo" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="top" id="GUw-mY-OX0"/>
                                             <constraint firstItem="46J-M2-unI" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="leading" id="JMP-DR-Esx"/>
                                             <constraint firstItem="zZe-gP-SHo" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="bvZ-Uo-kmz"/>
+                                            <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="sKW-Z0-uqX"/>
                                             <constraint firstItem="46J-M2-unI" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="centerY" id="vTy-43-3gB"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -130,14 +140,6 @@
                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1I-5e-zku" customClass="PentagonShapeView" customModule="BaseBall" customModuleProvider="target">
-                                        <rect key="frame" x="172.66666666666666" y="256" width="30" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="gId-RW-qWU"/>
-                                            <constraint firstAttribute="width" constant="30" id="hkj-jW-aW8"/>
-                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2회초 공격" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xy-qR-vvq">
                                         <rect key="frame" x="312.66666666666669" y="15" width="47.333333333333314" height="48"/>
@@ -283,9 +285,7 @@
                                     <constraint firstItem="Tmp-3O-MXq" firstAttribute="leading" secondItem="lHd-HV-l3S" secondAttribute="leading" constant="15" id="U63-Ej-Ayr"/>
                                     <constraint firstItem="5I9-Rl-sc0" firstAttribute="centerY" secondItem="lHd-HV-l3S" secondAttribute="centerY" id="XMw-cy-QLT"/>
                                     <constraint firstItem="Tmp-3O-MXq" firstAttribute="top" secondItem="lHd-HV-l3S" secondAttribute="top" constant="15" id="ZI8-bO-vym"/>
-                                    <constraint firstItem="T1I-5e-zku" firstAttribute="centerY" secondItem="5I9-Rl-sc0" secondAttribute="bottom" id="cgc-9S-EZH"/>
                                     <constraint firstItem="Y04-xA-ilF" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="mR6-13-G1R"/>
-                                    <constraint firstItem="T1I-5e-zku" firstAttribute="centerX" secondItem="5I9-Rl-sc0" secondAttribute="centerX" id="vuT-Hm-t5v"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4n-xA-5hw" customClass="PlayerInfoTableView" customModule="BaseBall" customModuleProvider="target">
@@ -424,7 +424,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKC-bq-JzU">
-                                        <rect key="frame" x="34" y="12" width="89.666666666666686" height="36"/>
+                                        <rect key="frame" x="34.000000000000007" y="12" width="89.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
