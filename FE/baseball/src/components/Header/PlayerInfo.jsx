@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
+import { BaseBallContext } from "../GameProgression/Defense";
 
-function PlayerInfo({ updatedPlayer }) {
+function PlayerInfo() {
+  const { updatedPlayer } = useContext(BaseBallContext);
+  console.log(updatedPlayer);
+
   const templatePitcher = ({ pitches }) => {
     return <Player>#{pitches}</Player>;
   };

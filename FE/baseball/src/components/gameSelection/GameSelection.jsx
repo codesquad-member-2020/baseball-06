@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
+import styled from "styled-components";
 
 function GameSelection({ teams, history }) {
   // const onClcikTema = (play) => {
@@ -24,16 +23,14 @@ function GameSelection({ teams, history }) {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <GameSelectionArea>
-        <GameNumber>GAME {teams.id}</GameNumber>
-        <Teams>
-          <Team onClick={onClickTeam}>{teams.team1.name}</Team>
-          <Vs>vs</Vs>
-          <Team onClick={onClickTeam}>{teams.team2.name}</Team>
-        </Teams>
-      </GameSelectionArea>
-    </ThemeProvider>
+    <GameSelectionArea>
+      <GameNumber>GAME {teams.id}</GameNumber>
+      <Teams>
+        <Team onClick={onClickTeam}>{teams.team1.name}</Team>
+        <Vs>vs</Vs>
+        <Team onClick={onClickTeam}>{teams.team2.name}</Team>
+      </Teams>
+    </GameSelectionArea>
   );
 }
 

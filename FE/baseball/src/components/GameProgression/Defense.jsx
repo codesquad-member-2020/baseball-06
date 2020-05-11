@@ -6,27 +6,27 @@ import PlayGround from "./PlayGround";
 // import Title from "../title";
 // import InningStatus from "./InningStatus";
 // import PlayerInfo from "./PlayerInfo";
-import Header from "./Header";
+import Header from "../Header/Header";
 import { mock } from "../../mock";
 
 import { GlobalStyle, Background } from "../../styles/global";
 
 export const FETCH_RESULT_INFO = "FETCH_RESULT_INFO";
 
-export const PlayContext = createContext({
+export const BaseBallContext = createContext({
   score: {},
   inningStatus: {},
-  updatedPlayer: {},
+  updatedPlayer: [],
   updatedBaseman: {},
   dispatch: () => {},
-});
+}); // 초기 데이터 fetch해와서 여기에 값 넣어줌
 
 const initialState = {
   score: { Home: 0, Away: 0 },
   inningStatus: {},
-  updatedPlayer: {},
+  updatedPlayer: [],
   updatedBaseman: {},
-};
+}; // 초기 데이터 fetch해와서 여기에 값 넣어줌
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -38,6 +38,7 @@ const reducer = (state, action) => {
       const inningStatus = mock.inningStatus;
       const updatedPlayer = mock.updatedBaseman.updatedPlayer;
       const updatedBaseman = mock.updatedBaseman.updatedBaseman;
+
       return {
         ...state,
         score,
@@ -63,17 +64,15 @@ function Defense() {
   );
 
   return (
-    <>
-      <PlayContext.Provider value={value}>
-        {/* <ThemeProvider theme={theme}> */}
+    <BaseBallContext.Provider value={value}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Background>
           <Header />
-          <PlayGround dispatch={dispatch} />
+          <PlayGround />
         </Background>
-        {/* </ThemeProvider> */}
-      </PlayContext.Provider>
-    </>
+      </ThemeProvider>
+    </BaseBallContext.Provider>
   );
 }
 

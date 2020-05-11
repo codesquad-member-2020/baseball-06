@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
-import Title from "../title";
+import Title from "../Header/title";
 import GameSelection from "./GameSelection";
 import {
   GlobalStyle,

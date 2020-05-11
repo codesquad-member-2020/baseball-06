@@ -1,6 +1,6 @@
 import React from "react";
 import GameSelectionPage from "./components/GameSelection/GameSelectionPage.jsx";
-import Defense from "./components/Play/Defense.jsx";
+import Defense from "./components/GameProgression/Defense.jsx";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {

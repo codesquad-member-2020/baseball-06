@@ -1,25 +1,24 @@
-import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
-import { Layout } from "../styles/global";
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { BaseBallContext } from "../GameProgression/Defense";
 
-function Score({ score }) {
+function Score() {
+  const { score } = useContext(BaseBallContext);
+
   return (
-    <ThemeProvider theme={theme}>
-      <ScoreArea>
-        <TeamNameArea>
-          <Team>ddxx</Team>
-          <Player visibility={"hidden"}>Player</Player>
-        </TeamNameArea>
-        <Team score>{score.Away}</Team>
-        <Vs>VS</Vs>
-        <Team score>{score.Home}</Team>
-        <TeamNameArea>
-          <Team>ddddd</Team>
-          <Player>Player</Player>
-        </TeamNameArea>
-      </ScoreArea>
-    </ThemeProvider>
+    <ScoreArea>
+      <TeamNameArea>
+        <Team>ddxx</Team>
+        <Player visibility={"hidden"}>Player</Player>
+      </TeamNameArea>
+      <Team score>{score.Away}</Team>
+      <Vs>VS</Vs>
+      <Team score>{score.Home}</Team>
+      <TeamNameArea>
+        <Team>ddddd</Team>
+        <Player>Player</Player>
+      </TeamNameArea>
+    </ScoreArea>
   );
 }
 

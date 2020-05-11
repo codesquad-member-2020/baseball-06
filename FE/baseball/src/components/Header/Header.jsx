@@ -1,27 +1,21 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
-import Score from "../Score";
-import Title from "../title";
+import styled from "styled-components";
+import Score from "./Score";
+import Title from "./title";
 import InningStatus from "./InningStatus";
 import PlayerInfo from "./PlayerInfo";
 import { mock } from "../../mock";
 import { Layout } from "../../styles/global";
 
 function Header() {
-  const score = mock.updatedBaseman.updatedScore;
-  const playingStatus = mock.playingStatus;
-  const inningStatus = mock.inningStatus;
-  const updatedPlayer = mock.updatedBaseman.updatedPlayer;
-
   return (
     <HeaderWrap>
-      <InningStatus inningStatus={inningStatus} />
+      <InningStatus />
       <div>
         <Title type={"sub"} />
-        <Score score={score} />
+        <Score />
       </div>
-      <PlayerInfo updatedPlayer={updatedPlayer} />
+      <PlayerInfo />
     </HeaderWrap>
   );
 }

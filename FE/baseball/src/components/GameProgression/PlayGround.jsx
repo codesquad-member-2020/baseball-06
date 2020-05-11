@@ -5,10 +5,9 @@ import React, {
   useCallback,
   useContext,
 } from "react";
-import styled, { ThemeProvider, css } from "styled-components";
-import theme from "../../styles/theme";
+import styled, { css } from "styled-components";
 import { GAME_RESULT_URL } from "../../constants/url";
-import { PlayContext, FETCH_RESULT_INFO } from "./Defense";
+import { BaseBallContext, FETCH_RESULT_INFO } from "./Defense";
 
 const pticherImg =
   "https://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png";
@@ -30,7 +29,7 @@ function PlayGround() {
     out: "OUT",
   };
 
-  const { dispatch } = useContext(PlayContext);
+  const { dispatch } = useContext(BaseBallContext);
 
   const [batterCoord, setBatterCoord] = useState(batterEndCoord);
   const [ballTopCoord, setBallTopCoord] = useState(initialBallTopCoord);
@@ -172,45 +171,43 @@ function PlayGround() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <GroundArea>
-        <ResultBox display={resultDisplay} resultScale={resultScale}>
-          {result}
-        </ResultBox>
-        <PitcherArea>
-          <Pitcher></Pitcher>
-          <Ball ballTopCoord={ballTopCoord} ballLeftCoord={ballLeftCoord} />
-        </PitcherArea>
-        <Ground top={65} left={43} deg={-28}>
-          <Batter1
-            ref={batter}
-            coord={batterCoord}
-            count={count}
-            batterDisplay={batterDisplay}
-          />
-        </Ground>
-        <Ground top={65} left={43} deg={-28}>
-          <Batter2 coord={batterCoord} count={count} displayCount={1} />
-        </Ground>
-        <Ground top={31} left={50} deg={-162}>
-          <Batter3 coord={batterCoord} count={count} displayCount={2} />
-        </Ground>
-        <Ground top={29} left={28} deg={-201}>
-          <Batter3 coord={batterCoord} count={count} displayCount={3} />
-        </Ground>
-        <Ground top={60} left={27} deg={30}>
-          <Batter2
-            coord={batterCoord}
-            count={count}
-            displayCount={4}
-            ref={scoredBatter}
-          />
-        </Ground>
-        <PitchBtnBox display={pitchBtnDisplay} onClick={onPitch}>
-          Pitch
-        </PitchBtnBox>
-      </GroundArea>
-    </ThemeProvider>
+    <GroundArea>
+      <ResultBox display={resultDisplay} resultScale={resultScale}>
+        {result}
+      </ResultBox>
+      <PitcherArea>
+        <Pitcher></Pitcher>
+        <Ball ballTopCoord={ballTopCoord} ballLeftCoord={ballLeftCoord} />
+      </PitcherArea>
+      <Ground top={65} left={43} deg={-28}>
+        <Batter1
+          ref={batter}
+          coord={batterCoord}
+          count={count}
+          batterDisplay={batterDisplay}
+        />
+      </Ground>
+      <Ground top={65} left={43} deg={-28}>
+        <Batter2 coord={batterCoord} count={count} displayCount={1} />
+      </Ground>
+      <Ground top={31} left={50} deg={-162}>
+        <Batter3 coord={batterCoord} count={count} displayCount={2} />
+      </Ground>
+      <Ground top={29} left={28} deg={-201}>
+        <Batter3 coord={batterCoord} count={count} displayCount={3} />
+      </Ground>
+      <Ground top={60} left={27} deg={30}>
+        <Batter2
+          coord={batterCoord}
+          count={count}
+          displayCount={4}
+          ref={scoredBatter}
+        />
+      </Ground>
+      <PitchBtnBox display={pitchBtnDisplay} onClick={onPitch}>
+        Pitch
+      </PitchBtnBox>
+    </GroundArea>
   );
 }
 

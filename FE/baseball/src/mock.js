@@ -4,7 +4,7 @@ export const mock = {
     inningNum: 1,
     inningType: "초", //HomeTeam은 무조건 초에 공격, AwayTeam은 말에 공격
     strike: 1,
-    ball: 2,
+    ball: 3,
     out: 2,
   },
   updatedBaseman: {
@@ -21,10 +21,11 @@ export const mock = {
       id: null,
     },
     updatedScore: {
-      Home: 1, //homeTeam은 인덱스가 0
+      Home: 2, //homeTeam은 인덱스가 0
       Away: 2, //awayTeam은 인덱스가 1
     },
     updatedPlayer: [
+      //왜 updatedBaseman안에 존재하는가? 따로 분리 가능한가?
       //객체로 줄수 있을까?
       {
         id: 0,
