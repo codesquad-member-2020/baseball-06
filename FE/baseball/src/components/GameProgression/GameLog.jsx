@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useMemo } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 function GameLog() {
   return (
     <>
       <LogArea>
         <Result>
-          <Player current>7번 타자 류현진</Player>
+          <CurrentPlayer>7번 타자 류현진</CurrentPlayer>
           <div></div>
           <div></div>
           <LastResultLog>안타!</LastResultLog>
@@ -23,7 +23,7 @@ function GameLog() {
           <LogOpenBtn />
         </Result>
         <Result>
-          <Player>7번 타자 류현진</Player>
+          <PastPlayer>7번 타자 류현진</PastPlayer>
           <div></div>
           <div></div>
           <LastResultLog>안타!</LastResultLog>
@@ -50,6 +50,7 @@ const Result = styled.div`
   justify-items: end;
   align-items: center;
   grid-auto-rows: minmax(2em, auto);
+  margin-bottom: 30px;
 `;
 const LogArea = styled.div`
   position: absolute;
@@ -74,18 +75,28 @@ const LogOpenBtn = styled.button`
   background-color: #bbb;
 `;
 
-const Player = styled.div`
+const Player = css`
   grid-column: 1/3;
   width: 100%;
-  color: ${(props) =>
-    props.current ? props.theme.highlightColor : props.theme.subPinkColor};
-  flex-wrap: wrap;
+`;
+
+const CurrentPlayer = styled.div`
+  ${Player}
+  padding: 5px;
+  border: 1px solid red;
+  color: ${(props) => props.theme.highlightColor};
+`;
+
+const PastPlayer = styled.div`
+${Player}
+ color: ${(props) => props.theme.subPinkColor};
 `;
 
 const Number = styled.span`
   width: 17px;
   height: 17px;
   border-radius: 50%;
+  justify-self: center;
   background-color: #fff;
   letter-spacing: 0;
 `;
@@ -98,7 +109,7 @@ const ResultLog = styled.div`
 
 const LastResultLog = styled.div`
   justify-self: center;
-  color: ${(props) => props.theme.subBlueColor};
+  color: ${(props) => props.theme.subYellowColor};
 `;
 
 const CumulativeLog = styled.div`

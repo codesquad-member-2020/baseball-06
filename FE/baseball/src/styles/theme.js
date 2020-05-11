@@ -3,7 +3,7 @@ const theme = {
   mainFontColor: "#fff",
   highlightColor: "#f70404",
   mainBorder: "2px solid #777",
-  subBlueColor: " #9cdafa",
+  subYellowColor: "#ff9a44",
   gray: " #999",
   subPinkColor: " #fc6076",
 };
