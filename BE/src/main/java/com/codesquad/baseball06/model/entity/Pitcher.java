@@ -25,4 +25,10 @@ public class Pitcher extends Player {
   public Double getBattingAverage() {
     return null;
   }
+
+  @Override
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  public Integer getBatterIndex() {
+    return null;
+  }
 }

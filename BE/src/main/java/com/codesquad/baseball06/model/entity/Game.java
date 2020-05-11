@@ -127,7 +127,7 @@ public class Game {
 
   @Override
   public String toString() {
-    return "Game{" +
+    return "GameQuery{" +
         "id=" + id +
         ", teams=" + teams +
         ", users=" + users +
