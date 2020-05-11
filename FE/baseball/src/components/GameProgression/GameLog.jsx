@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import styled, { css } from "styled-components";
+import { Scroll } from "../../styles/global";
 
 function GameLog() {
   return (
@@ -39,6 +40,40 @@ function GameLog() {
           <CumulativeLog>1S 2B</CumulativeLog>
           <LogOpenBtn />
         </Result>
+        <Result>
+          <PastPlayer>7번 타자 류현진</PastPlayer>
+          <div></div>
+          <div></div>
+          <LastResultLog>안타!</LastResultLog>
+          <div></div>
+          <Number>1</Number>
+          <ResultLog>스트라이크</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <Number>1</Number>
+          <ResultLog>볼</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <Number>1</Number>
+          <ResultLog>스트라이크</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <LogOpenBtn />
+        </Result>
+        <Result>
+          <PastPlayer>7번 타자 류현진</PastPlayer>
+          <div></div>
+          <div></div>
+          <LastResultLog>아웃!</LastResultLog>
+          <div></div>
+          <Number>1</Number>
+          <ResultLog>스트라이크</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <Number>1</Number>
+          <ResultLog>볼</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <Number>1</Number>
+          <ResultLog>스트라이크</ResultLog>
+          <CumulativeLog>1S 2B</CumulativeLog>
+          <LogOpenBtn />
+        </Result>
       </LogArea>
     </>
   );
@@ -49,21 +84,21 @@ const Result = styled.div`
   grid-template-columns: 1fr 3fr 2fr;
   justify-items: end;
   align-items: center;
-  grid-auto-rows: minmax(2em, auto);
+  grid-auto-rows: minmax(1.9em, auto);
   margin-bottom: 30px;
 `;
 const LogArea = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  /* display: flex; */
-
+  overflow: auto;
   padding: 20px;
   height: 100%;
-  width: 280px;
+  width: 300px;
   background-color: ${(props) => props.theme.backgroundColor};
   border-left: ${(props) => props.theme.mainBorder};
   letter-spacing: 3.5px;
+  ${Scroll}
 `;
 
 const LogOpenBtn = styled.button`

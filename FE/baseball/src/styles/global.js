@@ -37,3 +37,32 @@ export const Layout = css`
   justify-content: center;
   align-items: center;
 `;
+
+export const Scroll = css`
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+
+    background-color: #cccccc;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background-image: -webkit-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 25%,
+      transparent 100%,
+      rgba(0, 0, 0, 1) 75%,
+      transparent
+    );
+
+    background-color: #555;
+  }
+`;
