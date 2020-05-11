@@ -33,7 +33,7 @@ public class GameService {
       return game.getRunningHalfInning();
     }
 
-    throw new RuntimeException("시작할 수 없는 Game 입니다");
+    throw new RuntimeException("시작할 수 없는 GameQuery 입니다");
   }
 
   public Game getGame(Long gameId) {
