@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4412A28E246541F10054DE04 /* OverallScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412A28D246541F10054DE04 /* OverallScoreView.swift */; };
+		444BC3AF2469540300B31C37 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444BC3AE2469540300B31C37 /* ViewModelBinding.swift */; };
 		4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457B1C82461B3A800A46673 /* CircleShapeView.swift */; };
 		445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A42461CE7B00D39168 /* PitchingResultCell.swift */; };
 		445F93A72461CFB300D39168 /* CircleNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F93A62461CFB300D39168 /* CircleNumberLabel.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		4412A28D246541F10054DE04 /* OverallScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallScoreView.swift; sourceTree = "<group>"; };
+		444BC3AE2469540300B31C37 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		445F93A42461CE7B00D39168 /* PitchingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultCell.swift; sourceTree = "<group>"; };
 		445F93A62461CFB300D39168 /* CircleNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleNumberLabel.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 				44D22FC12462A8DE00AC08CC /* ScoreDataSource.swift */,
 			);
 			path = Score;
+			sourceTree = "<group>";
+		};
+		444BC3AD246953DB00B31C37 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				444BC3AE2469540300B31C37 /* ViewModelBinding.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		445F93AA2461DB9F00D39168 /* View */ = {
@@ -189,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				4491C8A8246035B3005049F9 /* PlayViewController.swift */,
+				444BC3AD246953DB00B31C37 /* ViewModel */,
 				445F93AD2461DBF900D39168 /* GameProgress */,
 				445F93AF2461DC5000D39168 /* PlayerInfo */,
 				445F93B02461DC6000D39168 /* PitchingResult */,
@@ -294,6 +305,7 @@
 				44D22FC22462A8DE00AC08CC /* ScoreDataSource.swift in Sources */,
 				44D22FCA246533CE00AC08CC /* PitchResponse.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
+				444BC3AF2469540300B31C37 /* ViewModelBinding.swift in Sources */,
 				445F93A52461CE7B00D39168 /* PitchingResultCell.swift in Sources */,
 				4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */,
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
