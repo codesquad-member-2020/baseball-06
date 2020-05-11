@@ -46,6 +46,7 @@
 /* Begin PBXFileReference section */
 		4412A28D246541F10054DE04 /* OverallScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallScoreView.swift; sourceTree = "<group>"; };
 		444BC3AE2469540300B31C37 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
+		444BC3B02469542700B31C37 /* InningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningViewModel.swift; sourceTree = "<group>"; };
 		444BC3B22469544500B31C37 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
 		4457B1C82461B3A800A46673 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		445F93A42461CE7B00D39168 /* PitchingResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResultCell.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				444BC3AE2469540300B31C37 /* ViewModelBinding.swift */,
+				444BC3B02469542700B31C37 /* InningViewModel.swift */,
 				444BC3B22469544500B31C37 /* ScoreViewModel.swift */,
 			);
 			path = ViewModel;
@@ -306,6 +308,7 @@
 				4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */,
 				445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */,
 				4491C8AB246035B3005049F9 /* SecondViewController.swift in Sources */,
+				444BC3B12469542700B31C37 /* InningViewModel.swift in Sources */,
 				44D22FC22462A8DE00AC08CC /* ScoreDataSource.swift in Sources */,
 				44D22FCA246533CE00AC08CC /* PitchResponse.swift in Sources */,
 				4491C8C5246173EA005049F9 /* GameStackView.swift in Sources */,
