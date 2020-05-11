@@ -1,8 +1,7 @@
-import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-function GameSelection({ teams }) {
+function GameSelection({ teams, history }) {
   // const onClcikTema = (play) => {
   //   console.log(play);
   //   let message = null;
@@ -13,17 +12,25 @@ function GameSelection({ teams }) {
   //   }
   //   dispatch({ tyep: "gameSelection", message: message });
   // };
+
+  // const [awayTeamName , setAwayTeamName ] = useState('');
+  // const [homeTeamName , setHomeTeamName ] =  useState('');
+
+  // const teams
+
+  const onClickTeam = () => {
+    history.push("/Defense");
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <GameSelectionArea>
-        <GameNumber>GAME {teams.id}</GameNumber>
-        <Teams>
-          <Team>{teams.team1.name}</Team>
-          <Vs>vs</Vs>
-          <Team>{teams.team2.name}</Team>
-        </Teams>
-      </GameSelectionArea>
-    </ThemeProvider>
+    <GameSelectionArea>
+      <GameNumber>GAME {teams.id}</GameNumber>
+      <Teams>
+        <Team onClick={onClickTeam}>{teams.team1.name}</Team>
+        <Vs>vs</Vs>
+        <Team onClick={onClickTeam}>{teams.team2.name}</Team>
+      </Teams>
+    </GameSelectionArea>
   );
 }
 
@@ -34,6 +41,11 @@ const GameSelectionArea = styled.div`
   background-color: #b4b4b4;
   opacity: 0.8;
   border-radius: 15px;
+`;
+
+export const Vs = styled.span`
+  font-size: 30px;
+  color: #555;
 `;
 
 const GameNumber = styled.div`
@@ -53,11 +65,6 @@ const Team = styled.span`
   &:hover {
     color: ${(props) => props.theme.highlightColor};
   }
-`;
-
-const Vs = styled.span`
-  font-size: 30px;
-  color: #555;
 `;
 
 export default GameSelection;
