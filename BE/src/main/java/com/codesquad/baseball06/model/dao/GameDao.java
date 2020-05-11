@@ -1,9 +1,9 @@
 package com.codesquad.baseball06.model.dao;
 
-import static com.codesquad.baseball06.model.query.Game.INSERT;
-import static com.codesquad.baseball06.model.query.Game.UPDATE_AWAY_USER;
-import static com.codesquad.baseball06.model.query.Game.UPDATE_HOME_USER;
-import static com.codesquad.baseball06.model.query.Game.FIND_BY_ID;
+import static com.codesquad.baseball06.model.query.GameQuery.FIND_BY_ID;
+import static com.codesquad.baseball06.model.query.GameQuery.INSERT;
+import static com.codesquad.baseball06.model.query.GameQuery.UPDATE_AWAY_USER;
+import static com.codesquad.baseball06.model.query.GameQuery.UPDATE_HOME_USER;
 
 import com.codesquad.baseball06.model.dao.mapper.GameMapper;
 import com.codesquad.baseball06.model.entity.Game;
