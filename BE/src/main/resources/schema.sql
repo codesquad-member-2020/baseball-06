@@ -1,3 +1,4 @@
+SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS game;
 DROP TABLE IF EXISTS half_inning;
 DROP TABLE IF EXISTS plate_appearance;
@@ -6,6 +7,7 @@ DROP TABLE IF EXISTS team;
 DROP TABLE IF EXISTS player;
 DROP TABLE IF EXISTS base_status;
 DROP TABLE IF EXISTS inning_status;
+SET foreign_key_checks = 1;
 
 CREATE TABLE game
 (
@@ -77,7 +79,7 @@ CREATE TABLE base_status
     second_base    INT NULL,
     third_base     INT NULL,
     half_inning_id INT NOT NULL,
-    CONSTRAINT half_inning_id_constraint FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
+    CONSTRAINT half_inning_id_constraint_base_status FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
     PRIMARY KEY (id)
 );
 
@@ -91,6 +93,6 @@ CREATE TABLE inning_status
     CONSTRAINT strike_count_ck CHECK (strike_count IN (0, 1, 2, 3)),
     CONSTRAINT ball_count_ck CHECK (ball_count IN (0, 1, 2, 3)),
     CONSTRAINT out_count_ck CHECK (out_count IN (0, 1, 2, 3)),
-    CONSTRAINT half_inning_id_constraint FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
+    CONSTRAINT half_inning_id_constraint_inning_status FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
     PRIMARY KEY (id)
 );
