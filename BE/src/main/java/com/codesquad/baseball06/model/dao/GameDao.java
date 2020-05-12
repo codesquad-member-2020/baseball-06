@@ -1,14 +1,10 @@
 package com.codesquad.baseball06.model.dao;
 
-import static com.codesquad.baseball06.model.query.GameQuery.FIND_BY_ID;
-import static com.codesquad.baseball06.model.query.GameQuery.INSERT;
-import static com.codesquad.baseball06.model.query.GameQuery.UPDATE_AWAY_USER;
-import static com.codesquad.baseball06.model.query.GameQuery.UPDATE_HOME_USER;
-
 import com.codesquad.baseball06.model.dao.mapper.GameMapper;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.Team;
 import com.codesquad.baseball06.model.entity.User;
+import com.codesquad.baseball06.model.query.GameQuery;
 import com.codesquad.baseball06.model.type.TeamType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +28,7 @@ public class GameDao {
   public Game findGameById(Long id) {
     SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
 
-    return jdbcTemplate.queryForObject(FIND_BY_ID, namedParameters, gameMapper).get(0);
+    return jdbcTemplate.queryForObject(GameQuery.FIND_BY_ID, namedParameters, gameMapper).get(0);
   }
 
   public int create(Team away, Team home) {
@@ -40,7 +36,7 @@ public class GameDao {
         .addValue("away_id", away.getId())
         .addValue("home_id", home.getId());
 
-    return jdbcTemplate.update(INSERT, namedParameters);
+    return jdbcTemplate.update(GameQuery.INSERT, namedParameters);
   }
 
   public int join(long id, User user, TeamType teamType) {
@@ -49,8 +45,8 @@ public class GameDao {
         .addValue(teamType.name(), user.getEmail());
 
     if (teamType.equals(TeamType.AWAY)) {
-      return jdbcTemplate.update(UPDATE_AWAY_USER, namedParameters);
+      return jdbcTemplate.update(GameQuery.UPDATE_AWAY_USER, namedParameters);
     }
-    return jdbcTemplate.update(UPDATE_HOME_USER, namedParameters);
+    return jdbcTemplate.update(GameQuery.UPDATE_HOME_USER, namedParameters);
   }
 }
