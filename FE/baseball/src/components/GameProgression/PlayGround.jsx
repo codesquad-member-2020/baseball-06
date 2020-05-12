@@ -47,7 +47,7 @@ function PlayGround() {
 
   const onPitch = useCallback(() => {
     pitchAnimation();
-  });
+  }, []);
 
   const pitchAnimation = () => {
     let ballRaf = null;

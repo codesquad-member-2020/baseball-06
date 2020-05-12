@@ -1,10 +1,24 @@
-import React, { createContext, useReducer, useMemo } from "react";
+import React, {
+  createContext,
+  useReducer,
+  useMemo,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import styled, { css } from "styled-components";
 import { Scroll } from "../../styles/global";
 
 function GameLog() {
+  const logRef = useRef();
+  const openLog = useCallback(() => {
+    logRef.current.style.transition = "all .3s ease-in-out";
+    logRef.current.style.transform = "translateX(-300px)";
+  }, []);
+
   return (
-    <>
+    <LogWrap ref={logRef}>
+      <LogOpenBtn onClick={openLog}>open</LogOpenBtn>
       <LogArea>
         <Result>
           <CurrentPlayer>7번 타자 류현진</CurrentPlayer>
@@ -21,7 +35,6 @@ function GameLog() {
           <Number>1</Number>
           <ResultLog>스트라이크</ResultLog>
           <CumulativeLog>1S 2B</CumulativeLog>
-          <LogOpenBtn />
         </Result>
         <Result>
           <PastPlayer>7번 타자 류현진</PastPlayer>
@@ -38,7 +51,6 @@ function GameLog() {
           <Number>1</Number>
           <ResultLog>스트라이크</ResultLog>
           <CumulativeLog>1S 2B</CumulativeLog>
-          <LogOpenBtn />
         </Result>
         <Result>
           <PastPlayer>7번 타자 류현진</PastPlayer>
@@ -55,7 +67,6 @@ function GameLog() {
           <Number>1</Number>
           <ResultLog>스트라이크</ResultLog>
           <CumulativeLog>1S 2B</CumulativeLog>
-          <LogOpenBtn />
         </Result>
         <Result>
           <PastPlayer>7번 타자 류현진</PastPlayer>
@@ -72,12 +83,21 @@ function GameLog() {
           <Number>1</Number>
           <ResultLog>스트라이크</ResultLog>
           <CumulativeLog>1S 2B</CumulativeLog>
-          <LogOpenBtn />
         </Result>
       </LogArea>
-    </>
+    </LogWrap>
   );
 }
+
+const LogWrap = styled.div`
+  display: flex;
+  align-items: center;
+  width: 320px;
+  position: absolute;
+  top: 0;
+  right: -300px;
+  height: 100%;
+`;
 
 const Result = styled.div`
   display: grid;
@@ -88,26 +108,27 @@ const Result = styled.div`
   margin-bottom: 30px;
 `;
 const LogArea = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
   overflow: auto;
   padding: 20px;
   height: 100%;
   width: 300px;
   background-color: ${(props) => props.theme.backgroundColor};
-  border-left: ${(props) => props.theme.mainBorder};
   letter-spacing: 3.5px;
   ${Scroll}
 `;
 
 const LogOpenBtn = styled.button`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 20px;
-  background-color: #bbb;
+  width: 15px;
+  height: 50px;
+
+  border-radius: 10%;
+
+  background-image: linear-gradient(
+    to right,
+    #ece9e6 0%,
+    #ffffff 51%,
+    #ece9e6 100%
+  );
 `;
 
 const Player = css`
@@ -138,7 +159,6 @@ const Number = styled.span`
 
 const ResultLog = styled.div`
   justify-self: center;
-
   color: ${(props) => props.theme.mainFontColor};
 `;
 

@@ -25,6 +25,7 @@ export const Background = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 export const BackgroundImg = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
