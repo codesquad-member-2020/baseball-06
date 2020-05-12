@@ -31,11 +31,11 @@ public class PlateAppearanceService {
 
   public BattingResult postPitching(HalfInning halfInning, BattingResult battingResult) {
     if (battingResult.equals(BattingResult.STRIKE)) {
-      return halfInning.addStrike();
+//      return halfInning.addStrike();
     }
 
     if (battingResult.equals(BattingResult.BALL)) {
-      return halfInning.addBall();
+//      return halfInning.addBall();
     }
 
     return BattingResult.HIT;

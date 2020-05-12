@@ -19,4 +19,13 @@ public enum InningType {
   public String getType() {
     return type;
   }
+
+  public static InningType findType(int code) throws Exception {
+    for (InningType type : InningType.values()) {
+      if (type.code == code) {
+        return type;
+      }
+    }
+    throw new RuntimeException("Enum Not Found.");
+  }
 }

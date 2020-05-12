@@ -1,7 +1,7 @@
 package com.codesquad.baseball06.model.dao;
 
-import static com.codesquad.baseball06.model.query.Player.FIND_BY_ID_AND_TYPE;
-import static com.codesquad.baseball06.model.query.Player.FIND_BY_TYPE_AND_TEAM_ID;
+import static com.codesquad.baseball06.model.query.PlayerQuery.FIND_BY_ID_AND_TYPE;
+import static com.codesquad.baseball06.model.query.PlayerQuery.FIND_BY_TYPE_AND_TEAM_ID;
 
 import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
 import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;

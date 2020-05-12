@@ -10,37 +10,37 @@ DROP TABLE IF EXISTS inning_status;
 CREATE TABLE game
 (
     id         INT         NOT NULL AUTO_INCREMENT,
-    home       INT         NOT NULL,
-    away       INT         NOT NULL,
-    home_user  VARCHAR(45) NULL,
-    away_user  VARCHAR(45) NULL,
-    end        TINYINT     NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW(),
+    away_id    INT         NOT NULL,
+    home_id    INT         NOT NULL,
+    away_user  VARCHAR(45) NULL     DEFAULT NULL,
+    home_user  VARCHAR(45) NULL     DEFAULT NULL,
+    end        TINYINT     NOT NULL DEFAULT 0,
+    created_at TIMESTAMP            DEFAULT NOW(),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE half_inning
 (
-    id           INT      NOT NULL AUTO_INCREMENT,
-    game_id      INT      NOT NULL,
-    inning_index INT      NOT NULL,
-    type         TINYINT  NOT NULL,
-    score        INT      NOT NULL,
-    end          TINYINT  NOT NULL,
-    created_at   TIMESTAMP DEFAULT NOW(),
+    id           INT     NOT NULL AUTO_INCREMENT,
+    game_id      INT     NOT NULL,
+    inning_index INT     NOT NULL,
+    type         TINYINT NOT NULL,
+    score        INT     NOT NULL DEFAULT 0,
+    end          TINYINT NOT NULL DEFAULT 0,
+    created_at   TIMESTAMP        DEFAULT NOW(),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE plate_appearance
 (
-    id           INT     NOT NULL AUTO_INCREMENT,
-    inning_id    INT     NOT NULL,
-    pitcher      INT     NOT NULL,
-    batter       INT     NOT NULL,
-    batter_index INT     NOT NULL,
-    result       INT     NULL,
-    created_at   TIMESTAMP DEFAULT NOW(),
-    end          TINYINT NOT NULL,
+    id             INT     NOT NULL AUTO_INCREMENT,
+    half_inning_id INT     NOT NULL,
+    pitcher        INT     NOT NULL,
+    batter         INT     NOT NULL,
+    batter_index   INT     NOT NULL,
+    result         INT     NULL     DEFAULT NULL,
+    created_at     TIMESTAMP        DEFAULT NOW(),
+    end            TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
 
@@ -72,20 +72,20 @@ CREATE TABLE player
 
 CREATE TABLE base_status
 (
-    id          INT NOT NULL AUTO_INCREMENT,
-    first_base  INT NULL,
-    second_base INT NULL,
-    third_base  INT NULL,
-    inning_id   INT NOT NULL,
+    id             INT NOT NULL AUTO_INCREMENT,
+    first_base     INT NULL,
+    second_base    INT NULL,
+    third_base     INT NULL,
+    half_inning_id INT NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE inning_status
 (
     id           INT NOT NULL AUTO_INCREMENT,
-    strike_count INT NOT NULL,
-    ball_count   INT NOT NULL,
-    out_count    INT NOT NULL,
-    inning_id    INT NOT NULL,
+    half_inning_id    INT NOT NULL,
+    strike_count INT NOT NULL DEFAULT 0,
+    ball_count   INT NOT NULL DEFAULT 0,
+    out_count    INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );

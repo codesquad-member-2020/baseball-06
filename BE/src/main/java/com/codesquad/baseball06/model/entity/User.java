@@ -1,8 +1,10 @@
 package com.codesquad.baseball06.model.entity;
 
-public class User {
+import java.io.Serializable;
 
-  private final String email;
+public class User implements Serializable {
+
+  private String email;
 
   public User(String email) {
     this.email = email;
@@ -14,5 +16,12 @@ public class User {
 
   public String getEmail() {
     return email;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+        "email='" + email + '\'' +
+        '}';
   }
 }

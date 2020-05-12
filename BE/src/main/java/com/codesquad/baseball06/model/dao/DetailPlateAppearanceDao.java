@@ -12,13 +12,13 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TeamDao {
+public class DetailPlateAppearanceDao {
 
-  private static final Logger logger = LoggerFactory.getLogger(TeamDao.class);
+  private static final Logger logger = LoggerFactory.getLogger(DetailPlateAppearanceDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
   private final TeamMapper teamMapper;
 
-  public TeamDao(NamedParameterJdbcTemplate jdbcTemplate, TeamMapper teamMapper) {
+  public DetailPlateAppearanceDao(NamedParameterJdbcTemplate jdbcTemplate, TeamMapper teamMapper) {
     this.jdbcTemplate = jdbcTemplate;
     this.teamMapper = teamMapper;
   }
