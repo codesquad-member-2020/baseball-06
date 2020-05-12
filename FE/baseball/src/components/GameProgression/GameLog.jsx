@@ -11,7 +11,7 @@ import styled, { css } from "styled-components";
 import { Scroll, MoreBtn, MoreBtnText } from "../../styles/global";
 
 function GameLog() {
-  const OPEN_BTN_TEXT = "Open ∧";
+  const OPEN_BTN_TEXT = "Log ∧";
   const CLOSE_BTN_TEXT = "Close ∨";
   const TRANSITION_PROPERTY = "all .3s ease-in-out";
 
@@ -19,7 +19,7 @@ function GameLog() {
   const logWrapRef = useRef();
   const logBoxRef = useRef();
 
-  const openLog = useCallback(() => {
+  const clickMoreBtn = useCallback(() => {
     logWrapRef.current.style.transition = TRANSITION_PROPERTY;
 
     const logBoxWidth = logBoxRef.current.offsetWidth;
@@ -38,7 +38,7 @@ function GameLog() {
 
   return (
     <LogWrap ref={logWrapRef}>
-      <LogOpenBtn onClick={openLog}>
+      <LogOpenBtn onClick={clickMoreBtn}>
         <LogBtnText>{logBtnText}</LogBtnText>
       </LogOpenBtn>
       <LogBox ref={logBoxRef}>
@@ -85,7 +85,7 @@ const LogWrap = styled.div`
   width: 320px;
   position: absolute;
   top: 0;
-  right: -299px;
+  right: -295px;
   height: 100%;
 `;
 

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useMemo } from "react";
+import React, { createContext, useState, useCallback, useRef } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import {
   GlobalStyle,
@@ -6,25 +6,49 @@ import {
   MoreBtn,
   MoreBtnText,
 } from "../../styles/global";
-import {
-  SideBoxWrap,
-  SideBox,
-  SideBoxBtn,
-  SideBoxBtnText,
-} from "../../styles/sideBox";
 
 function Nav() {
+  const OPEN_BTN_TEXT = "Nav ∨";
+  const CLOSE_BTN_TEXT = "Close ∧";
+  const TRANSITION_PROPERTY = "all .3s ease-in-out";
+
+  const NavWrapRef = useRef();
+  const NavContainerRef = useRef();
+  const MoreBtnTextRef = useRef();
+
+  const [logBtnText, setLogBtnText] = useState(OPEN_BTN_TEXT);
+
+  const clickMoreBtn = useCallback(() => {
+    NavWrapRef.current.style.transition = TRANSITION_PROPERTY;
+
+    const logBoxWidth = NavContainerRef.current.offsetHeight;
+    console.log(logBoxWidth);
+    if (logBtnText === OPEN_BTN_TEXT) {
+      setLogBtnText(CLOSE_BTN_TEXT);
+      addTranslate(`-${logBoxWidth}`);
+      NavContainerRef.current.style.visibility = "hidden";
+    } else {
+      NavContainerRef.current.style.visibility = "visible";
+      setLogBtnText(OPEN_BTN_TEXT);
+      addTranslate(0);
+    }
+  }, [logBtnText]);
+
+  const addTranslate = (distance) => {
+    return (NavWrapRef.current.style.transform = `translateY(${distance}px)`);
+  };
+
   return (
-    <NavWrap>
-      <NavContainer>
+    <NavWrap ref={NavWrapRef}>
+      <NavContainer ref={NavContainerRef}>
         <LinkList>
-          <NavLink>상세 점수</NavLink>
+          <NavLink ref={MoreBtnTextRef}>상세 점수</NavLink>
           <NavLink>선수 명단</NavLink>
           <NavLink>게임 진행</NavLink>
         </LinkList>
       </NavContainer>
-      <NavMoreBtn>
-        <NavMoreBtnText>Nav </NavMoreBtnText>
+      <NavMoreBtn onClick={clickMoreBtn}>
+        <NavMoreBtnText>Nav ∨ </NavMoreBtnText>
       </NavMoreBtn>
     </NavWrap>
   );
@@ -34,7 +58,7 @@ const NavWrap = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  text-align: -webkit-right;
+  text-align: -webkit-left;
   height: 76px;
   width: 100%;
   z-index: 1;
@@ -42,7 +66,7 @@ const NavWrap = styled.div`
 
 const NavMoreBtn = styled.button`
   ${MoreBtn}
-  margin-right:80px;
+  margin-left:80px;
 `;
 
 const NavMoreBtnText = styled.button`
