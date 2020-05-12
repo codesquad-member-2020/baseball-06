@@ -1,6 +1,11 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle, Background, MoreBtn } from "../../styles/global";
+import {
+  GlobalStyle,
+  Background,
+  MoreBtn,
+  MoreBtnText,
+} from "../../styles/global";
 import {
   SideBoxWrap,
   SideBox,
@@ -13,14 +18,14 @@ function Nav() {
     <NavWrap>
       <NavContainer>
         <LinkList>
-          <NavLink>dd</NavLink>
-          <NavLink>dd</NavLink>
-          <NavLink>dd</NavLink>
-          <NavLink>dd</NavLink>
-          <NavLink>dd</NavLink>
+          <NavLink>상세 점수</NavLink>
+          <NavLink>선수 명단</NavLink>
+          <NavLink>게임 진행</NavLink>
         </LinkList>
       </NavContainer>
-      <NavMoreBtn />
+      <NavMoreBtn>
+        <NavMoreBtnText>Nav </NavMoreBtnText>
+      </NavMoreBtn>
     </NavWrap>
   );
 }
@@ -38,6 +43,10 @@ const NavWrap = styled.div`
 const NavMoreBtn = styled.button`
   ${MoreBtn}
   margin-right:80px;
+`;
+
+const NavMoreBtnText = styled.button`
+  ${MoreBtnText}
 `;
 
 const NavContainer = styled.div`
@@ -63,7 +72,7 @@ const LinkList = styled.ul`
 `;
 
 const NavLink = styled.li`
-  width: 150px;
+  width: calc(90% / 3);
   height: 36px;
   text-align: center;
   line-height: 2.2;
@@ -78,24 +87,6 @@ const NavLink = styled.li`
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.54);
   &:hover {
     color: #fff;
-    /* box-shadow: 0 5px 8px rgba(63, 81, 181, 0.5);
-    background: #ffc107;
-    background: -webkit-linear-gradient(
-      left,
-      #ffc107 0%,
-      #f50057 50%,
-      #3f51b5 100%
-    );
-    background: linear-gradient(
-      to right,
-      #ffc107 0%,
-      #f50057 50%,
-      #3f51b5 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC107',endColorstr='#3F51B5',GradientType=1);
-    background-size: 400%;
-    -webkit-animation: Gradient 5s ease infinite;
-    animation: Gradient 5s ease infinite; */
     color: rgba(33, 33, 33, 1);
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
     background: #eceff1;
@@ -107,22 +98,5 @@ const NavLink = styled.li`
     animation: Gradient 1s ease infinite;
   }
 `;
-
-const NavListSpan = styled.span`
-  font-size: 18px;
-  line-height: 1;
-  vertical-align: middle;
-`;
-
-// const NavList = styled.ul`
-//   padding: 7px 15px;
-//   background: teal;
-//   border: 1px solid #006d6d;
-//   border-radius: 50em;
-//   color: #fff;
-//   &:hover {
-//     color: #0088a9;
-//   }
-// `;
 
 export default Nav;

@@ -70,7 +70,13 @@ export const Scroll = css`
 
 export const MoreBtn = css`
   width: 67px;
-  height: 25px;
+  height: 30px;
   border-radius: 5px;
   background-color: #ece9e6;
+`;
+
+export const MoreBtnText = css`
+  color: rgb(15, 46, 71);
+  font-weight: 700;
+  line-height: 1;
 `;

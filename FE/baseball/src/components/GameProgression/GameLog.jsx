@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import styled, { css } from "styled-components";
-import { Scroll, MoreBtn } from "../../styles/global";
+import { Scroll, MoreBtn, MoreBtnText } from "../../styles/global";
 
 function GameLog() {
   const OPEN_BTN_TEXT = "Open ∧";
@@ -114,12 +114,10 @@ const LogOpenBtn = styled.button`
 `;
 
 const LogBtnText = styled.span`
+  ${MoreBtnText}
   transform: rotate(-180deg);
   vertical-align: top;
   writing-mode: tb-rl;
-  color: rgb(15, 46, 71);
-  font-weight: 700;
-  line-height: 1;
 `;
 
 const Player = css`
