@@ -20,4 +20,13 @@ public class UpdateInningStatusQuery {
   public static final String CREATE_NEW_INNING_STATUS =
       "INSERT INTO inning_status (strike_count, ball_count, out_count, half_inning_id)"
           + "VALUES (0, 0, 0, :half_inning_id);";
+  public static final String UPDATE_INNING_PLAYER =
+      "UPDATE base_status\n"
+          + "SET third_base = :third_base,\n"
+          + "second_base = :second_base,\n"
+          + "first_base = :first_base\n"
+          + "WHERE half_inning_id = :half_inning_id;";
+  public static final String CREATE_NEW_BASE_STATUS =
+      "INSERT INTO base_status (half_inning_id) "
+          + "VALUES (:half_inning_id);";
 }
