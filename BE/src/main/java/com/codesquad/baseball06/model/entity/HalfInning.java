@@ -1,6 +1,8 @@
 package com.codesquad.baseball06.model.entity;
 
+import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 
 public class HalfInning {
@@ -24,6 +26,8 @@ public class HalfInning {
     this.score = score;
     this.end = end;
     this.createdAt = createdAt;
+    this.inningStatus = InningStatus.create(this.id);
+    this.baseStatus = BaseStatus.create(this.id);
   }
 
   private HalfInning(Long gameId, Integer index, InningType type) {
@@ -34,6 +38,8 @@ public class HalfInning {
     this.score = 0;
     this.end = false;
     this.createdAt = null;
+    this.inningStatus = InningStatus.create(this.id);
+    this.baseStatus = BaseStatus.create(this.id);
   }
 
   public static HalfInning create(Long id, Long gameId, Integer index,
@@ -61,10 +67,6 @@ public class HalfInning {
     return type;
   }
 
-  public boolean isHit() {
-    return false;
-  }
-
   public Long getGameId() {
     return gameId;
   }
@@ -85,56 +87,21 @@ public class HalfInning {
     return createdAt;
   }
 
-  //  public boolean isFinished() {
-//    return out.equals(3);
-//  }
+  @JsonIgnore
+  public Boolean isFinished() {
+    return inningStatus.isFinished();
+  }
 
   public int addScore() {
     score++;
     return score;
   }
 
-//  public BattingResult addStrike() {
-//    strike++;
-//
-//    if (strike.equals(3)) {
-//      return addOut();
-//    }
-//
-//    return BattingResult.STRIKE;
-//  }
-//
-//  private BattingResult addOut() {
-//    out++;
-//    newPlateAppearance();
-//    return BattingResult.OUT;
-//  }
-//
-//  public BattingResult addBall() {
-//    ball++;
-//
-//    if (ball.equals(4)) {
-//      newPlateAppearance();
-//      return BattingResult.HIT;
-//    }
-//    return BattingResult.BALL;
-//  }
-//
-//public void newPlateAppearance() {
-//  ball = 0;
-//  strike = 0;
-//}
-//
-//  public void newInning() {
-//  newPlateAppearance();
-//  out = 0;
-//}
-//
-//  public String getStatus() {
-//    StringBuilder sb = new StringBuilder();
-//    return sb.append(getStrike()).append("S ")
-//        .append(getBall()).append("B ")
-//        .append(getOut()).append("O")
-//        .toString();
-//  }
+  public BattingResult addStrike() {
+    return inningStatus.addStrike();
+  }
+
+  public BattingResult addBall() {
+    return inningStatus.addBall();
+  }
 }

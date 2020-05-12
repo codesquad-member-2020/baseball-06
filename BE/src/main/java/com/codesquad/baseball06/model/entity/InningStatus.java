@@ -1,6 +1,7 @@
 package com.codesquad.baseball06.model.entity;
 
 import com.codesquad.baseball06.model.type.BattingResult;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class InningStatus {
 
@@ -24,13 +25,25 @@ public class InningStatus {
   }
 
   public static InningStatus create(Long halfInningId) {
-    return new InningStatus(null, halfInningId, null, null, null);
+    return new InningStatus(null, halfInningId, 0, 0, 0);
   }
 
+  public void newPlateAppearance() {
+    ball = 0;
+    strike = 0;
+  }
+
+  public void newInning() {
+    newPlateAppearance();
+    out = 0;
+  }
+
+  @JsonIgnore
   public boolean isHit() {
-    return false;
+    return ball.equals(4);
   }
 
+  @JsonIgnore
   public boolean isFinished() {
     return out.equals(3);
   }
@@ -55,29 +68,24 @@ public class InningStatus {
     ball++;
 
     if (ball.equals(4)) {
-      newPlateAppearance();
-      return BattingResult.HIT;
+      return addHit();
     }
     return BattingResult.BALL;
   }
 
-  public void newPlateAppearance() {
-    ball = 0;
-    strike = 0;
-  }
-
-  public void newInning() {
+  @JsonIgnore
+  private BattingResult addHit() {
     newPlateAppearance();
-    out = 0;
+    return BattingResult.HIT;
   }
 
-  public String getStatus() {
-    StringBuilder sb = new StringBuilder();
-    return sb.append(getStrike()).append("S ")
-        .append(getBall()).append("B ")
-        .append(getOut()).append("O")
-        .toString();
-  }
+//  public String getStatus() {
+//    StringBuilder sb = new StringBuilder();
+//    return sb.append(strike).append("S ")
+//        .append(ball).append("B ")
+//        .append(out).append("O")
+//        .toString();
+//  }
 
   public Long getId() {
     return id;

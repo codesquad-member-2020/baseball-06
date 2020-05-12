@@ -137,4 +137,20 @@ public class Game {
         ", lateInningList=" + lateInningList +
         '}';
   }
+
+  public boolean isEndGame() {
+    return (earlyInningList.size() == 9 && lateInningList.size() == 9
+        && Iterables.getLast(earlyInningList).getEnd()
+        && Iterables.getLast(lateInningList).getEnd());
+  }
+
+  public void setEarlyInningList(
+      List<HalfInning> earlyInningList) {
+    this.earlyInningList = earlyInningList;
+  }
+
+  public void setLateInningList(
+      List<HalfInning> lateInningList) {
+    this.lateInningList = lateInningList;
+  }
 }
