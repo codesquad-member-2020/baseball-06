@@ -15,6 +15,18 @@ public class UpdatedBasemanDto {
     this.thirdBase = thirdBase;
   }
 
+  public SpecificBasemanDto getFirstBase() {
+    return firstBase;
+  }
+
+  public SpecificBasemanDto getSecondBase() {
+    return secondBase;
+  }
+
+  public SpecificBasemanDto getThirdBase() {
+    return thirdBase;
+  }
+
   public static UpdatedBasemanDto create(SpecificBasemanDto firstBase,
       SpecificBasemanDto secondBase, SpecificBasemanDto thirdBase) {
     return new UpdatedBasemanDto(firstBase, secondBase, thirdBase);
@@ -32,6 +44,14 @@ public class UpdatedBasemanDto {
 
     public static SpecificBasemanDto create(String name, Long id) {
       return new SpecificBasemanDto(name, id);
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    public Long getId() {
+      return id;
     }
   }
 }
