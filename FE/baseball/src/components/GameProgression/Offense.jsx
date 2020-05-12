@@ -1,7 +1,11 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
+// import Score from "../Score";
 import PlayGround from "./PlayGround";
+// import Title from "../title";
+// import InningStatus from "./InningStatus";
+// import PlayerInfo from "./PlayerInfo";
 import Header from "../Header/Header";
 import { mock } from "../../mock";
 import GameLog from "./GameLog";
@@ -46,7 +50,7 @@ const reducer = (state, action) => {
   }
 };
 
-function Defense() {
+function Offense() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const value = useMemo(
@@ -73,4 +77,4 @@ function Defense() {
   );
 }
 
-export default Defense;
+export default Offense;

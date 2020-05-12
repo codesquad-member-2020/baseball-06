@@ -4,19 +4,23 @@ import Score from "./Score";
 import Title from "./title";
 import InningStatus from "./InningStatus";
 import PlayerInfo from "./PlayerInfo";
+import Nav from "./Nav";
 import { mock } from "../../mock";
 import { Layout } from "../../styles/global";
 
 function Header() {
   return (
-    <HeaderWrap>
-      <InningStatus />
-      <div>
-        <Title type={"sub"} />
-        <Score />
-      </div>
-      <PlayerInfo />
-    </HeaderWrap>
+    <div>
+      <HeaderWrap>
+        <InningStatus />
+        <div>
+          <Title type={"sub"} />
+          <Score />
+        </div>
+        <PlayerInfo />
+      </HeaderWrap>
+      <Nav />
+    </div>
   );
 }
 

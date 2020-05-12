@@ -85,7 +85,7 @@ const LogWrap = styled.div`
   width: 320px;
   position: absolute;
   top: 0;
-  right: -295px;
+  right: -299px;
   height: 100%;
 `;
 
