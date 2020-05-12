@@ -79,13 +79,13 @@ public class InningStatus {
     return BattingResult.HIT;
   }
 
-//  public String getStatus() {
-//    StringBuilder sb = new StringBuilder();
-//    return sb.append(strike).append("S ")
-//        .append(ball).append("B ")
-//        .append(out).append("O")
-//        .toString();
-//  }
+  public String getStatus() {
+    StringBuilder sb = new StringBuilder();
+    return sb.append(strike).append("S ")
+        .append(ball).append("B ")
+        .append(out).append("O")
+        .toString();
+  }
 
   public Long getId() {
     return id;
