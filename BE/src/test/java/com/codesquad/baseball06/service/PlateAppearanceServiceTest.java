@@ -2,7 +2,6 @@ package com.codesquad.baseball06.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.codesquad.baseball06.model.dao.PlateAppearanceDao;
 import com.codesquad.baseball06.model.dao.StatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.Game;
@@ -34,9 +33,6 @@ class PlateAppearanceServiceTest {
 
   @Autowired
   private GameService gameService;
-
-  @Autowired
-  private PlateAppearanceDao appearanceDao;
 
   @Autowired
   private StatusDao statusDao;
