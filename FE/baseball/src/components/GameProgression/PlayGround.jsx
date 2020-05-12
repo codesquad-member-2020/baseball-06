@@ -8,7 +8,7 @@ import React, {
 import styled, { css } from "styled-components";
 import { GAME_RESULT_URL } from "../../constants/url";
 import { BaseBallContext, FETCH_RESULT_INFO } from "./Defense";
-
+import GameLog from "./GameLog";
 const pticherImg =
   "https://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png";
 const ballImg =
@@ -47,7 +47,7 @@ function PlayGround() {
 
   const onPitch = useCallback(() => {
     pitchAnimation();
-  });
+  }, []);
 
   const pitchAnimation = () => {
     let ballRaf = null;
@@ -207,6 +207,7 @@ function PlayGround() {
       <PitchBtnBox display={pitchBtnDisplay} onClick={onPitch}>
         Pitch
       </PitchBtnBox>
+      <GameLog />
     </GroundArea>
   );
 }

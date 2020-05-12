@@ -24,7 +24,7 @@ const HeaderWrap = styled.div`
   ${Layout}
   justify-content:space-between;
   padding: 0 40px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-bottom: 2px solid #777;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-bottom: ${(props) => props.theme.mainBorder};
 `;
 export default Header;

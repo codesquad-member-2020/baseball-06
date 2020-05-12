@@ -92,9 +92,6 @@ const Ball = styled.span`
 `;
 
 const Turn = styled.div`
-  /* position: relative;
-  top: -120px;
-  right: -300px; */
   font-size: 28px;
   margin-bottom: 15px;
 `;

@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import img from "../styles/images/ground.jpg";
-// import img from "../styles/images/baseball.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     body{
@@ -26,10 +25,10 @@ export const Background = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 export const BackgroundImg = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
-
   height: 100%;
   width: 100%;
 `;
@@ -38,4 +37,33 @@ export const Layout = css`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Scroll = css`
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+
+    background-color: #cccccc;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background-image: -webkit-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 25%,
+      transparent 100%,
+      rgba(0, 0, 0, 1) 75%,
+      transparent
+    );
+
+    background-color: #555;
+  }
 `;

@@ -62,7 +62,7 @@ const PlayerInfoArea = styled.div`
 
 const Player = styled.span`
   margin: 0 5px;
-  color: #9cdafa;
+  color: ${(props) => props.theme.subPinkColor};
 `;
 
 export default PlayerInfo;
