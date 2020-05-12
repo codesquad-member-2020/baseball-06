@@ -29,21 +29,22 @@ public class InningService {
   }
 
   public void addHalfInning(HalfInning addedButBeforeInsertedDBHalfInning) {
-    halfInningDao.create(
+    halfInningDao.addNewHalfInning(
         addedButBeforeInsertedDBHalfInning.getGameId(),
         addedButBeforeInsertedDBHalfInning.getIndex(),
         addedButBeforeInsertedDBHalfInning.getType());
 
-    HalfInning afterDBInsertedHalfInning = getHalfInnning(
+    HalfInning afterDBInsertedHalfInning = getHalfInning(
         addedButBeforeInsertedDBHalfInning.getGameId());
     inningStatusUpdateDao.createNewInningStatus(afterDBInsertedHalfInning);
+    inningStatusUpdateDao.createNewBaseStatus(afterDBInsertedHalfInning.getId());
   }
 
-  public HalfInning getHalfInnning(Long gameId) {
+  public HalfInning getHalfInning(Long gameId) {
     return halfInningDao.findHalfInningByGameIdAndLast(gameId);
   }
 
-  public List<HalfInning> getHalfInnningList(Long gameId) {
+  public List<HalfInning> getHalfInningList(Long gameId) {
     return halfInningDao.findHalfInningByGameId(gameId);
   }
 

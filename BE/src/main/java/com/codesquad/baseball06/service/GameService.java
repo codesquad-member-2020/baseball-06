@@ -36,10 +36,10 @@ public class GameService {
 
         ArrayList<HalfInning> listAfterIdSetOfAddedHalfInning = new ArrayList<>();
         listAfterIdSetOfAddedHalfInning
-            .add(inningService.getHalfInnning(addedHalfInning.getGameId()));
+            .add(inningService.getHalfInning(addedHalfInning.getGameId()));
         game.setEarlyInningList(listAfterIdSetOfAddedHalfInning);
 
-        return inningService.getHalfInnning(addedHalfInning.getGameId());
+        return inningService.getHalfInning(addedHalfInning.getGameId());
       }
       throw new RuntimeException("이미 게임이 시작되었습니다.");
     }
@@ -88,7 +88,7 @@ public class GameService {
   public Game getGame(Long gameId) {
     Game game = gameDao.findGameById(gameId);
 
-    List<HalfInning> halfInningList = inningService.getHalfInnningList(gameId);
+    List<HalfInning> halfInningList = inningService.getHalfInningList(gameId);
     List<HalfInning> earlyInningList = halfInningList.stream()
         .filter(halfInning -> halfInning.getType().equals(InningType.EARLY))
         .collect(Collectors.toList());
