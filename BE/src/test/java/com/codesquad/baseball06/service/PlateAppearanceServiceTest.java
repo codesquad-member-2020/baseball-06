@@ -2,7 +2,7 @@ package com.codesquad.baseball06.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.codesquad.baseball06.model.dao.StatusDao;
+import com.codesquad.baseball06.model.dao.InningStatusDtoReturnDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.HalfInning;
@@ -35,7 +35,7 @@ class PlateAppearanceServiceTest {
   private GameService gameService;
 
   @Autowired
-  private StatusDao statusDao;
+  private InningStatusDtoReturnDao inningStatusDtoReturnDao;
 
 //  @BeforeEach
 //  void setUp() {
@@ -53,14 +53,14 @@ class PlateAppearanceServiceTest {
     Game game = gameService.getGame(1L);
     HalfInning halfInning = gameService.start(game);
     assertThat(halfInning).isNotNull();
-    InningStatus beforeInningStatus = statusDao.getInningStatus();
+    InningStatus beforeInningStatus = inningStatusDtoReturnDao.getInningStatus();
 
     //when
     BattingResult battingResultAfterPA = gameService.proceed(game);
     assertThat(battingResultAfterPA).isNotNull();
 
     //then
-    InningStatus afterInningStatus = statusDao.getInningStatus();
+    InningStatus afterInningStatus = inningStatusDtoReturnDao.getInningStatus();
     assertThat(!beforeInningStatus.getStatus().equals(afterInningStatus.getStatus()))
         .isTrue();
 

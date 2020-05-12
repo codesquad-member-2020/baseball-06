@@ -9,11 +9,11 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InningStatusDao {
+public class InningStatusUpdateDao {
 
   private final NamedParameterJdbcTemplate jdbcTemplate;
 
-  public InningStatusDao(NamedParameterJdbcTemplate jdbcTemplate) {
+  public InningStatusUpdateDao(NamedParameterJdbcTemplate jdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;
   }
 
@@ -35,25 +35,27 @@ public class InningStatusDao {
       return jdbcTemplate.update(UpdateInningStatusQuery.INCREASE_BALL_COUNT, sqlParameterSource);
     }
     if (battingResult == BattingResult.HIT) {
-      return jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
-//      return updateBaseStatusResult(battingResult);
+      jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
+      return updateBaseStatusResult(battingResult);
     }
     if (battingResult == BattingResult.BASE_ON_BALL) {
-      return jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
-//      return updateBaseStatusResult(battingResult);
+      jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
+      return updateBaseStatusResult(battingResult);
     }
     if (battingResult == BattingResult.OUT) {
       return jdbcTemplate.update(UpdateInningStatusQuery.INCREASE_OUT_COUNT_AND_INITIALIZE_OTHERS,
           sqlParameterSource);
     }
     if (battingResult == BattingResult.END) {
-      // return jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
+      jdbcTemplate.update(UpdateInningStatusQuery.INITIALIZE_ALL_COUNT, sqlParameterSource);
+      // return
     }
 
     throw new RuntimeException("무엇인가가 잘못되었습니다.");
   }
 
-//  public int updateBaseStatusResult(BattingResult battingResult) {
-//    //insert your code here
-//  }
+  public int updateBaseStatusResult(BattingResult battingResult) {
+    
+    //insert your code here
+  }
 }

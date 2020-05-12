@@ -36,7 +36,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 //TODO: 뭔가 이름 바꿔주어야 할 것 같다.
-public class StatusDao {
+public class InningStatusDtoReturnDao {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -47,7 +47,7 @@ public class StatusDao {
   private final UpdatedBatterMapper updatedBatterMapper;
   private final UpdatedPitcherMapper updatedPitcherMapper;
 
-  public StatusDao(NamedParameterJdbcTemplate jdbcTemplate,
+  public InningStatusDtoReturnDao(NamedParameterJdbcTemplate jdbcTemplate,
       InningStatusMapper inningStatusMapper,
       BasemanStatusMapper basemanStatusMapper,
       ScoreMapper scoreMapper,
