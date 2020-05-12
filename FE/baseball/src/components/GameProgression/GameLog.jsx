@@ -26,17 +26,14 @@ function GameLog() {
     if (logBtnText === OPEN_BTN_TEXT) {
       setLogBtnText(CLOSE_BTN_TEXT);
       addTranslate(`-${logBoxWidth}`);
-      // logWrapRef.current.style.transform = `translateX(-${logBoxWidth}px)`;
     } else {
       setLogBtnText(OPEN_BTN_TEXT);
       addTranslate(0);
-
-      // logWrapRef.current.style.transform = `translateX(0px)`;
     }
   }, [logBtnText]);
 
   const addTranslate = (distance) => {
-    logWrapRef.current.style.transform = `translateX(${distance}px)`;
+    return (logWrapRef.current.style.transform = `translateX(${distance}px)`);
   };
 
   return (
@@ -66,38 +63,6 @@ function GameLog() {
           <div></div>
           <div></div>
           <LastResultLog>안타!</LastResultLog>
-          <div></div>
-          <Number>1</Number>
-          <ResultLog>스트라이크</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-          <Number>1</Number>
-          <ResultLog>볼</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-          <Number>1</Number>
-          <ResultLog>스트라이크</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-        </Result>
-        <Result>
-          <PastPlayer>7번 타자 류현진</PastPlayer>
-          <div></div>
-          <div></div>
-          <LastResultLog>안타!</LastResultLog>
-          <div></div>
-          <Number>1</Number>
-          <ResultLog>스트라이크</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-          <Number>1</Number>
-          <ResultLog>볼</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-          <Number>1</Number>
-          <ResultLog>스트라이크</ResultLog>
-          <CumulativeLog>1S 2B</CumulativeLog>
-        </Result>
-        <Result>
-          <PastPlayer>7번 타자 류현진</PastPlayer>
-          <div></div>
-          <div></div>
-          <LastResultLog>아웃!</LastResultLog>
           <div></div>
           <Number>1</Number>
           <ResultLog>스트라이크</ResultLog>
