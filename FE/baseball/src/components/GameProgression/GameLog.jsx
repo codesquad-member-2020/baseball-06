@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import styled, { css } from "styled-components";
-import { Scroll } from "../../styles/global";
+import { Scroll, MoreBtn } from "../../styles/global";
 
 function GameLog() {
   const OPEN_BTN_TEXT = "Open ∧";
@@ -108,17 +108,9 @@ const LogBox = styled.div`
 `;
 
 const LogOpenBtn = styled.button`
+  ${MoreBtn}
   width: 25px;
   height: 67px;
-
-  border-radius: 10%;
-
-  background-image: linear-gradient(
-    to right,
-    #ece9e6 0%,
-    #ffffff 51%,
-    #ece9e6 100%
-  );
 `;
 
 const LogBtnText = styled.span`
