@@ -82,10 +82,13 @@ CREATE TABLE base_status
 
 CREATE TABLE inning_status
 (
-    id           INT NOT NULL AUTO_INCREMENT,
-    half_inning_id    INT NOT NULL,
-    strike_count INT NOT NULL DEFAULT 0,
-    ball_count   INT NOT NULL DEFAULT 0,
-    out_count    INT NOT NULL DEFAULT 0,
+    id             INT NOT NULL AUTO_INCREMENT,
+    half_inning_id INT NOT NULL,
+    strike_count   INT NOT NULL DEFAULT 0,
+    ball_count     INT NOT NULL DEFAULT 0,
+    out_count      INT NOT NULL DEFAULT 0,
+    CONSTRAINT strike_count_ck CHECK (strike_count IN (0, 1, 2, 3)),
+    CONSTRAINT ball_count_ck CHECK (ball_count IN (0, 1, 2, 3)),
+    CONSTRAINT out_count_ck CHECK (out_count IN (0, 1, 2, 3)),
     PRIMARY KEY (id)
 );
