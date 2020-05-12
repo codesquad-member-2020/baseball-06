@@ -2,6 +2,7 @@ import React, {
   createContext,
   useReducer,
   useMemo,
+  useEffect,
   useCallback,
   useRef,
   useState,
@@ -10,16 +11,40 @@ import styled, { css } from "styled-components";
 import { Scroll } from "../../styles/global";
 
 function GameLog() {
-  const logRef = useRef();
+  const OPEN_BTN_TEXT = "Open ∧";
+  const CLOSE_BTN_TEXT = "Close ∨";
+  const TRANSITION_PROPERTY = "all .3s ease-in-out";
+
+  const [logBtnText, setLogBtnText] = useState(OPEN_BTN_TEXT);
+  const logWrapRef = useRef();
+  const logBoxRef = useRef();
+
   const openLog = useCallback(() => {
-    logRef.current.style.transition = "all .3s ease-in-out";
-    logRef.current.style.transform = "translateX(-300px)";
-  }, []);
+    logWrapRef.current.style.transition = TRANSITION_PROPERTY;
+
+    const logBoxWidth = logBoxRef.current.offsetWidth;
+    if (logBtnText === OPEN_BTN_TEXT) {
+      setLogBtnText(CLOSE_BTN_TEXT);
+      addTranslate(`-${logBoxWidth}`);
+      // logWrapRef.current.style.transform = `translateX(-${logBoxWidth}px)`;
+    } else {
+      setLogBtnText(OPEN_BTN_TEXT);
+      addTranslate(0);
+
+      // logWrapRef.current.style.transform = `translateX(0px)`;
+    }
+  }, [logBtnText]);
+
+  const addTranslate = (distance) => {
+    logWrapRef.current.style.transform = `translateX(${distance}px)`;
+  };
 
   return (
-    <LogWrap ref={logRef}>
-      <LogOpenBtn onClick={openLog}>open</LogOpenBtn>
-      <LogArea>
+    <LogWrap ref={logWrapRef}>
+      <LogOpenBtn onClick={openLog}>
+        <LogBtnText>{logBtnText}</LogBtnText>
+      </LogOpenBtn>
+      <LogBox ref={logBoxRef}>
         <Result>
           <CurrentPlayer>7번 타자 류현진</CurrentPlayer>
           <div></div>
@@ -84,7 +109,7 @@ function GameLog() {
           <ResultLog>스트라이크</ResultLog>
           <CumulativeLog>1S 2B</CumulativeLog>
         </Result>
-      </LogArea>
+      </LogBox>
     </LogWrap>
   );
 }
@@ -95,7 +120,7 @@ const LogWrap = styled.div`
   width: 320px;
   position: absolute;
   top: 0;
-  right: -300px;
+  right: -295px;
   height: 100%;
 `;
 
@@ -107,7 +132,7 @@ const Result = styled.div`
   grid-auto-rows: minmax(1.9em, auto);
   margin-bottom: 30px;
 `;
-const LogArea = styled.div`
+const LogBox = styled.div`
   overflow: auto;
   padding: 20px;
   height: 100%;
@@ -118,8 +143,8 @@ const LogArea = styled.div`
 `;
 
 const LogOpenBtn = styled.button`
-  width: 15px;
-  height: 50px;
+  width: 25px;
+  height: 67px;
 
   border-radius: 10%;
 
@@ -129,6 +154,15 @@ const LogOpenBtn = styled.button`
     #ffffff 51%,
     #ece9e6 100%
   );
+`;
+
+const LogBtnText = styled.span`
+  transform: rotate(-180deg);
+  vertical-align: top;
+  writing-mode: tb-rl;
+  color: rgb(15, 46, 71);
+  font-weight: 700;
+  line-height: 1;
 `;
 
 const Player = css`
