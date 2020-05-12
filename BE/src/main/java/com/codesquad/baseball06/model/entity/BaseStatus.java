@@ -22,6 +22,10 @@ public class BaseStatus {
     return new BaseStatus(id, inningId, firstBase, secondBase, thirdBase);
   }
 
+  public static BaseStatus create(Long inningId) {
+    return new BaseStatus(null, inningId, null, null, null);
+  }
+
   public Long getId() {
     return id;
   }
