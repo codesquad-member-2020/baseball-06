@@ -29,7 +29,15 @@ public class GameController {
   @GetMapping("/game/start/{gameId}")
   public ApiResponse startGame(@PathVariable Long gameId) {
     Game game = gameService.getGame(gameId);
-    return ApiResponse.ok(gameService.start(game));
+    ApiResponse apiResponse = ApiResponse.ok(gameService.start(game));
+    return apiResponse;
+  }
+
+  @GetMapping("/game/proceed/{gameId}")
+  public ApiResponse proceedGame(@PathVariable Long gameId) {
+    Game game = gameService.getGame(gameId);
+    ApiResponse apiResponse = ApiResponse.ok(gameService.proceed(game));
+    return apiResponse;
   }
 
   @GetMapping("/game/join/{gameId}")
