@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.service;
 
+import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -12,8 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlateAppearanceService {
 
+  private final InningStatusDao inningStatusDao;
+
   private static final Logger log = LoggerFactory.getLogger(PlateAppearanceService.class);
   private double delimiter;
+
+  public PlateAppearanceService(InningStatusDao inningStatusDao) {
+    this.inningStatusDao = inningStatusDao;
+  }
 
   public BattingResult doPitching(Pitcher pitcher, Batter batter) {
     delimiter = new Random().nextDouble();
@@ -31,14 +38,27 @@ public class PlateAppearanceService {
 
   public BattingResult postPitching(HalfInning halfInning, BattingResult battingResult) {
     if (battingResult.equals(BattingResult.STRIKE)) {
-      return halfInning.addStrike();
+      BattingResult strikeResult = halfInning.addStrike();
+      updatePostPitchingResultToDB(halfInning, battingResult);
+      return strikeResult;
     }
 
     if (battingResult.equals(BattingResult.BALL)) {
-      return halfInning.addBall();
+      BattingResult ballResult = halfInning.addBall();
+      updatePostPitchingResultToDB(halfInning, battingResult);
+      return ballResult;
     }
 
-    return BattingResult.HIT;
+    BattingResult hitResult = BattingResult.HIT;
+    updatePostPitchingResultToDB(halfInning, hitResult);
+    return hitResult;
+  }
+
+  public boolean updatePostPitchingResultToDB(HalfInning halfInning, BattingResult battingResult) {
+    if (inningStatusDao.updatePitchingResult(halfInning, battingResult) == 1) {
+      return true;
+    }
+    throw new RuntimeException("데이터베이스에 정상적으로 저장되지 않았습니다.");
   }
 
   private boolean isHit(Batter batter) {
@@ -53,12 +73,12 @@ public class PlateAppearanceService {
     return delimiter - batter.getBattingAverage() > 0.25;
   }
 
-  public BattingResult batting(HalfInning halfInning, Pitcher pitcher, Batter batter) {
-    BattingResult battingResult = doPitching(pitcher, batter);
-
-    // pitchingResult 에 따라 후속 로직 추가
-    BattingResult postBattingResult = postPitching(halfInning, battingResult);
-
-    return postBattingResult;
-  }
+//  public BattingResult batting(HalfInning halfInning, Pitcher pitcher, Batter batter) {
+//    BattingResult battingResult = doPitching(pitcher, batter);
+//
+//    // pitchingResult 에 따라 후속 로직 추가
+//    BattingResult postBattingResult = postPitching(halfInning, battingResult);
+//
+//    return postBattingResult;
+//  }
 }
