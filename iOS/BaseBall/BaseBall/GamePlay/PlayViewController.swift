@@ -16,15 +16,14 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var scoreStackView: OverallScoreView!
     @IBOutlet weak var inningLabel: UILabel!
     
-    private let playerInfoDataSource = PlayerInfoDataSource()
+    private var playerInfoDataSource: PlayerInfoDataSource!
     private let pitchingResultDataSource = PitchingResultDataSource()
     private var scoreViewModel: ScoreViewModel!
     private var inningViewModel: InningViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerInfoTableView.dataSource = playerInfoDataSource
-        pitchingResultTableView.dataSource = pitchingResultDataSource
+        configureDataSources()
         configureViewModels()
     }
     
@@ -34,6 +33,7 @@ class PlayViewController: UIViewController {
             case .success(let pitchResult):
                 self.scoreViewModel.updateKey(pitchResult.inningStatus)
                 self.inningViewModel.updateKey(pitchResult.inningStatus)
+                self.playerInfoDataSource.updateData(pitchResult.updatedPlayer)
             case .failure(let error):
                 print(error)
             }
@@ -51,5 +51,13 @@ class PlayViewController: UIViewController {
                 self.inningLabel.text = data
             }
         })
+    }
+    
+    private func configureDataSources() {
+        playerInfoDataSource = PlayerInfoDataSource.init(changed: {
+            self.playerInfoTableView.reloadData()
+        })
+        playerInfoTableView.dataSource = playerInfoDataSource
+        pitchingResultTableView.dataSource = pitchingResultDataSource
     }
 }

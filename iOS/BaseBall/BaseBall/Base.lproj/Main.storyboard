@@ -332,6 +332,11 @@
                                                 <constraint firstItem="gEh-Ol-ccM" firstAttribute="centerY" secondItem="frf-l2-RLh" secondAttribute="centerY" id="xce-Lj-RJJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="infoLabel" destination="gEh-Ol-ccM" id="fWL-2x-MgT"/>
+                                            <outlet property="nameLabel" destination="tMA-aE-k8y" id="RhG-uL-cZl"/>
+                                            <outlet property="roleLabel" destination="h8O-tt-k9O" id="2ny-A2-UR1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

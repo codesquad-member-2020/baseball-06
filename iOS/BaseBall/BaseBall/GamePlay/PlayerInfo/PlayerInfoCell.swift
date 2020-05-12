@@ -10,4 +10,13 @@ import UIKit
 
 class PlayerInfoCell: UITableViewCell {
     static let identifier = "playerInfo"
+    
+    @IBOutlet weak var roleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    func updateCell(_ data: Player) {
+        roleLabel.text = data.type
+        nameLabel.text = data.name
+    }
 }
