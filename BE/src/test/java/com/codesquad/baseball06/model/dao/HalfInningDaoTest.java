@@ -14,13 +14,13 @@ class HalfInningDaoTest {
 
   @Test
   void create() {
-    Assertions.assertThat(halfInningDao.create(1L, 1, InningType.EARLY))
+    Assertions.assertThat(halfInningDao.addNewHalfInning(1L, 1, InningType.EARLY))
         .isOne();
   }
 
   @Test
   void findHalfInningById() {
-    Assertions.assertThat(halfInningDao.create(1L, 1, InningType.EARLY))
+    Assertions.assertThat(halfInningDao.addNewHalfInning(1L, 1, InningType.EARLY))
         .isOne();
 
     Assertions.assertThat(halfInningDao.findHalfInningById(1L))
