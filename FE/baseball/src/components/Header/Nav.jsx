@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle, Background } from "../../styles/global";
+import { GlobalStyle, Background, MoreBtn } from "../../styles/global";
 import {
   SideBoxWrap,
   SideBox,
@@ -10,56 +10,56 @@ import {
 
 function Nav() {
   return (
-    // <NavWrap>
-    //   <SideBoxBtn>
-    //     <SideBoxBtnText></SideBoxBtnText>
-    //   </SideBoxBtn>
-    //   <SideBox>
-    //     <LinkList>
-    //       <NavLink>dd</NavLink>
-    //       <NavLink>dd</NavLink>
-    //       <NavLink>dd</NavLink>
-    //       <NavLink>dd</NavLink>
-    //       <NavLink>dd</NavLink>
-    //     </LinkList>
-    //   </SideBox>
-    // </NavWrap>
     <NavWrap>
-      <LinkList>
-        <NavLink>dd</NavLink>
-        <NavLink>dd</NavLink>
-        <NavLink>dd</NavLink>
-        <NavLink>dd</NavLink>
-        <NavLink>dd</NavLink>
-      </LinkList>
+      <NavContainer>
+        <LinkList>
+          <NavLink>dd</NavLink>
+          <NavLink>dd</NavLink>
+          <NavLink>dd</NavLink>
+          <NavLink>dd</NavLink>
+          <NavLink>dd</NavLink>
+        </LinkList>
+      </NavContainer>
+      <NavMoreBtn />
     </NavWrap>
   );
 }
 
-// const NavWrap = styled.div`
-//   ${SideBoxWrap}
-//   right: 0px;
-//   width: 320px;
-// `;
 const NavWrap = styled.div`
-  /* justify-content: flex-end; */
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: -webkit-right;
+  height: 76px;
   width: 100%;
-  height: 40px;
+  z-index: 1;
+`;
+
+const NavMoreBtn = styled.button`
+  ${MoreBtn}
+  margin-right:80px;
+`;
+
+const NavContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  background: #212121;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 `;
 
 const LinkList = styled.ul`
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 950px;
   :after {
     color: rgba(255, 255, 255, 0.54);
     background: #000;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   }
-
-  background: #212121;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 `;
 
 const NavLink = styled.li`

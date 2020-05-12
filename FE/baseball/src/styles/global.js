@@ -67,3 +67,10 @@ export const Scroll = css`
     background-color: #555;
   }
 `;
+
+export const MoreBtn = css`
+  width: 67px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: #ece9e6;
+`;
