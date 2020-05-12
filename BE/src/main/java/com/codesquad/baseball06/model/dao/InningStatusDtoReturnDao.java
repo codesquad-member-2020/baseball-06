@@ -29,13 +29,13 @@ import java.util.Map;
 import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-//TODO: 뭔가 이름 바꿔주어야 할 것 같다.
 public class InningStatusDtoReturnDao {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerDao.class);
@@ -131,7 +131,11 @@ public class InningStatusDtoReturnDao {
   }
 
   public UpdatedBasemanDto getUpdatedBaseman() {
-    return jdbcTemplate.query(BASEMAN_SQL, basemanStatusMapper).get(0);
+    try {
+      return jdbcTemplate.query(BASEMAN_SQL, basemanStatusMapper).get(0);
+    } catch (IndexOutOfBoundsException | EmptyResultDataAccessException e) {
+      return UpdatedBasemanDto.create(null, null, null);
+    }
   }
 
   public ScoreDto getScores(Long game_id) throws Exception {
