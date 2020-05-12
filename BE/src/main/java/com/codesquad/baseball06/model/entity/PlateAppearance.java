@@ -14,7 +14,6 @@ public class PlateAppearance {
   private final LocalDateTime createdAt;
   private Boolean end;
 
-
   public PlateAppearance(Long id, Long halfInningId, Pitcher pitcher, Batter batter,
       Integer batterIndex, BattingResult result, Boolean end, LocalDateTime createdAt) {
     this.id = id;
