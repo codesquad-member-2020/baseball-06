@@ -77,6 +77,7 @@ CREATE TABLE base_status
     second_base    INT NULL,
     third_base     INT NULL,
     half_inning_id INT NOT NULL,
+    CONSTRAINT half_inning_id_constraint FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
     PRIMARY KEY (id)
 );
 
@@ -90,5 +91,6 @@ CREATE TABLE inning_status
     CONSTRAINT strike_count_ck CHECK (strike_count IN (0, 1, 2, 3)),
     CONSTRAINT ball_count_ck CHECK (ball_count IN (0, 1, 2, 3)),
     CONSTRAINT out_count_ck CHECK (out_count IN (0, 1, 2, 3)),
+    CONSTRAINT half_inning_id_constraint FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
     PRIMARY KEY (id)
 );
