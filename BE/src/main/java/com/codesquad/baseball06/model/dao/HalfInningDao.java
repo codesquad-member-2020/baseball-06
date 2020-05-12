@@ -4,10 +4,13 @@ import com.codesquad.baseball06.model.dao.mapper.HalfInningMapper;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.query.HalfInningQuery;
 import com.codesquad.baseball06.model.type.InningType;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -28,9 +31,10 @@ public class HalfInningDao {
   public HalfInning findHalfInningById(Long id) {
     SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
 
-    return jdbcTemplate
+    return Optional.ofNullable(jdbcTemplate
         .queryForObject(HalfInningQuery.FIND_BY_ID, namedParameters, halfInningMapper)
-        .get(0);
+        .get(0))
+        .orElseThrow(NoSuchElementException::new);
   }
 
   public HalfInning findHalfInningByGameIdAndLast(Long gameId) {
@@ -38,8 +42,19 @@ public class HalfInningDao {
 
     return Optional.ofNullable(
         jdbcTemplate.queryForObject(
-            HalfInningQuery.FIND_BY_GAME_ID_AND_LAST, namedParameters, halfInningMapper).get(0))
+            HalfInningQuery.FIND_BY_GAME_ID, namedParameters, halfInningMapper).get(0))
         .orElseThrow(NoSuchElementException::new);
+  }
+
+  public List<HalfInning> findHalfInningByGameId(Long gameId) {
+    SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("game_id", gameId);
+
+    try {
+      return jdbcTemplate.queryForObject(
+          HalfInningQuery.FIND_BY_GAME_ID, namedParameters, halfInningMapper);
+    } catch (EmptyResultDataAccessException e) {
+      return new ArrayList<>();
+    }
   }
 
   public int create(Long gameId, Integer index, InningType inningType) {
