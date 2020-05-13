@@ -8,11 +8,11 @@ import Nav from "./Nav";
 import { mock } from "../../mock";
 import { Layout } from "../../styles/global";
 
-function TitleHeader() {
+function TitleHeader({ titleText }) {
   return (
     <div>
       <HeaderWrap>
-        <Title />
+        <Title titleText={titleText} />
       </HeaderWrap>
       <Nav />
     </div>
