@@ -1,6 +1,6 @@
 package com.codesquad.baseball06.service;
 
-import com.codesquad.baseball06.model.dao.InningStatusUpdateDao;
+import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlateAppearanceService {
 
-  private final InningStatusUpdateDao inningStatusUpdateDao;
+  private final InningStatusDao inningStatusDao;
 
   private static final Logger log = LoggerFactory.getLogger(PlateAppearanceService.class);
   private double delimiter;
 
-  public PlateAppearanceService(InningStatusUpdateDao inningStatusUpdateDao) {
-    this.inningStatusUpdateDao = inningStatusUpdateDao;
+  public PlateAppearanceService(InningStatusDao inningStatusDao) {
+    this.inningStatusDao = inningStatusDao;
   }
 
   public BattingResult doPitching(Pitcher pitcher, Batter batter) {
@@ -38,27 +38,14 @@ public class PlateAppearanceService {
 
   public BattingResult postPitching(HalfInning halfInning, BattingResult battingResult) {
     if (battingResult.equals(BattingResult.STRIKE)) {
-      BattingResult strikeResult = halfInning.addStrike();
-      updatePostPitchingResultToDB(halfInning, battingResult);
-      return strikeResult;
+      return halfInning.addStrike();
     }
 
     if (battingResult.equals(BattingResult.BALL)) {
-      BattingResult ballResult = halfInning.addBall();
-      updatePostPitchingResultToDB(halfInning, battingResult);
-      return ballResult;
+      return halfInning.addBall();
     }
 
-    BattingResult hitResult = BattingResult.HIT;
-    updatePostPitchingResultToDB(halfInning, hitResult);
-    return hitResult;
-  }
-
-  public boolean updatePostPitchingResultToDB(HalfInning halfInning, BattingResult battingResult) {
-    if (inningStatusUpdateDao.updatePitchingResult(halfInning, battingResult) == 1) {
-      return true;
-    }
-    throw new RuntimeException("데이터베이스에 정상적으로 저장되지 않았습니다.");
+    return BattingResult.HIT;
   }
 
   private boolean isHit(Batter batter) {
