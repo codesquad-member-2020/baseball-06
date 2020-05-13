@@ -263,7 +263,7 @@ const PitcherArea = styled.div`
   border: 1px solid red;
   width: 80px;
   height: 89px;
-  top: 253px;
+  top: 289px;
   left: 717px;
 `;
 

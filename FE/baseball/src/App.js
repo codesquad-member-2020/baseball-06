@@ -10,18 +10,19 @@ import Header from "./components/Header/Header";
 import { GlobalStyle, Background } from "./styles/global";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
+import GameRouting from './GameRouting'
 
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/" exact={true} component={GameSelectionPage} />
-      <Route path="/defense" exact={true} component={Defense} />
-      <Route path="/log" exact={true} component={GameLog} />
-      <Route path="/offense" exact={true} component={Offense} />
-      <Route path="/detailedScore" exact={true} component={DetailedScore} />
-      <Route path="/playerRoster" exact={true} component={PlayerRoster} />
+      <Route path="/" exact component={GameSelectionPage} />
+      <Route path="/defense" exact component={Defense} />
+      <Route path="/log" exact component={GameLog} />
+      <Route path="/offense" exact component={Offense} />
+      <Route path="/detailedScore" exact component={DetailedScore} />
+      <Route path="/playerRoster" exact component={PlayerRoster} />
     </BrowserRouter>
   );
 }
