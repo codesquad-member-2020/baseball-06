@@ -5,8 +5,7 @@ import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.query.InningStatusQuery;
 import com.codesquad.baseball06.model.query.UpdateInningStatusQuery;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -32,9 +31,12 @@ public class InningStatusDao {
   }
 
   public int updateInningStatus(HalfInning halfInning, String query) {
+    InningStatus inningStatus = halfInning.getInningStatus();
     SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+        .addValue("strike_count", inningStatus.getStrike())
+        .addValue("ball_count", inningStatus.getBall())
+        .addValue("out_count", inningStatus.getOut())
         .addValue("half_inning_id", halfInning.getId());
-
     try {
       return jdbcTemplate.update(query, sqlParameterSource);
     } catch (Exception e) {
@@ -45,8 +47,25 @@ public class InningStatusDao {
   public InningStatus findInningStatusByGameId(Long gameId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("game_id", gameId);
 
-    return Optional.ofNullable(jdbcTemplate
-        .queryForObject(InningStatusQuery.FIND_BY_GAME_ID, namedParameters, inningStatusMapper)
-        .get(0)).orElseThrow(NoSuchElementException::new);
+    try {
+      return jdbcTemplate
+          .queryForObject(InningStatusQuery.FIND_BY_GAME_ID, namedParameters, inningStatusMapper)
+          .get(0);
+    } catch (EmptyResultDataAccessException e) {
+      return null;
+    }
+  }
+
+  public InningStatus findInningStatusByInningId(Long inningId) {
+    SqlParameterSource namedParameters = new MapSqlParameterSource()
+        .addValue("half_inning_id", inningId);
+
+    try {
+      return jdbcTemplate
+          .queryForObject(InningStatusQuery.FIND_BY_INNING_ID, namedParameters, inningStatusMapper)
+          .get(0);
+    } catch (EmptyResultDataAccessException e) {
+      return null;
+    }
   }
 }

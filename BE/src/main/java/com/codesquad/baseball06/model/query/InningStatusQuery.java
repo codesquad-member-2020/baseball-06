@@ -9,7 +9,16 @@ public class InningStatusQuery {
           + "WHERE hi.game_id = :game_id "
           + "AND iss.half_inning_id = hi.id "
           + "AND hi.end = 0";
+  public static final String FIND_BY_INNING_ID =
+      "SELECT i.id, i.half_inning_id, i.strike_count, i.ball_count, i.out_count "
+          + "FROM inning_status i "
+          + "WHERE i.half_inning_id = :half_inning_id";
   public static final String INSERT = "INSERT INTO inning_status (half_inning_id) VALUES (:half_inning_id)";
+  public static final String UPDATE = "UPDATE inning_status "
+      + "SET strike_count = :strike_count, "
+      + "ball_count = :ball_count, "
+      + "out_count = :out_count "
+      + "WHERE half_inning_id = :half_inning_id";
 
   public static final String INNING_STATUS =
       "SELECT i.id, i.strike_count, i.ball_count, i.out_count, i.half_inning_id FROM inning_status i";

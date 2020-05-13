@@ -20,7 +20,8 @@ public class HalfInning {
   private LocalDateTime createdAt;
 
   private HalfInning(Long id, Long gameId, Integer index,
-      InningType type, Integer score, Boolean end, LocalDateTime createdAt) {
+      InningType type, Integer score, Boolean end, LocalDateTime createdAt,
+      InningStatus inningStatus, BaseStatus baseStatus) {
     this.id = id;
     this.gameId = gameId;
     this.index = index;
@@ -28,29 +29,20 @@ public class HalfInning {
     this.score = score;
     this.end = end;
     this.createdAt = createdAt;
-    this.inningStatus = InningStatus.create(this.id);
-    this.baseStatus = BaseStatus.create(this.id);
-  }
-
-  private HalfInning(Long gameId, Integer index, InningType type) {
-    this.id = null;
-    this.gameId = gameId;
-    this.index = index;
-    this.type = type;
-    this.score = 0;
-    this.end = false;
-    this.createdAt = null;
-    this.inningStatus = InningStatus.create(this.id);
-    this.baseStatus = BaseStatus.create(this.id);
+    this.inningStatus = inningStatus;
+    this.baseStatus = baseStatus;
   }
 
   public static HalfInning create(Long id, Long gameId, Integer index,
-      InningType type, Integer score, Boolean end, LocalDateTime createdAt) {
-    return new HalfInning(id, gameId, index, type, score, end, createdAt);
+      InningType type, Integer score, Boolean end, LocalDateTime createdAt,
+      InningStatus inningStatus, BaseStatus baseStatus) {
+    return new HalfInning(id, gameId, index, type, score, end, createdAt, inningStatus, baseStatus);
   }
 
   public static HalfInning create(Long gameId, Integer index, InningType type) {
-    return new HalfInning(gameId, index, type);
+    return new HalfInning(
+        null, gameId, index, type, 0, false, null, InningStatus.create(null),
+        BaseStatus.create(null));
   }
 
   public Long getId() {
