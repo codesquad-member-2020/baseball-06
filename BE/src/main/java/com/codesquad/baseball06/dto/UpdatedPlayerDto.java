@@ -11,7 +11,6 @@ public class UpdatedPlayerDto {
   private PlayerType type;
   private Long teamId;
   private Double battingAverage;
-  private Integer batterIndex;
 
   private UpdatedPlayerDto(Long id, String name, PlayerType type, Long teamId) {
     this.id = id;
@@ -21,18 +20,17 @@ public class UpdatedPlayerDto {
   }
 
   private UpdatedPlayerDto(Long id, String name, PlayerType type, Long teamId,
-      Double battingAverage, Integer batterIndex) {
+      Double battingAverage) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.teamId = teamId;
     this.battingAverage = battingAverage;
-    this.batterIndex = batterIndex;
   }
 
   public static UpdatedPlayerDto createUpdatedBatterDto(Batter batter) {
     return new UpdatedPlayerDto(batter.getId(), batter.getName(), PlayerType.BATTER,
-        batter.getTeamId(), batter.getBattingAverage(), batter.getBatterIndex());
+        batter.getTeamId(), batter.getBattingAverage());
   }
 
   public static UpdatedPlayerDto createUpdatedPitcherDto(Pitcher pitcher) {

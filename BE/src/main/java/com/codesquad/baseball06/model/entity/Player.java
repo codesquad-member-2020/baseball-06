@@ -31,6 +31,4 @@ public abstract class Player {
   }
 
   public abstract Double getBattingAverage();
-
-  public abstract Integer getBatterIndex();
 }
