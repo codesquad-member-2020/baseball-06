@@ -7,7 +7,7 @@ import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.entity.Pitcher;
-import com.codesquad.baseball06.model.query.UpdateInningStatusQuery;
+import com.codesquad.baseball06.model.query.InningStatusQuery;
 import com.codesquad.baseball06.model.type.BattingResult;
 import java.util.List;
 import org.slf4j.Logger;
@@ -30,14 +30,14 @@ public class InningService {
     this.paService = paService;
   }
 
-  public void addHalfInning(HalfInning addedButBeforeInsertedDBHalfInning) {
+  public void addHalfInning(HalfInning halfInning) {
     halfInningDao.addNewHalfInning(
-        addedButBeforeInsertedDBHalfInning.getGameId(),
-        addedButBeforeInsertedDBHalfInning.getIndex(),
-        addedButBeforeInsertedDBHalfInning.getType());
+        halfInning.getGameId(),
+        halfInning.getIndex(),
+        halfInning.getType());
 
-    HalfInning afterDBInsertedHalfInning = getHalfInning(
-        addedButBeforeInsertedDBHalfInning.getGameId());
+    HalfInning afterDBInsertedHalfInning = getHalfInning(halfInning.getGameId());
+
     inningStatusDao.createNewInningStatus(afterDBInsertedHalfInning);
 //    baseStatusDao.createNewBaseStatus(afterDBInsertedHalfInning.getId());
   }
@@ -64,31 +64,7 @@ public class InningService {
   }
 
   public int updateInningStatus(HalfInning halfInning, BattingResult postBattingResult) {
-    switch (postBattingResult) {
-      case STRIKE:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INCREASE_STRIKE_COUNT);
-      case BALL:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INCREASE_BALL_COUNT);
-      case HIT:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INITIALIZE_ALL_COUNT);
-      //      return baseStatusDao.updateBaseStatus(halfInning);
-      case BASE_ON_BALL:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INITIALIZE_ALL_COUNT);
-//      return baseStatusDao.updateBaseStatus(halfInning);
-      case OUT:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INCREASE_OUT_COUNT_AND_INITIALIZE_OTHERS);
-      case END:
-        return inningStatusDao.updateInningStatus(
-            halfInning, UpdateInningStatusQuery.INITIALIZE_ALL_COUNT);
-      default:
-    }
-
-    throw new RuntimeException("무엇인가가 잘못되었습니다.");
+    return inningStatusDao.updateInningStatus(halfInning, InningStatusQuery.UPDATE);
   }
 
   public InningStatus getInningStatus(Long gameId) {
