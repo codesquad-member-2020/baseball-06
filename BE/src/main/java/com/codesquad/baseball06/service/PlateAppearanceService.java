@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.service;
 
+import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -12,8 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlateAppearanceService {
 
+  private final InningStatusDao inningStatusDao;
+
   private static final Logger log = LoggerFactory.getLogger(PlateAppearanceService.class);
   private double delimiter;
+
+  public PlateAppearanceService(InningStatusDao inningStatusDao) {
+    this.inningStatusDao = inningStatusDao;
+  }
 
   public BattingResult doPitching(Pitcher pitcher, Batter batter) {
     delimiter = new Random().nextDouble();
@@ -53,12 +60,12 @@ public class PlateAppearanceService {
     return delimiter - batter.getBattingAverage() > 0.25;
   }
 
-  public BattingResult batting(HalfInning halfInning, Pitcher pitcher, Batter batter) {
-    BattingResult battingResult = doPitching(pitcher, batter);
-
-    // pitchingResult 에 따라 후속 로직 추가
-    BattingResult postBattingResult = postPitching(halfInning, battingResult);
-
-    return postBattingResult;
-  }
+//  public BattingResult batting(HalfInning halfInning, Pitcher pitcher, Batter batter) {
+//    BattingResult battingResult = doPitching(pitcher, batter);
+//
+//    // pitchingResult 에 따라 후속 로직 추가
+//    BattingResult postBattingResult = postPitching(halfInning, battingResult);
+//
+//    return postBattingResult;
+//  }
 }

@@ -57,7 +57,7 @@ public class HalfInningDao {
     }
   }
 
-  public int create(Long gameId, Integer index, InningType inningType) {
+  public int addNewHalfInning(Long gameId, Integer index, InningType inningType) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("game_id", gameId)
         .addValue("inning_index", index)

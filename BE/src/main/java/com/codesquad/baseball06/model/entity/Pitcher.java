@@ -26,9 +26,4 @@ public class Pitcher extends Player {
     return null;
   }
 
-  @Override
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  public Integer getBatterIndex() {
-    return null;
-  }
 }

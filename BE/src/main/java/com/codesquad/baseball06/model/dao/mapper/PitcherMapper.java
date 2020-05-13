@@ -16,7 +16,10 @@ public class PitcherMapper implements RowMapper<List<Pitcher>> {
     List<Pitcher> pitcherList = new ArrayList<>();
 
     do {
-      pitcherList.add(Pitcher.create(rs.getLong(1), rs.getLong(2), rs.getString(4)));
+      pitcherList.add(Pitcher.create(
+          rs.getLong("id"),
+          rs.getLong("team_id"),
+          rs.getString("name")));
     } while (rs.next());
 
     return pitcherList;
