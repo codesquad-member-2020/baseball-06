@@ -1,7 +1,6 @@
 package com.codesquad.baseball06.service;
 
 
-import com.codesquad.baseball06.model.dao.BaseStatusDao;
 import com.codesquad.baseball06.model.dao.HalfInningDao;
 import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
@@ -21,16 +20,13 @@ public class InningService {
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
   private final HalfInningDao halfInningDao;
   private final InningStatusDao inningStatusDao;
-  private final BaseStatusDao baseStatusDao;
   private final PlateAppearanceService paService;
 
   public InningService(HalfInningDao halfInningDao,
       InningStatusDao inningStatusDao,
-      BaseStatusDao baseStatusDao,
       PlateAppearanceService paService) {
     this.halfInningDao = halfInningDao;
     this.inningStatusDao = inningStatusDao;
-    this.baseStatusDao = baseStatusDao;
     this.paService = paService;
   }
 
