@@ -12,11 +12,11 @@ import com.codesquad.baseball06.dto.ScoreDto;
 import com.codesquad.baseball06.dto.UpdatedBasemanDto;
 import com.codesquad.baseball06.dto.UpdatedPlayerDto;
 import com.codesquad.baseball06.model.dao.mapper.BasemanStatusMapper;
+import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningIndexTypeMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningStatusMapper;
+import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
 import com.codesquad.baseball06.model.dao.mapper.ScoreMapper;
-import com.codesquad.baseball06.model.dao.mapper.UpdatedBatterMapper;
-import com.codesquad.baseball06.model.dao.mapper.UpdatedPitcherMapper;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -44,23 +44,17 @@ public class InningStatusDtoReturnDao {
   private final BasemanStatusMapper basemanStatusMapper;
   private final ScoreMapper scoreMapper;
   private final InningIndexTypeMapper inningIndexTypeMapper;
-  private final UpdatedBatterMapper updatedBatterMapper;
-  private final UpdatedPitcherMapper updatedPitcherMapper;
 
   public InningStatusDtoReturnDao(NamedParameterJdbcTemplate jdbcTemplate,
       InningStatusMapper inningStatusMapper,
       BasemanStatusMapper basemanStatusMapper,
       ScoreMapper scoreMapper,
-      InningIndexTypeMapper inningIndexTypeMapper,
-      UpdatedBatterMapper updatedBatterMapper,
-      UpdatedPitcherMapper updatedPitcherMapper) {
+      InningIndexTypeMapper inningIndexTypeMapper) {
     this.jdbcTemplate = jdbcTemplate;
     this.inningStatusMapper = inningStatusMapper;
     this.basemanStatusMapper = basemanStatusMapper;
     this.scoreMapper = scoreMapper;
     this.inningIndexTypeMapper = inningIndexTypeMapper;
-    this.updatedBatterMapper = updatedBatterMapper;
-    this.updatedPitcherMapper = updatedPitcherMapper;
   }
 
   public void InitForTest() {
@@ -163,9 +157,10 @@ public class InningStatusDtoReturnDao {
         .addValue("game_id", game_id);
 
     Batter updatedBatter = jdbcTemplate
-        .queryForObject(PlayerQuery.FIND_CURRENT_BATTER, gameParameters, updatedBatterMapper);
+        .queryForObject(PlayerQuery.FIND_CURRENT_BATTER, gameParameters, new BatterMapper()).get(0);
     Pitcher updatedPitcher = jdbcTemplate
-        .queryForObject(PlayerQuery.FIND_CURRENT_PITCHER, gameParameters, updatedPitcherMapper);
+        .queryForObject(PlayerQuery.FIND_CURRENT_PITCHER, gameParameters, new PitcherMapper())
+        .get(0);
 
     List<UpdatedPlayerDto> playerDtoList = new ArrayList<>();
     playerDtoList
