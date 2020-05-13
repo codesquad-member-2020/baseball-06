@@ -17,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InningStatusDtoReturnDaoTest {
+class inningInfoReturnDtoReturnDaoTest {
 
-  private static final Logger log = LoggerFactory.getLogger(InningStatusDtoReturnDaoTest.class);
+  private static final Logger log = LoggerFactory.getLogger(inningInfoReturnDtoReturnDaoTest.class);
 
   @Autowired
   private InningStatusDtoReturnDao inningStatusDtoReturnDao;
