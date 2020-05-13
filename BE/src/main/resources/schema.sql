@@ -39,7 +39,7 @@ CREATE TABLE plate_appearance
     half_inning_id INT     NOT NULL,
     pitcher        INT     NOT NULL,
     batter         INT     NOT NULL,
-    batter_index   INT     NOT NULL,
+    batter_index   INT     NOT NULL DEFAULT 0,
     result         INT     NULL     DEFAULT NULL,
     created_at     TIMESTAMP        DEFAULT NOW(),
     end            TINYINT NOT NULL DEFAULT 0,

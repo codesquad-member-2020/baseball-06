@@ -29,4 +29,11 @@ public class UpdateInningStatusQuery {
   public static final String CREATE_NEW_BASE_STATUS =
       "INSERT INTO base_status (half_inning_id) "
           + "VALUES (:half_inning_id);";
+  public static final String UPDATE_END_TO_TRUE_AFTER_INNING_ENDS =
+      "UPDATE half_inning "
+          + "SET end = 1 "
+          + "WHERE id = :half_inning_id";
+  public static final String GET_LAST_INNING_END_FOR_TEST =
+      "SELECT end FROM half_inning "
+          + "WHERE id = :id";
 }

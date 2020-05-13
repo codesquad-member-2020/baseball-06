@@ -8,12 +8,15 @@ import static com.codesquad.baseball06.model.query.TestQuery.INNINGSTATUS_SQL_TE
 import static com.codesquad.baseball06.model.query.TestQuery.PLATE_SQL_TEST;
 import static com.codesquad.baseball06.model.query.TestQuery.SCORE_SQL_TEST;
 
+import com.codesquad.baseball06.dto.RawPlateAppearanceDto;
 import com.codesquad.baseball06.dto.ScoreDto;
 import com.codesquad.baseball06.dto.UpdatedBasemanDto;
 import com.codesquad.baseball06.dto.UpdatedPlayerDto;
 import com.codesquad.baseball06.model.dao.mapper.BasemanStatusMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningIndexTypeMapper;
 import com.codesquad.baseball06.model.dao.mapper.InningStatusMapper;
+import com.codesquad.baseball06.model.dao.mapper.LastInningEndsMapper;
+import com.codesquad.baseball06.model.dao.mapper.RawPlateAppearanceDtoMapper;
 import com.codesquad.baseball06.model.dao.mapper.ScoreMapper;
 import com.codesquad.baseball06.model.dao.mapper.UpdatedBatterMapper;
 import com.codesquad.baseball06.model.dao.mapper.UpdatedPitcherMapper;
@@ -22,6 +25,8 @@ import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.entity.Pitcher;
 import com.codesquad.baseball06.model.query.InningStatusQuery;
 import com.codesquad.baseball06.model.query.PlayerQuery;
+import com.codesquad.baseball06.model.query.UpdateInningStatusQuery;
+import com.codesquad.baseball06.model.query.UpdatePlateAppearanceQuery;
 import com.codesquad.baseball06.model.type.InningType;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +41,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InningStatusDtoReturnDao {
+public class InningStatusAndPlateAppearanceDtoReturnDao {
 
   private static final Logger log = LoggerFactory.getLogger(PlayerDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -46,14 +51,18 @@ public class InningStatusDtoReturnDao {
   private final InningIndexTypeMapper inningIndexTypeMapper;
   private final UpdatedBatterMapper updatedBatterMapper;
   private final UpdatedPitcherMapper updatedPitcherMapper;
+  private final LastInningEndsMapper lastInningEndsMapper;
+  private final RawPlateAppearanceDtoMapper rawPlateAppearanceDtoMapper;
 
-  public InningStatusDtoReturnDao(NamedParameterJdbcTemplate jdbcTemplate,
+  public InningStatusAndPlateAppearanceDtoReturnDao(NamedParameterJdbcTemplate jdbcTemplate,
       InningStatusMapper inningStatusMapper,
       BasemanStatusMapper basemanStatusMapper,
       ScoreMapper scoreMapper,
       InningIndexTypeMapper inningIndexTypeMapper,
       UpdatedBatterMapper updatedBatterMapper,
-      UpdatedPitcherMapper updatedPitcherMapper) {
+      UpdatedPitcherMapper updatedPitcherMapper,
+      LastInningEndsMapper lastInningEndsMapper,
+      RawPlateAppearanceDtoMapper rawPlateAppearanceDtoMapper) {
     this.jdbcTemplate = jdbcTemplate;
     this.inningStatusMapper = inningStatusMapper;
     this.basemanStatusMapper = basemanStatusMapper;
@@ -61,6 +70,8 @@ public class InningStatusDtoReturnDao {
     this.inningIndexTypeMapper = inningIndexTypeMapper;
     this.updatedBatterMapper = updatedBatterMapper;
     this.updatedPitcherMapper = updatedPitcherMapper;
+    this.lastInningEndsMapper = lastInningEndsMapper;
+    this.rawPlateAppearanceDtoMapper = rawPlateAppearanceDtoMapper;
   }
 
   public void InitForTest() {
@@ -174,5 +185,35 @@ public class InningStatusDtoReturnDao {
         Objects.requireNonNull(updatedPitcher)));
 
     return playerDtoList;
+  }
+
+  public Boolean getLastInningEndsForTest(Long half_inning_id) {
+
+    SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+        .addValue("id", half_inning_id);
+    return jdbcTemplate
+        .query(UpdateInningStatusQuery.GET_LAST_INNING_END_FOR_TEST, sqlParameterSource,
+            lastInningEndsMapper).get(0);
+  }
+
+  public RawPlateAppearanceDto getLastPlateAppearance(Long half_inning_id) {
+
+    SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+        .addValue("half_inning_id", half_inning_id);
+
+    List<RawPlateAppearanceDto> rawPlateAppearanceDtoList;
+
+    try {
+      rawPlateAppearanceDtoList = jdbcTemplate
+          .query(UpdatePlateAppearanceQuery.GET_LAST_PLATE_APPEARANCE_BY_HALF_INNING_ID,
+              sqlParameterSource,
+              rawPlateAppearanceDtoMapper).get(0);
+    } catch (IndexOutOfBoundsException | EmptyResultDataAccessException e) {
+      rawPlateAppearanceDtoList = new ArrayList<>();
+    }
+
+    int listSize = rawPlateAppearanceDtoList.size();
+
+    return rawPlateAppearanceDtoList.get(listSize - 1);
   }
 }

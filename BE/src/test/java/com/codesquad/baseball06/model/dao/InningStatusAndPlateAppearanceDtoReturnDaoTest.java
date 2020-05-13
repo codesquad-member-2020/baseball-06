@@ -17,23 +17,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InningStatusDtoReturnDaoTest {
+class InningStatusAndPlateAppearanceDtoReturnDaoTest {
 
-  private static final Logger log = LoggerFactory.getLogger(InningStatusDtoReturnDaoTest.class);
+  private static final Logger log = LoggerFactory.getLogger(
+      InningStatusAndPlateAppearanceDtoReturnDaoTest.class);
 
   @Autowired
-  private InningStatusDtoReturnDao inningStatusDtoReturnDao;
+  private InningStatusAndPlateAppearanceDtoReturnDao inningStatusAndPlateAppearanceDtoReturnDao;
 
   @DisplayName("테스트를 수행하기 이전에 테스트에 필요한 정보를 DB에 저장하는 역할을 한다.")
   @BeforeEach
   void init() {
-    inningStatusDtoReturnDao.InitForTest();
+    inningStatusAndPlateAppearanceDtoReturnDao.InitForTest();
   }
 
   @DisplayName("현재 이닝 정보가 정상적으로 리턴되는지 확인한다.")
   @Test
   void INNING_STATUS가_리턴된다() {
-    assertThat(inningStatusDtoReturnDao.getInningStatus())
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getInningStatus())
         .isNotNull()
         .isInstanceOf(InningStatus.class);
   }
@@ -41,7 +42,7 @@ class InningStatusDtoReturnDaoTest {
   @DisplayName("현재 1루수, 2루수, 3루수 정보가 정상적으로 리턴되는지 확인한다.")
   @Test
   void UPDATED_BASEMAN이_리턴된다() {
-    assertThat(inningStatusDtoReturnDao.getUpdatedBaseman())
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getUpdatedBaseman())
         .isNotNull()
         .isInstanceOf(UpdatedBasemanDto.class);
   }
@@ -50,18 +51,18 @@ class InningStatusDtoReturnDaoTest {
   @ParameterizedTest
   @ValueSource(longs = {1L})
   void UPDATED_SCORE가_리턴된다(Long game_id) throws Exception {
-    assertThat(inningStatusDtoReturnDao.getScores(game_id).getAwayScore()).isEqualTo(2);
-    assertThat(inningStatusDtoReturnDao.getScores(game_id).getHomeScore()).isEqualTo(3);
-    assertThat(inningStatusDtoReturnDao.getScores(game_id).getInningIndex()).isEqualTo(1);
-    assertThat(inningStatusDtoReturnDao.getScores(game_id).getInningType()).isEqualTo(InningType.LATE);
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getScores(game_id).getAwayScore()).isEqualTo(2);
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getScores(game_id).getHomeScore()).isEqualTo(3);
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getScores(game_id).getInningIndex()).isEqualTo(1);
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getScores(game_id).getInningType()).isEqualTo(InningType.LATE);
   }
 
   @DisplayName("Player가 정상적으로 ArrayList에 담겨 리턴되는 지 확인한다.")
   @Test
   void UPDATED_PLAYER가_리턴된다() {
-    assertThat(inningStatusDtoReturnDao.getUpdatedPlayers(1L))
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getUpdatedPlayers(1L))
         .isNotNull();
-    assertThat(inningStatusDtoReturnDao.getUpdatedPlayers(1L)
+    assertThat(inningStatusAndPlateAppearanceDtoReturnDao.getUpdatedPlayers(1L)
         .stream().allMatch(Objects::nonNull)).isTrue();
   }
 }

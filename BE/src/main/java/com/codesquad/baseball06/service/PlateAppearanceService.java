@@ -1,6 +1,6 @@
 package com.codesquad.baseball06.service;
 
-import com.codesquad.baseball06.model.dao.InningStatusUpdateDao;
+import com.codesquad.baseball06.model.dao.InningStatusAndPlateAppearanceUpdateDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -13,13 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlateAppearanceService {
 
-  private final InningStatusUpdateDao inningStatusUpdateDao;
+  private final InningStatusAndPlateAppearanceUpdateDao inningStatusAndPlateAppearanceUpdateDao;
 
   private static final Logger log = LoggerFactory.getLogger(PlateAppearanceService.class);
   private double delimiter;
 
-  public PlateAppearanceService(InningStatusUpdateDao inningStatusUpdateDao) {
-    this.inningStatusUpdateDao = inningStatusUpdateDao;
+  public PlateAppearanceService(
+      InningStatusAndPlateAppearanceUpdateDao inningStatusAndPlateAppearanceUpdateDao) {
+    this.inningStatusAndPlateAppearanceUpdateDao = inningStatusAndPlateAppearanceUpdateDao;
   }
 
   public BattingResult doPitching(Pitcher pitcher, Batter batter) {
@@ -55,7 +56,7 @@ public class PlateAppearanceService {
   }
 
   public boolean updatePostPitchingResultToDB(HalfInning halfInning, BattingResult battingResult) {
-    if (inningStatusUpdateDao.updatePitchingResult(halfInning, battingResult) == 1) {
+    if (inningStatusAndPlateAppearanceUpdateDao.updatePitchingResult(halfInning, battingResult) == 1) {
       return true;
     }
     throw new RuntimeException("데이터베이스에 정상적으로 저장되지 않았습니다.");

@@ -2,7 +2,7 @@ package com.codesquad.baseball06.service;
 
 
 import com.codesquad.baseball06.model.dao.HalfInningDao;
-import com.codesquad.baseball06.model.dao.InningStatusUpdateDao;
+import com.codesquad.baseball06.model.dao.InningStatusAndPlateAppearanceUpdateDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Pitcher;
@@ -17,14 +17,14 @@ public class InningService {
 
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
   private final HalfInningDao halfInningDao;
-  private final InningStatusUpdateDao inningStatusUpdateDao;
+  private final InningStatusAndPlateAppearanceUpdateDao inningStatusAndPlateAppearanceUpdateDao;
   private final PlateAppearanceService paService;
 
   public InningService(HalfInningDao halfInningDao,
-      InningStatusUpdateDao inningStatusUpdateDao,
+      InningStatusAndPlateAppearanceUpdateDao inningStatusAndPlateAppearanceUpdateDao,
       PlateAppearanceService paService) {
     this.halfInningDao = halfInningDao;
-    this.inningStatusUpdateDao = inningStatusUpdateDao;
+    this.inningStatusAndPlateAppearanceUpdateDao = inningStatusAndPlateAppearanceUpdateDao;
     this.paService = paService;
   }
 
@@ -36,8 +36,9 @@ public class InningService {
 
     HalfInning afterDBInsertedHalfInning = getHalfInning(
         addedButBeforeInsertedDBHalfInning.getGameId());
-    inningStatusUpdateDao.createNewInningStatus(afterDBInsertedHalfInning);
-    inningStatusUpdateDao.createNewBaseStatus(afterDBInsertedHalfInning.getId());
+    inningStatusAndPlateAppearanceUpdateDao.createNewInningStatus(afterDBInsertedHalfInning);
+    inningStatusAndPlateAppearanceUpdateDao.createNewBaseStatus(afterDBInsertedHalfInning.getId());
+    inningStatusAndPlateAppearanceUpdateDao.createNewPlateAppearance(afterDBInsertedHalfInning);
   }
 
   public HalfInning getHalfInning(Long gameId) {
