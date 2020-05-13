@@ -74,7 +74,7 @@ const ResultArea = styled.div`
 const ResultTitle = styled.span`
   margin: 0 15px;
   width: 10px;
-  font-size: 20px;
+  font-size: 18px;
   color: ${(props) => props.theme.mainFontColor};
 `;
 
@@ -92,7 +92,7 @@ const Ball = styled.span`
 `;
 
 const Turn = styled.div`
-  font-size: 28px;
+  font-size: 25px;
   margin-bottom: 15px;
 `;
 

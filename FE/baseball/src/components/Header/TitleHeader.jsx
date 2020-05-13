@@ -8,16 +8,11 @@ import Nav from "./Nav";
 import { mock } from "../../mock";
 import { Layout } from "../../styles/global";
 
-function Header() {
+function TitleHeader() {
   return (
     <div>
       <HeaderWrap>
-        <InningStatus />
-        <div>
-          {/* <Title type={"sub"} /> */}
-          <Score />
-        </div>
-        <PlayerInfo />
+        <Title />
       </HeaderWrap>
       <Nav />
     </div>
@@ -26,9 +21,10 @@ function Header() {
 
 const HeaderWrap = styled.div`
   ${Layout}
-  justify-content:space-between;
-  padding: 0 40px;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 40px;
   background-color: ${(props) => props.theme.backgroundColor};
   border-bottom: ${(props) => props.theme.mainBorder};
 `;
-export default Header;
+export default TitleHeader;

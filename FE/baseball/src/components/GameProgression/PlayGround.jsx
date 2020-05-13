@@ -190,7 +190,7 @@ function PlayGround() {
       <Ground top={65} left={43} deg={-28}>
         <Batter2 coord={batterCoord} count={count} displayCount={1} />
       </Ground>
-      <Ground top={31} left={50} deg={-162}>
+      <Ground top={31} left={50} deg={-168}>
         <Batter3 coord={batterCoord} count={count} displayCount={2} />
       </Ground>
       <Ground top={29} left={28} deg={-201}>
@@ -213,7 +213,7 @@ function PlayGround() {
 }
 
 const box = css`
-  margin-top: 20px;
+  margin-top: 55px;
   padding: 10px 0;
   min-width: 263px;
   height: 70px;
