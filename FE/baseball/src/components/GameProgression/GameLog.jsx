@@ -8,10 +8,10 @@ import React, {
   useState,
 } from "react";
 import styled, { css } from "styled-components";
-import { Scroll } from "../../styles/global";
+import { Scroll, MoreBtn, MoreBtnText } from "../../styles/global";
 
 function GameLog() {
-  const OPEN_BTN_TEXT = "Open ∧";
+  const OPEN_BTN_TEXT = "Log ∧";
   const CLOSE_BTN_TEXT = "Close ∨";
   const TRANSITION_PROPERTY = "all .3s ease-in-out";
 
@@ -19,7 +19,7 @@ function GameLog() {
   const logWrapRef = useRef();
   const logBoxRef = useRef();
 
-  const openLog = useCallback(() => {
+  const clickMoreBtn = useCallback(() => {
     logWrapRef.current.style.transition = TRANSITION_PROPERTY;
 
     const logBoxWidth = logBoxRef.current.offsetWidth;
@@ -38,7 +38,7 @@ function GameLog() {
 
   return (
     <LogWrap ref={logWrapRef}>
-      <LogOpenBtn onClick={openLog}>
+      <LogOpenBtn onClick={clickMoreBtn}>
         <LogBtnText>{logBtnText}</LogBtnText>
       </LogOpenBtn>
       <LogBox ref={logBoxRef}>
@@ -108,26 +108,16 @@ const LogBox = styled.div`
 `;
 
 const LogOpenBtn = styled.button`
+  ${MoreBtn}
   width: 25px;
   height: 67px;
-
-  border-radius: 10%;
-
-  background-image: linear-gradient(
-    to right,
-    #ece9e6 0%,
-    #ffffff 51%,
-    #ece9e6 100%
-  );
 `;
 
 const LogBtnText = styled.span`
+  ${MoreBtnText}
   transform: rotate(-180deg);
   vertical-align: top;
   writing-mode: tb-rl;
-  color: rgb(15, 46, 71);
-  font-weight: 700;
-  line-height: 1;
 `;
 
 const Player = css`

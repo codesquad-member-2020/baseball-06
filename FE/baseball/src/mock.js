@@ -20,6 +20,7 @@ export const mock = {
       name: null, //현재 3루에 타자가 진출하지 않았다는 의미
       id: null,
     },
+
     updatedScore: {
       Home: 2, //homeTeam은 인덱스가 0
       Away: 2, //awayTeam은 인덱스가 1

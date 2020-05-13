@@ -19,7 +19,7 @@ function GameSelection({ teams, history }) {
   // const teams
 
   const onClickTeam = () => {
-    history.push("/Defense");
+    history.push("/defense");
   };
 
   return (

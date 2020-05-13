@@ -25,7 +25,7 @@ function Score() {
 const TeamNameArea = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding: 18px;
 `;
 
 const Team = styled.span`
@@ -45,7 +45,7 @@ const ScoreArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 20px;
+  padding: 18px 0;
 `;
 
 const Player = styled.span`

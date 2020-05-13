@@ -44,7 +44,7 @@ function PlayerInfo() {
 
 const PlayerInfoWrap = styled.div`
   display: inline-block;
-  font-size: 25px;
+  font-size: 23px;
   overflow: hidden;
   max-height: 129px;
 `;
@@ -57,7 +57,7 @@ const PlayerType = styled.span`
 
 const PlayerInfoArea = styled.div`
   margin-bottom: 8px;
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 const Player = styled.span`

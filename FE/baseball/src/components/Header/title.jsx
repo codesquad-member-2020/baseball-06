@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function Title({ type }) {
-  const title = "BASEBALL GAME ONLINE";
+function Title({ type, titleText }) {
+  // const title = "BASEBALL GAME ONLINE";
 
   return (
     <>
-      <TitleArea type={type}>{title}</TitleArea>
+      <TitleArea type={type}>{titleText}</TitleArea>
     </>
   );
 }
