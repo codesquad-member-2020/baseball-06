@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useMemo } from "react";
+import React, { createContext, useReducer, useMemo, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 import PlayGround from "./PlayGround";
@@ -8,46 +8,50 @@ import GameLog from "./GameLog";
 
 import { GlobalStyle, Background } from "../../styles/global";
 
-export const FETCH_RESULT_INFO = "FETCH_RESULT_INFO";
+export const SET_INNING_INFO = 'SET_INNING_INFO ';
 
-export const BaseBallContext = createContext({
-  score: {},
-  inningStatus: {},
-  updatedPlayer: [],
-  updatedBaseman: {},
-  dispatch: () => {},
-}); // 초기 데이터 fetch해와서 여기에 값 넣어줌
+
+export const BaseBallContext = createContext(); 
+
+
 
 const initialState = {
   score: { Home: 0, Away: 0 },
   inningStatus: {},
+  inningRound : {},
   updatedPlayer: [],
   updatedBaseman: {},
+  isFetching: false,
 }; // 초기 데이터 fetch해와서 여기에 값 넣어줌
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case FETCH_RESULT_INFO:
-      // fetch('주소')
-      // .then(res=> res.json())
-      // .then(data => data.)
-      const score = mock.updatedBaseman.updatedScore;
-      const inningStatus = mock.inningStatus;
+const reducer = (state, {type, payload}) => {
+  switch (type) {
+    case SET_INNING_INFO:
+  const score = mock.updatedBaseman.updatedScore;
       const updatedPlayer = mock.updatedBaseman.updatedPlayer;
       const updatedBaseman = mock.updatedBaseman.updatedBaseman;
-
-      return {
+      const inningStatus = payload.inningStatus;
+      const inningRound = payload.earlyInningList[0]
+console.log(inningStatus,inningRound)
+   return {
         ...state,
         score,
         inningStatus,
+        inningRound,
         updatedPlayer,
         updatedBaseman,
       };
   }
-};
+}
+
 
 function Defense() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const setInningInfo = (inningData) => {
+    dispatch({type:SET_INNING_INFO , payload : inningData})
+  }
+
 
   const value = useMemo(
     () => ({
@@ -55,9 +59,12 @@ function Defense() {
       inningStatus: state.inningStatus,
       updatedPlayer: state.updatedPlayer,
       updatedBaseman: state.updatedBaseman,
+      setInningInfo: state.setInningInfo,
+      inningRound: state.inningRound,
+      setInningInfo,
       dispatch,
     }),
-    [state.score, state.inningStatus, state.updatedPlayer, state.updatedBaseman]
+    [state.score, state.inningStatus, state.updatedPlayer, state.updatedBaseman,state.inningRound]
   );
 
   return (

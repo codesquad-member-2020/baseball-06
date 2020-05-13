@@ -43,9 +43,11 @@ function PlayerInfo() {
 }
 
 const PlayerInfoWrap = styled.div`
-  display: inline-block;
+ position:absolute;
+ top:0;
+ right:0;
+     padding: 18px 35px;
   font-size: 23px;
-  overflow: hidden;
   max-height: 129px;
 `;
 

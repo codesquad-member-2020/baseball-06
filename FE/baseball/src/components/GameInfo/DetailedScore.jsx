@@ -1,29 +1,26 @@
 import React, { createContext, useReducer, useMemo } from "react";
-import theme from "../../styles/theme";
 import styled, { ThemeProvider } from "styled-components";
-import TitleHeader from "../Header/TitleHeader";
-import { GlobalStyle, Background, BackgroundImg } from "../../styles/global";
+const ballImg =
+  "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 
-export const DetailedScoreContext = createContext({
-  dispatch: () => {},
-});
 
-function DetailedScore() {
-  const TITLE_TEXT = "상세 점수";
-  const value = useMemo(() => ({}), []);
+function DetailedScore(){
+    return(
+       <DetailedScoreTable>
+        <thead>
+            <tr>
+                <th scope='col'></th>
+            </tr>
+        </thead>
 
-  return (
-    <DetailedScoreContext.Provider value={value}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Background>
-          <BackgroundImg>
-            <TitleHeader titleText={TITLE_TEXT} />
-          </BackgroundImg>
-        </Background>
-      </ThemeProvider>
-    </DetailedScoreContext.Provider>
-  );
+       </DetailedScoreTable>
+    )
 }
 
+const DetailedScoreTable = styled.table`
+    margin: 100px auto;
+    width: 950px;
+    height: 200px;
+    background: red;
+`
 export default DetailedScore;

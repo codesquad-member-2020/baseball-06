@@ -26,7 +26,8 @@ function Header() {
 
 const HeaderWrap = styled.div`
   ${Layout}
-  justify-content:space-between;
+  justify-content:center;
+  /* text-align:center; */
   padding: 0 40px;
   background-color: ${(props) => props.theme.backgroundColor};
   border-bottom: ${(props) => props.theme.mainBorder};

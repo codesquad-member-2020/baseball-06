@@ -3,26 +3,32 @@ import styled from "styled-components";
 import { BaseBallContext } from "../GameProgression/Defense";
 
 function InningStatus() {
-  const { inningStatus } = useContext(BaseBallContext);
-  console.log(inningStatus);
-  const { strike, ball, out, inningNum, inningType } = inningStatus;
+  const { inningStatus, inningRound } = useContext(BaseBallContext);
+  console.log(inningStatus, inningRound)
+  const { id, strike, ball, out } = inningStatus;
+  const { index, type} = inningRound;
+
+  const inningType = {
+    "EARLY": '초',
+  }
+
   return (
     <InningStatusWrap>
       <Turn>
-        <TurnSpan>{inningNum}</TurnSpan>
+        <TurnSpan>{index}</TurnSpan>
         <TurnSpan>회</TurnSpan>
-        <TurnSpan>{inningType}</TurnSpan>
+        <TurnSpan>{inningType[type]}</TurnSpan>
         <TurnSpan> 수비</TurnSpan>
       </Turn>
 
-      <Gameprogress>
+      <div>
         <ResultArea>
           <ResultTitle>S</ResultTitle>
           <ResultBall>
             {Array(strike)
               .fill()
-              .map((_, i) => (
-                <Ball key={"strike" + i} result={"strike"} />
+              .map((_,i) => (
+                <Ball key={"strike" + id + i} result={"strike"} />
               ))}
           </ResultBall>
         </ResultArea>
@@ -31,8 +37,8 @@ function InningStatus() {
           <ResultBall>
             {Array(ball)
               .fill()
-              .map((_, i) => (
-                <Ball key={"ball" + i} result={"ball"} />
+              .map((_,i) => (
+                <Ball key={"ball" + id+ i} result={"ball"} />
               ))}
           </ResultBall>
         </ResultArea>
@@ -41,29 +47,28 @@ function InningStatus() {
           <ResultBall>
             {Array(out)
               .fill()
-              .map((_, i) => (
-                <Ball key={"out" + i} result={"out"} />
+              .map((_,i) => (
+                <Ball key={"out" + id+ i} result={"out"} />
               ))}
           </ResultBall>
         </ResultArea>
-      </Gameprogress>
+      </div>
     </InningStatusWrap>
   );
 }
 
-const InningStatusWrap = styled.div``;
+const InningStatusWrap = styled.div`
+ position:absolute;
+ top:0;
+ left:0;
+     padding: 18px 35px;
+`;
 
 const ballColor = {
   strike: "#ffef0f",
   ball: "#08a625",
   out: "#ff0505",
 };
-
-const Gameprogress = styled.div`
-  /* position: absolute;
-  top: 50px;
-  left: 10px; */
-`;
 
 const ResultArea = styled.div`
   display: flex;
@@ -93,6 +98,7 @@ const Ball = styled.span`
 
 const Turn = styled.div`
   font-size: 25px;
+  text-align:left;
   margin-bottom: 15px;
 `;
 

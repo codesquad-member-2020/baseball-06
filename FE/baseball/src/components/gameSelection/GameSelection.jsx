@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import {GAME_START_URL} from '../../constants/url';
 
 function GameSelection({ teams, history }) {
   // const onClcikTema = (play) => {
@@ -20,6 +21,9 @@ function GameSelection({ teams, history }) {
 
   const onClickTeam = () => {
     history.push("/defense");
+    fetch(GAME_START_URL)
+    .then(res => console.log(res))
+    .then(data => console.log(data));
   };
 
   return (

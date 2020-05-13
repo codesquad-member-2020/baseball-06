@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import {
   GlobalStyle,
   Background,
-  MoreBtn,
-  MoreBtnText,
+  MoreBtnStyle,
+  MoreBtnTextStyle,
 } from "../../styles/global";
 
 function Nav() {
@@ -74,12 +74,12 @@ const NavWrap = styled.div`
 `;
 
 const NavMoreBtn = styled.button`
-  ${MoreBtn}
+  ${MoreBtnStyle}
   margin-left:80px;
 `;
 
-const NavMoreBtnText = styled.button`
-  ${MoreBtnText}
+const NavMoreBtnText = styled.span`
+  ${MoreBtnTextStyle}
 `;
 
 const NavContainer = styled.div`
