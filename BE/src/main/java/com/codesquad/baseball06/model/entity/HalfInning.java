@@ -13,7 +13,9 @@ public class HalfInning {
   private final InningType type;
   private Integer score;
   private Boolean end;
+  @JsonIgnore
   private InningStatus inningStatus;
+  @JsonIgnore
   private BaseStatus baseStatus;
   private LocalDateTime createdAt;
 
