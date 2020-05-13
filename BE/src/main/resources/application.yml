@@ -1,6 +1,16 @@
 spring:
   profiles:
     active: dev
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/baseball06_db
+    username: baseball06
+    password: baseball06
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    initialization-mode: always
+    hikari:
+      maximum-pool-size: 10
 # logging 설정
 logging:
   level:
@@ -14,36 +24,16 @@ logging:
 ---
 spring:
   profiles: dev
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/baseball06_db
-    username: baseball06
-    password: baseball06
-    schema: classpath:schema.sql
-    data: classpath:data.sql
-    initialization-mode: always
-    hikari:
-      maximum-pool-size: 10
-#auth:
-#  client-id: 31ae5169a7dc37e19605
-#  client-secret: 43debfbf5b584d5a0c7b58d215c5462a29ecd5e1
-#jwt:
-#  salt: sidedish08SecreatKey
-#---
-#spring:
-#  profiles: prod
-#  datasource:
-#    driverClassName: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/sidedish_db?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8
-#    username: sidedish08
-#    password: sidedish08
-#    schema: classpath:schema.sql
-#    data: classpath:data.sql
-#    initialization-mode: always
-#    hikari:
-#      maximum-pool-size: 10
-#auth:
-#  client-id: 2807fe374c60994c1363
-#  client-secret: 62a3b5b1616f5982f56c3a0eb4f7f9bac54081f3
-#jwt:
-#  salt: sidedish08SecreatKey
+auth:
+  client-id: c1bfcbc36553f14ab357
+  client-secret: 20816aca5fe638b5aeceb03f6867ff2528ccf358
+jwt:
+  salt: baseball06SecreatKey
+---
+spring:
+  profiles: prod
+auth:
+  client-id: ce4c26415d193a3596be
+  client-secret: 6f0d5f00d9f143e5bbf320b63542d310e0257b01
+jwt:
+  salt: baseball06SecreatKey
