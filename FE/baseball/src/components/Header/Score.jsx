@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { BaseBallContext } from "../GameProgression/Defense";
+import { BaseballContext } from "../../store/Store";
 
 function Score() {
-  const { score } = useContext(BaseBallContext);
+  const { score } = useContext(BaseballContext);
 
   return (
     <ScoreArea>

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { BaseBallContext } from "../GameProgression/Defense";
+import { BaseballContext } from "../../store/Store";
 
 function PlayerInfo() {
-  const { updatedPlayer } = useContext(BaseBallContext);
+  const { updatedPlayer } = useContext(BaseballContext);
   console.log(updatedPlayer);
 
   const templatePitcher = ({ pitches }) => {
