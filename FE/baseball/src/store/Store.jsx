@@ -1,5 +1,10 @@
-import React, { createContext, useReducer } from "react";
-import Reducer from "./reducer.js";
+import React, { createContext, useReducer, useEffect, useMemo } from "react";
+// import Reducer from "./reducer.js";
+import { mock } from "../mock/mock";
+import { INNING_INFO_URL } from "../constants/url";
+import fetchData from "../useFetch";
+
+export const SET_INNING_INFO = "SET_INNING_INFO ";
 
 const initialState = {
   score: { Home: 0, Away: 0 },
@@ -11,6 +16,8 @@ const initialState = {
   isFetching: false,
 };
 
+//분리하기
+
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case SET_INNING_INFO:
@@ -20,7 +27,7 @@ const reducer = (state, { type, payload }) => {
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0];
       const inningScore = payload.earlyInningList;
-
+      console.log(inningRound, 11111);
       return {
         ...state,
         score,
@@ -34,7 +41,7 @@ const reducer = (state, { type, payload }) => {
 };
 
 const Store = ({ children }) => {
-  const [state, dispatch] = useReducer(Reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const setInningInfo = (inningData) => {
     dispatch({ type: SET_INNING_INFO, payload: inningData });
@@ -66,8 +73,12 @@ const Store = ({ children }) => {
     ]
   );
 
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return (
+    <BaseballContext.Provider value={value}>
+      {children}
+    </BaseballContext.Provider>
+  );
 };
 
-export const Context = createContext(initialState);
+export const BaseballContext = createContext(initialState);
 export default Store;

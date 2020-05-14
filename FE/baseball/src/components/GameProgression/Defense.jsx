@@ -3,8 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "../../styles/theme";
 import PlayGround from "./PlayGround";
 import Header from "../Header/Header";
-import { mock } from "../../mock";
-import GameLog from "./GameLog";
+import { mock } from "../../mock/mock";
 import { INNING_INFO_URL } from "../../constants/url";
 import fetchData from "../../useFetch";
 

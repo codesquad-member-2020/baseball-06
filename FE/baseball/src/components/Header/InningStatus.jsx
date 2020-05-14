@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { BaseBallContext } from "../GameProgression/Defense";
+import { BaseballContext } from "../../store/Store";
 
 function InningStatus() {
-  const { inningStatus, inningRound } = useContext(BaseBallContext);
-  console.log(inningStatus, inningRound)
+  const { inningStatus, inningRound } = useContext(BaseballContext);
+  console.log(inningStatus, inningRound);
   const { id, strike, ball, out } = inningStatus;
-  const { index, type} = inningRound;
+  const { index, type } = inningRound;
 
   const inningType = {
-    "EARLY": '초',
-  }
+    EARLY: "초",
+  };
 
   return (
     <InningStatusWrap>
@@ -27,7 +27,7 @@ function InningStatus() {
           <ResultBall>
             {Array(strike)
               .fill()
-              .map((_,i) => (
+              .map((_, i) => (
                 <Ball key={"strike" + id + i} result={"strike"} />
               ))}
           </ResultBall>
@@ -37,8 +37,8 @@ function InningStatus() {
           <ResultBall>
             {Array(ball)
               .fill()
-              .map((_,i) => (
-                <Ball key={"ball" + id+ i} result={"ball"} />
+              .map((_, i) => (
+                <Ball key={"ball" + id + i} result={"ball"} />
               ))}
           </ResultBall>
         </ResultArea>
@@ -47,8 +47,8 @@ function InningStatus() {
           <ResultBall>
             {Array(out)
               .fill()
-              .map((_,i) => (
-                <Ball key={"out" + id+ i} result={"out"} />
+              .map((_, i) => (
+                <Ball key={"out" + id + i} result={"out"} />
               ))}
           </ResultBall>
         </ResultArea>
@@ -58,10 +58,10 @@ function InningStatus() {
 }
 
 const InningStatusWrap = styled.div`
- position:absolute;
- top:0;
- left:0;
-     padding: 18px 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 18px 35px;
 `;
 
 const ballColor = {
@@ -98,7 +98,7 @@ const Ball = styled.span`
 
 const Turn = styled.div`
   font-size: 25px;
-  text-align:left;
+  text-align: left;
   margin-bottom: 15px;
 `;
 

@@ -7,7 +7,7 @@ import PlayGround from "./PlayGround";
 // import InningStatus from "./InningStatus";
 // import PlayerInfo from "./PlayerInfo";
 import Header from "../Header/Header";
-import { mock } from "../../mock";
+import { mock } from "../../mock/mock";
 import GameLog from "./GameLog";
 
 import { GlobalStyle, Background } from "../../styles/global";
