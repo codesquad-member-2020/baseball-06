@@ -37,6 +37,7 @@ public class GameService {
 
         return inningService.getHalfInning(addedHalfInning.getGameId());
       }
+
       throw new RuntimeException("이미 게임이 시작되었습니다.");
     }
 
@@ -44,9 +45,19 @@ public class GameService {
   }
 
   public BattingResult proceed(Game game) {
+    if (!game.isEndGame()) {
+      TeamType addHalfInningType = checkAddNewHalfInning(game);
 
-    if (!game.isNewGame() && !game.isEndGame()) {
-      checkAddNewHalfInningBeforeProceed(game);
+      if (Objects.nonNull(addHalfInningType)) {
+        if (addHalfInningType.equals(TeamType.AWAY)) {
+          inningService.addHalfInning(HalfInning.create(
+              game.getId(), game.getEarlyInningList().size() + 1, InningType.EARLY));
+        } else {
+          inningService.addHalfInning(HalfInning.create(
+              game.getId(), game.getLateInningList().size() + 1, InningType.LATE));
+        }
+      }
+
       if (!Iterables.getLast(game.getEarlyInningList()).getEnd()) {
         return inningService.proceedPA(Iterables.getLast(game.getEarlyInningList()));
       }
@@ -58,26 +69,29 @@ public class GameService {
     throw new RuntimeException("투구를 진행할 수 없는 게임입니다.");
   }
 
-  public void checkAddNewHalfInningBeforeProceed(Game game) {
-    if (Iterables.getLast(game.getEarlyInningList()).getEnd() &&
-        Iterables.getLast(game.getLateInningList()).getEnd()) {
+  public TeamType checkAddNewHalfInning(Game game) {
+    if (game.getEarlyInningList().size() == 0 && game.getLateInningList().size() == 0) {
+      return TeamType.AWAY;
+    }
 
-      if (game.getEarlyInningList().size() == game.getLateInningList().size()) {
-        inningService.addHalfInning(HalfInning.create(
-            game.getId(),
-            game.getEarlyInningList().size() + 1,
-            InningType.EARLY)
-        );
-      }
+    if (Iterables.getLast(game.getEarlyInningList()).getEnd()
+        && game.getLateInningList().size() == 0) {
+      return TeamType.HOME;
+    }
 
-      if (game.getEarlyInningList().size() != game.getLateInningList().size()) {
-        inningService.addHalfInning(HalfInning.create(
-            game.getId(),
-            game.getLateInningList().size() + 1,
-            InningType.LATE)
-        );
+    if (game.getEarlyInningList().size() == game.getLateInningList().size()) {
+      if (Iterables.getLast(game.getLateInningList()).getEnd()) {
+        return TeamType.AWAY;
       }
     }
+
+    if (game.getEarlyInningList().size() > game.getLateInningList().size()) {
+      if (Iterables.getLast(game.getEarlyInningList()).getEnd()) {
+        return TeamType.HOME;
+      }
+    }
+
+    return null;
   }
 
   public Game getGame(Long gameId) {
