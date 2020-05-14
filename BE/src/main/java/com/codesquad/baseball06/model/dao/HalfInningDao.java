@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HalfInningDao {
 
-  private static final Logger logger = LoggerFactory.getLogger(TeamDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
   private final HalfInningMapper halfInningMapper;
 
@@ -64,5 +63,14 @@ public class HalfInningDao {
         .addValue("type", inningType.getCode());
 
     return jdbcTemplate.update(HalfInningQuery.INSERT, namedParameters);
+  }
+
+  public int updateHalfInning(HalfInning halfInning) {
+    SqlParameterSource namedParameters = new MapSqlParameterSource()
+        .addValue("half_inning_id", halfInning.getId())
+        .addValue("end", halfInning.getEnd())
+        .addValue("score", halfInning.getScore());
+
+    return jdbcTemplate.update(HalfInningQuery.UPDATE_HALF_INNING, namedParameters);
   }
 }
