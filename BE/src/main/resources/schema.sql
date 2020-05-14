@@ -68,7 +68,7 @@ CREATE TABLE player
     team_id         INT         NOT NULL,
     type            TINYINT     NOT NULL,
     name            VARCHAR(45) NOT NULL,
-    batting_average DECIMAL     NULL,
+    batting_average DECIMAL(4,3)     NULL,
     PRIMARY KEY (id)
 );
 
