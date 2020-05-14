@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/baseball06_db
+    username: baseball06
+    password: baseball06
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    initialization-mode: always
+    hikari:
+      maximum-pool-size: 10
+# logging 설정
+logging:
+  level:
+    root: debug
+    sql: trace
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} [%thread] %-5level %logger{36}.%M - %msg%n"
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+  file:
+    name: logs/dev_log.log
+---
+spring:
+  profiles: dev
+auth:
+  client-id: c1bfcbc36553f14ab357
+  client-secret: 20816aca5fe638b5aeceb03f6867ff2528ccf358
+jwt:
+  salt: baseball06SecreatKey
+---
+spring:
+  profiles: prod
+auth:
+  client-id: ce4c26415d193a3596be
+  client-secret: 6f0d5f00d9f143e5bbf320b63542d310e0257b01
+jwt:
+  salt: baseball06SecreatKey
