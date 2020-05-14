@@ -1,5 +1,6 @@
 package com.codesquad.baseball06.model.dao.mapper;
 
+import com.codesquad.baseball06.model.dao.BaseStatusDao;
 import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.type.InningType;
@@ -14,9 +15,12 @@ import org.springframework.stereotype.Component;
 public class HalfInningMapper implements RowMapper<List<HalfInning>> {
 
   private final InningStatusDao inningStatusDao;
+  private final BaseStatusDao baseStatusDao;
 
-  public HalfInningMapper(InningStatusDao inningStatusDao) {
+  public HalfInningMapper(InningStatusDao inningStatusDao,
+      BaseStatusDao baseStatusDao) {
     this.inningStatusDao = inningStatusDao;
+    this.baseStatusDao = baseStatusDao;
   }
 
   @Override
@@ -34,16 +38,15 @@ public class HalfInningMapper implements RowMapper<List<HalfInning>> {
       Long inningId = rs.getLong("id");
 
       halfInnings.add(HalfInning.create(
-          inningId
-          , rs.getLong("game_id")
-          , rs.getInt("inning_index")
-          , type
-          , rs.getInt("score")
-          , rs.getBoolean("end")
-          , rs.getTimestamp("created_at").toLocalDateTime()
-          , inningStatusDao.findInningStatusByInningId(inningId)
-          // TODO baseStatus 필요
-          , null));
+          inningId,
+          rs.getLong("game_id"),
+          rs.getInt("inning_index"),
+          type,
+          rs.getInt("score"),
+          rs.getBoolean("end"),
+          rs.getTimestamp("created_at").toLocalDateTime(),
+          inningStatusDao.findInningStatusByInningId(inningId),
+          baseStatusDao.getBaseStatus(inningId)));
     } while (rs.next());
 
     return halfInnings;
