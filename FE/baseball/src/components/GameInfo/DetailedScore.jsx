@@ -4,20 +4,23 @@ import { Player } from "../../styles/global";
 const ballImg =
   "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 
+export const DetailedScoreContext = createContext();
+
 function DetailedScore() {
-  const roundLength = 12;
+  const ROUND_LENGTH = 12;
+  const TOTAL_SCORE = "R";
 
   const getLastTh = (i) => {
-    if (i >= roundLength)
+    if (i >= ROUND_LENGTH)
       return (
         <th key={i} scope="col">
-          {"R"}
+          {TOTAL_SCORE}
         </th>
       );
   };
 
-  const getThArray = () => {
-    return Array(roundLength + 1)
+  const getThList = () => {
+    return Array(ROUND_LENGTH + 1)
       .fill()
       .map((_, i) => {
         getLastTh(i);
@@ -35,7 +38,7 @@ function DetailedScore() {
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
-          {getThArray()}
+          {getThList()}
         </tr>
       </thead>
 
@@ -50,19 +53,21 @@ function DetailedScore() {
               <Player visibility={"hidden"}>player</Player>
             </Turn>
           </th>
-          <td>1</td>
+
+          {/* <DetailedScoreTd roundLength={ROUND_LENGTH} /> */}
+          <td>0</td>
           <td>2</td>
           <td>5</td>
           <td>6</td>
-          <td>4</td>
-          <td>1</td>
+          <td>7</td>
+          <td>0</td>
           <td>2</td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
-          <td className={"total-score"}>8</td>
+          <td className={"total-score"}>5</td>
         </tr>
         <tr>
           <th scope="row" className={"game-turn"}>

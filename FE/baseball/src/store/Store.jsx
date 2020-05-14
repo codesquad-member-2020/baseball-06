@@ -1,18 +1,5 @@
-import React, { createContext, useReducer, useMemo, useEffect } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
-import PlayGround from "./PlayGround";
-import Header from "../Header/Header";
-import { mock } from "../../mock";
-import GameLog from "./GameLog";
-import { INNING_INFO_URL } from "../../constants/url";
-import fetchData from "../../useFetch";
-
-import { GlobalStyle, Background } from "../../styles/global";
-
-export const SET_INNING_INFO = "SET_INNING_INFO ";
-
-export const BaseBallContext = createContext();
+import React, { createContext, useReducer } from "react";
+import Reducer from "./reducer.js";
 
 const initialState = {
   score: { Home: 0, Away: 0 },
@@ -22,7 +9,7 @@ const initialState = {
   updatedBaseman: {},
   inningScore: [],
   isFetching: false,
-}; // 초기 데이터 fetch해와서 여기에 값 넣어줌
+};
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -33,6 +20,7 @@ const reducer = (state, { type, payload }) => {
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0];
       const inningScore = payload.earlyInningList;
+
       return {
         ...state,
         score,
@@ -45,8 +33,8 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-function Defense() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const Store = ({ children }) => {
+  const [state, dispatch] = useReducer(Reducer, initialState);
 
   const setInningInfo = (inningData) => {
     dispatch({ type: SET_INNING_INFO, payload: inningData });
@@ -78,17 +66,8 @@ function Defense() {
     ]
   );
 
-  return (
-    <BaseBallContext.Provider value={value}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Background>
-          <Header />
-          <PlayGround></PlayGround>
-        </Background>
-      </ThemeProvider>
-    </BaseBallContext.Provider>
-  );
-}
+  return <Context.Provider value={value}>{children}</Context.Provider>;
+};
 
-export default Defense;
+export const Context = createContext(initialState);
+export default Store;
