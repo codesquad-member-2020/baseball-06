@@ -1,4 +1,4 @@
-package com.codesquad.baseball06.dto;
+package com.codesquad.baseball06.dto.unused;
 
 import com.codesquad.baseball06.model.type.InningType;
 

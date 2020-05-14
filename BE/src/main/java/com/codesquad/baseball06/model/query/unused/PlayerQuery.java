@@ -1,4 +1,4 @@
-package com.codesquad.baseball06.model.query;
+package com.codesquad.baseball06.model.query.unused;
 
 public class PlayerQuery {
 

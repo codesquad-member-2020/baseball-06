@@ -1,6 +1,6 @@
-package com.codesquad.baseball06.model.dao.mapper;
+package com.codesquad.baseball06.model.dao.mapper.unused;
 
-import com.codesquad.baseball06.model.dao.PlayerDao;
+import com.codesquad.baseball06.model.dao.unused.PlayerDao;
 import com.codesquad.baseball06.model.entity.Team;
 import java.sql.ResultSet;
 import java.sql.SQLException;
