@@ -9,16 +9,31 @@
 import UIKit
 
 class PlayerInfoDataSource: NSObject, UITableViewDataSource {
-    private let rowCount = 2
+    private var playerInfo: [Player]? {
+        didSet {
+            changedHandler()
+        }
+    }
+    private var changedHandler: () -> ()
+    
+    init(changed handler: @escaping () -> ()) {
+        self.changedHandler = handler
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowCount
+        return playerInfo?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PlayerInfoCell.identifier, for: indexPath) as? PlayerInfoCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PlayerInfoCell.identifier, for: indexPath) as? PlayerInfoCell,
+            let playerInfo = playerInfo?[indexPath.row] else {
             return UITableViewCell()
         }
+        cell.updateCell(playerInfo)
         return cell
+    }
+    
+    func updateData(_ data: [Player]) {
+        playerInfo = data
     }
 }
