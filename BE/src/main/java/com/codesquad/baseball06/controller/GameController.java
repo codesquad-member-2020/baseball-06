@@ -61,6 +61,7 @@ public class GameController {
     List<HalfInning> lateInningList = game.getLateInningList();
 
     InningStatus inningStatus = inningService.getInningStatus(gameId);
+    // BaseStatus 를 만들고 그것을 return 에 넣어야함
     InningInfoReturnDto inningInfoReturnDto = InningInfoReturnDto
         .create(earlyInningList, lateInningList, inningStatus);
 

@@ -60,11 +60,20 @@ public class InningService {
     BattingResult battingResult = paService.doPitching(pitcher, batter);
     BattingResult postBattingResult = paService.postPitching(halfInning, battingResult);
 
-    //Score를 업데이트한다.
+    if (postBattingResult.equals(BattingResult.END)) {
+      halfInning.setEnd(true);
+    }
+
     if (postBattingResult.equals(BattingResult.HIT)) {
       updateBaseStatusResult(halfInning);
-      updateScore(halfInning);
+
+      halfInning.getInningStatus().newPlateAppearance();
+      if (halfInning.getBaseStatus().getThirdBase()) {
+        halfInning.addScore();
+      }
     }
+
+    halfInningDao.updateHalfInning(halfInning);
 
     if (updateInningStatus(halfInning, postBattingResult) == 1) {
       return postBattingResult;
@@ -75,16 +84,6 @@ public class InningService {
 
   public int updateInningStatus(HalfInning halfInning, BattingResult postBattingResult) {
     return inningStatusDao.updateInningStatus(halfInning, InningStatusQuery.UPDATE);
-  }
-
-  public void updateScore(HalfInning halfInning) {
-    try {
-      if (halfInning.getBaseStatus().getThirdBase()) {
-        halfInning.addScore();
-        halfInningDao.updateHalfInning(halfInning);
-      }
-    } catch (NullPointerException ignored) {
-    }
   }
 
   public void updateBaseStatusResult(HalfInning halfInning) {
