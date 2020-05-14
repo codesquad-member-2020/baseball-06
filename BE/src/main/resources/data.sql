@@ -6,6 +6,10 @@ INSERT INTO team (name)
 VALUES ('NC d away');
 INSERT INTO team (name)
 VALUES ('SAMSUNG l home');
+INSERT INTO team (name)
+VALUES ('SKT away');
+INSERT INTO team (name)
+VALUES ('GIANT home');
 
 
 INSERT INTO player (team_id, type, name)
@@ -48,10 +52,31 @@ VALUES (4, 1, '타자2SAMSUNG', 0.333);
 INSERT INTO player (team_id, type, name, batting_average)
 VALUES (4, 1, '타자3SAMSUNG', 0.333);
 
+INSERT INTO player (team_id, type, name)
+VALUES (5, 0, '투수SKT');
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (5, 1, '타자1SKT', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (5, 1, '타자2SKT', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (5, 1, '타자3SKT', 0.333);
+
+INSERT INTO player (team_id, type, name)
+VALUES (6, 0, '투수GIANT');
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (6, 1, '타자1GIANT', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (6, 1, '타자2GIANT', 0.333);
+INSERT INTO player (team_id, type, name, batting_average)
+VALUES (6, 1, '타자3GIANT', 0.333);
 
 INSERT INTO game (away_id, home_id, away_user, home_user)
 VALUES (1, 2, 'dan@gmail.com', 'sigrid@naver.com');
 
 INSERT INTO game (away_id, home_id)
-VALUES (2, 3);
+VALUES (3, 4);
+
+INSERT INTO game (away_id, home_id)
+VALUES (5, 6);
+
 
