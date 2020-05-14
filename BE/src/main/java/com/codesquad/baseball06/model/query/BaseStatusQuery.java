@@ -33,4 +33,10 @@ public class BaseStatusQuery {
       "SELECT b.id, b.first_base, b.second_base, b.third_base, b.half_inning_id "
           + "FROM base_status b "
           + "WHERE b.half_inning_id = :half_inning_id;";
+  public static final String FIND_BY_GAME_ID =
+      "SELECT bs.id, bs.first_base, bs.second_base, bs.third_base, bs.half_inning_id "
+          + "FROM base_status bs, half_inning hi "
+          + "WHERE hi.game_id = :game_id "
+          + "AND bs.half_inning_id = hi.id "
+          + "AND hi.end = 0;";
 }
