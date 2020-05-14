@@ -1,10 +1,8 @@
-package com.codesquad.baseball06.model.dao.unused;
+package com.codesquad.baseball06.model.dao.mapper;
 
 import static com.codesquad.baseball06.model.query.unused.PlayerQuery.FIND_BY_ID_AND_TYPE;
 import static com.codesquad.baseball06.model.query.unused.PlayerQuery.FIND_BY_TYPE_AND_TEAM_ID;
 
-import com.codesquad.baseball06.model.dao.mapper.BatterMapper;
-import com.codesquad.baseball06.model.dao.mapper.PitcherMapper;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.Pitcher;
 import com.codesquad.baseball06.model.type.PlayerType;
@@ -39,7 +37,7 @@ public class PlayerDao {
     return jdbcTemplate.queryForObject(FIND_BY_ID_AND_TYPE, namedParameters, pitcherMapper).get(0);
   }
 
-  public List<Pitcher> findPitcherAndTeamId(Long teamId) {
+  public List<Pitcher> findPitcherByTeamId(Long teamId) {
     SqlParameterSource namedParameters = new MapSqlParameterSource()
         .addValue("type", PlayerType.PITCHER.getCode())
         .addValue("team_id", teamId);

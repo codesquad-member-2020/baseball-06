@@ -1,8 +1,9 @@
-package com.codesquad.baseball06.model.dao.unused;
+package com.codesquad.baseball06.model.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import com.codesquad.baseball06.model.dao.mapper.PlayerDao;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.Pitcher;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ class PlayerDaoTest {
 
   @Test
   void findPitchers() {
-    assertThat(playerDao.findPitcherAndTeamId(3L))
+    assertThat(playerDao.findPitcherByTeamId(3L))
         .isNotNull()
         .isInstanceOf(ArrayList.class)
         .hasSizeGreaterThan(1);
