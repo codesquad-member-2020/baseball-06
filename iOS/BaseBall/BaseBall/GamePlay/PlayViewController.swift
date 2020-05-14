@@ -25,15 +25,28 @@ class PlayViewController: UIViewController {
         super.viewDidLoad()
         configureDataSources()
         configureViewModels()
+        updateGameInfo()
     }
     
     @IBAction func pitchButtonTapped(_ sender: Any) {
-        PitchUseCase.pitch(with: MockNetworkSuccessStub()) { result in
+        PitchUseCase.pitch(with: NetworkManager()) { result in
             switch result {
             case .success(let pitchResult):
-                self.scoreViewModel.updateKey(pitchResult.inningStatus)
-                self.inningViewModel.updateKey(pitchResult.inningStatus)
-                self.playerInfoDataSource.updateData(pitchResult.updatedPlayer)
+                // TODO: 애니메이션 적용에 pitchResult 활용 예정
+//                print(pitchResult)
+                self.updateGameInfo()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func updateGameInfo() {
+        GameInfoUseCase.gameInfo(with: NetworkManager()) { result in
+            switch result {
+            case .success(let gameInfo):
+                self.scoreViewModel.updateKey(gameInfo.inningStatus)
+                self.inningViewModel.updateKey(gameInfo.inningStatus)
             case .failure(let error):
                 print(error)
             }

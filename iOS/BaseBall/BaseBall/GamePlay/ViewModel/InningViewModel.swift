@@ -34,6 +34,6 @@ class InningViewModel: ViewModelBinding {
     
     private func inningText() -> Data {
         guard let inningStatus = inningStatus else { return "" }
-        return "\(inningStatus.inningNum)회\(inningStatus.inningType)\n\(inningStatus.inningType == "초" ? "공격" : "수비")"
+        return "\(inningStatus.id)회\(inningStatus.halfInningId == 1 ? "초" : "말")\n\(inningStatus.halfInningId == 1 ? "공격" : "수비")"
     }
 }

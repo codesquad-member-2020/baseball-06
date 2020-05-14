@@ -40,7 +40,7 @@
 		44D22FC52462ADF600AC08CC /* UILabel+bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC42462ADF600AC08CC /* UILabel+bold.swift */; };
 		44D22FC82465252200AC08CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC72465252200AC08CC /* NetworkManager.swift */; };
 		44D22FCA246533CE00AC08CC /* PitchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FC9246533CE00AC08CC /* PitchResponse.swift */; };
-		44D22FD02465341500AC08CC /* PitchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FCF2465341500AC08CC /* PitchUseCase.swift */; };
+		44D22FD02465341500AC08CC /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D22FCF2465341500AC08CC /* UseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +79,7 @@
 		44D22FC42462ADF600AC08CC /* UILabel+bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+bold.swift"; sourceTree = "<group>"; };
 		44D22FC72465252200AC08CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		44D22FC9246533CE00AC08CC /* PitchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchResponse.swift; sourceTree = "<group>"; };
-		44D22FCF2465341500AC08CC /* PitchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchUseCase.swift; sourceTree = "<group>"; };
+		44D22FCF2465341500AC08CC /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,7 +226,7 @@
 			children = (
 				44D22FC72465252200AC08CC /* NetworkManager.swift */,
 				44D22FC9246533CE00AC08CC /* PitchResponse.swift */,
-				44D22FCF2465341500AC08CC /* PitchUseCase.swift */,
+				44D22FCF2465341500AC08CC /* UseCase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 				4461C53E2461BA2900DC52D5 /* PitchButton.swift in Sources */,
 				44A86EAC2466EEBA00A57CBC /* ScoreStackView.swift in Sources */,
 				4491C8CB24619520005049F9 /* GameProgressView.swift in Sources */,
-				44D22FD02465341500AC08CC /* PitchUseCase.swift in Sources */,
+				44D22FD02465341500AC08CC /* UseCase.swift in Sources */,
 				4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */,
 				4491C8BB24614863005049F9 /* GameListViewController.swift in Sources */,
 				4457B1C92461B3A800A46673 /* CircleShapeView.swift in Sources */,
