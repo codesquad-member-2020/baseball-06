@@ -20,10 +20,8 @@ function TitleHeader({ titleText }) {
 }
 
 const HeaderWrap = styled.div`
-  ${Layout}
-  justify-content: center;
-  text-align: center;
-  padding: 32px 40px;
+  
+  padding: 32px 0px;
   background-color: ${(props) => props.theme.backgroundColor};
   border-bottom: ${(props) => props.theme.mainBorder};
 `;

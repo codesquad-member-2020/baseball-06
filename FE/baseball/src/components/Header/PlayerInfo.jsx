@@ -43,10 +43,11 @@ function PlayerInfo() {
 }
 
 const PlayerInfoWrap = styled.div`
- position:absolute;
- top:0;
- right:0;
-     padding: 18px 35px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  padding: 18px 35px;
   font-size: 23px;
   max-height: 129px;
 `;

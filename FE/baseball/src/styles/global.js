@@ -28,7 +28,7 @@ export const Background = styled.div`
   overflow: hidden;
 `;
 export const BackgroundImg = styled.div`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
   width: 100%;
 `;
@@ -79,4 +79,12 @@ export const MoreBtnTextStyle = css`
   color: rgb(15, 46, 71);
   font-weight: 700;
   line-height: 1;
+`;
+
+export const Player = styled.span`
+  color: ${(props) => props.theme.highlightColor};
+  visibility: ${(props) => {
+    if (props.visibility === "hidden") return "hidden";
+  }};
+  font-size: 14px;
 `;

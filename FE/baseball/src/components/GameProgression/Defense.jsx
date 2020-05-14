@@ -5,6 +5,8 @@ import PlayGround from "./PlayGround";
 import Header from "../Header/Header";
 import { mock } from "../../mock";
 import GameLog from "./GameLog";
+import {INNING_INFO_URL} from '../../constants/url'
+import fetchData from '../../useFetch'
 
 import { GlobalStyle, Background } from "../../styles/global";
 
@@ -27,12 +29,11 @@ const initialState = {
 const reducer = (state, {type, payload}) => {
   switch (type) {
     case SET_INNING_INFO:
-  const score = mock.updatedBaseman.updatedScore;
+      const score = mock.updatedBaseman.updatedScore;
       const updatedPlayer = mock.updatedBaseman.updatedPlayer;
       const updatedBaseman = mock.updatedBaseman.updatedBaseman;
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0]
-console.log(inningStatus,inningRound)
    return {
         ...state,
         score,
@@ -51,6 +52,10 @@ function Defense() {
   const setInningInfo = (inningData) => {
     dispatch({type:SET_INNING_INFO , payload : inningData})
   }
+
+  useEffect(() => {
+  fetchData(setInningInfo,INNING_INFO_URL);
+}, []);
 
 
   const value = useMemo(
