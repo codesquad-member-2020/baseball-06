@@ -1,6 +1,7 @@
 package com.codesquad.baseball06.service;
 
 
+import com.codesquad.baseball06.model.dao.BaseStatusDao;
 import com.codesquad.baseball06.model.dao.HalfInningDao;
 import com.codesquad.baseball06.model.dao.InningStatusDao;
 import com.codesquad.baseball06.model.entity.Batter;
@@ -20,13 +21,16 @@ public class InningService {
   private static final Logger log = LoggerFactory.getLogger(InningService.class);
   private final HalfInningDao halfInningDao;
   private final InningStatusDao inningStatusDao;
+  private final BaseStatusDao baseStatusDao;
   private final PlateAppearanceService paService;
 
   public InningService(HalfInningDao halfInningDao,
       InningStatusDao inningStatusDao,
+      BaseStatusDao baseStatusDao,
       PlateAppearanceService paService) {
     this.halfInningDao = halfInningDao;
     this.inningStatusDao = inningStatusDao;
+    this.baseStatusDao = baseStatusDao;
     this.paService = paService;
   }
 
@@ -39,7 +43,7 @@ public class InningService {
     HalfInning afterDBInsertedHalfInning = getHalfInning(halfInning.getGameId());
 
     inningStatusDao.createNewInningStatus(afterDBInsertedHalfInning);
-//    baseStatusDao.createNewBaseStatus(afterDBInsertedHalfInning.getId());
+    baseStatusDao.createNewBaseStatus(afterDBInsertedHalfInning);
   }
 
   public HalfInning getHalfInning(Long gameId) {
@@ -56,6 +60,12 @@ public class InningService {
     BattingResult battingResult = paService.doPitching(pitcher, batter);
     BattingResult postBattingResult = paService.postPitching(halfInning, battingResult);
 
+    //Score를 업데이트한다.
+    if (postBattingResult.equals(BattingResult.HIT)) {
+      updateBaseStatusResult(halfInning);
+      updateScore(halfInning);
+    }
+
     if (updateInningStatus(halfInning, postBattingResult) == 1) {
       return postBattingResult;
     }
@@ -65,6 +75,21 @@ public class InningService {
 
   public int updateInningStatus(HalfInning halfInning, BattingResult postBattingResult) {
     return inningStatusDao.updateInningStatus(halfInning, InningStatusQuery.UPDATE);
+  }
+
+  public void updateScore(HalfInning halfInning) {
+    try {
+      if (halfInning.getBaseStatus().getThirdBase()) {
+        halfInning.addScore();
+        halfInningDao.updateHalfInning(halfInning);
+      }
+    } catch (NullPointerException ignored) {
+    }
+  }
+
+  public void updateBaseStatusResult(HalfInning halfInning) {
+    halfInning.updateBases();
+    baseStatusDao.updateBaseStatus(halfInning.getId(), halfInning.getBaseStatus());
   }
 
   public InningStatus getInningStatus(Long gameId) {

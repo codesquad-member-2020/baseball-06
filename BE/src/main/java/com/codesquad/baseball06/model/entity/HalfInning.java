@@ -13,9 +13,9 @@ public class HalfInning {
   private final InningType type;
   private Integer score;
   private Boolean end;
-  @JsonIgnore
+//  @JsonIgnore
   private InningStatus inningStatus;
-  @JsonIgnore
+//  @JsonIgnore
   private BaseStatus baseStatus;
   private LocalDateTime createdAt;
 
@@ -97,5 +97,9 @@ public class HalfInning {
 
   public BattingResult addBall() {
     return inningStatus.addBall();
+  }
+
+  public void updateBases() {
+    baseStatus.updateBases();
   }
 }

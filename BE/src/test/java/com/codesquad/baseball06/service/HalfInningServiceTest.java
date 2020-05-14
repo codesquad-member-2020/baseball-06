@@ -1,8 +1,13 @@
 package com.codesquad.baseball06.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.Team;
+import com.codesquad.baseball06.model.type.BattingResult;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,27 +23,42 @@ class HalfInningServiceTest {
   private InningService inningService;
 
   @Autowired
-  private DevService devService;
+  private GameService gameService;
 
   private Team home;
   private Team away;
   private HalfInning halfInning;
 
-  @BeforeEach
-  void setUp() {
-//    this.inningService = new InningService(new PlateAppearanceService());
+//  @DisplayName("가상의 HalfInning을 만듭니다.")
+//  @BeforeEach
+//  void setUp() {
+//    Game testGame = gameService.getGame(1L);
+//    gameService.start(testGame);
+//  }
 
-//    halfInning = HalfInning.create(1L, 1, 1, InningType.EARLY, 2, 0, 2);
-//    home = devService.teamInitHelper("home");
-//    away = devService.teamInitHelper("away");
-  }
 
+  @DisplayName("scoring 테스트를 하기 위해 HIT의 상황을 가정합니다.")
   @Test
-  void doWork() {
-//    for (int i = 0; i < 9; i++) {
-//      BattingResult battingResult = inningService
-//          .doWork(halfInning, home.getPitcherList().get(0), away.getBatterList().get(0));
-//      log.debug("### dowork : {}", battingResult);
-//      log.debug("### inning : {}", halfInning.getStatus());
-  }
+  void SCORE가_추가된다() {
+
+    //given
+    Game testGame = gameService.getGame(1L);
+    gameService.start(testGame);
+    Game testGame2 = gameService.getGame(1L);
+    int beforeScore = inningService.getHalfInning(1L).getScore();
+
+    int hitCount = 0;
+
+    //when
+    do {
+      if (gameService.proceed(testGame2).equals(BattingResult.HIT)) {
+        hitCount++;
+      }
+    } while (hitCount < 4);
+
+    //then
+    int afterScore = inningService.getHalfInning(1L).getScore();
+    assertThat(beforeScore).isNotEqualTo(afterScore);
+
+    }
 }

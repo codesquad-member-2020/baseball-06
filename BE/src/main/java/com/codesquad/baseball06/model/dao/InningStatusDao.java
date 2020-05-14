@@ -4,7 +4,7 @@ import com.codesquad.baseball06.model.dao.mapper.InningStatusMapper;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.query.InningStatusQuery;
-import com.codesquad.baseball06.model.query.UpdateInningStatusQuery;
+import com.codesquad.baseball06.model.query.BaseStatusQuery;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -27,7 +27,7 @@ public class InningStatusDao {
     SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
         .addValue("half_inning_id", halfInning.getId());
     return jdbcTemplate
-        .update(UpdateInningStatusQuery.CREATE_NEW_INNING_STATUS, sqlParameterSource);
+        .update(BaseStatusQuery.CREATE_NEW_INNING_STATUS, sqlParameterSource);
   }
 
   public int updateInningStatus(HalfInning halfInning, String query) {

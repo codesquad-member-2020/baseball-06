@@ -1,8 +1,8 @@
-package com.codesquad.baseball06.model.dao;
+package com.codesquad.baseball06.model.dao.unused;
 
 import static com.codesquad.baseball06.model.query.TeamQuery.FIND_BY_ID;
 
-import com.codesquad.baseball06.model.dao.mapper.TeamMapper;
+import com.codesquad.baseball06.model.dao.mapper.unused.TeamMapper;
 import com.codesquad.baseball06.model.entity.Team;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

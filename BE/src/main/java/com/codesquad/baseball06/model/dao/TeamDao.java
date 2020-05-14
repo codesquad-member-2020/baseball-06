@@ -2,7 +2,7 @@ package com.codesquad.baseball06.model.dao;
 
 import static com.codesquad.baseball06.model.query.TeamQuery.FIND_BY_ID;
 
-import com.codesquad.baseball06.model.dao.mapper.TeamMapper;
+import com.codesquad.baseball06.model.dao.mapper.unused.TeamMapper;
 import com.codesquad.baseball06.model.entity.Team;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TeamDao {
 
-  private static final Logger logger = LoggerFactory.getLogger(TeamDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
   private final TeamMapper teamMapper;
 

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GameDao {
 
-  private static final Logger logger = LoggerFactory.getLogger(TeamDao.class);
   private final NamedParameterJdbcTemplate jdbcTemplate;
   private final GameMapper gameMapper;
 

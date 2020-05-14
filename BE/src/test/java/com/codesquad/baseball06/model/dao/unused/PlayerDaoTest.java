@@ -1,4 +1,4 @@
-package com.codesquad.baseball06.model.dao;
+package com.codesquad.baseball06.model.dao.unused;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
