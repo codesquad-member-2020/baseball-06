@@ -1,9 +1,9 @@
 INSERT INTO team (name)
-VALUES ('SK w away');
+VALUES ('BE HONUX');
 INSERT INTO team (name)
 VALUES ('DOOSAN d home');
 INSERT INTO team (name)
-VALUES ('NC d away');
+VALUES ('FE CRONG');
 INSERT INTO team (name)
 VALUES ('SAMSUNG l home');
 INSERT INTO team (name)
