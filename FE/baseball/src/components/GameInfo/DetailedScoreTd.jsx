@@ -4,17 +4,21 @@ import { teamInningInfoKey } from "../../constants/dataKey";
 import { BaseballContext } from "../../store/Store";
 
 function DetailedScoreTd({ roundLength }) {
-  const { inningScore } = useContext(BaseballContext);
+  const { inningScore, totalScore } = useContext(BaseballContext);
+  console.log(totalScore);
 
   const getLastTd = (i) => {
-    return <td key={i + 1} className={"total-score"}></td>;
+    return (
+      <td key={i + 1} className={"total-score"}>
+        {totalScore}
+      </td>
+    );
   };
 
   const getTdList = () => {
-    return Array(roundLength + 1)
+    return Array(roundLength)
       .fill()
       .map((_, i) => {
-        if (i >= roundLength) return getLastTd(i);
         return <td key={i + 1}></td>;
       });
   };
@@ -39,7 +43,14 @@ function DetailedScoreTd({ roundLength }) {
     getSocreData();
   }, [inningScore]);
 
-  return <>{tdList}</>;
+  return (
+    <>
+      {tdList}
+      <td key={"lastTd"} className={"total-score"}>
+        {totalScore}
+      </td>
+    </>
+  );
 }
 
 export default DetailedScoreTd;

@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect, useMemo } from "react";
 // import Reducer from "./reducer.js";
 import { mock } from "../mock/mock";
+import { gameSelectionMock } from "../mock/gameSelectionMock";
 import { INNING_INFO_URL } from "../constants/url";
 import fetchData from "../useFetch";
 import {
@@ -20,22 +21,23 @@ const initialState = {
   updatedBaseman: {},
   inningScore: [],
   selectedTeamInfo: {},
+  teamName: {},
 };
 
 //분리하기
 
-// const { score } = teamInningInfoKey;
+const { score } = teamInningInfoKey;
 
 const getTotalScore = (dataList) => {
   const totalScore = dataList.reduce(
-    (acc, data) => acc + data[teamInningInfoKey.score],
+    (acc, data) => acc + data[teamInningInfoKey[score]],
     0
   );
   return totalScore;
 };
 
 const reducer = (state, { type, payload }) => {
-  console.log(type);
+  console.log(payload);
 
   switch (type) {
     case SET_INNING_INFO: {
@@ -45,7 +47,7 @@ const reducer = (state, { type, payload }) => {
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0];
       const inningScore = payload.earlyInningList;
-      // const totalScore = payLoad.
+      const totalScore = getTotalScore(inningScore);
 
       return {
         ...state,
@@ -55,18 +57,21 @@ const reducer = (state, { type, payload }) => {
         updatedPlayer,
         updatedBaseman,
         inningScore,
+        totalScore,
       };
     }
 
     case SET_TEAM_NAME: {
-      const { defenseTeamName, offenseTeamName, teamType, id } = payload;
+      const { defenseTeamName, offenseTeamName, teamType, pathname } = payload;
+
+      console.log(payload, 12);
       return {
         ...state,
         selectedTeamInfo: {
-          id,
           teamType,
           defenseTeamName,
           offenseTeamName,
+          pathname,
         },
       };
     }
@@ -75,14 +80,9 @@ const reducer = (state, { type, payload }) => {
 
 const Store = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state.selectedTeamInfo);
 
   const setInningInfo = (inningData) => {
     dispatch({ type: SET_INNING_INFO, payload: inningData });
-  };
-
-  const setTeamName = (teamType, nameData) => {
-    dispatch({ type: SET_TEAM_NAME, teamType, payload: nameData });
   };
 
   useEffect(() => {
@@ -94,15 +94,11 @@ const Store = ({ children }) => {
       score: state.score,
       inningStatus: state.inningStatus,
       updatedPlayer: state.updatedPlayer,
-      //   setInningInfo: state.setInningInfo,
       inningRound: state.inningRound,
       inningScore: state.inningScore,
       selectedTeamInfo: state.selectedTeamInfo,
-      // teamType: state.teamType,
-      // defenseTeamName: state.defenseTeamName,
-      // offenseTeamName: state.offenseTeamName,
+      totalScore: state.totalScore,
       setInningInfo,
-      setTeamName,
       dispatch,
     }),
     [
@@ -114,7 +110,6 @@ const Store = ({ children }) => {
       state.selectedTeamInfo,
     ]
   );
-  console.log(value);
   return (
     <BaseballContext.Provider value={value}>
       {children}

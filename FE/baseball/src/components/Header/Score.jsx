@@ -5,10 +5,9 @@ import { BaseballContext } from "../../store/Store";
 import { gameSelectionMock } from "../../mock/gameSelectionMock";
 
 function Score({ team }) {
-  const { score, selectedTeamInfo } = useContext(BaseballContext);
-
-  const awayTeamName = gameSelectionMock[0].team1.name;
-  const homeTeamName = gameSelectionMock[0].team2.name;
+  const { score, selectedTeamInfo, teamName } = useContext(BaseballContext);
+  const { offenseTeamName, defenseTeamName } = selectedTeamInfo;
+  console.log(selectedTeamInfo, 12);
 
   const showPlayer = () => {
     if (team === OFFENSE) return `&.home-player {visibility:hidden}`;
@@ -23,14 +22,14 @@ function Score({ team }) {
   return (
     <ScoreArea>
       <TeamNameArea>
-        <Team>{awayTeamName}</Team>
+        <Team>{offenseTeamName}</Team>
         <Player className={"away-player"}>Player</Player>
       </TeamNameArea>
       <Team score>{score.Away}</Team>
       <Vs>VS</Vs>
       <Team score>{score.Home}</Team>
       <TeamNameArea>
-        <Team>{homeTeamName}</Team>
+        <Team>{defenseTeamName}</Team>
         <Player className={"home-player"}>Player</Player>
       </TeamNameArea>
     </ScoreArea>

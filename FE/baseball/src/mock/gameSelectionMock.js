@@ -24,22 +24,22 @@ export const gameSelectionMock = [
   {
     id: 3,
     team1: {
-      name: "Captin",
+      name: "Ellin",
       plau: true,
     },
     team2: {
-      name: "Marvel",
+      name: "또치",
       play: true,
     },
   },
   {
     id: 4,
     team1: {
-      name: "Twins",
+      name: "Dan",
       play: true,
     },
     team2: {
-      name: "Tigers",
+      name: "Sigrid",
       play: false,
     },
   },

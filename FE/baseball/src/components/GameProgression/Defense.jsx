@@ -18,10 +18,12 @@ function Defense({ location }) {
   const { dispatch } = useContext(BaseballContext);
 
   useEffect(() => {
-    if (!location.teamInfo) return;
+    console.log(location.selectedTeamInfo);
+    if (!location.selectedTeamInfo) return;
 
-    const { payload } = location.teamInfo;
-    dispatch({ type: SET_TEAM_NAME, payload });
+    const { selectedTeamInfo, pathname } = location;
+    selectedTeamInfo.pathname = pathname;
+    dispatch({ type: SET_TEAM_NAME, payload: selectedTeamInfo });
   }, [location]);
 
   return (

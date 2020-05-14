@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useMemo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useMemo,
+  useState,
+} from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Player } from "../../styles/global";
 import DetailedScoreTd from "./DetailedScoreTd";
@@ -7,14 +13,14 @@ import { BaseballContext } from "../../store/Store";
 const ballImg =
   "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 
-export const DetailedScoreContext = createContext();
+export const BaseBallContext = createContext();
 
-function DetailedScore({ location }) {
+function DetailedScore() {
+  const { selectedTeamInfo } = useContext(BaseballContext);
+  const { offenseTeamName, defenseTeamName } = selectedTeamInfo;
+
   const ROUND_LENGTH = 12;
   const TOTAL_SCORE = "R";
-
-  console.log(location);
-  // const { offenseTeamName, defenseTeamName } = location.selectedTeamInfo;
 
   const getLastTh = (i) => {
     return (
@@ -53,7 +59,7 @@ function DetailedScore({ location }) {
             <MyTeam src={ballImg} alt="나의 팀" visibility={"hidden"} />
           </th>
           <th scope="row">
-            <TeamName></TeamName>
+            <TeamName>{offenseTeamName}</TeamName>
             <Turn>
               <Player visibility={"hidden"}>player</Player>
             </Turn>
@@ -66,24 +72,12 @@ function DetailedScore({ location }) {
             <MyTeam src={ballImg} alt="나의 팀" />
           </th>
           <th scope="row">
-            <TeamName></TeamName>
+            <TeamName>{defenseTeamName}</TeamName>
             <Turn>
               <Player>player</Player>
             </Turn>
           </th>
-          <td>0</td>
-          <td>2</td>
-          <td>5</td>
-          <td>6</td>
-          <td>7</td>
-          <td>0</td>
-          <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td className={"total-score"}>5</td>
+          <DetailedScoreTd roundLength={ROUND_LENGTH} />
         </tr>
       </tbody>
     </DetailedScoreTable>

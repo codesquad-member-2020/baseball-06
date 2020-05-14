@@ -263,7 +263,6 @@ const Ground = styled.div`
 
 const PitcherArea = styled.div`
   position: absolute;
-  border: 1px solid red;
   width: 80px;
   height: 89px;
   top: 289px;

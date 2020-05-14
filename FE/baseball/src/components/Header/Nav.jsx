@@ -1,6 +1,8 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useContext } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Link } from "react-router-dom";
+import { BaseballContext } from "../../store/Store";
+
 import {
   GlobalStyle,
   Background,
@@ -8,7 +10,7 @@ import {
   MoreBtnTextStyle,
 } from "../../styles/global";
 
-function Nav() {
+function Nav(props) {
   const OPEN_BTN_TEXT = "Nav ∨";
   const CLOSE_BTN_TEXT = "Close ∧";
   const TRANSITION_PROPERTY = "all .3s ease-in-out";
@@ -16,6 +18,9 @@ function Nav() {
   const NavWrapRef = useRef();
   const NavContainerRef = useRef();
   const MoreBtnTextRef = useRef();
+
+  const { selectedTeamInfo } = useContext(BaseballContext);
+  console.log(selectedTeamInfo);
 
   const [moreBtnText, setMoreBtnText] = useState(CLOSE_BTN_TEXT);
 
@@ -46,13 +51,34 @@ function Nav() {
             <Link to="/">게임 선택 </Link>
           </NavLink>
           <NavLink ref={MoreBtnTextRef}>
-            <Link to="/detailedScore">상세 점수 </Link>
+            <Link
+              to={{
+                pathname: "/detailedScore",
+                selectedTeamInfo,
+              }}
+            >
+              상세 점수
+            </Link>
           </NavLink>
           <NavLink>
-            <Link to="/playerRoster">선수 명단</Link>
+            <Link
+              to={{
+                pathname: "/playerRoster",
+                selectedTeamInfo,
+              }}
+            >
+              선수 명단
+            </Link>
           </NavLink>
           <NavLink>
-            <Link to="/defense">게임 진행</Link>
+            <Link
+              to={{
+                pathname: `${selectedTeamInfo.pathname}`,
+                selectedTeamInfo,
+              }}
+            >
+              게임 진행
+            </Link>
           </NavLink>
         </LinkList>
       </NavContainer>
@@ -105,13 +131,10 @@ const LinkList = styled.ul`
 `;
 
 const NavLink = styled.li`
-  /* width: calc(90% / 3); */
   padding: 7px 20px;
-  /* height: 36px; */
   text-align: center;
   line-height: 2.2;
   display: block;
-  /* margin: 10px; */
   border-radius: 2px;
   -webkit-transition: all 300ms;
   transition: all 300ms;
