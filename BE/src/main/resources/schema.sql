@@ -75,9 +75,9 @@ CREATE TABLE player
 CREATE TABLE base_status
 (
     id             INT NOT NULL AUTO_INCREMENT,
-    first_base     INT NULL,
-    second_base    INT NULL,
-    third_base     INT NULL,
+    first_base     TINYINT NOT NULL DEFAULT 0,
+    second_base    TINYINT NOT NULL DEFAULT 0,
+    third_base     TINYINT NOT NULL DEFAULT 0,
     half_inning_id INT NOT NULL,
     CONSTRAINT half_inning_id_constraint_base_status FOREIGN KEY (half_inning_id) REFERENCES half_inning (id),
     PRIMARY KEY (id)
