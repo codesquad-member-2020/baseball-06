@@ -3,18 +3,22 @@ package com.codesquad.baseball06.controller;
 import com.codesquad.baseball06.dto.ApiResponse;
 import com.codesquad.baseball06.dto.BattingResultReturnDto;
 import com.codesquad.baseball06.dto.InningInfoReturnDto;
+import com.codesquad.baseball06.dto.TeamReturnDto;
 import com.codesquad.baseball06.message.AuthMessages;
 import com.codesquad.baseball06.model.entity.BaseStatus;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
+import com.codesquad.baseball06.model.entity.Team;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.TeamType;
 import com.codesquad.baseball06.service.GameService;
 import com.codesquad.baseball06.service.InningService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +59,16 @@ public class GameController {
     return ApiResponse.ok(battingResultReturnDto);
   }
 
-  @GetMapping("/game/info/{gameId}")
+  @GetMapping("/game/info/team/{gameId}")
+  public ApiResponse teamInfo(@PathVariable Long gameId) {
+    List<Team> teamList = inningService.getAllTeamInfo(gameId);
+    List<TeamReturnDto> teamReturnDtoList =
+        teamList.stream().map(TeamReturnDto::create).collect(Collectors.toList());
+
+    return ApiResponse.ok(teamReturnDtoList);
+  }
+
+  @GetMapping("/game/info/inning/{gameId}")
   public ApiResponse inningInfo(@PathVariable Long gameId) {
     Game game = gameService.getGame(gameId);
     List<HalfInning> earlyInningList = game.getEarlyInningList();

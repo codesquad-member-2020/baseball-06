@@ -4,11 +4,13 @@ package com.codesquad.baseball06.service;
 import com.codesquad.baseball06.model.dao.BaseStatusDao;
 import com.codesquad.baseball06.model.dao.HalfInningDao;
 import com.codesquad.baseball06.model.dao.InningStatusDao;
+import com.codesquad.baseball06.model.dao.TeamDao;
 import com.codesquad.baseball06.model.entity.BaseStatus;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Team;
 import com.codesquad.baseball06.model.query.InningStatusQuery;
 import com.codesquad.baseball06.model.type.BattingResult;
 import java.util.List;
@@ -23,15 +25,17 @@ public class InningService {
   private final HalfInningDao halfInningDao;
   private final InningStatusDao inningStatusDao;
   private final BaseStatusDao baseStatusDao;
+  private final TeamDao teamDao;
   private final PlateAppearanceService paService;
 
   public InningService(HalfInningDao halfInningDao,
       InningStatusDao inningStatusDao,
       BaseStatusDao baseStatusDao,
-      PlateAppearanceService paService) {
+      TeamDao teamDao, PlateAppearanceService paService) {
     this.halfInningDao = halfInningDao;
     this.inningStatusDao = inningStatusDao;
     this.baseStatusDao = baseStatusDao;
+    this.teamDao = teamDao;
     this.paService = paService;
   }
 
@@ -98,5 +102,9 @@ public class InningService {
 
   public BaseStatus getBaseStatus(Long gameId) {
     return baseStatusDao.findBaseStatusByGameId(gameId);
+  }
+
+  public List<Team> getAllTeamInfo(Long gameId) {
+    return teamDao.getAllTeamInfoByGameId(gameId);
   }
 }

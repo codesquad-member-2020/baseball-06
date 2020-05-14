@@ -3,7 +3,7 @@
 //import static org.assertj.core.api.Assertions.assertThat;
 //import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 //
-//import com.codesquad.baseball06.model.dao.unused.PlayerDaoTest;
+//import com.codesquad.baseball06.model.dao.PlayerDaoTest;
 //import com.codesquad.baseball06.model.entity.Team;
 //import org.junit.jupiter.api.Test;
 //import org.slf4j.Logger;
