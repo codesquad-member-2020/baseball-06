@@ -17,8 +17,9 @@ function Offense({ location }) {
   const { dispatch } = useContext(BaseballContext);
 
   useEffect(() => {
-    const { teamType, payload } = location.teamInfo;
-    dispatch({ type: SET_TEAM_NAME, teamType, payload });
+    if (!location.teamInfo) return;
+    const { payload } = location.teamInfo;
+    dispatch({ type: SET_TEAM_NAME, payload });
   }, [location]);
 
   return (

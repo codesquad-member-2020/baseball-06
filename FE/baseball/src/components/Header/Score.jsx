@@ -1,12 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { OFFENSE } from "../GameProgression/Offense";
 import { BaseballContext } from "../../store/Store";
+import { gameSelectionMock } from "../../mock/gameSelectionMock";
 
 function Score({ team }) {
   const { score, selectedTeamInfo } = useContext(BaseballContext);
 
-  const { offenseTeamName, defenseTeamName } = selectedTeamInfo;
+  const awayTeamName = gameSelectionMock[0].team1.name;
+  const homeTeamName = gameSelectionMock[0].team2.name;
 
   const showPlayer = () => {
     if (team === OFFENSE) return `&.home-player {visibility:hidden}`;
@@ -21,14 +23,14 @@ function Score({ team }) {
   return (
     <ScoreArea>
       <TeamNameArea>
-        <Team>{offenseTeamName}</Team>
+        <Team>{awayTeamName}</Team>
         <Player className={"away-player"}>Player</Player>
       </TeamNameArea>
       <Team score>{score.Away}</Team>
       <Vs>VS</Vs>
       <Team score>{score.Home}</Team>
       <TeamNameArea>
-        <Team>{defenseTeamName}</Team>
+        <Team>{homeTeamName}</Team>
         <Player className={"home-player"}>Player</Player>
       </TeamNameArea>
     </ScoreArea>

@@ -34,7 +34,7 @@ const getTotalScore = (dataList) => {
   return totalScore;
 };
 
-const reducer = (state, { type, teamType, payload }) => {
+const reducer = (state, { type, payload }) => {
   console.log(type);
 
   switch (type) {
@@ -45,6 +45,7 @@ const reducer = (state, { type, teamType, payload }) => {
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0];
       const inningScore = payload.earlyInningList;
+      // const totalScore = payLoad.
 
       return {
         ...state,
@@ -58,12 +59,11 @@ const reducer = (state, { type, teamType, payload }) => {
     }
 
     case SET_TEAM_NAME: {
-      const { defenseTeamName, offenseTeamName } = payload;
-
-      console.log(teamType, defenseTeamName, offenseTeamName);
+      const { defenseTeamName, offenseTeamName, teamType, id } = payload;
       return {
         ...state,
         selectedTeamInfo: {
+          id,
           teamType,
           defenseTeamName,
           offenseTeamName,

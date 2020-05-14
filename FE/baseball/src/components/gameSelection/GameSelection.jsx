@@ -5,34 +5,36 @@ import { GAME_START_URL } from "../../constants/url";
 function GameSelection({ teams, history }) {
   const offenseTeamName = teams.team1.name;
   const defenseTeamName = teams.team2.name;
+  const id = teams.id;
   const payload = {
+    id,
     defenseTeamName,
     offenseTeamName,
   };
 
   const onClickHomeTeam = (e) => {
     let teamType = "defense";
-    let teamInfo = { teamType, payload };
+    payload.teamType = teamType;
 
     fetch(GAME_START_URL)
-      .then((res) => moveGameProgression(`/${teamType}`, teamInfo))
+      .then((res) => moveGameProgression(`/${teamType}`, payload))
       .then((data) => console.log(data));
   };
 
   const onClickAwayTeam = (e) => {
     let teamType = "offense";
-    let teamInfo = { teamType, payload };
+    payload.teamType = teamType;
 
     fetch(GAME_START_URL)
-      .then((res) => moveGameProgression(`/${teamType}`, teamInfo))
+      .then((res) => moveGameProgression(`/${teamType}`, payload))
       .then((data) => console.log(data));
   };
 
-  const moveGameProgression = (path, teamInfo) => {
+  const moveGameProgression = (path, payload) => {
     const pathname = path;
     history.push({
       pathname,
-      teamInfo,
+      payload,
     });
   };
 

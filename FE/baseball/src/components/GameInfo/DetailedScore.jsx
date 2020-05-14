@@ -1,15 +1,20 @@
-import React, { createContext, useReducer, useMemo } from "react";
+import React, { createContext, useContext, useReducer, useMemo } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Player } from "../../styles/global";
 import DetailedScoreTd from "./DetailedScoreTd";
+import { BaseballContext } from "../../store/Store";
+
 const ballImg =
   "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 
 export const DetailedScoreContext = createContext();
 
-function DetailedScore() {
+function DetailedScore({ location }) {
   const ROUND_LENGTH = 12;
   const TOTAL_SCORE = "R";
+
+  console.log(location);
+  // const { offenseTeamName, defenseTeamName } = location.selectedTeamInfo;
 
   const getLastTh = (i) => {
     return (
@@ -48,7 +53,7 @@ function DetailedScore() {
             <MyTeam src={ballImg} alt="나의 팀" visibility={"hidden"} />
           </th>
           <th scope="row">
-            <TeamName>away team</TeamName>
+            <TeamName></TeamName>
             <Turn>
               <Player visibility={"hidden"}>player</Player>
             </Turn>
@@ -61,7 +66,7 @@ function DetailedScore() {
             <MyTeam src={ballImg} alt="나의 팀" />
           </th>
           <th scope="row">
-            <TeamName>home team</TeamName>
+            <TeamName></TeamName>
             <Turn>
               <Player>player</Player>
             </Turn>
