@@ -5,25 +5,37 @@ const ballImg =
   "https://www.animatedimages.org/data/media/158/animated-baseball-image-0086.gif";
 
 function DetailedScore() {
+  const roundLength = 12;
+
+  const getLastTh = (i) => {
+    if (i >= roundLength)
+      return (
+        <th key={i} scope="col">
+          {"R"}
+        </th>
+      );
+  };
+
+  const getThArray = () => {
+    return Array(roundLength + 1)
+      .fill()
+      .map((_, i) => {
+        getLastTh(i);
+        return (
+          <th key={i} scope="col">
+            {i + 1}
+          </th>
+        );
+      });
+  };
+
   return (
     <DetailedScoreTable>
       <thead>
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
-          <th scope="col">1</th>
-          <th scope="col">2</th>
-          <th scope="col">3</th>
-          <th scope="col">4</th>
-          <th scope="col">5</th>
-          <th scope="col">6</th>
-          <th scope="col">1</th>
-          <th scope="col">2</th>
-          <th scope="col">3</th>
-          <th scope="col">4</th>
-          <th scope="col">5</th>
-          <th scope="col">6</th>
-          <th scope="col">R</th>
+          {getThArray()}
         </tr>
       </thead>
 
@@ -40,9 +52,9 @@ function DetailedScore() {
           </th>
           <td>1</td>
           <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>5</td>
+          <td>6</td>
+          <td>4</td>
           <td>1</td>
           <td>2</td>
           <td></td>
@@ -64,9 +76,9 @@ function DetailedScore() {
           </th>
           <td>0</td>
           <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
           <td>0</td>
           <td>2</td>
           <td></td>
@@ -90,6 +102,7 @@ const DetailedScoreTable = styled.table`
   & td,
   tr,
   th {
+    width: 44px;
     color: ${(props) => props.theme.mainFontColor};
     vertical-align: middle;
     font-size: 25px;
