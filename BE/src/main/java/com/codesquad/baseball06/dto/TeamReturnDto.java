@@ -2,6 +2,7 @@ package com.codesquad.baseball06.dto;
 
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.Pitcher;
+import com.codesquad.baseball06.model.entity.Team;
 import java.util.List;
 
 public class TeamReturnDto {
@@ -11,15 +12,30 @@ public class TeamReturnDto {
   private final List<Pitcher> pitcherList;
   private final List<Batter> batterList;
 
-  private TeamReturnDto(Long id, String name, List<Pitcher> pitcherList, List<Batter> batterList) {
-    this.id = id;
-    this.name = name;
-    this.pitcherList = pitcherList;
-    this.batterList = batterList;
+  private TeamReturnDto(Team team) {
+    this.id = team.getId();
+    this.name = team.getName();
+    this.pitcherList = team.getPitcherList();
+    this.batterList = team.getBatterList();
   }
 
-  public static TeamReturnDto create(Long id, String name, List<Pitcher> pitcherList,
-      List<Batter> batterList) {
-    return new TeamReturnDto(id, name, pitcherList, batterList);
+  public static TeamReturnDto create(Team team) {
+    return new TeamReturnDto(team);
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public List<Pitcher> getPitcherList() {
+    return pitcherList;
+  }
+
+  public List<Batter> getBatterList() {
+    return batterList;
   }
 }
