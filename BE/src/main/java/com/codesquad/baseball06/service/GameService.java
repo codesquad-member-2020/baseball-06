@@ -8,7 +8,6 @@ import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.TeamType;
 import com.google.common.collect.Iterables;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -33,11 +32,6 @@ public class GameService {
       if (game.isNewGame()) {
         HalfInning addedHalfInning = game.addHalfInning();
         inningService.addHalfInning(addedHalfInning);
-
-        ArrayList<HalfInning> listAfterIdSetOfAddedHalfInning = new ArrayList<>();
-        listAfterIdSetOfAddedHalfInning
-            .add(inningService.getHalfInning(addedHalfInning.getGameId()));
-        game.setEarlyInningList(listAfterIdSetOfAddedHalfInning);
 
         return inningService.getHalfInning(addedHalfInning.getGameId());
       }
@@ -73,7 +67,6 @@ public class GameService {
             InningType.EARLY)
         );
       }
-      ;
 
       if (game.getEarlyInningList().size() != game.getLateInningList().size()) {
         inningService.addHalfInning(HalfInning.create(

@@ -5,7 +5,6 @@ import com.codesquad.baseball06.model.type.TeamType;
 import com.google.common.collect.Iterables;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -40,13 +39,19 @@ public class Game {
     users.put(TeamType.AWAY, User.create(awayUser));
     users.put(TeamType.HOME, User.create(homeUser));
 
-    return new Game(id
-        , Arrays.asList(away, home)
-        , users
-        , end, createdAt.toLocalDateTime()
-        // 이후 HalfInningDao.findHalfInningByGameId() 를 이용해 가져옵니다
-        , new ArrayList<>()
-        , new ArrayList<>());
+    return new Game(id, Arrays.asList(away, home), users, end, createdAt.toLocalDateTime()
+        , null, null);
+  }
+
+  public static Game create(Long id, Team away, Team home, String awayUser, String homeUser,
+      Boolean end, Timestamp createdAt, List<HalfInning> earlyInningList,
+      List<HalfInning> lateInningList) {
+    Map<TeamType, User> users = new HashMap<>();
+    users.put(TeamType.AWAY, User.create(awayUser));
+    users.put(TeamType.HOME, User.create(homeUser));
+
+    return new Game(id, Arrays.asList(away, home), users, end, createdAt.toLocalDateTime()
+        , earlyInningList, lateInningList);
   }
 
   private boolean isUserJoined(TeamType teamType) {
@@ -81,8 +86,16 @@ public class Game {
     return earlyInningList;
   }
 
+  public void setEarlyInningList(List<HalfInning> earlyInningList) {
+    this.earlyInningList = earlyInningList;
+  }
+
   public List<HalfInning> getLateInningList() {
     return lateInningList;
+  }
+
+  public void setLateInningList(List<HalfInning> lateInningList) {
+    this.lateInningList = lateInningList;
   }
 
   public User updateUser(TeamType teamType, User user) {
@@ -142,15 +155,5 @@ public class Game {
     return (earlyInningList.size() == 9 && lateInningList.size() == 9
         && Iterables.getLast(earlyInningList).getEnd()
         && Iterables.getLast(lateInningList).getEnd());
-  }
-
-  public void setEarlyInningList(
-      List<HalfInning> earlyInningList) {
-    this.earlyInningList = earlyInningList;
-  }
-
-  public void setLateInningList(
-      List<HalfInning> lateInningList) {
-    this.lateInningList = lateInningList;
   }
 }
