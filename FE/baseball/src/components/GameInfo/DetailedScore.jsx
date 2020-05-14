@@ -12,19 +12,18 @@ function DetailedScore() {
   const TOTAL_SCORE = "R";
 
   const getLastTh = (i) => {
-    if (i >= ROUND_LENGTH)
-      return (
-        <th key={i} scope="col">
-          {TOTAL_SCORE}
-        </th>
-      );
+    return (
+      <th key={i} scope="col">
+        {TOTAL_SCORE}
+      </th>
+    );
   };
 
   const getThList = () => {
     return Array(ROUND_LENGTH + 1)
       .fill()
       .map((_, i) => {
-        getLastTh(i);
+        if (i >= ROUND_LENGTH) return getLastTh(i);
         return (
           <th key={i} scope="col">
             {i + 1}

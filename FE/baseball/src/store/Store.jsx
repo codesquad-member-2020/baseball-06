@@ -3,6 +3,7 @@ import React, { createContext, useReducer, useEffect, useMemo } from "react";
 import { mock } from "../mock/mock";
 import { INNING_INFO_URL } from "../constants/url";
 import fetchData from "../useFetch";
+import {homeTeamInfoKey,awayTeamInfoKey ,inningStatusKey} from '../constants/dataKey'
 
 export const SET_INNING_INFO = "SET_INNING_INFO ";
 
@@ -18,6 +19,10 @@ const initialState = {
 
 //분리하기
 
+const getTotalScore = (data) => {
+    data.
+}
+
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case SET_INNING_INFO:
@@ -27,7 +32,7 @@ const reducer = (state, { type, payload }) => {
       const inningStatus = payload.inningStatus;
       const inningRound = payload.earlyInningList[0];
       const inningScore = payload.earlyInningList;
-      console.log(inningRound, 11111);
+      
       return {
         ...state,
         score,

@@ -7,14 +7,14 @@ function DetailedScoreTd({ roundLength }) {
   const { inningScore } = useContext(BaseballContext);
 
   const getLastTd = (i) => {
-    if (i >= roundLength) return <th key={i} className={"total-score"}></th>;
+    return <td key={i + 1} className={"total-score"}></td>;
   };
 
   const getTdList = () => {
     return Array(roundLength + 1)
       .fill()
       .map((_, i) => {
-        getLastTd(i);
+        if (i >= roundLength) return getLastTd(i);
         return <td key={i + 1}></td>;
       });
   };
