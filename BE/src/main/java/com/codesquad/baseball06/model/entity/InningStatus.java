@@ -61,6 +61,10 @@ public class InningStatus {
   private BattingResult addOut() {
     out++;
     newPlateAppearance();
+
+    if (isFinished()) {
+      return BattingResult.END;
+    }
     return BattingResult.OUT;
   }
 

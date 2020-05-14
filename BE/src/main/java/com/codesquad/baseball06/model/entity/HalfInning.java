@@ -13,9 +13,9 @@ public class HalfInning {
   private final InningType type;
   private Integer score;
   private Boolean end;
-//  @JsonIgnore
+  @JsonIgnore
   private InningStatus inningStatus;
-//  @JsonIgnore
+  @JsonIgnore
   private BaseStatus baseStatus;
   private LocalDateTime createdAt;
 
@@ -67,6 +67,10 @@ public class HalfInning {
 
   public Boolean getEnd() {
     return end;
+  }
+
+  public void setEnd(Boolean end) {
+    this.end = end;
   }
 
   public InningStatus getInningStatus() {
