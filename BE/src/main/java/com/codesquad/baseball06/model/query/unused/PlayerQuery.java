@@ -23,7 +23,6 @@ public class PlayerQuery {
           + "WHERE i.game_id = 1\n"
           + "ORDER BY i.id DESC LIMIT 1)\n"
           + "AND pa.batter = p.id\n"
-          //TODO: 알 수 없는 이유로 아래를 넣어줘야 1개만 잡을 수 있다. 그런데 위의 쿼리도 잘 작동될 텐데 이상하다.
           + "ORDER BY p.id DESC LIMIT 1;";
   public static final String FIND_CURRENT_PITCHER =
       "SELECT p.id, p.team_id, p.type, p.name FROM player p\n"
