@@ -5,6 +5,7 @@ import com.codesquad.baseball06.config.JwtProperties;
 import com.codesquad.baseball06.controller.AuthController;
 import com.codesquad.baseball06.message.AuthMessages;
 import com.codesquad.baseball06.message.ErrorMessages;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -46,6 +47,17 @@ public class TokenUtil {
 
   private static byte[] generateKey() {
     return staticJwtProperties.getSalt().getBytes(StandardCharsets.UTF_8);
+  }
+
+  public static String getUserEmail(String jwt) throws RuntimeException {
+    try {
+      Claims claims = Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(jwt)
+          .getBody();
+
+      return claims.get("email").toString();
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   @PostConstruct
