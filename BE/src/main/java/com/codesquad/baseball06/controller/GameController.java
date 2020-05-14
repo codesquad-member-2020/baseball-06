@@ -3,16 +3,18 @@ package com.codesquad.baseball06.controller;
 import com.codesquad.baseball06.dto.ApiResponse;
 import com.codesquad.baseball06.dto.BattingResultReturnDto;
 import com.codesquad.baseball06.dto.InningInfoReturnDto;
+import com.codesquad.baseball06.message.AuthMessages;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
-import com.codesquad.baseball06.model.entity.User;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.TeamType;
 import com.codesquad.baseball06.service.GameService;
 import com.codesquad.baseball06.service.InningService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,12 +67,14 @@ public class GameController {
     return ApiResponse.ok(inningInfoReturnDto);
   }
 
+  @ApiOperation(value = "", notes = AuthMessages.JOIN)
   @GetMapping("/game/join/{gameId}")
   public ApiResponse joinUser(@PathVariable Long gameId, @RequestParam String teamType,
-      @RequestParam String userEmail) {
+      HttpServletRequest httpServletRequest) {
     Game game = gameService.getGame(gameId);
+    String[] parsedJwt = httpServletRequest.getHeader("Authorization").split(" ");
 
-    return ApiResponse
-        .ok(gameService.joinUser(game, TeamType.valueOf(teamType), User.create(userEmail)));
+    game = gameService.joinUser(game, TeamType.valueOf(teamType), parsedJwt[1]);
+    return ApiResponse.ok(game.getUsers());
   }
 }

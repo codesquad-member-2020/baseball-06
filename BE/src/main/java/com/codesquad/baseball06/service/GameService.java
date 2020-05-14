@@ -7,8 +7,10 @@ import com.codesquad.baseball06.model.entity.User;
 import com.codesquad.baseball06.model.type.BattingResult;
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.TeamType;
+import com.codesquad.baseball06.utils.TokenUtil;
 import com.google.common.collect.Iterables;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,10 +97,18 @@ public class GameService {
     return game;
   }
 
-  public User joinUser(Game game, TeamType teamType, User user) {
+  public Game joinUser(Game game, TeamType teamType, String jwt) {
+    User user = User.create(TokenUtil.getUserEmail(jwt));
+
     if (game.updateUser(teamType, user).equals(user)) {
-      int result = gameDao.join(game.getId(), user, teamType);
-      return user;
+      Game findGame = gameDao.findGameById(game.getId());
+
+      if (Objects.isNull(findGame.getUsers().get(teamType))) {
+        gameDao.join(game.getId(), user, teamType);
+        return gameDao.findGameById(game.getId());
+      } else {
+        throw new RuntimeException("Already user joined");
+      }
     }
 
     throw new RuntimeException("Failed joinUser");

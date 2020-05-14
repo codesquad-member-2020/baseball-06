@@ -2,6 +2,7 @@ package com.codesquad.baseball06.model.entity;
 
 import com.codesquad.baseball06.model.type.InningType;
 import com.codesquad.baseball06.model.type.TeamType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Iterables;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -110,6 +111,7 @@ public class Game {
     return false;
   }
 
+  @JsonIgnore
   public HalfInning getRunningHalfInning() {
     HalfInning earlyInningLast = Iterables.getLast(earlyInningList);
     HalfInning lateInningLast = Iterables.getLast(lateInningList);
