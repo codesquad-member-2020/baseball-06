@@ -3,7 +3,9 @@ package com.codesquad.baseball06.model.dao;
 import com.codesquad.baseball06.model.dao.mapper.BaseStatusMapper;
 import com.codesquad.baseball06.model.entity.BaseStatus;
 import com.codesquad.baseball06.model.entity.HalfInning;
+import com.codesquad.baseball06.model.entity.InningStatus;
 import com.codesquad.baseball06.model.query.BaseStatusQuery;
+import com.codesquad.baseball06.model.query.InningStatusQuery;
 import java.util.Map;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -49,5 +51,17 @@ public class BaseStatusDao {
         .addValue("half_inning_id", halfInning.getId());
     return jdbcTemplate
         .update(BaseStatusQuery.CREATE_NEW_BASE_STATUS, sqlParameterSource);
+  }
+
+  public BaseStatus findBaseStatusByGameId(Long gameId) {
+    SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("game_id", gameId);
+
+    try {
+      return jdbcTemplate
+          .queryForObject(BaseStatusQuery.FIND_BY_GAME_ID, namedParameters, baseStatusMapper);
+
+    } catch (EmptyResultDataAccessException e) {
+      return null;
+    }
   }
 }

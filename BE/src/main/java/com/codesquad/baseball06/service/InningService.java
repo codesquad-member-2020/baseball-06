@@ -4,6 +4,7 @@ package com.codesquad.baseball06.service;
 import com.codesquad.baseball06.model.dao.BaseStatusDao;
 import com.codesquad.baseball06.model.dao.HalfInningDao;
 import com.codesquad.baseball06.model.dao.InningStatusDao;
+import com.codesquad.baseball06.model.entity.BaseStatus;
 import com.codesquad.baseball06.model.entity.Batter;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
@@ -93,5 +94,9 @@ public class InningService {
 
   public InningStatus getInningStatus(Long gameId) {
     return inningStatusDao.findInningStatusByGameId(gameId);
+  }
+
+  public BaseStatus getBaseStatus(Long gameId) {
+    return baseStatusDao.findBaseStatusByGameId(gameId);
   }
 }

@@ -4,6 +4,7 @@ import com.codesquad.baseball06.dto.ApiResponse;
 import com.codesquad.baseball06.dto.BattingResultReturnDto;
 import com.codesquad.baseball06.dto.InningInfoReturnDto;
 import com.codesquad.baseball06.message.AuthMessages;
+import com.codesquad.baseball06.model.entity.BaseStatus;
 import com.codesquad.baseball06.model.entity.Game;
 import com.codesquad.baseball06.model.entity.HalfInning;
 import com.codesquad.baseball06.model.entity.InningStatus;
@@ -61,9 +62,9 @@ public class GameController {
     List<HalfInning> lateInningList = game.getLateInningList();
 
     InningStatus inningStatus = inningService.getInningStatus(gameId);
-    // BaseStatus 를 만들고 그것을 return 에 넣어야함
+    BaseStatus baseStatus = inningService.getBaseStatus(gameId);
     InningInfoReturnDto inningInfoReturnDto = InningInfoReturnDto
-        .create(earlyInningList, lateInningList, inningStatus);
+        .create(earlyInningList, lateInningList, inningStatus, baseStatus);
 
     return ApiResponse.ok(inningInfoReturnDto);
   }
