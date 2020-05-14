@@ -1,6 +1,5 @@
-package com.codesquad.baseball06.model.dao.mapper.unused;
+package com.codesquad.baseball06.model.dao.mapper;
 
-import com.codesquad.baseball06.model.dao.unused.PlayerDao;
 import com.codesquad.baseball06.model.entity.Team;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +23,7 @@ public class TeamMapper implements RowMapper<List<Team>> {
 
     do {
       Long teamId = rs.getLong("id");
-      teamList.add(Team.create(teamId, rs.getString("name"), playerDao.findPitcherAndTeamId(teamId),
+      teamList.add(Team.create(teamId, rs.getString("name"), playerDao.findPitcherByTeamId(teamId),
           playerDao.findBatterByTeamId(teamId)));
     } while (rs.next());
 
