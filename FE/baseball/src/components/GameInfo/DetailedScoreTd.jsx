@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { inningInfoKey } from "../../constants/dataKey";
 
 import { BaseballContext } from "../../store/Store";
 
 function DetailedScoreTd({ roundLength }) {
   const { inningScore } = useContext(BaseballContext);
 
-  //   let tdList = [];
   const getLastTd = (i) => {
     if (i >= roundLength) return <th key={i} className={"total-score"}></th>;
   };
@@ -22,11 +22,14 @@ function DetailedScoreTd({ roundLength }) {
   const [tdList, setTdList] = useState(getTdList());
 
   const getSocreData = () => {
-    if (inningScore.length === 0) return console.log(1);
+    const emptyArray = 0;
+    if (inningScore.length === emptyArray) return;
+
     const copiedTdList = [...tdList];
+    const { id, score } = inningInfoKey;
 
     const tdHtmlList = inningScore.reduce((td, inningData, i) => {
-      td[i] = <td key={inningData.id}>{inningData.score}</td>;
+      td[i] = <td key={inningData[id]}>{inningData[score]}</td>;
       return td;
     }, copiedTdList);
     setTdList(tdHtmlList);
