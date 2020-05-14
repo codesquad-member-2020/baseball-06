@@ -40,12 +40,4 @@ public class AuthController {
     log.debug("### callback");
     return new ResponseEntity<>(authService.callback(code), HttpStatus.SEE_OTHER);
   }
-
-  @ApiOperation(value = "", notes = AuthMessages.GET_TOKEN)
-  @ResponseStatus(HttpStatus.SEE_OTHER)
-  @GetMapping("/login")
-  public ResponseEntity<String> login() {
-    // TODO
-    return null;
-  }
 }
