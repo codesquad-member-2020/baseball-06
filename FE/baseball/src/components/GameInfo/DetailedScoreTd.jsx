@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { inningInfoKey } from "../../constants/dataKey";
+import { teamInningInfoKey } from "../../constants/dataKey";
 
 import { BaseballContext } from "../../store/Store";
 
@@ -26,7 +26,7 @@ function DetailedScoreTd({ roundLength }) {
     if (inningScore.length === emptyArray) return;
 
     const copiedTdList = [...tdList];
-    const { id, score } = inningInfoKey;
+    const { id, score } = teamInningInfoKey;
 
     const tdHtmlList = inningScore.reduce((td, inningData, i) => {
       td[i] = <td key={inningData[id]}>{inningData[score]}</td>;

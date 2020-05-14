@@ -1,22 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
+import { OFFENSE } from "../GameProgression/Offense";
 import { BaseballContext } from "../../store/Store";
 
-function Score() {
-  const { score } = useContext(BaseballContext);
+function Score({ team }) {
+  const { score, selectedTeamInfo } = useContext(BaseballContext);
+
+  const { offenseTeamName, defenseTeamName } = selectedTeamInfo;
+
+  const showPlayer = () => {
+    if (team === OFFENSE) return `&.home-player {visibility:hidden}`;
+    else return `&.away-player {visibility:hidden}`;
+  };
+
+  const Player = styled.span`
+    color: ${(props) => props.theme.highlightColor};
+    ${showPlayer()}
+  `;
 
   return (
     <ScoreArea>
       <TeamNameArea>
-        <Team>ddxx</Team>
-        <Player visibility={"hidden"}>Player</Player>
+        <Team>{offenseTeamName}</Team>
+        <Player className={"away-player"}>Player</Player>
       </TeamNameArea>
       <Team score>{score.Away}</Team>
       <Vs>VS</Vs>
       <Team score>{score.Home}</Team>
       <TeamNameArea>
-        <Team>ddddd</Team>
-        <Player>Player</Player>
+        <Team>{defenseTeamName}</Team>
+        <Player className={"home-player"}>Player</Player>
       </TeamNameArea>
     </ScoreArea>
   );
@@ -46,13 +59,6 @@ const ScoreArea = styled.div`
   justify-content: center;
   align-items: center;
   padding: 18px 0;
-`;
-
-const Player = styled.span`
-  color: ${(props) => props.theme.highlightColor};
-  visibility: ${(props) => {
-    if (props.visibility === "hidden") return "hidden";
-  }};
 `;
 
 export default Score;

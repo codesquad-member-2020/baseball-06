@@ -7,14 +7,14 @@ import PlayerInfo from "./PlayerInfo";
 import Nav from "./Nav";
 import { Layout } from "../../styles/global";
 
-function Header() {
+function Header({ team }) {
   return (
     <div>
       <HeaderWrap>
         <InningStatus />
         <div>
           {/* <Title type={"sub"} /> */}
-          <Score />
+          <Score team={team} />
         </div>
         <PlayerInfo />
       </HeaderWrap>

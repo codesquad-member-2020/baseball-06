@@ -1,38 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
-import {GAME_START_URL} from '../../constants/url';
+import { GAME_START_URL } from "../../constants/url";
 
 function GameSelection({ teams, history }) {
-  // const onClcikTema = (play) => {
-  //   console.log(play);
-  //   let message = null;
-  //   if (play) {
-  //     message = "이미 선택된 팀입니다. 다른 팀을 선택해주세요!";
-  //   } else {
-  //     message = "fetch";
-  //   }
-  //   dispatch({ tyep: "gameSelection", message: message });
-  // };
+  const offenseTeamName = teams.team1.name;
+  const defenseTeamName = teams.team2.name;
+  const payload = {
+    defenseTeamName,
+    offenseTeamName,
+  };
 
-  // const [awayTeamName , setAwayTeamName ] = useState('');
-  // const [homeTeamName , setHomeTeamName ] =  useState('');
+  const onClickHomeTeam = (e) => {
+    let teamType = "defense";
+    let teamInfo = { teamType, payload };
 
-  // const teams
-
-  const onClickTeam = () => {
-    history.push("/defense");
     fetch(GAME_START_URL)
-    .then(res => console.log(res))
-    .then(data => console.log(data));
+      .then((res) => moveGameProgression(`/${teamType}`, teamInfo))
+      .then((data) => console.log(data));
+  };
+
+  const onClickAwayTeam = (e) => {
+    let teamType = "offense";
+    let teamInfo = { teamType, payload };
+
+    fetch(GAME_START_URL)
+      .then((res) => moveGameProgression(`/${teamType}`, teamInfo))
+      .then((data) => console.log(data));
+  };
+
+  const moveGameProgression = (path, teamInfo) => {
+    const pathname = path;
+    history.push({
+      pathname,
+      teamInfo,
+    });
   };
 
   return (
     <GameSelectionArea>
       <GameNumber>GAME {teams.id}</GameNumber>
       <Teams>
-        <Team onClick={onClickTeam}>{teams.team1.name}</Team>
+        <Team onClick={onClickAwayTeam}>{offenseTeamName}</Team>
         <Vs>vs</Vs>
-        <Team onClick={onClickTeam}>{teams.team2.name}</Team>
+        <Team onClick={onClickHomeTeam}>{defenseTeamName}</Team>
       </Teams>
     </GameSelectionArea>
   );
