@@ -21,7 +21,7 @@ enum NetworkError: Error {
 struct NetworkManager: NetworkManageable {
     enum EndPoints {
         static let Pitch = "http://15.164.101.161:8080/api/game/proceed/1"
-        static let GameInfo = "http://15.164.101.161:8080/api/game/info/1"
+        static let GameInfo = "http://15.164.101.161:8080/api/game/info/inning/1"
     }
     
     func getResource(from urlString: String, handler: @escaping ((Result<Data, NetworkError>) -> Void)) {

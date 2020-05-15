@@ -21,7 +21,7 @@ struct GameInfoResponse: Codable {
 }
 
 struct GameInfo: Codable {
-    var ealryInningList: [InningInfo]?
+    var earlyInningList: [InningInfo]
     var lateInningList: [InningInfo]
     var inningStatus: InningStatus
 }
@@ -34,8 +34,6 @@ struct InningInfo: Codable {
 }
 
 struct InningStatus: Codable {
-    var id: Int
-    var halfInningId: Int
     var strike: Int
     var ball: Int
     var out: Int

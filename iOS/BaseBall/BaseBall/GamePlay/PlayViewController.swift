@@ -87,7 +87,7 @@ class PlayViewController: UIViewController {
             switch result {
             case .success(let gameInfo):
                 self.scoreViewModel.updateKey(gameInfo.inningStatus)
-                self.inningViewModel.updateKey(gameInfo.inningStatus)
+                self.inningViewModel.updateKey(gameInfo)
             case .failure(let error):
                 print(error)
             }
