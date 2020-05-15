@@ -39,7 +39,7 @@ public class InningService {
     this.paService = paService;
   }
 
-  public void addHalfInning(HalfInning halfInning) {
+  public HalfInning addHalfInning(HalfInning halfInning) {
     halfInningDao.addNewHalfInning(
         halfInning.getGameId(),
         halfInning.getIndex(),
@@ -49,6 +49,8 @@ public class InningService {
 
     inningStatusDao.createNewInningStatus(afterDBInsertedHalfInning);
     baseStatusDao.createNewBaseStatus(afterDBInsertedHalfInning);
+
+    return afterDBInsertedHalfInning;
   }
 
   public HalfInning getHalfInning(Long gameId) {
