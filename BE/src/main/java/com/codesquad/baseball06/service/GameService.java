@@ -58,6 +58,8 @@ public class GameService {
         }
       }
 
+      game = getGame(game.getId());
+
       if (!Iterables.getLast(game.getEarlyInningList()).getEnd()) {
         return inningService.proceedPA(Iterables.getLast(game.getEarlyInningList()));
       }
