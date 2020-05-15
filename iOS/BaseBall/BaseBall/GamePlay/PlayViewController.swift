@@ -15,11 +15,15 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var pitchingResultTableView: UITableView!
     @IBOutlet weak var scoreStackView: OverallScoreView!
     @IBOutlet weak var inningLabel: UILabel!
+    @IBOutlet weak var fieldView: DiamondShapeView!
+    @IBOutlet var bases: [UIView]!
+    @IBOutlet weak var pitchButton: PitchButton!
     
     private var playerInfoDataSource: PlayerInfoDataSource!
     private let pitchingResultDataSource = PitchingResultDataSource()
     private var scoreViewModel: ScoreViewModel!
     private var inningViewModel: InningViewModel!
+    private var players = [PlayerView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +36,48 @@ class PlayViewController: UIViewController {
         PitchUseCase.pitch(with: NetworkManager()) { result in
             switch result {
             case .success(let pitchResult):
-                // TODO: 애니메이션 적용에 pitchResult 활용 예정
-//                print(pitchResult)
+                if pitchResult.battingResult == "HIT" {
+                    DispatchQueue.main.async {
+                        self.hit()
+                    }
+                } else if pitchResult.battingResult == "END" {
+                    DispatchQueue.main.async {
+                        self.players.forEach {
+                            $0.removeFromSuperview()
+                        }
+                        self.players.removeAll()
+                    }
+                }
                 self.updateGameInfo()
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    private func hit() {
+        let newPlayer = PlayerView(frame: bases[0].frame)
+        fieldView.addSubview(newPlayer)
+        players.append(newPlayer)
+        players.forEach {
+            let player = $0
+            player.base += 1
+            if player.base == 4 {
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.pitchButton.toggle()
+                    player.frame = self.bases[0].frame
+                }) { _ in
+                    self.pitchButton.toggle()
+                    player.removeFromSuperview()
+                    self.players.removeFirst()
+                }
+            } else {
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.pitchButton.toggle()
+                    player.frame = self.bases[player.base].frame
+                }) { _ in
+                    self.pitchButton.toggle()
+                }
             }
         }
     }

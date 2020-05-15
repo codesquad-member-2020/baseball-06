@@ -408,10 +408,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Play" image="play" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="fieldView" destination="5I9-Rl-sc0" id="Zg3-ud-yHg"/>
                         <outlet property="inningLabel" destination="8xy-qR-vvq" id="76p-U5-VZN"/>
+                        <outlet property="pitchButton" destination="Y04-xA-ilF" id="LJJ-Sv-ybq"/>
                         <outlet property="pitchingResultTableView" destination="t2X-d6-uFt" id="zht-ei-57l"/>
                         <outlet property="playerInfoTableView" destination="T4n-xA-5hw" id="HxP-RQ-S9V"/>
                         <outlet property="scoreStackView" destination="Tmp-3O-MXq" id="df3-SX-Juc"/>
+                        <outletCollection property="bases" destination="T1I-5e-zku" collectionClass="NSMutableArray" id="heN-7C-J5n"/>
+                        <outletCollection property="bases" destination="FP7-jD-ZgZ" collectionClass="NSMutableArray" id="gTz-kc-chF"/>
+                        <outletCollection property="bases" destination="zZe-gP-SHo" collectionClass="NSMutableArray" id="CXP-Yl-zig"/>
+                        <outletCollection property="bases" destination="46J-M2-unI" collectionClass="NSMutableArray" id="0ML-4c-uN4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
