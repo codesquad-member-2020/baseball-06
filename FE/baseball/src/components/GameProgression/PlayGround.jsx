@@ -6,8 +6,9 @@ import React, {
   useContext,
 } from "react";
 import styled, { css } from "styled-components";
-import { GAME_RESULT_URL } from "../../constants/url";
-import { BaseBallContext, FETCH_RESULT_INFO } from "./Defense";
+import fetchData from "../../useFetch";
+import { GAME_RESULT_URL, INNING_INFO_URL } from "../../constants/url";
+import { BaseballContext } from "../../store/Store";
 import GameLog from "./GameLog";
 const pticherImg =
   "https://ih0.redbubble.net/image.12303453.4706/sticker,375x360.png";
@@ -21,6 +22,7 @@ function PlayGround() {
   const batterEndCoord = 385;
   const waitMessage = "기다려😛";
   const scoreMessage = "1득점🥰";
+  const fourBall = "4 BALL";
   const resultValue = {
     strike: "STRIKE",
     ball: "BALL",
@@ -29,7 +31,7 @@ function PlayGround() {
     out: "OUT",
   };
 
-  const { dispatch } = useContext(BaseBallContext);
+  const { dispatch, setInningInfo } = useContext(BaseballContext);
 
   const [batterCoord, setBatterCoord] = useState(batterEndCoord);
   const [ballTopCoord, setBallTopCoord] = useState(initialBallTopCoord);
@@ -96,9 +98,10 @@ function PlayGround() {
       .then((data) => {
         const resultData = data.body.battingResult;
         let result = resultData;
-        if (result === resultValue.fourballs) result = "4 BALL";
+        if (result === resultValue.fourballs) result = fourBall;
         setResult(result + "!!");
-        dispatch({ type: FETCH_RESULT_INFO });
+        fetchData(setInningInfo, INNING_INFO_URL);
+        // dispatch({ type: FETCH_RESULT_INFO });
         judgeResult(resultData);
         showPitchBtn();
       });
@@ -120,11 +123,11 @@ function PlayGround() {
     const thirdBase = 4;
 
     if (count.current >= thirdBase) {
-      setSore("block", true);
+      scorePoint("block", true);
       setResult((prevResult) => prevResult + " " + scoreMessage);
 
       timeout = setTimeout(() => {
-        setSore("none", false);
+        scorePoint("none", false);
       }, 1000);
     }
 
@@ -133,7 +136,7 @@ function PlayGround() {
     };
   }, [count.current]);
 
-  const setSore = (batterDisplay, isScale) => {
+  const scorePoint = (batterDisplay, isScale) => {
     scoredBatter.current.style.display = batterDisplay;
     setResultScale(isScale);
   };
@@ -260,7 +263,6 @@ const Ground = styled.div`
 
 const PitcherArea = styled.div`
   position: absolute;
-  border: 1px solid red;
   width: 80px;
   height: 89px;
   top: 289px;

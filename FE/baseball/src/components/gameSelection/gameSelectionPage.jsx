@@ -10,7 +10,7 @@ import {
   Background,
   BackgroundImg,
 } from "../../styles/global";
-import { gameSelectionMock } from "../../gameSelectionMock";
+import { gameSelectionMock } from "../../mock/gameSelectionMock";
 
 // const initialState = {
 //   message: "참가할 게임을 선택하세요!",

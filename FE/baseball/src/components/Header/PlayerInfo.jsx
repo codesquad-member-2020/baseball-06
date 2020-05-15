@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { BaseBallContext } from "../GameProgression/Defense";
+import { BaseballContext } from "../../store/Store";
 
 function PlayerInfo() {
-  const { updatedPlayer } = useContext(BaseBallContext);
+  const { updatedPlayer } = useContext(BaseballContext);
   console.log(updatedPlayer);
 
   const templatePitcher = ({ pitches }) => {
@@ -43,9 +43,12 @@ function PlayerInfo() {
 }
 
 const PlayerInfoWrap = styled.div`
-  display: inline-block;
-  font-size: 23px;
+  position: absolute;
+  top: 0;
+  right: 0;
   overflow: hidden;
+  padding: 18px 35px;
+  font-size: 23px;
   max-height: 129px;
 `;
 
