@@ -14,7 +14,7 @@ spring:
 # logging 설정
 logging:
   level:
-    root: debug
+    root: INFO
     sql: trace
   pattern:
     file: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} [%thread] %-5level %logger{36}.%M - %msg%n"
