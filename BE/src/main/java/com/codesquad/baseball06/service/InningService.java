@@ -39,7 +39,7 @@ public class InningService {
     this.paService = paService;
   }
 
-  public void addHalfInning(HalfInning halfInning) {
+  public HalfInning addHalfInning(HalfInning halfInning) {
     halfInningDao.addNewHalfInning(
         halfInning.getGameId(),
         halfInning.getIndex(),
@@ -49,6 +49,8 @@ public class InningService {
 
     inningStatusDao.createNewInningStatus(afterDBInsertedHalfInning);
     baseStatusDao.createNewBaseStatus(afterDBInsertedHalfInning);
+
+    return afterDBInsertedHalfInning;
   }
 
   public HalfInning getHalfInning(Long gameId) {
@@ -60,6 +62,7 @@ public class InningService {
   }
 
   public BattingResult proceedPA(HalfInning halfInning) {
+    //TODO: teamDao에서 가져와서 Pitcher와 Batter를 매칭시켜야 하는데, 해당 로직 구현하지 않음
     Pitcher pitcher = Pitcher.create(2L, "Dan");
     Batter batter = Batter.create(1L, "Sigrid", 0.222);
     BattingResult battingResult = paService.doPitching(pitcher, batter);
