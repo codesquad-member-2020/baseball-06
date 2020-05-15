@@ -13,6 +13,7 @@ class PlayViewController: UIViewController {
     
     @IBOutlet weak var playerInfoTableView: PlayerInfoTableView!
     @IBOutlet weak var pitchingResultTableView: UITableView!
+    @IBOutlet weak var titleScoreView: TitleScoreView!
     @IBOutlet weak var scoreStackView: OverallScoreView!
     @IBOutlet weak var inningLabel: UILabel!
     @IBOutlet weak var fieldView: DiamondShapeView!
@@ -23,6 +24,7 @@ class PlayViewController: UIViewController {
     private let pitchingResultDataSource = PitchingResultDataSource()
     private var scoreViewModel: ScoreViewModel!
     private var inningViewModel: InningViewModel!
+    private var titleScoreViewModel: TitleScoreViewModel!
     private var players = [PlayerView]()
     
     override func viewDidLoad() {
@@ -88,6 +90,7 @@ class PlayViewController: UIViewController {
             case .success(let gameInfo):
                 self.scoreViewModel.updateKey(gameInfo.inningStatus)
                 self.inningViewModel.updateKey(gameInfo)
+                self.titleScoreViewModel.updateKey(gameInfo)
             case .failure(let error):
                 print(error)
             }
@@ -103,6 +106,11 @@ class PlayViewController: UIViewController {
         inningViewModel = InningViewModel.init(changed: { data in
             DispatchQueue.main.async {
                 self.inningLabel.text = data
+            }
+        })
+        titleScoreViewModel = TitleScoreViewModel.init(changed: { data in
+            DispatchQueue.main.async {
+                self.titleScoreView.updateScore(home: data.0, away: data.1)
             }
         })
     }
