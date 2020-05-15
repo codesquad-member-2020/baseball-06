@@ -19,6 +19,7 @@
 		4461C5402461BF6D00DC52D5 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */; };
 		4461C5422461C92F00DC52D5 /* PlayerInfoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */; };
 		4461C5442461C9EF00DC52D5 /* PlayerInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */; };
+		448893FD246E331400EEEC10 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448893FC246E331400EEEC10 /* PlayerView.swift */; };
 		4491C8A5246035B3005049F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A4246035B3005049F9 /* AppDelegate.swift */; };
 		4491C8A7246035B3005049F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A6246035B3005049F9 /* SceneDelegate.swift */; };
 		4491C8A9246035B3005049F9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491C8A8246035B3005049F9 /* PlayViewController.swift */; };
@@ -56,6 +57,7 @@
 		4461C53F2461BF6D00DC52D5 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
 		4461C5412461C92F00DC52D5 /* PlayerInfoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoTableView.swift; sourceTree = "<group>"; };
 		4461C5432461C9EF00DC52D5 /* PlayerInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoDataSource.swift; sourceTree = "<group>"; };
+		448893FC246E331400EEEC10 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		4491C8A1246035B3005049F9 /* BaseBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4491C8A4246035B3005049F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4491C8A6246035B3005049F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				4461C53D2461BA2900DC52D5 /* PitchButton.swift */,
 				4412A28D246541F10054DE04 /* OverallScoreView.swift */,
 				44A86EAB2466EEBA00A57CBC /* ScoreStackView.swift */,
+				448893FC246E331400EEEC10 /* PlayerView.swift */,
 			);
 			path = GameProgress;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4412A28E246541F10054DE04 /* OverallScoreView.swift in Sources */,
+				448893FD246E331400EEEC10 /* PlayerView.swift in Sources */,
 				44D22FC82465252200AC08CC /* NetworkManager.swift in Sources */,
 				4491C8C724617F7F005049F9 /* GameListBackgroundVIew.swift in Sources */,
 				445F93A92461D26D00D39168 /* PitchingResultDataSource.swift in Sources */,
