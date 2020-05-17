@@ -26,59 +26,55 @@ class PlayViewController: UIViewController {
     private var inningViewModel: InningViewModel!
     private var titleScoreViewModel: TitleScoreViewModel!
     private var players = [PlayerView]()
+    private var gameInfo: GameInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSources()
         configureViewModels()
-        updateGameInfo()
+        DispatchQueue.global().async {
+            while true {
+                self.updateGameInfo()
+                sleep(1)
+            }
+        }
     }
     
     @IBAction func pitchButtonTapped(_ sender: Any) {
         PitchUseCase.pitch(with: NetworkManager()) { result in
             switch result {
             case .success(let pitchResult):
-                if pitchResult.battingResult == "HIT" {
-                    DispatchQueue.main.async {
-                        self.hit()
-                    }
-                } else if pitchResult.battingResult == "END" {
-                    DispatchQueue.main.async {
-                        self.players.forEach {
-                            $0.removeFromSuperview()
-                        }
-                        self.players.removeAll()
-                    }
-                }
                 self.updateGameInfo()
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
+        
     private func hit() {
-        let newPlayer = PlayerView(frame: bases[0].frame)
-        fieldView.addSubview(newPlayer)
-        players.append(newPlayer)
-        players.forEach {
-            let player = $0
-            player.base += 1
-            if player.base == 4 {
-                UIView.animate(withDuration: 1.0, animations: {
-                    self.pitchButton.toggle()
-                    player.frame = self.bases[0].frame
-                }) { _ in
-                    self.pitchButton.toggle()
-                    player.removeFromSuperview()
-                    self.players.removeFirst()
-                }
-            } else {
-                UIView.animate(withDuration: 1.0, animations: {
-                    self.pitchButton.toggle()
-                    player.frame = self.bases[player.base].frame
-                }) { _ in
-                    self.pitchButton.toggle()
+        DispatchQueue.main.async {
+            let newPlayer = PlayerView(frame: self.bases[0].frame)
+            self.fieldView.addSubview(newPlayer)
+            self.players.append(newPlayer)
+            self.players.forEach {
+                let player = $0
+                player.base += 1
+                if player.base == 4 {
+                    UIView.animate(withDuration: 1.0, animations: {
+                        self.pitchButton.toggle()
+                        player.frame = self.bases[0].frame
+                    }) { _ in
+                        self.pitchButton.toggle()
+                        player.removeFromSuperview()
+                        self.players.removeFirst()
+                    }
+                } else {
+                    UIView.animate(withDuration: 1.0, animations: {
+                        self.pitchButton.toggle()
+                        player.frame = self.bases[player.base].frame
+                    }) { _ in
+                        self.pitchButton.toggle()
+                    }
                 }
             }
         }
@@ -88,9 +84,35 @@ class PlayViewController: UIViewController {
         GameInfoUseCase.gameInfo(with: NetworkManager()) { result in
             switch result {
             case .success(let gameInfo):
-                self.scoreViewModel.updateKey(gameInfo.inningStatus)
-                self.inningViewModel.updateKey(gameInfo)
-                self.titleScoreViewModel.updateKey(gameInfo)
+                if self.gameInfo != gameInfo {
+                    self.gameInfo = gameInfo
+                    self.scoreViewModel.updateKey(gameInfo.inningStatus)
+                    self.inningViewModel.updateKey(gameInfo)
+                    self.titleScoreViewModel.updateKey(gameInfo)
+                    
+                    guard gameInfo.baseStatus.firstBase else {
+                        DispatchQueue.main.async {
+                            self.players.forEach {
+                                $0.removeFromSuperview()
+                            }
+                            self.players.removeAll()
+                        }
+                        return
+                    }
+                    if self.players.count < 1 {
+                        self.hit()
+                    }
+                    guard gameInfo.baseStatus.secondBase else { return }
+                    if self.players.count < 2 {
+                        self.hit()
+                    }
+                    guard gameInfo.baseStatus.thirdBase else { return }
+                    if self.players.count < 3 {
+                        self.hit()
+                    } else if self.players.count == 3, gameInfo.inningStatus.strike == 0, gameInfo.inningStatus.ball == 0 {
+                        self.hit()
+                    }
+                }
             case .failure(let error):
                 print(error)
             }
