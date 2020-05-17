@@ -19,6 +19,15 @@ class PitchButton: UIButton {
         setProperties()
     }
     
+    func toggle() {
+        isEnabled = !isEnabled
+        if isEnabled {
+            backgroundColor = .black
+        } else {
+            backgroundColor = .systemYellow
+        }
+    }
+    
     private func setProperties() {
         layer.cornerRadius = frame.height / 5
     }

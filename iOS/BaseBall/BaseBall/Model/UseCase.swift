@@ -1,5 +1,5 @@
 //
-//  PitchUseCase.swift
+//  UseCase.swift
 //  BaseBall
 //
 //  Created by TTOzzi on 2020/05/08.
@@ -24,3 +24,21 @@ struct PitchUseCase {
         })
     }
 }
+
+struct GameInfoUseCase {
+    static func gameInfo(with manager: NetworkManageable, completion: @escaping (Result<GameInfo, NetworkError>) -> ()) {
+        manager.getResource(from: NetworkManager.EndPoints.GameInfo, handler: { result in
+            switch result {
+            case .success(let data):
+                guard let response = try? JSONDecoder().decode(GameInfoResponse.self, from: data) else {
+                    completion(.failure(.DecodingError))
+                    return
+                }
+                completion(.success(response.body))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
+}
+

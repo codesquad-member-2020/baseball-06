@@ -9,10 +9,10 @@
 import Foundation
 
 class InningViewModel: ViewModelBinding {
-    typealias Key = InningStatus?
+    typealias Key = GameInfo?
     typealias Data = String
     
-    private var inningStatus: Key = nil {
+    private var gameInfo: Key = nil {
         didSet {
             changedHandler(inning)
         }
@@ -22,18 +22,18 @@ class InningViewModel: ViewModelBinding {
         return inningText()
     }
     
-    init(with inningStatus: InningStatus? = nil, changed handler: @escaping (Data) -> () = { _ in }) {
+    init(with inningStatus: GameInfo? = nil, changed handler: @escaping (Data) -> () = { _ in }) {
         self.changedHandler = handler
-        self.inningStatus = inningStatus
+        self.gameInfo = inningStatus
         changedHandler(inning)
     }
     
     func updateKey(_ key: Key) {
-        self.inningStatus = key
+        self.gameInfo = key
     }
     
     private func inningText() -> Data {
-        guard let inningStatus = inningStatus else { return "" }
-        return "\(inningStatus.inningNum)회\(inningStatus.inningType)\n\(inningStatus.inningType == "초" ? "공격" : "수비")"
+        guard let gameInfo = gameInfo else { return "" }
+        return "\(gameInfo.earlyInningList.count)회\(gameInfo.earlyInningList.count > gameInfo.lateInningList.count ? "초\n공격" : "말\n수비")"
     }
 }

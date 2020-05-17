@@ -13,46 +13,43 @@ struct PitchResponse: Codable {
 }
 
 struct PitchResult: Codable {
-    var inningStatus: InningStatus
-    var updatedBaseman: Base
-    var updatedScore: Score
-    var updatedPlayer: [Player]
+    var battingResult: String
 }
 
-struct InningStatus: Codable {
-    var inningNum: Int
-    var inningType: String
+struct GameInfoResponse: Codable {
+    var body: GameInfo
+}
+
+struct GameInfo: Codable, Equatable {
+    var earlyInningList: [InningInfo]
+    var lateInningList: [InningInfo]
+    var inningStatus: InningStatus
+    var baseStatus: BaseStatus
+}
+
+struct InningInfo: Codable, Equatable {
+    var index: Int
+    var type: String
+    var score: Int
+    var end: Bool
+}
+
+struct InningStatus: Codable, Equatable {
     var strike: Int
     var ball: Int
     var out: Int
 }
 
-struct Base: Codable {
-    var firstBase: BaseInfo
-    var secondBase: BaseInfo
-    var thirdBase: BaseInfo
-    
-    enum CodingKeys: String, CodingKey {
-        case firstBase = "1B"
-        case secondBase = "2B"
-        case thirdBase = "3B"
-    }
-}
-
-struct BaseInfo: Codable {
-    var name: String?
-    var id: Int?
-}
-
-struct Score: Codable {
-    var home: Int
-    var away: Int
-}
-
-struct Player: Codable {
+struct Player: Codable, Equatable {
     var id: Int
     var name: String
     var type: String
     var teamType: String
     var teamName: String
+}
+
+struct BaseStatus: Codable, Equatable {
+    var firstBase: Bool
+    var secondBase: Bool
+    var thirdBase: Bool
 }
