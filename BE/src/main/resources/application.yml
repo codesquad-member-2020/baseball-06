@@ -4,8 +4,8 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/baseball06_db
-    username: baseball06
-    password: baseball06
+    username: root
+    password: codesquad
     schema: classpath:schema.sql
     data: classpath:data.sql
     initialization-mode: always
